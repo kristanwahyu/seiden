@@ -1,0 +1,2768 @@
+1496222721.387915 server started (32401): version 2.4, socket /tmp/tmux-1000/default, protocol 8
+1496222721.388020 on Linux 4.4.70-1-MANJARO #1 SMP PREEMPT Thu May 25 20:19:20 UTC 2017; libevent 2.0.22-stable (poll)
+1496222721.395342 add peer 0x73a6e0: 8 (0x739ef0)
+1496222721.395431 new client 0x739ef0
+1496222721.395482 loading /etc/tmux.conf
+1496222721.395539 loading /home/fnasrullah/.tmux.conf
+1496222721.395586 server loop enter
+1496222721.402817 peer 0x73a6e0 message 100
+1496222721.402890 client 0x739ef0 IDENTIFY_FLAGS 0x10000
+1496222721.402910 peer 0x73a6e0 message 101
+1496222721.402927 client 0x739ef0 IDENTIFY_TERM xterm-256color
+1496222721.402942 peer 0x73a6e0 message 102
+1496222721.402958 client 0x739ef0 IDENTIFY_TTYNAME /dev/pts/4
+1496222721.402973 peer 0x73a6e0 message 108
+1496222721.403007 client 0x739ef0 IDENTIFY_CWD /opt/lampp/htdocs/silaku/public
+1496222721.403023 peer 0x73a6e0 message 104
+1496222721.403048 client 0x739ef0 IDENTIFY_STDIN 6
+1496222721.403076 cmdq_next <global>: enter
+1496222721.403093 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.403224 preparing state for bind-key C-b send-prefix (client (nil))
+1496222721.403245 cmd_find_client: no target, return (nil)
+1496222721.403259 using client (nil)
+1496222721.403273 preparing -t state: target none
+1496222721.403287 preparing -s state: target none
+1496222721.403302 cmd_find_client: no target, return (nil)
+1496222721.403348 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.403373 preparing state for bind-key C-o rotate-window (client (nil))
+1496222721.403389 cmd_find_client: no target, return (nil)
+1496222721.403403 using client (nil)
+1496222721.403417 preparing -t state: target none
+1496222721.403431 preparing -s state: target none
+1496222721.403446 cmd_find_client: no target, return (nil)
+1496222721.403472 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.403594 preparing state for bind-key C-z suspend-client (client (nil))
+1496222721.403614 cmd_find_client: no target, return (nil)
+1496222721.403629 using client (nil)
+1496222721.403643 preparing -t state: target none
+1496222721.403658 preparing -s state: target none
+1496222721.403672 cmd_find_client: no target, return (nil)
+1496222721.403705 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.403729 preparing state for bind-key Space next-layout (client (nil))
+1496222721.403745 cmd_find_client: no target, return (nil)
+1496222721.403758 using client (nil)
+1496222721.403773 preparing -t state: target none
+1496222721.403787 preparing -s state: target none
+1496222721.403802 cmd_find_client: no target, return (nil)
+1496222721.403830 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.403853 preparing state for bind-key ! break-pane (client (nil))
+1496222721.403869 cmd_find_client: no target, return (nil)
+1496222721.403883 using client (nil)
+1496222721.403897 preparing -t state: target none
+1496222721.403911 preparing -s state: target none
+1496222721.403926 cmd_find_client: no target, return (nil)
+1496222721.403947 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.403970 preparing state for bind-key "\\"" split-window (client (nil))
+1496222721.403986 cmd_find_client: no target, return (nil)
+1496222721.404000 using client (nil)
+1496222721.404014 preparing -t state: target none
+1496222721.404028 preparing -s state: target none
+1496222721.404043 cmd_find_client: no target, return (nil)
+1496222721.404198 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.404228 preparing state for bind-key "#" list-buffers (client (nil))
+1496222721.404245 cmd_find_client: no target, return (nil)
+1496222721.404258 using client (nil)
+1496222721.404273 preparing -t state: target none
+1496222721.404287 preparing -s state: target none
+1496222721.404301 cmd_find_client: no target, return (nil)
+1496222721.404325 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.404374 preparing state for bind-key "$" command-prompt "-I#S" "rename-session '%%'" (client (nil))
+1496222721.404392 cmd_find_client: no target, return (nil)
+1496222721.404406 using client (nil)
+1496222721.404446 preparing -t state: target none
+1496222721.404461 preparing -s state: target none
+1496222721.404477 cmd_find_client: no target, return (nil)
+1496222721.404503 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.404530 preparing state for bind-key % split-window -h (client (nil))
+1496222721.404546 cmd_find_client: no target, return (nil)
+1496222721.404560 using client (nil)
+1496222721.404575 preparing -t state: target none
+1496222721.404589 preparing -s state: target none
+1496222721.404604 cmd_find_client: no target, return (nil)
+1496222721.404634 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.404667 preparing state for bind-key & confirm-before "-pkill-window #W? (y/n)" kill-window (client (nil))
+1496222721.404683 cmd_find_client: no target, return (nil)
+1496222721.404697 using client (nil)
+1496222721.404711 preparing -t state: target none
+1496222721.404725 preparing -s state: target none
+1496222721.404740 cmd_find_client: no target, return (nil)
+1496222721.404764 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.404796 preparing state for bind-key "'" command-prompt -pindex "select-window -t ':%%'" (client (nil))
+1496222721.404812 cmd_find_client: no target, return (nil)
+1496222721.404826 using client (nil)
+1496222721.404840 preparing -t state: target none
+1496222721.404855 preparing -s state: target none
+1496222721.404870 cmd_find_client: no target, return (nil)
+1496222721.404893 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.404919 preparing state for bind-key ( switch-client -p (client (nil))
+1496222721.404935 cmd_find_client: no target, return (nil)
+1496222721.404949 using client (nil)
+1496222721.404963 preparing -t state: target none
+1496222721.404977 preparing -s state: target none
+1496222721.404992 cmd_find_client: no target, return (nil)
+1496222721.405021 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.405048 preparing state for bind-key ) switch-client -n (client (nil))
+1496222721.405136 cmd_find_client: no target, return (nil)
+1496222721.405151 using client (nil)
+1496222721.405165 preparing -t state: target none
+1496222721.405179 preparing -s state: target none
+1496222721.405194 cmd_find_client: no target, return (nil)
+1496222721.405225 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.405257 preparing state for bind-key , command-prompt "-I#W" "rename-window '%%'" (client (nil))
+1496222721.405274 cmd_find_client: no target, return (nil)
+1496222721.405288 using client (nil)
+1496222721.405302 preparing -t state: target none
+1496222721.405317 preparing -s state: target none
+1496222721.405332 cmd_find_client: no target, return (nil)
+1496222721.405355 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.405378 preparing state for bind-key - delete-buffer (client (nil))
+1496222721.405394 cmd_find_client: no target, return (nil)
+1496222721.405408 using client (nil)
+1496222721.405423 preparing -t state: target none
+1496222721.405437 preparing -s state: target none
+1496222721.405453 cmd_find_client: no target, return (nil)
+1496222721.405476 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.405504 preparing state for bind-key . command-prompt "move-window -t '%%'" (client (nil))
+1496222721.405521 cmd_find_client: no target, return (nil)
+1496222721.405535 using client (nil)
+1496222721.405549 preparing -t state: target none
+1496222721.405563 preparing -s state: target none
+1496222721.405578 cmd_find_client: no target, return (nil)
+1496222721.405601 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.405627 preparing state for bind-key 0 select-window -t:=0 (client (nil))
+1496222721.405643 cmd_find_client: no target, return (nil)
+1496222721.405657 using client (nil)
+1496222721.405672 preparing -t state: target none
+1496222721.405698 preparing -s state: target none
+1496222721.405715 cmd_find_client: no target, return (nil)
+1496222721.405745 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.405772 preparing state for bind-key 1 select-window -t:=1 (client (nil))
+1496222721.405788 cmd_find_client: no target, return (nil)
+1496222721.405826 using client (nil)
+1496222721.405841 preparing -t state: target none
+1496222721.405855 preparing -s state: target none
+1496222721.405870 cmd_find_client: no target, return (nil)
+1496222721.405900 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.405926 preparing state for bind-key 2 select-window -t:=2 (client (nil))
+1496222721.405943 cmd_find_client: no target, return (nil)
+1496222721.405956 using client (nil)
+1496222721.405971 preparing -t state: target none
+1496222721.405985 preparing -s state: target none
+1496222721.405999 cmd_find_client: no target, return (nil)
+1496222721.406027 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.406122 preparing state for bind-key 3 select-window -t:=3 (client (nil))
+1496222721.406138 cmd_find_client: no target, return (nil)
+1496222721.406152 using client (nil)
+1496222721.406166 preparing -t state: target none
+1496222721.406180 preparing -s state: target none
+1496222721.406196 cmd_find_client: no target, return (nil)
+1496222721.406318 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.406346 preparing state for bind-key 4 select-window -t:=4 (client (nil))
+1496222721.406362 cmd_find_client: no target, return (nil)
+1496222721.406376 using client (nil)
+1496222721.406391 preparing -t state: target none
+1496222721.406405 preparing -s state: target none
+1496222721.406420 cmd_find_client: no target, return (nil)
+1496222721.406447 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.406473 preparing state for bind-key 5 select-window -t:=5 (client (nil))
+1496222721.406489 cmd_find_client: no target, return (nil)
+1496222721.406503 using client (nil)
+1496222721.406517 preparing -t state: target none
+1496222721.406531 preparing -s state: target none
+1496222721.406546 cmd_find_client: no target, return (nil)
+1496222721.406573 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.406599 preparing state for bind-key 6 select-window -t:=6 (client (nil))
+1496222721.406615 cmd_find_client: no target, return (nil)
+1496222721.406629 using client (nil)
+1496222721.406644 preparing -t state: target none
+1496222721.406658 preparing -s state: target none
+1496222721.406673 cmd_find_client: no target, return (nil)
+1496222721.406700 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.406726 preparing state for bind-key 7 select-window -t:=7 (client (nil))
+1496222721.406742 cmd_find_client: no target, return (nil)
+1496222721.406756 using client (nil)
+1496222721.406770 preparing -t state: target none
+1496222721.406784 preparing -s state: target none
+1496222721.406800 cmd_find_client: no target, return (nil)
+1496222721.406827 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.406854 preparing state for bind-key 8 select-window -t:=8 (client (nil))
+1496222721.406870 cmd_find_client: no target, return (nil)
+1496222721.406884 using client (nil)
+1496222721.406898 preparing -t state: target none
+1496222721.406912 preparing -s state: target none
+1496222721.406930 cmd_find_client: no target, return (nil)
+1496222721.406957 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.406983 preparing state for bind-key 9 select-window -t:=9 (client (nil))
+1496222721.406999 cmd_find_client: no target, return (nil)
+1496222721.407091 using client (nil)
+1496222721.407107 preparing -t state: target none
+1496222721.407145 preparing -s state: target none
+1496222721.407163 cmd_find_client: no target, return (nil)
+1496222721.407195 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.407219 preparing state for bind-key : command-prompt (client (nil))
+1496222721.407235 cmd_find_client: no target, return (nil)
+1496222721.407248 using client (nil)
+1496222721.407263 preparing -t state: target none
+1496222721.407278 preparing -s state: target none
+1496222721.407293 cmd_find_client: no target, return (nil)
+1496222721.407315 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.407338 preparing state for bind-key ";" last-pane (client (nil))
+1496222721.407355 cmd_find_client: no target, return (nil)
+1496222721.407457 using client (nil)
+1496222721.407476 preparing -t state: target none
+1496222721.407490 preparing -s state: target none
+1496222721.407505 cmd_find_client: no target, return (nil)
+1496222721.407531 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.407555 preparing state for bind-key = choose-buffer (client (nil))
+1496222721.407571 cmd_find_client: no target, return (nil)
+1496222721.407585 using client (nil)
+1496222721.407600 preparing -t state: target none
+1496222721.407614 preparing -s state: target none
+1496222721.407628 cmd_find_client: no target, return (nil)
+1496222721.407650 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.407673 preparing state for bind-key ? list-keys (client (nil))
+1496222721.407689 cmd_find_client: no target, return (nil)
+1496222721.407703 using client (nil)
+1496222721.407717 preparing -t state: target none
+1496222721.407731 preparing -s state: target none
+1496222721.407746 cmd_find_client: no target, return (nil)
+1496222721.407770 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.407793 preparing state for bind-key D choose-client (client (nil))
+1496222721.407808 cmd_find_client: no target, return (nil)
+1496222721.407822 using client (nil)
+1496222721.407837 preparing -t state: target none
+1496222721.407851 preparing -s state: target none
+1496222721.407866 cmd_find_client: no target, return (nil)
+1496222721.407888 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.407913 preparing state for bind-key L switch-client -l (client (nil))
+1496222721.407928 cmd_find_client: no target, return (nil)
+1496222721.407942 using client (nil)
+1496222721.407956 preparing -t state: target none
+1496222721.407970 preparing -s state: target none
+1496222721.408064 cmd_find_client: no target, return (nil)
+1496222721.408103 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.408129 preparing state for bind-key M select-pane -M (client (nil))
+1496222721.408145 cmd_find_client: no target, return (nil)
+1496222721.408159 using client (nil)
+1496222721.408173 preparing -t state: target none
+1496222721.408187 preparing -s state: target none
+1496222721.408202 cmd_find_client: no target, return (nil)
+1496222721.408230 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.408252 preparing state for bind-key [ copy-mode (client (nil))
+1496222721.408269 cmd_find_client: no target, return (nil)
+1496222721.408282 using client (nil)
+1496222721.408297 preparing -t state: target none
+1496222721.408311 preparing -s state: target none
+1496222721.408325 cmd_find_client: no target, return (nil)
+1496222721.408347 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.408370 preparing state for bind-key ] paste-buffer (client (nil))
+1496222721.408386 cmd_find_client: no target, return (nil)
+1496222721.408400 using client (nil)
+1496222721.408425 preparing -t state: target none
+1496222721.408441 preparing -s state: target none
+1496222721.408456 cmd_find_client: no target, return (nil)
+1496222721.408483 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.408506 preparing state for bind-key c new-window (client (nil))
+1496222721.408522 cmd_find_client: no target, return (nil)
+1496222721.408536 using client (nil)
+1496222721.408550 preparing -t state: target none
+1496222721.408564 preparing -s state: target none
+1496222721.408579 cmd_find_client: no target, return (nil)
+1496222721.408604 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.408627 preparing state for bind-key d detach-client (client (nil))
+1496222721.408643 cmd_find_client: no target, return (nil)
+1496222721.408657 using client (nil)
+1496222721.408672 preparing -t state: target none
+1496222721.408686 preparing -s state: target none
+1496222721.408701 cmd_find_client: no target, return (nil)
+1496222721.408723 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.408750 preparing state for bind-key f command-prompt "find-window '%%'" (client (nil))
+1496222721.408767 cmd_find_client: no target, return (nil)
+1496222721.408781 using client (nil)
+1496222721.408796 preparing -t state: target none
+1496222721.408833 preparing -s state: target none
+1496222721.408849 cmd_find_client: no target, return (nil)
+1496222721.408873 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.408896 preparing state for bind-key i display-message (client (nil))
+1496222721.408912 cmd_find_client: no target, return (nil)
+1496222721.408927 using client (nil)
+1496222721.408941 preparing -t state: target none
+1496222721.408955 preparing -s state: target none
+1496222721.409041 cmd_find_client: no target, return (nil)
+1496222721.409067 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.409090 preparing state for bind-key l last-window (client (nil))
+1496222721.409106 cmd_find_client: no target, return (nil)
+1496222721.409120 using client (nil)
+1496222721.409134 preparing -t state: target none
+1496222721.409148 preparing -s state: target none
+1496222721.409164 cmd_find_client: no target, return (nil)
+1496222721.409189 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.409214 preparing state for bind-key m select-pane -m (client (nil))
+1496222721.409230 cmd_find_client: no target, return (nil)
+1496222721.409244 using client (nil)
+1496222721.409258 preparing -t state: target none
+1496222721.409272 preparing -s state: target none
+1496222721.409287 cmd_find_client: no target, return (nil)
+1496222721.409317 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.409340 preparing state for bind-key n next-window (client (nil))
+1496222721.409357 cmd_find_client: no target, return (nil)
+1496222721.409372 using client (nil)
+1496222721.409386 preparing -t state: target none
+1496222721.409400 preparing -s state: target none
+1496222721.409415 cmd_find_client: no target, return (nil)
+1496222721.409441 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.409466 preparing state for bind-key o select-pane -t:.+ (client (nil))
+1496222721.409482 cmd_find_client: no target, return (nil)
+1496222721.409496 using client (nil)
+1496222721.409510 preparing -t state: target none
+1496222721.409524 preparing -s state: target none
+1496222721.409539 cmd_find_client: no target, return (nil)
+1496222721.409567 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.409590 preparing state for bind-key p previous-window (client (nil))
+1496222721.409607 cmd_find_client: no target, return (nil)
+1496222721.409621 using client (nil)
+1496222721.409645 preparing -t state: target none
+1496222721.409660 preparing -s state: target none
+1496222721.409675 cmd_find_client: no target, return (nil)
+1496222721.409702 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.409725 preparing state for bind-key q display-panes (client (nil))
+1496222721.409741 cmd_find_client: no target, return (nil)
+1496222721.409755 using client (nil)
+1496222721.409769 preparing -t state: target none
+1496222721.409783 preparing -s state: target none
+1496222721.409798 cmd_find_client: no target, return (nil)
+1496222721.409821 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.409844 preparing state for bind-key r refresh-client (client (nil))
+1496222721.409861 cmd_find_client: no target, return (nil)
+1496222721.409875 using client (nil)
+1496222721.409889 preparing -t state: target none
+1496222721.409904 preparing -s state: target none
+1496222721.409919 cmd_find_client: no target, return (nil)
+1496222721.410020 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.410048 preparing state for bind-key s choose-tree (client (nil))
+1496222721.410064 cmd_find_client: no target, return (nil)
+1496222721.410078 using client (nil)
+1496222721.410093 preparing -t state: target none
+1496222721.410107 preparing -s state: target none
+1496222721.410122 cmd_find_client: no target, return (nil)
+1496222721.410144 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.410166 preparing state for bind-key t clock-mode (client (nil))
+1496222721.410182 cmd_find_client: no target, return (nil)
+1496222721.410196 using client (nil)
+1496222721.410210 preparing -t state: target none
+1496222721.410224 preparing -s state: target none
+1496222721.410262 cmd_find_client: no target, return (nil)
+1496222721.410285 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.410307 preparing state for bind-key w choose-window (client (nil))
+1496222721.410324 cmd_find_client: no target, return (nil)
+1496222721.410338 using client (nil)
+1496222721.410352 preparing -t state: target none
+1496222721.410366 preparing -s state: target none
+1496222721.410381 cmd_find_client: no target, return (nil)
+1496222721.410402 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.410434 preparing state for bind-key x confirm-before "-pkill-pane #P? (y/n)" kill-pane (client (nil))
+1496222721.410450 cmd_find_client: no target, return (nil)
+1496222721.410464 using client (nil)
+1496222721.410478 preparing -t state: target none
+1496222721.410493 preparing -s state: target none
+1496222721.410508 cmd_find_client: no target, return (nil)
+1496222721.410532 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.410558 preparing state for bind-key z resize-pane -Z (client (nil))
+1496222721.410574 cmd_find_client: no target, return (nil)
+1496222721.410589 using client (nil)
+1496222721.410603 preparing -t state: target none
+1496222721.410617 preparing -s state: target none
+1496222721.410632 cmd_find_client: no target, return (nil)
+1496222721.410661 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.410687 preparing state for bind-key { swap-pane -U (client (nil))
+1496222721.410703 cmd_find_client: no target, return (nil)
+1496222721.410718 using client (nil)
+1496222721.410775 preparing -t state: target none
+1496222721.410789 preparing -s state: target none
+1496222721.410815 cmd_find_client: no target, return (nil)
+1496222721.410850 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.410876 preparing state for bind-key } swap-pane -D (client (nil))
+1496222721.410892 cmd_find_client: no target, return (nil)
+1496222721.410906 using client (nil)
+1496222721.410990 preparing -t state: target none
+1496222721.411005 preparing -s state: target none
+1496222721.411020 cmd_find_client: no target, return (nil)
+1496222721.411050 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.411074 preparing state for bind-key ~ show-messages (client (nil))
+1496222721.411089 cmd_find_client: no target, return (nil)
+1496222721.411103 using client (nil)
+1496222721.411117 preparing -t state: target none
+1496222721.411131 preparing -s state: target none
+1496222721.411146 cmd_find_client: no target, return (nil)
+1496222721.411174 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.411199 preparing state for bind-key PPage copy-mode -u (client (nil))
+1496222721.411215 cmd_find_client: no target, return (nil)
+1496222721.411229 using client (nil)
+1496222721.411243 preparing -t state: target none
+1496222721.411257 preparing -s state: target none
+1496222721.411272 cmd_find_client: no target, return (nil)
+1496222721.411298 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.411327 preparing state for bind-key -r Up select-pane -U (client (nil))
+1496222721.411343 cmd_find_client: no target, return (nil)
+1496222721.411357 using client (nil)
+1496222721.411371 preparing -t state: target none
+1496222721.411385 preparing -s state: target none
+1496222721.411400 cmd_find_client: no target, return (nil)
+1496222721.411429 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.411458 preparing state for bind-key -r Down select-pane -D (client (nil))
+1496222721.411474 cmd_find_client: no target, return (nil)
+1496222721.411488 using client (nil)
+1496222721.411502 preparing -t state: target none
+1496222721.411517 preparing -s state: target none
+1496222721.411532 cmd_find_client: no target, return (nil)
+1496222721.411562 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.411590 preparing state for bind-key -r Left select-pane -L (client (nil))
+1496222721.411606 cmd_find_client: no target, return (nil)
+1496222721.411620 using client (nil)
+1496222721.411634 preparing -t state: target none
+1496222721.411648 preparing -s state: target none
+1496222721.411663 cmd_find_client: no target, return (nil)
+1496222721.411735 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.411764 preparing state for bind-key -r Right select-pane -R (client (nil))
+1496222721.411780 cmd_find_client: no target, return (nil)
+1496222721.411794 using client (nil)
+1496222721.411808 preparing -t state: target none
+1496222721.411822 preparing -s state: target none
+1496222721.411837 cmd_find_client: no target, return (nil)
+1496222721.411866 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.411955 preparing state for bind-key M-1 select-layout even-horizontal (client (nil))
+1496222721.411978 cmd_find_client: no target, return (nil)
+1496222721.411994 using client (nil)
+1496222721.412008 preparing -t state: target none
+1496222721.412022 preparing -s state: target none
+1496222721.412037 cmd_find_client: no target, return (nil)
+1496222721.412065 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.412092 preparing state for bind-key M-2 select-layout even-vertical (client (nil))
+1496222721.412109 cmd_find_client: no target, return (nil)
+1496222721.412123 using client (nil)
+1496222721.412137 preparing -t state: target none
+1496222721.412151 preparing -s state: target none
+1496222721.412167 cmd_find_client: no target, return (nil)
+1496222721.412193 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.412220 preparing state for bind-key M-3 select-layout main-horizontal (client (nil))
+1496222721.412236 cmd_find_client: no target, return (nil)
+1496222721.412250 using client (nil)
+1496222721.412264 preparing -t state: target none
+1496222721.412279 preparing -s state: target none
+1496222721.412294 cmd_find_client: no target, return (nil)
+1496222721.412320 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.412347 preparing state for bind-key M-4 select-layout main-vertical (client (nil))
+1496222721.412363 cmd_find_client: no target, return (nil)
+1496222721.412376 using client (nil)
+1496222721.412390 preparing -t state: target none
+1496222721.412405 preparing -s state: target none
+1496222721.412419 cmd_find_client: no target, return (nil)
+1496222721.412446 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.412471 preparing state for bind-key M-5 select-layout tiled (client (nil))
+1496222721.412486 cmd_find_client: no target, return (nil)
+1496222721.412500 using client (nil)
+1496222721.412514 preparing -t state: target none
+1496222721.412528 preparing -s state: target none
+1496222721.412543 cmd_find_client: no target, return (nil)
+1496222721.412570 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.412595 preparing state for bind-key M-n next-window -a (client (nil))
+1496222721.412610 cmd_find_client: no target, return (nil)
+1496222721.412624 using client (nil)
+1496222721.412638 preparing -t state: target none
+1496222721.412652 preparing -s state: target none
+1496222721.412667 cmd_find_client: no target, return (nil)
+1496222721.412692 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.412718 preparing state for bind-key M-o rotate-window -D (client (nil))
+1496222721.412734 cmd_find_client: no target, return (nil)
+1496222721.412747 using client (nil)
+1496222721.412762 preparing -t state: target none
+1496222721.412776 preparing -s state: target none
+1496222721.412791 cmd_find_client: no target, return (nil)
+1496222721.412817 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.412843 preparing state for bind-key M-p previous-window -a (client (nil))
+1496222721.412859 cmd_find_client: no target, return (nil)
+1496222721.412934 using client (nil)
+1496222721.412950 preparing -t state: target none
+1496222721.412964 preparing -s state: target none
+1496222721.412979 cmd_find_client: no target, return (nil)
+1496222721.413006 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.413037 preparing state for bind-key -r M-Up resize-pane -U 5 (client (nil))
+1496222721.413053 cmd_find_client: no target, return (nil)
+1496222721.413066 using client (nil)
+1496222721.413082 preparing -t state: target none
+1496222721.413095 preparing -s state: target none
+1496222721.413124 cmd_find_client: no target, return (nil)
+1496222721.413154 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.413185 preparing state for bind-key -r M-Down resize-pane -D 5 (client (nil))
+1496222721.413200 cmd_find_client: no target, return (nil)
+1496222721.413214 using client (nil)
+1496222721.413228 preparing -t state: target none
+1496222721.413243 preparing -s state: target none
+1496222721.413258 cmd_find_client: no target, return (nil)
+1496222721.413286 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.413317 preparing state for bind-key -r M-Left resize-pane -L 5 (client (nil))
+1496222721.413332 cmd_find_client: no target, return (nil)
+1496222721.413346 using client (nil)
+1496222721.413360 preparing -t state: target none
+1496222721.413374 preparing -s state: target none
+1496222721.413389 cmd_find_client: no target, return (nil)
+1496222721.413417 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.413448 preparing state for bind-key -r M-Right resize-pane -R 5 (client (nil))
+1496222721.413464 cmd_find_client: no target, return (nil)
+1496222721.413478 using client (nil)
+1496222721.413492 preparing -t state: target none
+1496222721.413506 preparing -s state: target none
+1496222721.413521 cmd_find_client: no target, return (nil)
+1496222721.413549 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.413577 preparing state for bind-key -r C-Up resize-pane -U (client (nil))
+1496222721.413593 cmd_find_client: no target, return (nil)
+1496222721.413607 using client (nil)
+1496222721.413622 preparing -t state: target none
+1496222721.413636 preparing -s state: target none
+1496222721.413651 cmd_find_client: no target, return (nil)
+1496222721.413679 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.413707 preparing state for bind-key -r C-Down resize-pane -D (client (nil))
+1496222721.413723 cmd_find_client: no target, return (nil)
+1496222721.413737 using client (nil)
+1496222721.413751 preparing -t state: target none
+1496222721.413765 preparing -s state: target none
+1496222721.413780 cmd_find_client: no target, return (nil)
+1496222721.413809 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.413837 preparing state for bind-key -r C-Left resize-pane -L (client (nil))
+1496222721.413912 cmd_find_client: no target, return (nil)
+1496222721.413927 using client (nil)
+1496222721.413941 preparing -t state: target none
+1496222721.413966 preparing -s state: target none
+1496222721.413982 cmd_find_client: no target, return (nil)
+1496222721.414011 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.414040 preparing state for bind-key -r C-Right resize-pane -R (client (nil))
+1496222721.414101 cmd_find_client: no target, return (nil)
+1496222721.414122 using client (nil)
+1496222721.414136 preparing -t state: target none
+1496222721.414150 preparing -s state: target none
+1496222721.414165 cmd_find_client: no target, return (nil)
+1496222721.414195 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.414318 preparing state for bind-key -n MouseDown1Pane select-pane "-t=;" send-keys -M (client (nil))
+1496222721.414347 cmd_find_client: no target, return (nil)
+1496222721.414363 using client (nil)
+1496222721.414378 preparing -t state: target none
+1496222721.414392 preparing -s state: target none
+1496222721.414407 cmd_find_client: no target, return (nil)
+1496222721.414444 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.414474 preparing state for bind-key -n MouseDrag1Border resize-pane -M (client (nil))
+1496222721.414489 cmd_find_client: no target, return (nil)
+1496222721.414503 using client (nil)
+1496222721.414517 preparing -t state: target none
+1496222721.414531 preparing -s state: target none
+1496222721.414546 cmd_find_client: no target, return (nil)
+1496222721.414576 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.414605 preparing state for bind-key -n MouseDown1Status select-window -t= (client (nil))
+1496222721.414621 cmd_find_client: no target, return (nil)
+1496222721.414635 using client (nil)
+1496222721.414649 preparing -t state: target none
+1496222721.414679 preparing -s state: target none
+1496222721.414695 cmd_find_client: no target, return (nil)
+1496222721.414724 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.414751 preparing state for bind-key -n WheelDownStatus next-window (client (nil))
+1496222721.414767 cmd_find_client: no target, return (nil)
+1496222721.414781 using client (nil)
+1496222721.414795 preparing -t state: target none
+1496222721.414809 preparing -s state: target none
+1496222721.414886 cmd_find_client: no target, return (nil)
+1496222721.414917 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.414945 preparing state for bind-key -n WheelUpStatus previous-window (client (nil))
+1496222721.414960 cmd_find_client: no target, return (nil)
+1496222721.414975 using client (nil)
+1496222721.414989 preparing -t state: target none
+1496222721.415004 preparing -s state: target none
+1496222721.415019 cmd_find_client: no target, return (nil)
+1496222721.415048 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.415094 preparing state for bind-key -n MouseDrag1Pane if -Ft= "#{mouse_any_flag}" "if -Ft= \\"#{pane_in_mode}\\" \\"copy-mode -M\\" \\"send-keys -M\\"" "copy-mode -M" (client (nil))
+1496222721.415117 cmd_find_client: no target, return (nil)
+1496222721.415131 using client (nil)
+1496222721.415146 preparing -t state: target none
+1496222721.415160 preparing -s state: target none
+1496222721.415175 cmd_find_client: no target, return (nil)
+1496222721.415204 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.415249 preparing state for bind-key -n MouseDown3Pane if-shell -Ft= "#{mouse_any_flag}" "select-pane -t=; send-keys -M" "select-pane -mt=" (client (nil))
+1496222721.415265 cmd_find_client: no target, return (nil)
+1496222721.415279 using client (nil)
+1496222721.415293 preparing -t state: target none
+1496222721.415307 preparing -s state: target none
+1496222721.415322 cmd_find_client: no target, return (nil)
+1496222721.415350 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.415431 preparing state for bind-key -n WheelUpPane if-shell -Ft= "#{mouse_any_flag}" "send-keys -M" "if -Ft= \\"#{pane_in_mode}\\" \\"send-keys -M\\" \\"copy-mode -et=\\"" (client (nil))
+1496222721.415455 cmd_find_client: no target, return (nil)
+1496222721.415469 using client (nil)
+1496222721.415484 preparing -t state: target none
+1496222721.415498 preparing -s state: target none
+1496222721.415513 cmd_find_client: no target, return (nil)
+1496222721.415544 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.415578 preparing state for bind-key -T copy-mode C-Space send -X begin-selection (client (nil))
+1496222721.415594 cmd_find_client: no target, return (nil)
+1496222721.415608 using client (nil)
+1496222721.415621 preparing -t state: target none
+1496222721.415635 preparing -s state: target none
+1496222721.415651 cmd_find_client: no target, return (nil)
+1496222721.415681 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.415714 preparing state for bind-key -T copy-mode C-a send -X start-of-line (client (nil))
+1496222721.415730 cmd_find_client: no target, return (nil)
+1496222721.415744 using client (nil)
+1496222721.415758 preparing -t state: target none
+1496222721.415772 preparing -s state: target none
+1496222721.415787 cmd_find_client: no target, return (nil)
+1496222721.415873 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.415907 preparing state for bind-key -T copy-mode C-c send -X cancel (client (nil))
+1496222721.415923 cmd_find_client: no target, return (nil)
+1496222721.415937 using client (nil)
+1496222721.415951 preparing -t state: target none
+1496222721.415966 preparing -s state: target none
+1496222721.415981 cmd_find_client: no target, return (nil)
+1496222721.416009 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.416042 preparing state for bind-key -T copy-mode C-e send -X end-of-line (client (nil))
+1496222721.416058 cmd_find_client: no target, return (nil)
+1496222721.416072 using client (nil)
+1496222721.416085 preparing -t state: target none
+1496222721.416118 preparing -s state: target none
+1496222721.416133 cmd_find_client: no target, return (nil)
+1496222721.416162 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.416195 preparing state for bind-key -T copy-mode C-f send -X cursor-right (client (nil))
+1496222721.416211 cmd_find_client: no target, return (nil)
+1496222721.416225 using client (nil)
+1496222721.416239 preparing -t state: target none
+1496222721.416253 preparing -s state: target none
+1496222721.416268 cmd_find_client: no target, return (nil)
+1496222721.416295 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.416328 preparing state for bind-key -T copy-mode C-b send -X cursor-left (client (nil))
+1496222721.416344 cmd_find_client: no target, return (nil)
+1496222721.416358 using client (nil)
+1496222721.416372 preparing -t state: target none
+1496222721.416386 preparing -s state: target none
+1496222721.416401 cmd_find_client: no target, return (nil)
+1496222721.416429 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.416463 preparing state for bind-key -T copy-mode C-g send -X clear-selection (client (nil))
+1496222721.416480 cmd_find_client: no target, return (nil)
+1496222721.416493 using client (nil)
+1496222721.416508 preparing -t state: target none
+1496222721.416522 preparing -s state: target none
+1496222721.416537 cmd_find_client: no target, return (nil)
+1496222721.416564 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.416599 preparing state for bind-key -T copy-mode C-k send -X copy-end-of-line (client (nil))
+1496222721.416616 cmd_find_client: no target, return (nil)
+1496222721.416629 using client (nil)
+1496222721.416643 preparing -t state: target none
+1496222721.416657 preparing -s state: target none
+1496222721.416672 cmd_find_client: no target, return (nil)
+1496222721.416700 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.416732 preparing state for bind-key -T copy-mode C-n send -X cursor-down (client (nil))
+1496222721.416748 cmd_find_client: no target, return (nil)
+1496222721.416761 using client (nil)
+1496222721.416840 preparing -t state: target none
+1496222721.416857 preparing -s state: target none
+1496222721.416873 cmd_find_client: no target, return (nil)
+1496222721.416902 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.416935 preparing state for bind-key -T copy-mode C-p send -X cursor-up (client (nil))
+1496222721.416951 cmd_find_client: no target, return (nil)
+1496222721.416965 using client (nil)
+1496222721.417101 preparing -t state: target none
+1496222721.417124 preparing -s state: target none
+1496222721.417141 cmd_find_client: no target, return (nil)
+1496222721.417174 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.417217 preparing state for bind-key -T copy-mode C-r command-prompt "-ipsearch up" "send -X search-backward-incremental \\"%%%\\"" (client (nil))
+1496222721.417235 cmd_find_client: no target, return (nil)
+1496222721.417250 using client (nil)
+1496222721.417264 preparing -t state: target none
+1496222721.417278 preparing -s state: target none
+1496222721.417294 cmd_find_client: no target, return (nil)
+1496222721.417319 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.417360 preparing state for bind-key -T copy-mode C-s command-prompt "-ipsearch down" "send -X search-forward-incremental \\"%%%\\"" (client (nil))
+1496222721.417377 cmd_find_client: no target, return (nil)
+1496222721.417428 using client (nil)
+1496222721.417448 preparing -t state: target none
+1496222721.417463 preparing -s state: target none
+1496222721.417478 cmd_find_client: no target, return (nil)
+1496222721.417503 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.417537 preparing state for bind-key -T copy-mode C-v send -X page-down (client (nil))
+1496222721.417553 cmd_find_client: no target, return (nil)
+1496222721.417568 using client (nil)
+1496222721.417582 preparing -t state: target none
+1496222721.417596 preparing -s state: target none
+1496222721.417611 cmd_find_client: no target, return (nil)
+1496222721.417640 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.417700 preparing state for bind-key -T copy-mode C-w send -X copy-selection-and-cancel (client (nil))
+1496222721.417717 cmd_find_client: no target, return (nil)
+1496222721.417731 using client (nil)
+1496222721.417746 preparing -t state: target none
+1496222721.417840 preparing -s state: target none
+1496222721.417856 cmd_find_client: no target, return (nil)
+1496222721.417887 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.417921 preparing state for bind-key -T copy-mode Escape send -X cancel (client (nil))
+1496222721.417938 cmd_find_client: no target, return (nil)
+1496222721.417952 using client (nil)
+1496222721.417966 preparing -t state: target none
+1496222721.417981 preparing -s state: target none
+1496222721.417996 cmd_find_client: no target, return (nil)
+1496222721.418030 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.418064 preparing state for bind-key -T copy-mode Space send -X page-down (client (nil))
+1496222721.418079 cmd_find_client: no target, return (nil)
+1496222721.418093 using client (nil)
+1496222721.418107 preparing -t state: target none
+1496222721.418122 preparing -s state: target none
+1496222721.418137 cmd_find_client: no target, return (nil)
+1496222721.418166 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.418199 preparing state for bind-key -T copy-mode , send -X jump-reverse (client (nil))
+1496222721.418215 cmd_find_client: no target, return (nil)
+1496222721.418230 using client (nil)
+1496222721.418244 preparing -t state: target none
+1496222721.418259 preparing -s state: target none
+1496222721.418274 cmd_find_client: no target, return (nil)
+1496222721.418302 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.418336 preparing state for bind-key -T copy-mode ";" send -X jump-again (client (nil))
+1496222721.418352 cmd_find_client: no target, return (nil)
+1496222721.418366 using client (nil)
+1496222721.418379 preparing -t state: target none
+1496222721.418394 preparing -s state: target none
+1496222721.418409 cmd_find_client: no target, return (nil)
+1496222721.418437 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.418476 preparing state for bind-key -T copy-mode F command-prompt "-1pjump backward" "send -X jump-backward \\"%%%\\"" (client (nil))
+1496222721.418493 cmd_find_client: no target, return (nil)
+1496222721.418507 using client (nil)
+1496222721.418522 preparing -t state: target none
+1496222721.418536 preparing -s state: target none
+1496222721.418551 cmd_find_client: no target, return (nil)
+1496222721.418575 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.418608 preparing state for bind-key -T copy-mode N send -X search-reverse (client (nil))
+1496222721.418623 cmd_find_client: no target, return (nil)
+1496222721.418637 using client (nil)
+1496222721.418651 preparing -t state: target none
+1496222721.418665 preparing -s state: target none
+1496222721.418680 cmd_find_client: no target, return (nil)
+1496222721.418708 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.418797 preparing state for bind-key -T copy-mode R send -X rectangle-toggle (client (nil))
+1496222721.418820 cmd_find_client: no target, return (nil)
+1496222721.418836 using client (nil)
+1496222721.418850 preparing -t state: target none
+1496222721.418864 preparing -s state: target none
+1496222721.418879 cmd_find_client: no target, return (nil)
+1496222721.418974 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.419020 preparing state for bind-key -T copy-mode T command-prompt "-1pjump to backward" "send -X jump-to-backward \\"%%%\\"" (client (nil))
+1496222721.419037 cmd_find_client: no target, return (nil)
+1496222721.419052 using client (nil)
+1496222721.419065 preparing -t state: target none
+1496222721.419079 preparing -s state: target none
+1496222721.419094 cmd_find_client: no target, return (nil)
+1496222721.419120 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.419159 preparing state for bind-key -T copy-mode f command-prompt "-1pjump forward" "send -X jump-forward \\"%%%\\"" (client (nil))
+1496222721.419176 cmd_find_client: no target, return (nil)
+1496222721.419213 using client (nil)
+1496222721.419228 preparing -t state: target none
+1496222721.419242 preparing -s state: target none
+1496222721.419257 cmd_find_client: no target, return (nil)
+1496222721.419282 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.419320 preparing state for bind-key -T copy-mode g command-prompt "-pgoto line" "send -X goto-line \\"%%%\\"" (client (nil))
+1496222721.419337 cmd_find_client: no target, return (nil)
+1496222721.419351 using client (nil)
+1496222721.419364 preparing -t state: target none
+1496222721.419378 preparing -s state: target none
+1496222721.419393 cmd_find_client: no target, return (nil)
+1496222721.419416 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.419449 preparing state for bind-key -T copy-mode n send -X search-again (client (nil))
+1496222721.419465 cmd_find_client: no target, return (nil)
+1496222721.419479 using client (nil)
+1496222721.419493 preparing -t state: target none
+1496222721.419508 preparing -s state: target none
+1496222721.419523 cmd_find_client: no target, return (nil)
+1496222721.419554 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.419587 preparing state for bind-key -T copy-mode q send -X cancel (client (nil))
+1496222721.419603 cmd_find_client: no target, return (nil)
+1496222721.419616 using client (nil)
+1496222721.419630 preparing -t state: target none
+1496222721.419645 preparing -s state: target none
+1496222721.419661 cmd_find_client: no target, return (nil)
+1496222721.419688 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.419803 preparing state for bind-key -T copy-mode t command-prompt "-1pjump to forward" "send -X jump-to-forward \\"%%%\\"" (client (nil))
+1496222721.419822 cmd_find_client: no target, return (nil)
+1496222721.419836 using client (nil)
+1496222721.419851 preparing -t state: target none
+1496222721.419865 preparing -s state: target none
+1496222721.419881 cmd_find_client: no target, return (nil)
+1496222721.419906 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.419939 preparing state for bind-key -T copy-mode Home send -X start-of-line (client (nil))
+1496222721.419955 cmd_find_client: no target, return (nil)
+1496222721.419971 using client (nil)
+1496222721.419985 preparing -t state: target none
+1496222721.419999 preparing -s state: target none
+1496222721.420014 cmd_find_client: no target, return (nil)
+1496222721.420044 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.420078 preparing state for bind-key -T copy-mode End send -X end-of-line (client (nil))
+1496222721.420094 cmd_find_client: no target, return (nil)
+1496222721.420108 using client (nil)
+1496222721.420122 preparing -t state: target none
+1496222721.420136 preparing -s state: target none
+1496222721.420152 cmd_find_client: no target, return (nil)
+1496222721.420181 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.420210 preparing state for bind-key -T copy-mode MouseDown1Pane select-pane (client (nil))
+1496222721.420227 cmd_find_client: no target, return (nil)
+1496222721.420241 using client (nil)
+1496222721.420255 preparing -t state: target none
+1496222721.420270 preparing -s state: target none
+1496222721.420285 cmd_find_client: no target, return (nil)
+1496222721.420315 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.420358 preparing state for bind-key -T copy-mode MouseDrag1Pane "select-pane;" send -X begin-selection (client (nil))
+1496222721.420374 cmd_find_client: no target, return (nil)
+1496222721.420388 using client (nil)
+1496222721.420403 preparing -t state: target none
+1496222721.420517 preparing -s state: target none
+1496222721.420533 cmd_find_client: no target, return (nil)
+1496222721.420572 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.420611 preparing state for bind-key -T copy-mode MouseDragEnd1Pane send -X copy-selection-and-cancel (client (nil))
+1496222721.420627 cmd_find_client: no target, return (nil)
+1496222721.420641 using client (nil)
+1496222721.420655 preparing -t state: target none
+1496222721.420669 preparing -s state: target none
+1496222721.420810 cmd_find_client: no target, return (nil)
+1496222721.420848 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.420892 preparing state for bind-key -T copy-mode WheelUpPane "select-pane;" send -N5 -X scroll-up (client (nil))
+1496222721.420909 cmd_find_client: no target, return (nil)
+1496222721.420923 using client (nil)
+1496222721.420937 preparing -t state: target none
+1496222721.420951 preparing -s state: target none
+1496222721.420966 cmd_find_client: no target, return (nil)
+1496222721.421004 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.421048 preparing state for bind-key -T copy-mode WheelDownPane "select-pane;" send -N5 -X scroll-down (client (nil))
+1496222721.421065 cmd_find_client: no target, return (nil)
+1496222721.421079 using client (nil)
+1496222721.421093 preparing -t state: target none
+1496222721.421107 preparing -s state: target none
+1496222721.421123 cmd_find_client: no target, return (nil)
+1496222721.421160 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.421200 preparing state for bind-key -T copy-mode DoubleClick1Pane "select-pane;" send -X select-word (client (nil))
+1496222721.421217 cmd_find_client: no target, return (nil)
+1496222721.421231 using client (nil)
+1496222721.421245 preparing -t state: target none
+1496222721.421259 preparing -s state: target none
+1496222721.421274 cmd_find_client: no target, return (nil)
+1496222721.421311 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.421351 preparing state for bind-key -T copy-mode TripleClick1Pane "select-pane;" send -X select-line (client (nil))
+1496222721.421367 cmd_find_client: no target, return (nil)
+1496222721.421381 using client (nil)
+1496222721.421394 preparing -t state: target none
+1496222721.421408 preparing -s state: target none
+1496222721.421424 cmd_find_client: no target, return (nil)
+1496222721.421460 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.421494 preparing state for bind-key -T copy-mode NPage send -X page-down (client (nil))
+1496222721.421510 cmd_find_client: no target, return (nil)
+1496222721.421524 using client (nil)
+1496222721.421538 preparing -t state: target none
+1496222721.421552 preparing -s state: target none
+1496222721.421567 cmd_find_client: no target, return (nil)
+1496222721.421596 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.421629 preparing state for bind-key -T copy-mode PPage send -X page-up (client (nil))
+1496222721.421645 cmd_find_client: no target, return (nil)
+1496222721.421737 using client (nil)
+1496222721.421753 preparing -t state: target none
+1496222721.421767 preparing -s state: target none
+1496222721.421783 cmd_find_client: no target, return (nil)
+1496222721.421813 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.421847 preparing state for bind-key -T copy-mode Up send -X cursor-up (client (nil))
+1496222721.421863 cmd_find_client: no target, return (nil)
+1496222721.421877 using client (nil)
+1496222721.421891 preparing -t state: target none
+1496222721.421905 preparing -s state: target none
+1496222721.421921 cmd_find_client: no target, return (nil)
+1496222721.421951 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.422160 preparing state for bind-key -T copy-mode Down send -X cursor-down (client (nil))
+1496222721.422181 cmd_find_client: no target, return (nil)
+1496222721.422195 using client (nil)
+1496222721.422210 preparing -t state: target none
+1496222721.422224 preparing -s state: target none
+1496222721.422240 cmd_find_client: no target, return (nil)
+1496222721.422275 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.422308 preparing state for bind-key -T copy-mode Left send -X cursor-left (client (nil))
+1496222721.422324 cmd_find_client: no target, return (nil)
+1496222721.422338 using client (nil)
+1496222721.422352 preparing -t state: target none
+1496222721.422366 preparing -s state: target none
+1496222721.422455 cmd_find_client: no target, return (nil)
+1496222721.422490 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.422525 preparing state for bind-key -T copy-mode Right send -X cursor-right (client (nil))
+1496222721.422568 cmd_find_client: no target, return (nil)
+1496222721.425084 using client (nil)
+1496222721.425113 preparing -t state: target none
+1496222721.425129 preparing -s state: target none
+1496222721.425148 cmd_find_client: no target, return (nil)
+1496222721.425213 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.425262 preparing state for bind-key -T copy-mode M-1 command-prompt -Nprepeat -I1 "send -N \\"%%%\\"" (client (nil))
+1496222721.425280 cmd_find_client: no target, return (nil)
+1496222721.425294 using client (nil)
+1496222721.425308 preparing -t state: target none
+1496222721.425323 preparing -s state: target none
+1496222721.425338 cmd_find_client: no target, return (nil)
+1496222721.425365 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.425407 preparing state for bind-key -T copy-mode M-2 command-prompt -Nprepeat -I2 "send -N \\"%%%\\"" (client (nil))
+1496222721.425425 cmd_find_client: no target, return (nil)
+1496222721.425440 using client (nil)
+1496222721.425455 preparing -t state: target none
+1496222721.425470 preparing -s state: target none
+1496222721.425486 cmd_find_client: no target, return (nil)
+1496222721.425511 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.425551 preparing state for bind-key -T copy-mode M-3 command-prompt -Nprepeat -I3 "send -N \\"%%%\\"" (client (nil))
+1496222721.425646 cmd_find_client: no target, return (nil)
+1496222721.425662 using client (nil)
+1496222721.425676 preparing -t state: target none
+1496222721.425690 preparing -s state: target none
+1496222721.425705 cmd_find_client: no target, return (nil)
+1496222721.425731 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.425772 preparing state for bind-key -T copy-mode M-4 command-prompt -Nprepeat -I4 "send -N \\"%%%\\"" (client (nil))
+1496222721.425790 cmd_find_client: no target, return (nil)
+1496222721.425804 using client (nil)
+1496222721.425818 preparing -t state: target none
+1496222721.425833 preparing -s state: target none
+1496222721.425848 cmd_find_client: no target, return (nil)
+1496222721.425873 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.425912 preparing state for bind-key -T copy-mode M-5 command-prompt -Nprepeat -I5 "send -N \\"%%%\\"" (client (nil))
+1496222721.425929 cmd_find_client: no target, return (nil)
+1496222721.425943 using client (nil)
+1496222721.425956 preparing -t state: target none
+1496222721.425971 preparing -s state: target none
+1496222721.425987 cmd_find_client: no target, return (nil)
+1496222721.426011 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.426050 preparing state for bind-key -T copy-mode M-6 command-prompt -Nprepeat -I6 "send -N \\"%%%\\"" (client (nil))
+1496222721.426075 cmd_find_client: no target, return (nil)
+1496222721.426090 using client (nil)
+1496222721.426104 preparing -t state: target none
+1496222721.426118 preparing -s state: target none
+1496222721.426134 cmd_find_client: no target, return (nil)
+1496222721.426158 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.426197 preparing state for bind-key -T copy-mode M-7 command-prompt -Nprepeat -I7 "send -N \\"%%%\\"" (client (nil))
+1496222721.426214 cmd_find_client: no target, return (nil)
+1496222721.426228 using client (nil)
+1496222721.426242 preparing -t state: target none
+1496222721.426256 preparing -s state: target none
+1496222721.426271 cmd_find_client: no target, return (nil)
+1496222721.426295 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.426360 preparing state for bind-key -T copy-mode M-8 command-prompt -Nprepeat -I8 "send -N \\"%%%\\"" (client (nil))
+1496222721.426378 cmd_find_client: no target, return (nil)
+1496222721.426393 using client (nil)
+1496222721.426406 preparing -t state: target none
+1496222721.426420 preparing -s state: target none
+1496222721.426436 cmd_find_client: no target, return (nil)
+1496222721.426460 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.426498 preparing state for bind-key -T copy-mode M-9 command-prompt -Nprepeat -I9 "send -N \\"%%%\\"" (client (nil))
+1496222721.426607 cmd_find_client: no target, return (nil)
+1496222721.426623 using client (nil)
+1496222721.426638 preparing -t state: target none
+1496222721.426652 preparing -s state: target none
+1496222721.426668 cmd_find_client: no target, return (nil)
+1496222721.426693 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.426726 preparing state for bind-key -T copy-mode M-< send -X history-top (client (nil))
+1496222721.426742 cmd_find_client: no target, return (nil)
+1496222721.426757 using client (nil)
+1496222721.426772 preparing -t state: target none
+1496222721.426786 preparing -s state: target none
+1496222721.426801 cmd_find_client: no target, return (nil)
+1496222721.426831 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.426864 preparing state for bind-key -T copy-mode M-> send -X history-bottom (client (nil))
+1496222721.426881 cmd_find_client: no target, return (nil)
+1496222721.426894 using client (nil)
+1496222721.426909 preparing -t state: target none
+1496222721.426923 preparing -s state: target none
+1496222721.426938 cmd_find_client: no target, return (nil)
+1496222721.426966 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.426999 preparing state for bind-key -T copy-mode M-R send -X top-line (client (nil))
+1496222721.427022 cmd_find_client: no target, return (nil)
+1496222721.427036 using client (nil)
+1496222721.427050 preparing -t state: target none
+1496222721.427065 preparing -s state: target none
+1496222721.427080 cmd_find_client: no target, return (nil)
+1496222721.427108 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.427141 preparing state for bind-key -T copy-mode M-b send -X previous-word (client (nil))
+1496222721.427157 cmd_find_client: no target, return (nil)
+1496222721.427171 using client (nil)
+1496222721.427185 preparing -t state: target none
+1496222721.427199 preparing -s state: target none
+1496222721.427215 cmd_find_client: no target, return (nil)
+1496222721.427242 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.427276 preparing state for bind-key -T copy-mode M-f send -X next-word-end (client (nil))
+1496222721.427291 cmd_find_client: no target, return (nil)
+1496222721.427305 using client (nil)
+1496222721.427319 preparing -t state: target none
+1496222721.427333 preparing -s state: target none
+1496222721.427348 cmd_find_client: no target, return (nil)
+1496222721.427375 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.427435 preparing state for bind-key -T copy-mode M-m send -X back-to-indentation (client (nil))
+1496222721.427456 cmd_find_client: no target, return (nil)
+1496222721.427470 using client (nil)
+1496222721.427484 preparing -t state: target none
+1496222721.427499 preparing -s state: target none
+1496222721.427568 cmd_find_client: no target, return (nil)
+1496222721.427603 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.427637 preparing state for bind-key -T copy-mode M-r send -X middle-line (client (nil))
+1496222721.427653 cmd_find_client: no target, return (nil)
+1496222721.427667 using client (nil)
+1496222721.427681 preparing -t state: target none
+1496222721.427695 preparing -s state: target none
+1496222721.427710 cmd_find_client: no target, return (nil)
+1496222721.427737 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.427769 preparing state for bind-key -T copy-mode M-v send -X page-up (client (nil))
+1496222721.427785 cmd_find_client: no target, return (nil)
+1496222721.427799 using client (nil)
+1496222721.427813 preparing -t state: target none
+1496222721.427827 preparing -s state: target none
+1496222721.427842 cmd_find_client: no target, return (nil)
+1496222721.427870 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.427904 preparing state for bind-key -T copy-mode M-w send -X copy-selection-and-cancel (client (nil))
+1496222721.427920 cmd_find_client: no target, return (nil)
+1496222721.427934 using client (nil)
+1496222721.427948 preparing -t state: target none
+1496222721.427962 preparing -s state: target none
+1496222721.427977 cmd_find_client: no target, return (nil)
+1496222721.428019 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.428053 preparing state for bind-key -T copy-mode M-{ send -X previous-paragraph (client (nil))
+1496222721.428069 cmd_find_client: no target, return (nil)
+1496222721.428083 using client (nil)
+1496222721.428097 preparing -t state: target none
+1496222721.428111 preparing -s state: target none
+1496222721.428126 cmd_find_client: no target, return (nil)
+1496222721.428154 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.428187 preparing state for bind-key -T copy-mode M-} send -X next-paragraph (client (nil))
+1496222721.428203 cmd_find_client: no target, return (nil)
+1496222721.428217 using client (nil)
+1496222721.428231 preparing -t state: target none
+1496222721.428245 preparing -s state: target none
+1496222721.428261 cmd_find_client: no target, return (nil)
+1496222721.428288 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.428320 preparing state for bind-key -T copy-mode M-Up send -X halfpage-up (client (nil))
+1496222721.428336 cmd_find_client: no target, return (nil)
+1496222721.428351 using client (nil)
+1496222721.428365 preparing -t state: target none
+1496222721.428379 preparing -s state: target none
+1496222721.428394 cmd_find_client: no target, return (nil)
+1496222721.428427 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.428461 preparing state for bind-key -T copy-mode M-Down send -X halfpage-down (client (nil))
+1496222721.428477 cmd_find_client: no target, return (nil)
+1496222721.428545 using client (nil)
+1496222721.428566 preparing -t state: target none
+1496222721.428581 preparing -s state: target none
+1496222721.428596 cmd_find_client: no target, return (nil)
+1496222721.428627 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.428660 preparing state for bind-key -T copy-mode C-Up send -X scroll-up (client (nil))
+1496222721.428676 cmd_find_client: no target, return (nil)
+1496222721.428689 using client (nil)
+1496222721.428704 preparing -t state: target none
+1496222721.428717 preparing -s state: target none
+1496222721.428733 cmd_find_client: no target, return (nil)
+1496222721.428762 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.428801 preparing state for bind-key -T copy-mode C-Down send -X scroll-down (client (nil))
+1496222721.428818 cmd_find_client: no target, return (nil)
+1496222721.428832 using client (nil)
+1496222721.428846 preparing -t state: target none
+1496222721.428860 preparing -s state: target none
+1496222721.428875 cmd_find_client: no target, return (nil)
+1496222721.428904 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.428937 preparing state for bind-key -T copy-mode-vi C-c send -X cancel (client (nil))
+1496222721.428952 cmd_find_client: no target, return (nil)
+1496222721.428966 using client (nil)
+1496222721.428980 preparing -t state: target none
+1496222721.428994 preparing -s state: target none
+1496222721.429009 cmd_find_client: no target, return (nil)
+1496222721.429038 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.429072 preparing state for bind-key -T copy-mode-vi C-d send -X halfpage-down (client (nil))
+1496222721.429088 cmd_find_client: no target, return (nil)
+1496222721.429101 using client (nil)
+1496222721.429115 preparing -t state: target none
+1496222721.429129 preparing -s state: target none
+1496222721.429144 cmd_find_client: no target, return (nil)
+1496222721.429172 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.429212 preparing state for bind-key -T copy-mode-vi C-e send -X scroll-down (client (nil))
+1496222721.429228 cmd_find_client: no target, return (nil)
+1496222721.429242 using client (nil)
+1496222721.429257 preparing -t state: target none
+1496222721.429271 preparing -s state: target none
+1496222721.429286 cmd_find_client: no target, return (nil)
+1496222721.429314 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.429347 preparing state for bind-key -T copy-mode-vi C-b send -X page-up (client (nil))
+1496222721.429363 cmd_find_client: no target, return (nil)
+1496222721.429388 using client (nil)
+1496222721.429403 preparing -t state: target none
+1496222721.429417 preparing -s state: target none
+1496222721.429432 cmd_find_client: no target, return (nil)
+1496222721.429460 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.429552 preparing state for bind-key -T copy-mode-vi C-f send -X page-down (client (nil))
+1496222721.429569 cmd_find_client: no target, return (nil)
+1496222721.429583 using client (nil)
+1496222721.429597 preparing -t state: target none
+1496222721.429611 preparing -s state: target none
+1496222721.429626 cmd_find_client: no target, return (nil)
+1496222721.429654 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.429688 preparing state for bind-key -T copy-mode-vi C-h send -X cursor-left (client (nil))
+1496222721.429704 cmd_find_client: no target, return (nil)
+1496222721.429718 using client (nil)
+1496222721.429731 preparing -t state: target none
+1496222721.429746 preparing -s state: target none
+1496222721.429761 cmd_find_client: no target, return (nil)
+1496222721.429788 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.429822 preparing state for bind-key -T copy-mode-vi C-j send -X copy-selection-and-cancel (client (nil))
+1496222721.429839 cmd_find_client: no target, return (nil)
+1496222721.429853 using client (nil)
+1496222721.429867 preparing -t state: target none
+1496222721.429881 preparing -s state: target none
+1496222721.429897 cmd_find_client: no target, return (nil)
+1496222721.429924 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.429960 preparing state for bind-key -T copy-mode-vi Enter send -X copy-selection-and-cancel (client (nil))
+1496222721.429975 cmd_find_client: no target, return (nil)
+1496222721.429989 using client (nil)
+1496222721.430002 preparing -t state: target none
+1496222721.430017 preparing -s state: target none
+1496222721.430032 cmd_find_client: no target, return (nil)
+1496222721.430060 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.430093 preparing state for bind-key -T copy-mode-vi C-u send -X halfpage-up (client (nil))
+1496222721.430108 cmd_find_client: no target, return (nil)
+1496222721.430123 using client (nil)
+1496222721.430137 preparing -t state: target none
+1496222721.430152 preparing -s state: target none
+1496222721.430166 cmd_find_client: no target, return (nil)
+1496222721.430194 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.430228 preparing state for bind-key -T copy-mode-vi C-v send -X rectangle-toggle (client (nil))
+1496222721.430244 cmd_find_client: no target, return (nil)
+1496222721.430257 using client (nil)
+1496222721.430271 preparing -t state: target none
+1496222721.430285 preparing -s state: target none
+1496222721.430300 cmd_find_client: no target, return (nil)
+1496222721.430327 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.430360 preparing state for bind-key -T copy-mode-vi C-y send -X scroll-up (client (nil))
+1496222721.430376 cmd_find_client: no target, return (nil)
+1496222721.430390 using client (nil)
+1496222721.430404 preparing -t state: target none
+1496222721.430419 preparing -s state: target none
+1496222721.430434 cmd_find_client: no target, return (nil)
+1496222721.430521 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.430556 preparing state for bind-key -T copy-mode-vi Escape send -X clear-selection (client (nil))
+1496222721.430573 cmd_find_client: no target, return (nil)
+1496222721.430586 using client (nil)
+1496222721.430600 preparing -t state: target none
+1496222721.430614 preparing -s state: target none
+1496222721.430629 cmd_find_client: no target, return (nil)
+1496222721.430659 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.430692 preparing state for bind-key -T copy-mode-vi Space send -X begin-selection (client (nil))
+1496222721.430708 cmd_find_client: no target, return (nil)
+1496222721.430736 using client (nil)
+1496222721.430754 preparing -t state: target none
+1496222721.430769 preparing -s state: target none
+1496222721.430785 cmd_find_client: no target, return (nil)
+1496222721.430815 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.430867 preparing state for bind-key -T copy-mode-vi "$" send -X end-of-line (client (nil))
+1496222721.430884 cmd_find_client: no target, return (nil)
+1496222721.430898 using client (nil)
+1496222721.430912 preparing -t state: target none
+1496222721.430926 preparing -s state: target none
+1496222721.430942 cmd_find_client: no target, return (nil)
+1496222721.430970 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.431003 preparing state for bind-key -T copy-mode-vi , send -X jump-reverse (client (nil))
+1496222721.431019 cmd_find_client: no target, return (nil)
+1496222721.431033 using client (nil)
+1496222721.431047 preparing -t state: target none
+1496222721.431061 preparing -s state: target none
+1496222721.431076 cmd_find_client: no target, return (nil)
+1496222721.431103 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.431142 preparing state for bind-key -T copy-mode-vi / command-prompt "-psearch down" "send -X search-forward \\"%%%\\"" (client (nil))
+1496222721.431163 cmd_find_client: no target, return (nil)
+1496222721.431177 using client (nil)
+1496222721.431192 preparing -t state: target none
+1496222721.431206 preparing -s state: target none
+1496222721.431221 cmd_find_client: no target, return (nil)
+1496222721.431245 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.431278 preparing state for bind-key -T copy-mode-vi 0 send -X start-of-line (client (nil))
+1496222721.431294 cmd_find_client: no target, return (nil)
+1496222721.431308 using client (nil)
+1496222721.431323 preparing -t state: target none
+1496222721.431337 preparing -s state: target none
+1496222721.431352 cmd_find_client: no target, return (nil)
+1496222721.431380 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.431473 preparing state for bind-key -T copy-mode-vi 1 command-prompt -Nprepeat -I1 "send -N \\"%%%\\"" (client (nil))
+1496222721.431495 cmd_find_client: no target, return (nil)
+1496222721.431510 using client (nil)
+1496222721.431524 preparing -t state: target none
+1496222721.431538 preparing -s state: target none
+1496222721.431553 cmd_find_client: no target, return (nil)
+1496222721.431579 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.431617 preparing state for bind-key -T copy-mode-vi 2 command-prompt -Nprepeat -I2 "send -N \\"%%%\\"" (client (nil))
+1496222721.431634 cmd_find_client: no target, return (nil)
+1496222721.431648 using client (nil)
+1496222721.431662 preparing -t state: target none
+1496222721.431676 preparing -s state: target none
+1496222721.431691 cmd_find_client: no target, return (nil)
+1496222721.431716 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.431754 preparing state for bind-key -T copy-mode-vi 3 command-prompt -Nprepeat -I3 "send -N \\"%%%\\"" (client (nil))
+1496222721.431772 cmd_find_client: no target, return (nil)
+1496222721.431786 using client (nil)
+1496222721.431800 preparing -t state: target none
+1496222721.431815 preparing -s state: target none
+1496222721.431830 cmd_find_client: no target, return (nil)
+1496222721.431854 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.431893 preparing state for bind-key -T copy-mode-vi 4 command-prompt -Nprepeat -I4 "send -N \\"%%%\\"" (client (nil))
+1496222721.431915 cmd_find_client: no target, return (nil)
+1496222721.431930 using client (nil)
+1496222721.431944 preparing -t state: target none
+1496222721.431958 preparing -s state: target none
+1496222721.431973 cmd_find_client: no target, return (nil)
+1496222721.431998 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.432037 preparing state for bind-key -T copy-mode-vi 5 command-prompt -Nprepeat -I5 "send -N \\"%%%\\"" (client (nil))
+1496222721.432053 cmd_find_client: no target, return (nil)
+1496222721.432067 using client (nil)
+1496222721.432081 preparing -t state: target none
+1496222721.432095 preparing -s state: target none
+1496222721.432110 cmd_find_client: no target, return (nil)
+1496222721.432135 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.432240 preparing state for bind-key -T copy-mode-vi 6 command-prompt -Nprepeat -I6 "send -N \\"%%%\\"" (client (nil))
+1496222721.432272 cmd_find_client: no target, return (nil)
+1496222721.432286 using client (nil)
+1496222721.432300 preparing -t state: target none
+1496222721.432314 preparing -s state: target none
+1496222721.432330 cmd_find_client: no target, return (nil)
+1496222721.432356 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.432451 preparing state for bind-key -T copy-mode-vi 7 command-prompt -Nprepeat -I7 "send -N \\"%%%\\"" (client (nil))
+1496222721.432471 cmd_find_client: no target, return (nil)
+1496222721.432484 using client (nil)
+1496222721.432498 preparing -t state: target none
+1496222721.432513 preparing -s state: target none
+1496222721.432528 cmd_find_client: no target, return (nil)
+1496222721.432552 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.432591 preparing state for bind-key -T copy-mode-vi 8 command-prompt -Nprepeat -I8 "send -N \\"%%%\\"" (client (nil))
+1496222721.432608 cmd_find_client: no target, return (nil)
+1496222721.432622 using client (nil)
+1496222721.432636 preparing -t state: target none
+1496222721.432650 preparing -s state: target none
+1496222721.432665 cmd_find_client: no target, return (nil)
+1496222721.432689 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.432728 preparing state for bind-key -T copy-mode-vi 9 command-prompt -Nprepeat -I9 "send -N \\"%%%\\"" (client (nil))
+1496222721.432744 cmd_find_client: no target, return (nil)
+1496222721.432758 using client (nil)
+1496222721.432772 preparing -t state: target none
+1496222721.432786 preparing -s state: target none
+1496222721.432802 cmd_find_client: no target, return (nil)
+1496222721.432826 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.432863 preparing state for bind-key -T copy-mode-vi : command-prompt "-pgoto line" "send -X goto-line \\"%%%\\"" (client (nil))
+1496222721.432879 cmd_find_client: no target, return (nil)
+1496222721.432894 using client (nil)
+1496222721.432908 preparing -t state: target none
+1496222721.432922 preparing -s state: target none
+1496222721.432937 cmd_find_client: no target, return (nil)
+1496222721.432962 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.432995 preparing state for bind-key -T copy-mode-vi ";" send -X jump-again (client (nil))
+1496222721.433013 cmd_find_client: no target, return (nil)
+1496222721.433027 using client (nil)
+1496222721.433041 preparing -t state: target none
+1496222721.433055 preparing -s state: target none
+1496222721.433070 cmd_find_client: no target, return (nil)
+1496222721.433104 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.433144 preparing state for bind-key -T copy-mode-vi ? command-prompt "-psearch up" "send -X search-backward \\"%%%\\"" (client (nil))
+1496222721.433162 cmd_find_client: no target, return (nil)
+1496222721.433177 using client (nil)
+1496222721.433191 preparing -t state: target none
+1496222721.433206 preparing -s state: target none
+1496222721.433221 cmd_find_client: no target, return (nil)
+1496222721.433245 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.433280 preparing state for bind-key -T copy-mode-vi A send -X append-selection-and-cancel (client (nil))
+1496222721.433296 cmd_find_client: no target, return (nil)
+1496222721.433309 using client (nil)
+1496222721.433324 preparing -t state: target none
+1496222721.433339 preparing -s state: target none
+1496222721.433354 cmd_find_client: no target, return (nil)
+1496222721.433442 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.433482 preparing state for bind-key -T copy-mode-vi B send -X previous-space (client (nil))
+1496222721.433500 cmd_find_client: no target, return (nil)
+1496222721.433514 using client (nil)
+1496222721.433528 preparing -t state: target none
+1496222721.433542 preparing -s state: target none
+1496222721.433557 cmd_find_client: no target, return (nil)
+1496222721.433585 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.433619 preparing state for bind-key -T copy-mode-vi D send -X copy-end-of-line (client (nil))
+1496222721.433663 cmd_find_client: no target, return (nil)
+1496222721.433678 using client (nil)
+1496222721.433693 preparing -t state: target none
+1496222721.433707 preparing -s state: target none
+1496222721.433723 cmd_find_client: no target, return (nil)
+1496222721.433751 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.433785 preparing state for bind-key -T copy-mode-vi E send -X next-space-end (client (nil))
+1496222721.433801 cmd_find_client: no target, return (nil)
+1496222721.433815 using client (nil)
+1496222721.433829 preparing -t state: target none
+1496222721.433844 preparing -s state: target none
+1496222721.433859 cmd_find_client: no target, return (nil)
+1496222721.433887 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.433926 preparing state for bind-key -T copy-mode-vi F command-prompt "-1pjump backward" "send -X jump-backward \\"%%%\\"" (client (nil))
+1496222721.433947 cmd_find_client: no target, return (nil)
+1496222721.433962 using client (nil)
+1496222721.433977 preparing -t state: target none
+1496222721.433991 preparing -s state: target none
+1496222721.434006 cmd_find_client: no target, return (nil)
+1496222721.434030 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.434108 preparing state for bind-key -T copy-mode-vi G send -X history-bottom (client (nil))
+1496222721.434130 cmd_find_client: no target, return (nil)
+1496222721.434145 using client (nil)
+1496222721.434160 preparing -t state: target none
+1496222721.434174 preparing -s state: target none
+1496222721.434189 cmd_find_client: no target, return (nil)
+1496222721.434218 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.434250 preparing state for bind-key -T copy-mode-vi H send -X top-line (client (nil))
+1496222721.434267 cmd_find_client: no target, return (nil)
+1496222721.434280 using client (nil)
+1496222721.434295 preparing -t state: target none
+1496222721.434309 preparing -s state: target none
+1496222721.434325 cmd_find_client: no target, return (nil)
+1496222721.434407 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.434445 preparing state for bind-key -T copy-mode-vi J send -X scroll-down (client (nil))
+1496222721.434462 cmd_find_client: no target, return (nil)
+1496222721.434476 using client (nil)
+1496222721.434491 preparing -t state: target none
+1496222721.434505 preparing -s state: target none
+1496222721.434520 cmd_find_client: no target, return (nil)
+1496222721.434549 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.434581 preparing state for bind-key -T copy-mode-vi K send -X scroll-up (client (nil))
+1496222721.434597 cmd_find_client: no target, return (nil)
+1496222721.434611 using client (nil)
+1496222721.434626 preparing -t state: target none
+1496222721.434641 preparing -s state: target none
+1496222721.434656 cmd_find_client: no target, return (nil)
+1496222721.434683 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.434716 preparing state for bind-key -T copy-mode-vi L send -X bottom-line (client (nil))
+1496222721.434731 cmd_find_client: no target, return (nil)
+1496222721.434745 using client (nil)
+1496222721.434759 preparing -t state: target none
+1496222721.434773 preparing -s state: target none
+1496222721.434789 cmd_find_client: no target, return (nil)
+1496222721.434817 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.434850 preparing state for bind-key -T copy-mode-vi M send -X middle-line (client (nil))
+1496222721.434866 cmd_find_client: no target, return (nil)
+1496222721.434880 using client (nil)
+1496222721.434894 preparing -t state: target none
+1496222721.434908 preparing -s state: target none
+1496222721.434923 cmd_find_client: no target, return (nil)
+1496222721.434951 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.434991 preparing state for bind-key -T copy-mode-vi N send -X search-reverse (client (nil))
+1496222721.435008 cmd_find_client: no target, return (nil)
+1496222721.435022 using client (nil)
+1496222721.435037 preparing -t state: target none
+1496222721.435051 preparing -s state: target none
+1496222721.435068 cmd_find_client: no target, return (nil)
+1496222721.435109 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.435151 preparing state for bind-key -T copy-mode-vi T command-prompt "-1pjump to backward" "send -X jump-to-backward \\"%%%\\"" (client (nil))
+1496222721.435168 cmd_find_client: no target, return (nil)
+1496222721.435182 using client (nil)
+1496222721.435196 preparing -t state: target none
+1496222721.435210 preparing -s state: target none
+1496222721.435225 cmd_find_client: no target, return (nil)
+1496222721.435249 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.435281 preparing state for bind-key -T copy-mode-vi V send -X select-line (client (nil))
+1496222721.435297 cmd_find_client: no target, return (nil)
+1496222721.435311 using client (nil)
+1496222721.435379 preparing -t state: target none
+1496222721.435399 preparing -s state: target none
+1496222721.435416 cmd_find_client: no target, return (nil)
+1496222721.435444 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.435477 preparing state for bind-key -T copy-mode-vi W send -X next-space (client (nil))
+1496222721.435493 cmd_find_client: no target, return (nil)
+1496222721.435507 using client (nil)
+1496222721.435522 preparing -t state: target none
+1496222721.435536 preparing -s state: target none
+1496222721.435551 cmd_find_client: no target, return (nil)
+1496222721.435579 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.435613 preparing state for bind-key -T copy-mode-vi ^ send -X back-to-indentation (client (nil))
+1496222721.435629 cmd_find_client: no target, return (nil)
+1496222721.435644 using client (nil)
+1496222721.435658 preparing -t state: target none
+1496222721.435672 preparing -s state: target none
+1496222721.435687 cmd_find_client: no target, return (nil)
+1496222721.435714 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.435747 preparing state for bind-key -T copy-mode-vi b send -X previous-word (client (nil))
+1496222721.435763 cmd_find_client: no target, return (nil)
+1496222721.435777 using client (nil)
+1496222721.435791 preparing -t state: target none
+1496222721.435805 preparing -s state: target none
+1496222721.435821 cmd_find_client: no target, return (nil)
+1496222721.435848 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.435881 preparing state for bind-key -T copy-mode-vi e send -X next-word-end (client (nil))
+1496222721.435897 cmd_find_client: no target, return (nil)
+1496222721.435911 using client (nil)
+1496222721.435926 preparing -t state: target none
+1496222721.435940 preparing -s state: target none
+1496222721.435955 cmd_find_client: no target, return (nil)
+1496222721.435982 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.436171 preparing state for bind-key -T copy-mode-vi f command-prompt "-1pjump forward" "send -X jump-forward \\"%%%\\"" (client (nil))
+1496222721.436198 cmd_find_client: no target, return (nil)
+1496222721.436213 using client (nil)
+1496222721.436228 preparing -t state: target none
+1496222721.436242 preparing -s state: target none
+1496222721.436257 cmd_find_client: no target, return (nil)
+1496222721.436282 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.436374 preparing state for bind-key -T copy-mode-vi g send -X history-top (client (nil))
+1496222721.436396 cmd_find_client: no target, return (nil)
+1496222721.436411 using client (nil)
+1496222721.436425 preparing -t state: target none
+1496222721.436439 preparing -s state: target none
+1496222721.436454 cmd_find_client: no target, return (nil)
+1496222721.436483 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.436520 preparing state for bind-key -T copy-mode-vi h send -X cursor-left (client (nil))
+1496222721.436536 cmd_find_client: no target, return (nil)
+1496222721.436550 using client (nil)
+1496222721.436564 preparing -t state: target none
+1496222721.436579 preparing -s state: target none
+1496222721.436594 cmd_find_client: no target, return (nil)
+1496222721.436622 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.436654 preparing state for bind-key -T copy-mode-vi j send -X cursor-down (client (nil))
+1496222721.436689 cmd_find_client: no target, return (nil)
+1496222721.436705 using client (nil)
+1496222721.436719 preparing -t state: target none
+1496222721.436733 preparing -s state: target none
+1496222721.436748 cmd_find_client: no target, return (nil)
+1496222721.436776 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.436809 preparing state for bind-key -T copy-mode-vi k send -X cursor-up (client (nil))
+1496222721.436825 cmd_find_client: no target, return (nil)
+1496222721.436839 using client (nil)
+1496222721.436853 preparing -t state: target none
+1496222721.436867 preparing -s state: target none
+1496222721.436882 cmd_find_client: no target, return (nil)
+1496222721.436909 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.436941 preparing state for bind-key -T copy-mode-vi l send -X cursor-right (client (nil))
+1496222721.436957 cmd_find_client: no target, return (nil)
+1496222721.436970 using client (nil)
+1496222721.436984 preparing -t state: target none
+1496222721.436999 preparing -s state: target none
+1496222721.437013 cmd_find_client: no target, return (nil)
+1496222721.437041 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.437073 preparing state for bind-key -T copy-mode-vi n send -X search-again (client (nil))
+1496222721.437088 cmd_find_client: no target, return (nil)
+1496222721.437102 using client (nil)
+1496222721.437116 preparing -t state: target none
+1496222721.437130 preparing -s state: target none
+1496222721.437144 cmd_find_client: no target, return (nil)
+1496222721.437171 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.437205 preparing state for bind-key -T copy-mode-vi o send -X other-end (client (nil))
+1496222721.437220 cmd_find_client: no target, return (nil)
+1496222721.437234 using client (nil)
+1496222721.437248 preparing -t state: target none
+1496222721.437263 preparing -s state: target none
+1496222721.437331 cmd_find_client: no target, return (nil)
+1496222721.437366 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.437413 preparing state for bind-key -T copy-mode-vi q send -X cancel (client (nil))
+1496222721.437434 cmd_find_client: no target, return (nil)
+1496222721.437449 using client (nil)
+1496222721.437462 preparing -t state: target none
+1496222721.437476 preparing -s state: target none
+1496222721.437492 cmd_find_client: no target, return (nil)
+1496222721.437520 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.437563 preparing state for bind-key -T copy-mode-vi t command-prompt "-1pjump to forward" "send -X jump-to-forward \\"%%%\\"" (client (nil))
+1496222721.437579 cmd_find_client: no target, return (nil)
+1496222721.437593 using client (nil)
+1496222721.437607 preparing -t state: target none
+1496222721.437621 preparing -s state: target none
+1496222721.437636 cmd_find_client: no target, return (nil)
+1496222721.437660 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.437693 preparing state for bind-key -T copy-mode-vi v send -X rectangle-toggle (client (nil))
+1496222721.437712 cmd_find_client: no target, return (nil)
+1496222721.437726 using client (nil)
+1496222721.437739 preparing -t state: target none
+1496222721.437754 preparing -s state: target none
+1496222721.437769 cmd_find_client: no target, return (nil)
+1496222721.437797 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.437829 preparing state for bind-key -T copy-mode-vi w send -X next-word (client (nil))
+1496222721.437845 cmd_find_client: no target, return (nil)
+1496222721.437859 using client (nil)
+1496222721.437873 preparing -t state: target none
+1496222721.437887 preparing -s state: target none
+1496222721.437902 cmd_find_client: no target, return (nil)
+1496222721.437929 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.437963 preparing state for bind-key -T copy-mode-vi { send -X previous-paragraph (client (nil))
+1496222721.437980 cmd_find_client: no target, return (nil)
+1496222721.437994 using client (nil)
+1496222721.438008 preparing -t state: target none
+1496222721.438021 preparing -s state: target none
+1496222721.438049 cmd_find_client: no target, return (nil)
+1496222721.438078 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.438111 preparing state for bind-key -T copy-mode-vi } send -X next-paragraph (client (nil))
+1496222721.438127 cmd_find_client: no target, return (nil)
+1496222721.438140 using client (nil)
+1496222721.438154 preparing -t state: target none
+1496222721.438168 preparing -s state: target none
+1496222721.438183 cmd_find_client: no target, return (nil)
+1496222721.438210 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.438239 preparing state for bind-key -T copy-mode-vi MouseDown1Pane select-pane (client (nil))
+1496222721.438309 cmd_find_client: no target, return (nil)
+1496222721.438330 using client (nil)
+1496222721.438345 preparing -t state: target none
+1496222721.438359 preparing -s state: target none
+1496222721.438374 cmd_find_client: no target, return (nil)
+1496222721.438406 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.438445 preparing state for bind-key -T copy-mode-vi MouseDrag1Pane "select-pane;" send -X begin-selection (client (nil))
+1496222721.438462 cmd_find_client: no target, return (nil)
+1496222721.438476 using client (nil)
+1496222721.438490 preparing -t state: target none
+1496222721.438504 preparing -s state: target none
+1496222721.438519 cmd_find_client: no target, return (nil)
+1496222721.438554 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.438591 preparing state for bind-key -T copy-mode-vi MouseDragEnd1Pane send -X copy-selection-and-cancel (client (nil))
+1496222721.438614 cmd_find_client: no target, return (nil)
+1496222721.438628 using client (nil)
+1496222721.438643 preparing -t state: target none
+1496222721.438657 preparing -s state: target none
+1496222721.438672 cmd_find_client: no target, return (nil)
+1496222721.438703 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.438745 preparing state for bind-key -T copy-mode-vi WheelUpPane "select-pane;" send -N5 -X scroll-up (client (nil))
+1496222721.438765 cmd_find_client: no target, return (nil)
+1496222721.438780 using client (nil)
+1496222721.438794 preparing -t state: target none
+1496222721.438808 preparing -s state: target none
+1496222721.438823 cmd_find_client: no target, return (nil)
+1496222721.438860 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.438902 preparing state for bind-key -T copy-mode-vi WheelDownPane "select-pane;" send -N5 -X scroll-down (client (nil))
+1496222721.438923 cmd_find_client: no target, return (nil)
+1496222721.438937 using client (nil)
+1496222721.438951 preparing -t state: target none
+1496222721.438966 preparing -s state: target none
+1496222721.438981 cmd_find_client: no target, return (nil)
+1496222721.439019 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.439064 preparing state for bind-key -T copy-mode-vi DoubleClick1Pane "select-pane;" send -X select-word (client (nil))
+1496222721.439081 cmd_find_client: no target, return (nil)
+1496222721.439095 using client (nil)
+1496222721.439109 preparing -t state: target none
+1496222721.439123 preparing -s state: target none
+1496222721.439137 cmd_find_client: no target, return (nil)
+1496222721.439174 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.439217 preparing state for bind-key -T copy-mode-vi TripleClick1Pane "select-pane;" send -X select-line (client (nil))
+1496222721.439288 cmd_find_client: no target, return (nil)
+1496222721.439307 using client (nil)
+1496222721.439323 preparing -t state: target none
+1496222721.439337 preparing -s state: target none
+1496222721.439352 cmd_find_client: no target, return (nil)
+1496222721.439389 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.439422 preparing state for bind-key -T copy-mode-vi BSpace send -X cursor-left (client (nil))
+1496222721.439438 cmd_find_client: no target, return (nil)
+1496222721.439452 using client (nil)
+1496222721.439466 preparing -t state: target none
+1496222721.439480 preparing -s state: target none
+1496222721.439495 cmd_find_client: no target, return (nil)
+1496222721.439524 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.439575 preparing state for bind-key -T copy-mode-vi NPage send -X page-down (client (nil))
+1496222721.439593 cmd_find_client: no target, return (nil)
+1496222721.439606 using client (nil)
+1496222721.439621 preparing -t state: target none
+1496222721.439635 preparing -s state: target none
+1496222721.439650 cmd_find_client: no target, return (nil)
+1496222721.439678 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.439711 preparing state for bind-key -T copy-mode-vi PPage send -X page-up (client (nil))
+1496222721.439727 cmd_find_client: no target, return (nil)
+1496222721.439741 using client (nil)
+1496222721.439756 preparing -t state: target none
+1496222721.439770 preparing -s state: target none
+1496222721.439785 cmd_find_client: no target, return (nil)
+1496222721.439814 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.439852 preparing state for bind-key -T copy-mode-vi Up send -X cursor-up (client (nil))
+1496222721.439868 cmd_find_client: no target, return (nil)
+1496222721.439882 using client (nil)
+1496222721.439896 preparing -t state: target none
+1496222721.439910 preparing -s state: target none
+1496222721.439925 cmd_find_client: no target, return (nil)
+1496222721.439954 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.439987 preparing state for bind-key -T copy-mode-vi Down send -X cursor-down (client (nil))
+1496222721.440003 cmd_find_client: no target, return (nil)
+1496222721.440016 using client (nil)
+1496222721.440030 preparing -t state: target none
+1496222721.440045 preparing -s state: target none
+1496222721.440060 cmd_find_client: no target, return (nil)
+1496222721.440089 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.440123 preparing state for bind-key -T copy-mode-vi Left send -X cursor-left (client (nil))
+1496222721.440139 cmd_find_client: no target, return (nil)
+1496222721.440153 using client (nil)
+1496222721.440167 preparing -t state: target none
+1496222721.440181 preparing -s state: target none
+1496222721.440196 cmd_find_client: no target, return (nil)
+1496222721.440284 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.440318 preparing state for bind-key -T copy-mode-vi Right send -X cursor-right (client (nil))
+1496222721.440334 cmd_find_client: no target, return (nil)
+1496222721.440348 using client (nil)
+1496222721.440362 preparing -t state: target none
+1496222721.440377 preparing -s state: target none
+1496222721.440392 cmd_find_client: no target, return (nil)
+1496222721.440421 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.440454 preparing state for bind-key -T copy-mode-vi C-Up send -X scroll-up (client (nil))
+1496222721.440470 cmd_find_client: no target, return (nil)
+1496222721.440484 using client (nil)
+1496222721.440498 preparing -t state: target none
+1496222721.440513 preparing -s state: target none
+1496222721.440528 cmd_find_client: no target, return (nil)
+1496222721.440556 cmdq_next <global>: command[bind-key] (0), flags 0
+1496222721.440589 preparing state for bind-key -T copy-mode-vi C-Down send -X scroll-down (client (nil))
+1496222721.440605 cmd_find_client: no target, return (nil)
+1496222721.440618 using client (nil)
+1496222721.440633 preparing -t state: target none
+1496222721.440647 preparing -s state: target none
+1496222721.440662 cmd_find_client: no target, return (nil)
+1496222721.440690 cmdq_next <global>: exit (empty)
+1496222721.440713 cmdq_next <global>: empty
+1496222721.440986 peer 0x73a6e0 message 107
+1496222721.441015 client 0x739ef0 IDENTIFY_CLIENTPID 32399
+1496222721.441033 peer 0x73a6e0 message 105
+1496222721.441052 client 0x739ef0 IDENTIFY_ENVIRON LC_TELEPHONE=id_ID.UTF-8
+1496222721.441070 peer 0x73a6e0 message 105
+1496222721.441091 client 0x739ef0 IDENTIFY_ENVIRON DBUS_STARTER_ADDRESS=unix:path=/run/user/1000/bus,guid=8edc439effb04326da4f4b2c592c54e0
+1496222721.441108 peer 0x73a6e0 message 105
+1496222721.441126 client 0x739ef0 IDENTIFY_ENVIRON LANG=en_US.UTF-8
+1496222721.441143 peer 0x73a6e0 message 105
+1496222721.441160 client 0x739ef0 IDENTIFY_ENVIRON DISPLAY=:0
+1496222721.441255 peer 0x73a6e0 message 105
+1496222721.441275 client 0x739ef0 IDENTIFY_ENVIRON SHLVL=2
+1496222721.441291 peer 0x73a6e0 message 105
+1496222721.441309 client 0x739ef0 IDENTIFY_ENVIRON LOGNAME=fnasrullah
+1496222721.441326 peer 0x73a6e0 message 105
+1496222721.441345 client 0x739ef0 IDENTIFY_ENVIRON PWD=/opt/lampp/htdocs/silaku/public
+1496222721.441362 peer 0x73a6e0 message 105
+1496222721.441380 client 0x739ef0 IDENTIFY_ENVIRON INVOCATION_ID=ec752d54dbad4dc78ffd4c59a11e9fbf
+1496222721.441397 peer 0x73a6e0 message 105
+1496222721.441415 client 0x739ef0 IDENTIFY_ENVIRON LC_NAME=id_ID.UTF-8
+1496222721.441431 peer 0x73a6e0 message 105
+1496222721.441449 client 0x739ef0 IDENTIFY_ENVIRON SYSTEMD_NSS_BYPASS_BUS=1
+1496222721.441465 peer 0x73a6e0 message 105
+1496222721.441483 client 0x739ef0 IDENTIFY_ENVIRON XAUTHORITY=/home/fnasrullah/.Xauthority
+1496222721.441499 peer 0x73a6e0 message 105
+1496222721.441517 client 0x739ef0 IDENTIFY_ENVIRON IBUS_DISABLE_SNOOPER=1
+1496222721.441533 peer 0x73a6e0 message 105
+1496222721.441550 client 0x739ef0 IDENTIFY_ENVIRON JOURNAL_STREAM=8:15332
+1496222721.441567 peer 0x73a6e0 message 105
+1496222721.441584 client 0x739ef0 IDENTIFY_ENVIRON COLORTERM=truecolor
+1496222721.441601 peer 0x73a6e0 message 105
+1496222721.441620 client 0x739ef0 IDENTIFY_ENVIRON GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+1496222721.441636 peer 0x73a6e0 message 105
+1496222721.441654 client 0x739ef0 IDENTIFY_ENVIRON LC_IDENTIFICATION=id_ID.UTF-8
+1496222721.441671 peer 0x73a6e0 message 105
+1496222721.441689 client 0x739ef0 IDENTIFY_ENVIRON LC_MEASUREMENT=id_ID.UTF-8
+1496222721.441705 peer 0x73a6e0 message 105
+1496222721.441723 client 0x739ef0 IDENTIFY_ENVIRON LC_PAPER=id_ID.UTF-8
+1496222721.441739 peer 0x73a6e0 message 105
+1496222721.441757 client 0x739ef0 IDENTIFY_ENVIRON LC_NUMERIC=id_ID.UTF-8
+1496222721.441773 peer 0x73a6e0 message 105
+1496222721.441792 client 0x739ef0 IDENTIFY_ENVIRON LC_MONETARY=id_ID.UTF-8
+1496222721.441809 peer 0x73a6e0 message 105
+1496222721.441831 client 0x739ef0 IDENTIFY_ENVIRON DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus,guid=8edc439effb04326da4f4b2c592c54e0
+1496222721.441848 peer 0x73a6e0 message 105
+1496222721.441866 client 0x739ef0 IDENTIFY_ENVIRON VTE_VERSION=4803
+1496222721.441882 peer 0x73a6e0 message 105
+1496222721.441900 client 0x739ef0 IDENTIFY_ENVIRON MAIL=/var/spool/mail/fnasrullah
+1496222721.441916 peer 0x73a6e0 message 105
+1496222721.441935 client 0x739ef0 IDENTIFY_ENVIRON _=/usr/sbin/tmux
+1496222721.441951 peer 0x73a6e0 message 105
+1496222721.441969 client 0x739ef0 IDENTIFY_ENVIRON DBUS_STARTER_BUS_TYPE=session
+1496222721.441986 peer 0x73a6e0 message 105
+1496222721.442004 client 0x739ef0 IDENTIFY_ENVIRON SHELL=/usr/bin/zsh
+1496222721.442020 peer 0x73a6e0 message 105
+1496222721.442038 client 0x739ef0 IDENTIFY_ENVIRON LC_TIME=id_ID.UTF-8
+1496222721.442055 peer 0x73a6e0 message 105
+1496222721.442072 client 0x739ef0 IDENTIFY_ENVIRON MANAGERPID=900
+1496222721.442089 peer 0x73a6e0 message 105
+1496222721.442107 client 0x739ef0 IDENTIFY_ENVIRON TERM=xterm-256color
+1496222721.442123 peer 0x73a6e0 message 105
+1496222721.442141 client 0x739ef0 IDENTIFY_ENVIRON XDG_CURRENT_DESKTOP=Deepin
+1496222721.442158 peer 0x73a6e0 message 105
+1496222721.442245 client 0x739ef0 IDENTIFY_ENVIRON PATH=/home/fnasrullah/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+1496222721.442263 peer 0x73a6e0 message 105
+1496222721.442281 client 0x739ef0 IDENTIFY_ENVIRON HOME=/home/fnasrullah
+1496222721.442298 peer 0x73a6e0 message 105
+1496222721.442316 client 0x739ef0 IDENTIFY_ENVIRON USER=fnasrullah
+1496222721.442332 peer 0x73a6e0 message 105
+1496222721.442350 client 0x739ef0 IDENTIFY_ENVIRON XDG_RUNTIME_DIR=/run/user/1000
+1496222721.442367 peer 0x73a6e0 message 105
+1496222721.442385 client 0x739ef0 IDENTIFY_ENVIRON LC_ADDRESS=id_ID.UTF-8
+1496222721.442401 peer 0x73a6e0 message 105
+1496222721.442420 client 0x739ef0 IDENTIFY_ENVIRON OLDPWD=/opt/lampp/htdocs/silaku/public
+1496222721.442436 peer 0x73a6e0 message 105
+1496222721.442454 client 0x739ef0 IDENTIFY_ENVIRON ZSH=/usr/share/oh-my-zsh/
+1496222721.442494 peer 0x73a6e0 message 105
+1496222721.442514 client 0x739ef0 IDENTIFY_ENVIRON PAGER=less
+1496222721.442530 peer 0x73a6e0 message 105
+1496222721.442548 client 0x739ef0 IDENTIFY_ENVIRON LESS=-R
+1496222721.442564 peer 0x73a6e0 message 105
+1496222721.442582 client 0x739ef0 IDENTIFY_ENVIRON LSCOLORS=Gxfxcxdxbxegedabagacad
+1496222721.442610 peer 0x73a6e0 message 105
+1496222721.442696 client 0x739ef0 IDENTIFY_ENVIRON LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+1496222721.442724 peer 0x73a6e0 message 105
+1496222721.442744 client 0x739ef0 IDENTIFY_ENVIRON LC_CTYPE=en_US.UTF-8
+1496222721.442759 peer 0x73a6e0 message 105
+1496222721.442777 client 0x739ef0 IDENTIFY_ENVIRON EVENT_NOEPOLL=1
+1496222721.442792 peer 0x73a6e0 message 106
+1496222721.442807 client 0x739ef0 name is /dev/pts/4
+1496222721.442848 tty_resize: /dev/pts/4 now 151x40
+1496222721.442864 peer 0x73a6e0 message 200
+1496222721.442902 cmdq_next <global>: empty
+1496222721.442919 cmdq_next <0x739ef0>: enter
+1496222721.442935 cmdq_next <0x739ef0>: callback[cfg_done] (1), flags 0
+1496222721.442951 unref client 0x739ef0 (5 references)
+1496222721.442965 unref client 0x739ef0 (4 references)
+1496222721.442982 cmdq_next <0x739ef0>: command[new-session] (0), flags 0
+1496222721.442998 preparing state for new-session (client 0x739ef0)
+1496222721.443014 cmd_find_current_session: have client 0x739ef0
+1496222721.443031 cmd_find_client: no target, return (nil)
+1496222721.443045 using client (nil)
+1496222721.443059 preparing -t state: target none
+1496222721.443075 cmd_prepare_state_flag: flag t 4 0x2
+1496222721.443090 cmd_find_current_session: have client 0x739ef0
+1496222721.443107 cmd_find_target: target none, type 2
+1496222721.443123 cmd_find_target: item 0x728500, flags 0x2
+1496222721.443192 cmd_find_target: current is from argument
+1496222721.443213 cmd_find_target: s=none
+1496222721.443227 cmd_find_target: wl=none
+1496222721.443240 cmd_find_target: wp=none
+1496222721.443253 cmd_find_target: idx=none
+1496222721.443267 preparing -s state: target none
+1496222721.443292 new term: xterm-256color
+1496222721.443805 xterm-256color override: XT=
+1496222721.443846 xterm-256color override: Ms=\033]52;%p1%s;%p2%s\a
+1496222721.443874 xterm-256color override: Cs=\033]12;%p1%s\a
+1496222721.443898 xterm-256color override: Cr=\033]112\a
+1496222721.443920 xterm-256color override: Ss=\033[%p1%d q
+1496222721.443946 xterm-256color override: Se=\033[2 q
+1496222721.461847 /dev/pts/4: \033[?1049h
+1496222721.461951 /dev/pts/4: \033[?1h\033=
+1496222721.461982 /dev/pts/4: \033[H\033[2J
+1496222721.462008 /dev/pts/4: \033[?12l\033[?25h
+1496222721.462077 /dev/pts/4: \033[?1000l\033[?1002l\033[?1006l\033[?1005l
+1496222721.462108 /dev/pts/4: \033[c
+1496222721.462135 /dev/pts/4: \033(B\033[m
+1496222721.462169 /dev/pts/4: \033[?12;25h
+1496222721.462196 /dev/pts/4: \033[?12l\033[?25h
+1496222721.462222 /dev/pts/4: \033[?1003l
+1496222721.462248 /dev/pts/4: \033[?1006l
+1496222721.462274 /dev/pts/4: \033[?2004l
+1496222721.462328 /dev/pts/4: \033[1;1H
+1496222721.462362 /dev/pts/4: \033[1;40r
+1496222721.462390 /dev/pts/4: \033]112\a
+1496222721.462424 new key \033Oo: 0x1000005b (KP/)
+1496222721.462451 new key \033Oj: 0x1000005c (KP*)
+1496222721.462481 new key \033Om: 0x1000005d (KP-)
+1496222721.462508 new key \033Ow: 0x1000005e (KP7)
+1496222721.462535 new key \033Ox: 0x1000005f (KP8)
+1496222721.462561 new key \033Oy: 0x10000060 (KP9)
+1496222721.462588 new key \033Ok: 0x10000061 (KP+)
+1496222721.462615 new key \033Ot: 0x10000062 (KP4)
+1496222721.462642 new key \033Ou: 0x10000063 (KP5)
+1496222721.482991 new key \033Ov: 0x10000064 (KP6)
+1496222721.483040 new key \033Oq: 0x10000065 (KP1)
+1496222721.483066 new key \033Or: 0x10000066 (KP2)
+1496222721.483090 new key \033Os: 0x10000067 (KP3)
+1496222721.483114 new key \033OM: 0x10000068 (KPEnter)
+1496222721.483138 new key \033Op: 0x10000069 (KP0)
+1496222721.483163 new key \033On: 0x1000006a (KP.)
+1496222721.483255 new key \033OA: 0x10000057 (Up)
+1496222721.483280 new key \033OB: 0x10000058 (Down)
+1496222721.483306 new key \033OC: 0x1000005a (Right)
+1496222721.483329 new key \033OD: 0x10000059 (Left)
+1496222721.483353 new key \033[A: 0x10000057 (Up)
+1496222721.483377 new key \033[B: 0x10000058 (Down)
+1496222721.483400 new key \033[C: 0x1000005a (Right)
+1496222721.483424 new key \033[D: 0x10000059 (Left)
+1496222721.483447 new key \033OH: 0x10000052 (Home)
+1496222721.483470 new key \033OF: 0x10000053 (End)
+1496222721.483493 new key \033[H: 0x10000052 (Home)
+1496222721.483517 new key \033[F: 0x10000053 (End)
+1496222721.483542 new key \033Oa: 0x400010000057 (C-Up)
+1496222721.483566 new key \033Ob: 0x400010000058 (C-Down)
+1496222721.483591 new key \033Oc: 0x40001000005a (C-Right)
+1496222721.483615 new key \033Od: 0x400010000059 (C-Left)
+1496222721.483639 new key \033[a: 0x800010000057 (S-Up)
+1496222721.483663 new key \033[b: 0x800010000058 (S-Down)
+1496222721.483687 new key \033[c: 0x80001000005a (S-Right)
+1496222721.483712 new key \033[d: 0x800010000059 (S-Left)
+1496222721.483736 new key \033[11^: 0x400010000044 (C-F1)
+1496222721.483762 new key \033[12^: 0x400010000045 (C-F2)
+1496222721.483786 new key \033[13^: 0x400010000046 (C-F3)
+1496222721.483810 new key \033[14^: 0x400010000047 (C-F4)
+1496222721.483834 new key \033[15^: 0x400010000048 (C-F5)
+1496222721.483860 new key \033[17^: 0x400010000049 (C-F6)
+1496222721.483885 new key \033[18^: 0x40001000004a (C-F7)
+1496222721.483911 new key \033[19^: 0x40001000004b (C-F8)
+1496222721.483936 new key \033[20^: 0x40001000004c (C-F9)
+1496222721.483961 new key \033[21^: 0x40001000004d (C-F10)
+1496222721.483986 new key \033[23^: 0x40001000004e (C-F11)
+1496222721.484012 new key \033[24^: 0x40001000004f (C-F12)
+1496222721.484037 new key \033[2^: 0x400010000050 (C-IC)
+1496222721.484550 new key \033[3^: 0x400010000051 (C-DC)
+1496222721.484585 new key \033[7^: 0x400010000052 (C-Home)
+1496222721.484603 new key \033[8^: 0x400010000053 (C-End)
+1496222721.484620 new key \033[6^: 0x400010000054 (C-NPage)
+1496222721.484637 new key \033[5^: 0x400010000055 (C-PPage)
+1496222721.484654 new key \033[11$: 0x800010000044 (S-F1)
+1496222721.484670 new key \033[12$: 0x800010000045 (S-F2)
+1496222721.484687 new key \033[13$: 0x800010000046 (S-F3)
+1496222721.484704 new key \033[14$: 0x800010000047 (S-F4)
+1496222721.484720 new key \033[15$: 0x800010000048 (S-F5)
+1496222721.484737 new key \033[17$: 0x800010000049 (S-F6)
+1496222721.484754 new key \033[18$: 0x80001000004a (S-F7)
+1496222721.484770 new key \033[19$: 0x80001000004b (S-F8)
+1496222721.484786 new key \033[20$: 0x80001000004c (S-F9)
+1496222721.484803 new key \033[21$: 0x80001000004d (S-F10)
+1496222721.484819 new key \033[23$: 0x80001000004e (S-F11)
+1496222721.484836 new key \033[24$: 0x80001000004f (S-F12)
+1496222721.484875 new key \033[2$: 0x800010000050 (S-IC)
+1496222721.484892 new key \033[3$: 0x800010000051 (S-DC)
+1496222721.484908 new key \033[7$: 0x800010000052 (S-Home)
+1496222721.484924 new key \033[8$: 0x800010000053 (S-End)
+1496222721.484940 new key \033[6$: 0x800010000054 (S-NPage)
+1496222721.484957 new key \033[5$: 0x800010000055 (S-PPage)
+1496222721.484973 new key \033[11@: 0xc00010000044 (C-S-F1)
+1496222721.484989 new key \033[12@: 0xc00010000045 (C-S-F2)
+1496222721.485007 new key \033[13@: 0xc00010000046 (C-S-F3)
+1496222721.485023 new key \033[14@: 0xc00010000047 (C-S-F4)
+1496222721.485039 new key \033[15@: 0xc00010000048 (C-S-F5)
+1496222721.485055 new key \033[17@: 0xc00010000049 (C-S-F6)
+1496222721.485072 new key \033[18@: 0xc0001000004a (C-S-F7)
+1496222721.485088 new key \033[19@: 0xc0001000004b (C-S-F8)
+1496222721.485105 new key \033[20@: 0xc0001000004c (C-S-F9)
+1496222721.485121 new key \033[21@: 0xc0001000004d (C-S-F10)
+1496222721.485201 new key \033[23@: 0xc0001000004e (C-S-F11)
+1496222721.485219 new key \033[24@: 0xc0001000004f (C-S-F12)
+1496222721.485235 new key \033[2@: 0xc00010000050 (C-S-IC)
+1496222721.485252 new key \033[3@: 0xc00010000051 (C-S-DC)
+1496222721.485268 new key \033[7@: 0xc00010000052 (C-S-Home)
+1496222721.485285 new key \033[8@: 0xc00010000053 (C-S-End)
+1496222721.485302 new key \033[6@: 0xc00010000054 (C-S-NPage)
+1496222721.485318 new key \033[5@: 0xc00010000055 (C-S-PPage)
+1496222721.485335 new key \033[I: 0x10000000 (FocusIn)
+1496222721.485351 new key \033[O: 0x10000001 (FocusOut)
+1496222721.485368 new key \033OP: 0x10000044 (F1)
+1496222721.485384 new key \033OQ: 0x10000045 (F2)
+1496222721.485399 new key \033OR: 0x10000046 (F3)
+1496222721.485414 new key \033OS: 0x10000047 (F4)
+1496222721.485431 new key \033[15~: 0x10000048 (F5)
+1496222721.485446 new key \033[17~: 0x10000049 (F6)
+1496222721.485462 new key \033[18~: 0x1000004a (F7)
+1496222721.485477 new key \033[19~: 0x1000004b (F8)
+1496222721.485493 new key \033[20~: 0x1000004c (F9)
+1496222721.485509 new key \033[21~: 0x1000004d (F10)
+1496222721.485524 new key \033[23~: 0x1000004e (F11)
+1496222721.485539 new key \033[24~: 0x1000004f (F12)
+1496222721.485555 new key \033[1;2P: 0x800010000044 (S-F1)
+1496222721.485573 new key \033[1;2Q: 0x800010000045 (S-F2)
+1496222721.485589 new key \033[1;2R: 0x800010000046 (S-F3)
+1496222721.485605 new key \033[1;2S: 0x800010000047 (S-F4)
+1496222721.485621 new key \033[15;2~: 0x800010000048 (S-F5)
+1496222721.485638 new key \033[17;2~: 0x800010000049 (S-F6)
+1496222721.485655 new key \033[18;2~: 0x80001000004a (S-F7)
+1496222721.485673 new key \033[19;2~: 0x80001000004b (S-F8)
+1496222721.485690 new key \033[20;2~: 0x80001000004c (S-F9)
+1496222721.485708 new key \033[21;2~: 0x80001000004d (S-F10)
+1496222721.485725 new key \033[23;2~: 0x80001000004e (S-F11)
+1496222721.485744 new key \033[24;2~: 0x80001000004f (S-F12)
+1496222721.485761 new key \033[1;5P: 0x400010000044 (C-F1)
+1496222721.485778 new key \033[1;5Q: 0x400010000045 (C-F2)
+1496222721.485794 new key \033[1;5R: 0x400010000046 (C-F3)
+1496222721.485811 new key \033[1;5S: 0x400010000047 (C-F4)
+1496222721.485828 new key \033[15;5~: 0x400010000048 (C-F5)
+1496222721.485844 new key \033[17;5~: 0x400010000049 (C-F6)
+1496222721.485861 new key \033[18;5~: 0x40001000004a (C-F7)
+1496222721.485879 new key \033[19;5~: 0x40001000004b (C-F8)
+1496222721.485896 new key \033[20;5~: 0x40001000004c (C-F9)
+1496222721.485913 new key \033[21;5~: 0x40001000004d (C-F10)
+1496222721.485930 new key \033[23;5~: 0x40001000004e (C-F11)
+1496222721.485947 new key \033[24;5~: 0x40001000004f (C-F12)
+1496222721.485964 new key \033[1;6P: 0xc00010000044 (C-S-F1)
+1496222721.485981 new key \033[1;6Q: 0xc00010000045 (C-S-F2)
+1496222721.485997 new key \033[1;6R: 0xc00010000046 (C-S-F3)
+1496222721.486014 new key \033[1;6S: 0xc00010000047 (C-S-F4)
+1496222721.486030 new key \033[15;6~: 0xc00010000048 (C-S-F5)
+1496222721.486047 new key \033[17;6~: 0xc00010000049 (C-S-F6)
+1496222721.486064 new key \033[18;6~: 0xc0001000004a (C-S-F7)
+1496222721.486081 new key \033[19;6~: 0xc0001000004b (C-S-F8)
+1496222721.486182 new key \033[20;6~: 0xc0001000004c (C-S-F9)
+1496222721.486201 new key \033[21;6~: 0xc0001000004d (C-S-F10)
+1496222721.486218 new key \033[23;6~: 0xc0001000004e (C-S-F11)
+1496222721.486235 new key \033[24;6~: 0xc0001000004f (C-S-F12)
+1496222721.486252 new key \033[1;3P: 0x200010000044 (M-F1)
+1496222721.486269 new key \033[1;3Q: 0x200010000045 (M-F2)
+1496222721.486285 new key \033[1;3R: 0x200010000046 (M-F3)
+1496222721.486302 new key \033[1;3S: 0x200010000047 (M-F4)
+1496222721.486319 new key \033[15;3~: 0x200010000048 (M-F5)
+1496222721.486336 new key \033[17;3~: 0x200010000049 (M-F6)
+1496222721.486353 new key \033[18;3~: 0x20001000004a (M-F7)
+1496222721.486370 new key \033[19;3~: 0x20001000004b (M-F8)
+1496222721.486387 new key \033[20;3~: 0x20001000004c (M-F9)
+1496222721.486403 new key \033[21;3~: 0x20001000004d (M-F10)
+1496222721.486420 new key \033[23;3~: 0x20001000004e (M-F11)
+1496222721.486437 new key \033[24;3~: 0x20001000004f (M-F12)
+1496222721.486454 new key \033[1;4P: 0xa00010000044 (M-S-F1)
+1496222721.486471 new key \033[1;4Q: 0xa00010000045 (M-S-F2)
+1496222721.486488 new key \033[1;4R: 0xa00010000046 (M-S-F3)
+1496222721.486504 new key \033[2~: 0x10000050 (IC)
+1496222721.486520 new key \033[3~: 0x10000051 (DC)
+1496222721.486537 replacing key \033OH: 0x10000052 (Home)
+1496222721.486553 replacing key \033OF: 0x10000053 (End)
+1496222721.486569 new key \033[6~: 0x10000054 (NPage)
+1496222721.486585 new key \033[5~: 0x10000055 (PPage)
+1496222721.486601 new key \033[Z: 0x10000056 (BTab)
+1496222721.486617 replacing key \033OA: 0x10000057 (Up)
+1496222721.486633 replacing key \033OB: 0x10000058 (Down)
+1496222721.486650 replacing key \033OD: 0x10000059 (Left)
+1496222721.486665 replacing key \033OC: 0x1000005a (Right)
+1496222721.486681 new key \033[3;2~: 0x800010000051 (S-DC)
+1496222721.486698 new key \033[3;3~: 0x200010000051 (M-DC)
+1496222721.486714 new key \033[3;4~: 0xa00010000051 (M-S-DC)
+1496222721.486730 new key \033[3;5~: 0x400010000051 (C-DC)
+1496222721.486747 new key \033[3;6~: 0xc00010000051 (C-S-DC)
+1496222721.486764 new key \033[3;7~: 0x600010000051 (C-M-DC)
+1496222721.486781 new key \033[1;2B: 0x800010000058 (S-Down)
+1496222721.486797 new key \033[1;3B: 0x200010000058 (M-Down)
+1496222721.486814 new key \033[1;4B: 0xa00010000058 (M-S-Down)
+1496222721.486831 new key \033[1;5B: 0x400010000058 (C-Down)
+1496222721.486848 new key \033[1;6B: 0xc00010000058 (C-S-Down)
+1496222721.486864 new key \033[1;7B: 0x600010000058 (C-M-Down)
+1496222721.486881 new key \033[1;2F: 0x800010000053 (S-End)
+1496222721.486897 new key \033[1;3F: 0x200010000053 (M-End)
+1496222721.486914 new key \033[1;4F: 0xa00010000053 (M-S-End)
+1496222721.486931 new key \033[1;5F: 0x400010000053 (C-End)
+1496222721.486947 new key \033[1;6F: 0xc00010000053 (C-S-End)
+1496222721.486965 new key \033[1;7F: 0x600010000053 (C-M-End)
+1496222721.486981 new key \033[1;2H: 0x800010000052 (S-Home)
+1496222721.486998 new key \033[1;3H: 0x200010000052 (M-Home)
+1496222721.487014 new key \033[1;4H: 0xa00010000052 (M-S-Home)
+1496222721.487031 new key \033[1;5H: 0x400010000052 (C-Home)
+1496222721.487047 new key \033[1;6H: 0xc00010000052 (C-S-Home)
+1496222721.487064 new key \033[1;7H: 0x600010000052 (C-M-Home)
+1496222721.487136 new key \033[2;2~: 0x800010000050 (S-IC)
+1496222721.487159 new key \033[2;3~: 0x200010000050 (M-IC)
+1496222721.487177 new key \033[2;4~: 0xa00010000050 (M-S-IC)
+1496222721.487194 new key \033[2;5~: 0x400010000050 (C-IC)
+1496222721.487211 new key \033[2;6~: 0xc00010000050 (C-S-IC)
+1496222721.487228 new key \033[2;7~: 0x600010000050 (C-M-IC)
+1496222721.487246 new key \033[1;2D: 0x800010000059 (S-Left)
+1496222721.487263 new key \033[1;3D: 0x200010000059 (M-Left)
+1496222721.487279 new key \033[1;4D: 0xa00010000059 (M-S-Left)
+1496222721.487296 new key \033[1;5D: 0x400010000059 (C-Left)
+1496222721.487313 new key \033[1;6D: 0xc00010000059 (C-S-Left)
+1496222721.487330 new key \033[1;7D: 0x600010000059 (C-M-Left)
+1496222721.487346 new key \033[6;2~: 0x800010000054 (S-NPage)
+1496222721.487363 new key \033[6;3~: 0x200010000054 (M-NPage)
+1496222721.487428 new key \033[6;4~: 0xa00010000054 (M-S-NPage)
+1496222721.487450 new key \033[6;5~: 0x400010000054 (C-NPage)
+1496222721.487467 new key \033[6;6~: 0xc00010000054 (C-S-NPage)
+1496222721.487484 new key \033[6;7~: 0x600010000054 (C-M-NPage)
+1496222721.487501 new key \033[5;2~: 0x800010000055 (S-PPage)
+1496222721.487518 new key \033[5;3~: 0x200010000055 (M-PPage)
+1496222721.487535 new key \033[5;4~: 0xa00010000055 (M-S-PPage)
+1496222721.487551 new key \033[5;5~: 0x400010000055 (C-PPage)
+1496222721.487568 new key \033[5;6~: 0xc00010000055 (C-S-PPage)
+1496222721.487586 new key \033[5;7~: 0x600010000055 (C-M-PPage)
+1496222721.487603 new key \033[1;2C: 0x80001000005a (S-Right)
+1496222721.487619 new key \033[1;3C: 0x20001000005a (M-Right)
+1496222721.487637 new key \033[1;4C: 0xa0001000005a (M-S-Right)
+1496222721.487654 new key \033[1;5C: 0x40001000005a (C-Right)
+1496222721.487670 new key \033[1;6C: 0xc0001000005a (C-S-Right)
+1496222721.487687 new key \033[1;7C: 0x60001000005a (C-M-Right)
+1496222721.487703 new key \033[1;2A: 0x800010000057 (S-Up)
+1496222721.487720 new key \033[1;3A: 0x200010000057 (M-Up)
+1496222721.487736 new key \033[1;4A: 0xa00010000057 (M-S-Up)
+1496222721.487752 new key \033[1;5A: 0x400010000057 (C-Up)
+1496222721.487769 new key \033[1;6A: 0xc00010000057 (C-S-Up)
+1496222721.487786 new key \033[1;7A: 0x600010000057 (C-M-Up)
+1496222721.487837 new session 0 $0
+1496222721.487863 session 0 activity 1496222721.487854 (last 0.000000)
+1496222721.488031 @0 alerts flags added 0x2
+1496222721.488138 window_add_pane: @0 at start
+1496222721.488163 spawn: /usr/bin/zsh -- 
+1496222721.488179 spawn: COLORTERM=truecolor
+1496222721.488197 spawn: DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus,guid=8edc439effb04326da4f4b2c592c54e0
+1496222721.488214 spawn: DBUS_STARTER_ADDRESS=unix:path=/run/user/1000/bus,guid=8edc439effb04326da4f4b2c592c54e0
+1496222721.488229 spawn: DBUS_STARTER_BUS_TYPE=session
+1496222721.488243 spawn: DISPLAY=:0
+1496222721.488258 spawn: GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+1496222721.488272 spawn: HOME=/home/fnasrullah
+1496222721.488286 spawn: IBUS_DISABLE_SNOOPER=1
+1496222721.488301 spawn: INVOCATION_ID=ec752d54dbad4dc78ffd4c59a11e9fbf
+1496222721.488315 spawn: JOURNAL_STREAM=8:15332
+1496222721.488329 spawn: LANG=en_US.UTF-8
+1496222721.488343 spawn: LC_ADDRESS=id_ID.UTF-8
+1496222721.488357 spawn: LC_CTYPE=en_US.UTF-8
+1496222721.488371 spawn: LC_IDENTIFICATION=id_ID.UTF-8
+1496222721.488386 spawn: LC_MEASUREMENT=id_ID.UTF-8
+1496222721.488400 spawn: LC_MONETARY=id_ID.UTF-8
+1496222721.488414 spawn: LC_NAME=id_ID.UTF-8
+1496222721.488429 spawn: LC_NUMERIC=id_ID.UTF-8
+1496222721.488443 spawn: LC_PAPER=id_ID.UTF-8
+1496222721.488457 spawn: LC_TELEPHONE=id_ID.UTF-8
+1496222721.488471 spawn: LC_TIME=id_ID.UTF-8
+1496222721.488484 spawn: LESS=-R
+1496222721.488498 spawn: LOGNAME=fnasrullah
+1496222721.488513 spawn: LSCOLORS=Gxfxcxdxbxegedabagacad
+1496222721.488578 spawn: LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+1496222721.488631 spawn: MAIL=/var/spool/mail/fnasrullah
+1496222721.488646 spawn: MANAGERPID=900
+1496222721.488661 spawn: OLDPWD=/opt/lampp/htdocs/silaku/public
+1496222721.488675 spawn: PAGER=less
+1496222721.488691 spawn: PATH=/home/fnasrullah/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+1496222721.488707 spawn: PWD=/opt/lampp/htdocs/silaku/public
+1496222721.488721 spawn: SHELL=/usr/bin/zsh
+1496222721.488735 spawn: SHLVL=2
+1496222721.488749 spawn: SYSTEMD_NSS_BYPASS_BUS=1
+1496222721.488763 spawn: TERM=screen
+1496222721.488777 spawn: TMUX=/tmp/tmux-1000/default,32401,0
+1496222721.488791 spawn: USER=fnasrullah
+1496222721.488805 spawn: VTE_VERSION=4803
+1496222721.488820 spawn: XAUTHORITY=/home/fnasrullah/.Xauthority
+1496222721.488835 spawn: XDG_CURRENT_DESKTOP=Deepin
+1496222721.488850 spawn: XDG_RUNTIME_DIR=/run/user/1000
+1496222721.488864 spawn: ZSH=/usr/share/oh-my-zsh/
+1496222721.488878 spawn: _=/usr/sbin/tmux
+1496222721.490360 cmd_find_from_session_window: s=$0
+1496222721.490427 cmd_find_from_session_window: wl=0 1 w=@0 zsh
+1496222721.490445 cmd_find_from_session_window: wp=%0
+1496222721.490460 cmd_find_from_session_window: idx=0
+1496222721.490489 @0 alerts flags added 0x2
+1496222721.490508 session 0 created
+1496222721.490526 cmd_find_from_session: s=$0
+1496222721.490542 cmd_find_from_session: wl=0 1 w=@0 zsh
+1496222721.490556 cmd_find_from_session: wp=%0
+1496222721.490569 cmd_find_from_session: idx=none
+1496222721.490588 sending message 207 to peer 0x73a6e0 (0 bytes)
+1496222721.494254 client 0x739ef0, status interval 15
+1496222721.494316 cmd_find_from_session: s=$0
+1496222721.494335 cmd_find_from_session: wl=0 1 w=@0 zsh
+1496222721.494350 cmd_find_from_session: wp=%0
+1496222721.494363 cmd_find_from_session: idx=none
+1496222721.494391 session 0 activity 1496222721.494380 (last 1496222721.487854)
+1496222721.494435 cmd_find_from_session: s=$0
+1496222721.494455 cmd_find_from_session: wl=0 1 w=@0 zsh
+1496222721.494470 cmd_find_from_session: wp=%0
+1496222721.494483 cmd_find_from_session: idx=none
+1496222721.494503 unref client 0x739ef0 (4 references)
+1496222721.494525 cmdq_next <0x739ef0>: callback[server_client_command_done] (1), flags 0
+1496222721.494542 unref client 0x739ef0 (3 references)
+1496222721.494559 cmdq_next <0x739ef0>: exit (empty)
+1496222721.494574 cmdq_next <global>: enter
+1496222721.494589 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222721.494603 notify_callback: window-linked
+1496222721.494620 session 0 has 6 references
+1496222721.494636 session 0 has 5 references
+1496222721.494655 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222721.494669 notify_callback: session-created
+1496222721.494684 session 0 has 4 references
+1496222721.494697 session 0 has 3 references
+1496222721.494713 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222721.494727 notify_callback: client-session-changed
+1496222721.494742 unref client 0x739ef0 (2 references)
+1496222721.494756 session 0 has 2 references
+1496222721.494770 cmdq_next <global>: exit (empty)
+1496222721.494786 cmdq_next <0x739ef0>: empty
+1496222721.494799 cmdq_next <global>: empty
+1496222721.494813 cmdq_next <0x739ef0>: empty
+1496222721.494838 screen_write_start: size 151x1, no pane
+1496222721.494886 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222721.494902 screen_write_stop: 151 cells (151 written, 0 skipped)
+1496222721.495114 format '[#S] ' -> '[0] '
+1496222721.495295 format ' "#{=21:pane_title}" 16:25 31-Mei-17' -> ' "fnasrullah-pc" 16:25 31-Mei-17'
+1496222721.495451 format '#{window_flags}' -> '*'
+1496222721.495469 format '#I:#W#{?window_flags,#{window_flags}, }' -> '0:zsh*'
+1496222721.495512 screen_write_start: size 7x1, no pane
+1496222721.495561 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222721.495577 screen_write_stop: 7 cells (7 written, 0 skipped)
+1496222721.495594 screen_write_start: size 151x1, no pane
+1496222721.495621 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222721.495637 screen_write_stop: 43 cells (38 written, 5 skipped)
+1496222721.495658 /dev/pts/4: \033[?25l
+1496222721.495998 /dev/pts/4: \033[1;1H
+1496222721.496016 /dev/pts/4: \033[K
+1496222721.496032 /dev/pts/4: \r
+1496222721.496047 /dev/pts/4: \n
+1496222721.496061 /dev/pts/4: \033[K
+1496222721.496076 /dev/pts/4: \r
+1496222721.496091 /dev/pts/4: \n
+1496222721.496105 /dev/pts/4: \033[K
+1496222721.496120 /dev/pts/4: \r
+1496222721.496134 /dev/pts/4: \n
+1496222721.496149 /dev/pts/4: \033[K
+1496222721.496164 /dev/pts/4: \r
+1496222721.496178 /dev/pts/4: \n
+1496222721.496193 /dev/pts/4: \033[K
+1496222721.496208 /dev/pts/4: \r
+1496222721.496222 /dev/pts/4: \n
+1496222721.496236 /dev/pts/4: \033[K
+1496222721.496251 /dev/pts/4: \r
+1496222721.496266 /dev/pts/4: \n
+1496222721.496280 /dev/pts/4: \033[K
+1496222721.496295 /dev/pts/4: \r
+1496222721.496309 /dev/pts/4: \n
+1496222721.496323 /dev/pts/4: \033[K
+1496222721.496338 /dev/pts/4: \r
+1496222721.496352 /dev/pts/4: \n
+1496222721.496366 /dev/pts/4: \033[K
+1496222721.496381 /dev/pts/4: \r
+1496222721.496395 /dev/pts/4: \n
+1496222721.496409 /dev/pts/4: \033[K
+1496222721.496425 /dev/pts/4: \r
+1496222721.496439 /dev/pts/4: \n
+1496222721.496454 /dev/pts/4: \033[K
+1496222721.496469 /dev/pts/4: \r
+1496222721.496483 /dev/pts/4: \n
+1496222721.496497 /dev/pts/4: \033[K
+1496222721.496513 /dev/pts/4: \r
+1496222721.496527 /dev/pts/4: \n
+1496222721.496541 /dev/pts/4: \033[K
+1496222721.496556 /dev/pts/4: \r
+1496222721.496570 /dev/pts/4: \n
+1496222721.496585 /dev/pts/4: \033[K
+1496222721.496600 /dev/pts/4: \r
+1496222721.496614 /dev/pts/4: \n
+1496222721.496629 /dev/pts/4: \033[K
+1496222721.496644 /dev/pts/4: \r
+1496222721.496658 /dev/pts/4: \n
+1496222721.496672 /dev/pts/4: \033[K
+1496222721.496688 /dev/pts/4: \r
+1496222721.496702 /dev/pts/4: \n
+1496222721.496716 /dev/pts/4: \033[K
+1496222721.496731 /dev/pts/4: \r
+1496222721.496745 /dev/pts/4: \n
+1496222721.496760 /dev/pts/4: \033[K
+1496222721.496775 /dev/pts/4: \r
+1496222721.496789 /dev/pts/4: \n
+1496222721.496803 /dev/pts/4: \033[K
+1496222721.496818 /dev/pts/4: \r
+1496222721.496832 /dev/pts/4: \n
+1496222721.496846 /dev/pts/4: \033[K
+1496222721.496862 /dev/pts/4: \r
+1496222721.496876 /dev/pts/4: \n
+1496222721.496890 /dev/pts/4: \033[K
+1496222721.496905 /dev/pts/4: \r
+1496222721.496919 /dev/pts/4: \n
+1496222721.496934 /dev/pts/4: \033[K
+1496222721.496949 /dev/pts/4: \r
+1496222721.496963 /dev/pts/4: \n
+1496222721.496978 /dev/pts/4: \033[K
+1496222721.496993 /dev/pts/4: \r
+1496222721.497007 /dev/pts/4: \n
+1496222721.497021 /dev/pts/4: \033[K
+1496222721.497036 /dev/pts/4: \r
+1496222721.497051 /dev/pts/4: \n
+1496222721.497065 /dev/pts/4: \033[K
+1496222721.497080 /dev/pts/4: \r
+1496222721.497094 /dev/pts/4: \n
+1496222721.497109 /dev/pts/4: \033[K
+1496222721.497124 /dev/pts/4: \r
+1496222721.497139 /dev/pts/4: \n
+1496222721.497153 /dev/pts/4: \033[K
+1496222721.497168 /dev/pts/4: \r
+1496222721.497182 /dev/pts/4: \n
+1496222721.497196 /dev/pts/4: \033[K
+1496222721.497211 /dev/pts/4: \r
+1496222721.497225 /dev/pts/4: \n
+1496222721.497239 /dev/pts/4: \033[K
+1496222721.497254 /dev/pts/4: \r
+1496222721.497268 /dev/pts/4: \n
+1496222721.497282 /dev/pts/4: \033[K
+1496222721.497297 /dev/pts/4: \r
+1496222721.497311 /dev/pts/4: \n
+1496222721.497326 /dev/pts/4: \033[K
+1496222721.497340 /dev/pts/4: \r
+1496222721.497355 /dev/pts/4: \n
+1496222721.497369 /dev/pts/4: \033[K
+1496222721.497384 /dev/pts/4: \r
+1496222721.497422 /dev/pts/4: \n
+1496222721.497437 /dev/pts/4: \033[K
+1496222721.497452 /dev/pts/4: \r
+1496222721.497467 /dev/pts/4: \n
+1496222721.497481 /dev/pts/4: \033[K
+1496222721.497496 /dev/pts/4: \r
+1496222721.497510 /dev/pts/4: \n
+1496222721.497525 /dev/pts/4: \033[K
+1496222721.497540 /dev/pts/4: \r
+1496222721.497554 /dev/pts/4: \n
+1496222721.497569 /dev/pts/4: \033[K
+1496222721.497596 /dev/pts/4: \r
+1496222721.497611 /dev/pts/4: \n
+1496222721.497625 /dev/pts/4: \033[K
+1496222721.497640 /dev/pts/4: \r
+1496222721.497654 /dev/pts/4: \n
+1496222721.497669 /dev/pts/4: \033[K
+1496222721.497684 /dev/pts/4: \r
+1496222721.497699 /dev/pts/4: \n
+1496222721.497713 /dev/pts/4: \033[K
+1496222721.497728 /dev/pts/4: \r
+1496222721.497743 /dev/pts/4: \n
+1496222721.497773 /dev/pts/4: \033[30m
+1496222721.497793 /dev/pts/4: \033[42m
+1496222721.497815 /dev/pts/4: [0] 0:zsh*                                                                                                              "fnasrullah-pc" 16:25 31-Mei-17
+1496222721.497831 /dev/pts/4: \033(B\033[m
+1496222721.497852 /dev/pts/4: \033[1;1H
+1496222721.497869 /dev/pts/4: \033[?12l\033[?25h
+1496222721.497891 @0 active pane not changed
+1496222721.498306 /dev/pts/4: wrote 531 bytes (of 531)
+1496222721.501122 cmdq_next <global>: empty
+1496222721.501184 cmdq_next <0x739ef0>: empty
+1496222721.501215 @0 active pane not changed
+1496222721.507572 peer 0x73a6e0 message 208
+1496222721.507675 tty_resize: /dev/pts/4 now 151x40
+1496222721.507693 cmd_find_from_session: s=$0
+1496222721.507709 cmd_find_from_session: wl=0 1 w=@0 zsh
+1496222721.507723 cmd_find_from_session: wp=%0
+1496222721.507736 cmd_find_from_session: idx=none
+1496222721.507759 cmdq_next <global>: enter
+1496222721.507776 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222721.507791 notify_callback: client-resized
+1496222721.507810 unref client 0x739ef0 (2 references)
+1496222721.507825 session 0 has 2 references
+1496222721.507839 cmdq_next <global>: exit (empty)
+1496222721.507855 cmdq_next <0x739ef0>: empty
+1496222721.507869 cmdq_next <global>: empty
+1496222721.507884 cmdq_next <0x739ef0>: empty
+1496222721.507908 @0 active pane not changed
+1496222721.508507 /dev/pts/4: read 7 bytes (already 0)
+1496222721.508547 /dev/pts/4: keys are 7 (\033[?62;c)
+1496222721.508636 /dev/pts/4: received DA \033[?62;c (VT220)
+1496222721.508655 /dev/pts/4: complete key \033[?62;c 0xfffe00000000
+1496222721.508677 cmdq_next <global>: empty
+1496222721.508695 cmdq_next <0x739ef0>: empty
+1496222721.508718 @0 active pane not changed
+1496222722.090352 %0 has 175 bytes
+1496222722.090406 @0 alerts timer reset 0
+1496222722.090431 screen_write_start: size 151x39, pane %0
+1496222722.090478 input_parse: %0 ground, 175 bytes: \033[1m\033[3m%\033[23m\033[1m\033[0m                                                                                                                                                      \r \r
+1496222722.090506 input_csi_dispatch: 'm' "" "1"
+1496222722.090571 input_csi_dispatch: 'm' "" "3"
+1496222722.090606 screen_write_collect_end: 1 % (at 0,0)
+1496222722.090629 input_csi_dispatch: 'm' "" "23"
+1496222722.090649 input_csi_dispatch: 'm' "" "1"
+1496222722.090669 input_csi_dispatch: 'm' "" "0"
+1496222722.090705 screen_write_collect_end: 150                                                                                                                                                        (at 1,0)
+1496222722.090762 input_c0_dispatch: '\r'
+1496222722.090783 screen_write_collect_end: 1   (at 0,0)
+1496222722.090798 input_c0_dispatch: '\r'
+1496222722.090822 /dev/pts/4: \033[1m
+1496222722.090843 /dev/pts/4: \033[7m
+1496222722.090858 /dev/pts/4: %
+1496222722.090875 /dev/pts/4: \033(B\033[m
+1496222722.090897 /dev/pts/4:                                                                                                                                                       
+1496222722.090924 /dev/pts/4: \033[1;1H
+1496222722.090940 /dev/pts/4:  
+1496222722.090958 screen_write_collect_flush: flushed 3 items (152 bytes)
+1496222722.090975 screen_write_stop: 152 cells (152 written, 0 skipped)
+1496222722.090995 cmdq_next <global>: empty
+1496222722.091013 cmdq_next <0x739ef0>: empty
+1496222722.091032 /dev/pts/4: \033[H
+1496222722.091052 @0 active pane changed
+1496222722.091247 format '#{pane_current_command}' -> 'zsh'
+1496222722.091275 format '' -> ''
+1496222722.091294 format '#{?pane_in_mode,[tmux],#{pane_current_command}}#{?pane_dead,[dead],}' -> 'zsh'
+1496222722.091349 @0 name not changed (still zsh)
+1496222722.091403 /dev/pts/4: wrote 175 bytes (of 175)
+1496222722.091420 cmdq_next <global>: empty
+1496222722.091436 cmdq_next <0x739ef0>: empty
+1496222722.091454 @0 active pane not changed
+1496222722.091996 %0 has 19 bytes
+1496222722.092032 @0 alerts timer reset 0
+1496222722.092056 screen_write_start: size 151x39, pane %0
+1496222722.092076 input_parse: %0 ground, 19 bytes: \033k..silaku/public\033\\
+1496222722.092095 input_enter_rename
+1496222722.092115 input_exit_rename: "..silaku/public"
+1496222722.092134 cmd_find_from_window: s=$0
+1496222722.092151 cmd_find_from_window: wl=0 1 w=@0 ..silaku/public
+1496222722.092165 cmd_find_from_window: wp=%0
+1496222722.092179 cmd_find_from_window: idx=0
+1496222722.092201 input_esc_dispatch: '\\', 
+1496222722.092221 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.092237 screen_write_stop: 0 cells (0 written, 0 skipped)
+1496222722.092255 cmdq_next <global>: enter
+1496222722.092273 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222722.092288 notify_callback: window-renamed
+1496222722.092307 session 0 has 2 references
+1496222722.092324 cmdq_next <global>: exit (empty)
+1496222722.092339 cmdq_next <0x739ef0>: empty
+1496222722.092353 cmdq_next <global>: empty
+1496222722.092368 cmdq_next <0x739ef0>: empty
+1496222722.092391 screen_write_start: size 151x1, no pane
+1496222722.092436 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.092452 screen_write_stop: 151 cells (151 written, 0 skipped)
+1496222722.092656 format '[#S] ' -> '[0] '
+1496222722.092833 format ' "#{=21:pane_title}" 16:25 31-Mei-17' -> ' "fnasrullah-pc" 16:25 31-Mei-17'
+1496222722.092998 format '#{window_flags}' -> '*'
+1496222722.093023 format '#I:#W#{?window_flags,#{window_flags}, }' -> '0:..silaku/public*'
+1496222722.093069 screen_write_start: size 19x1, no pane
+1496222722.093094 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.093111 screen_write_stop: 19 cells (19 written, 0 skipped)
+1496222722.093133 screen_write_start: size 151x1, no pane
+1496222722.093164 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.093181 screen_write_stop: 55 cells (50 written, 5 skipped)
+1496222722.093228 /dev/pts/4: \033[?25l
+1496222722.093265 /dev/pts/4: \033[40d
+1496222722.093298 /dev/pts/4: \033[30m
+1496222722.093318 /dev/pts/4: \033[42m
+1496222722.093340 /dev/pts/4: [0] 0:..silaku/public*                                                                                                  "fnasrullah-pc" 16:25 31-Mei-17
+1496222722.093357 /dev/pts/4: \033(B\033[m
+1496222722.093378 /dev/pts/4: \033[1;1H
+1496222722.093396 /dev/pts/4: \033[?12l\033[?25h
+1496222722.093445 /dev/pts/4: wrote 196 bytes (of 196)
+1496222722.093463 cmdq_next <global>: empty
+1496222722.093502 cmdq_next <0x739ef0>: empty
+1496222722.093965 %0 has 19 bytes
+1496222722.093997 @0 alerts timer reset 0
+1496222722.094019 screen_write_start: size 151x39, pane %0
+1496222722.094039 input_parse: %0 ground, 19 bytes: \033k..silaku/public\033\\
+1496222722.094114 input_enter_rename
+1496222722.094141 input_exit_rename: "..silaku/public"
+1496222722.094162 cmd_find_from_window: s=$0
+1496222722.094179 cmd_find_from_window: wl=0 1 w=@0 ..silaku/public
+1496222722.094194 cmd_find_from_window: wp=%0
+1496222722.094208 cmd_find_from_window: idx=0
+1496222722.094227 input_esc_dispatch: '\\', 
+1496222722.094247 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.094263 screen_write_stop: 0 cells (0 written, 0 skipped)
+1496222722.094281 cmdq_next <global>: enter
+1496222722.094298 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222722.094313 notify_callback: window-renamed
+1496222722.094332 session 0 has 2 references
+1496222722.094348 cmdq_next <global>: exit (empty)
+1496222722.094363 cmdq_next <0x739ef0>: empty
+1496222722.094377 cmdq_next <global>: empty
+1496222722.094392 cmdq_next <0x739ef0>: empty
+1496222722.094415 screen_write_start: size 151x1, no pane
+1496222722.094520 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.094568 screen_write_stop: 151 cells (151 written, 0 skipped)
+1496222722.094744 format '[#S] ' -> '[0] '
+1496222722.094915 format ' "#{=21:pane_title}" 16:25 31-Mei-17' -> ' "fnasrullah-pc" 16:25 31-Mei-17'
+1496222722.095077 format '#{window_flags}' -> '*'
+1496222722.095101 format '#I:#W#{?window_flags,#{window_flags}, }' -> '0:..silaku/public*'
+1496222722.095147 screen_write_start: size 19x1, no pane
+1496222722.095173 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.095189 screen_write_stop: 19 cells (19 written, 0 skipped)
+1496222722.095207 screen_write_start: size 151x1, no pane
+1496222722.095236 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.095252 screen_write_stop: 55 cells (50 written, 5 skipped)
+1496222722.228079 %0 has 169 bytes
+1496222722.228180 @0 alerts timer reset 0
+1496222722.228220 screen_write_start: size 151x39, pane %0
+1496222722.228286 input_parse: %0 ground, 169 bytes: \r\033[0m\033[23m\033[24m\033[J\033[39m\033[0m\033[49m\033[40m\033[39m fnasrullah@fnasrullah-pc \033[44m\033[30m\356\202\260\033[30m /opt/lampp/htdocs/silaku/public \033[43m\033[34m\356\202\260\033[30m \356\202\240 cms \342\227\217 \033[49m\033[33m\356\202\260\033[39m 
+1496222722.228306 input_c0_dispatch: '\r'
+1496222722.228332 input_csi_dispatch: 'm' "" "0"
+1496222722.228361 input_csi_dispatch: 'm' "" "23"
+1496222722.228385 input_csi_dispatch: 'm' "" "24"
+1496222722.228408 input_csi_dispatch: 'J' "" ""
+1496222722.228437 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.228474 /dev/pts/4: \033[1;39r
+1496222722.228501 /dev/pts/4: \033[1;1H
+1496222722.228520 /dev/pts/4: \033[K
+1496222722.228537 /dev/pts/4: \r
+1496222722.228554 /dev/pts/4: \n
+1496222722.228571 /dev/pts/4: \033[K
+1496222722.228591 /dev/pts/4: \033[1B
+1496222722.228609 /dev/pts/4: \033[K
+1496222722.228630 /dev/pts/4: \033[1B
+1496222722.228647 /dev/pts/4: \033[K
+1496222722.228667 /dev/pts/4: \033[1B
+1496222722.228685 /dev/pts/4: \033[K
+1496222722.228704 /dev/pts/4: \033[1B
+1496222722.228722 /dev/pts/4: \033[K
+1496222722.228741 /dev/pts/4: \033[1B
+1496222722.228758 /dev/pts/4: \033[K
+1496222722.228778 /dev/pts/4: \033[1B
+1496222722.228795 /dev/pts/4: \033[K
+1496222722.228815 /dev/pts/4: \033[1B
+1496222722.228833 /dev/pts/4: \033[K
+1496222722.228853 /dev/pts/4: \033[1B
+1496222722.228870 /dev/pts/4: \033[K
+1496222722.228890 /dev/pts/4: \033[1B
+1496222722.228907 /dev/pts/4: \033[K
+1496222722.228928 /dev/pts/4: \033[1B
+1496222722.228946 /dev/pts/4: \033[K
+1496222722.228966 /dev/pts/4: \033[1B
+1496222722.228983 /dev/pts/4: \033[K
+1496222722.229002 /dev/pts/4: \033[1B
+1496222722.229020 /dev/pts/4: \033[K
+1496222722.229040 /dev/pts/4: \033[1B
+1496222722.229057 /dev/pts/4: \033[K
+1496222722.229078 /dev/pts/4: \033[1B
+1496222722.229095 /dev/pts/4: \033[K
+1496222722.229115 /dev/pts/4: \033[1B
+1496222722.229132 /dev/pts/4: \033[K
+1496222722.229153 /dev/pts/4: \033[1B
+1496222722.229170 /dev/pts/4: \033[K
+1496222722.229190 /dev/pts/4: \033[1B
+1496222722.229242 /dev/pts/4: \033[K
+1496222722.229263 /dev/pts/4: \033[1B
+1496222722.229281 /dev/pts/4: \033[K
+1496222722.229301 /dev/pts/4: \033[1B
+1496222722.229320 /dev/pts/4: \033[K
+1496222722.229340 /dev/pts/4: \033[1B
+1496222722.229357 /dev/pts/4: \033[K
+1496222722.229377 /dev/pts/4: \033[1B
+1496222722.229395 /dev/pts/4: \033[K
+1496222722.229415 /dev/pts/4: \033[1B
+1496222722.229432 /dev/pts/4: \033[K
+1496222722.229452 /dev/pts/4: \033[1B
+1496222722.229469 /dev/pts/4: \033[K
+1496222722.229489 /dev/pts/4: \033[1B
+1496222722.229507 /dev/pts/4: \033[K
+1496222722.229527 /dev/pts/4: \033[1B
+1496222722.229544 /dev/pts/4: \033[K
+1496222722.229564 /dev/pts/4: \033[1B
+1496222722.229581 /dev/pts/4: \033[K
+1496222722.229601 /dev/pts/4: \033[1B
+1496222722.229619 /dev/pts/4: \033[K
+1496222722.229638 /dev/pts/4: \033[1B
+1496222722.229656 /dev/pts/4: \033[K
+1496222722.229676 /dev/pts/4: \033[1B
+1496222722.229693 /dev/pts/4: \033[K
+1496222722.229713 /dev/pts/4: \033[1B
+1496222722.229731 /dev/pts/4: \033[K
+1496222722.229750 /dev/pts/4: \033[1B
+1496222722.229768 /dev/pts/4: \033[K
+1496222722.229823 /dev/pts/4: \033[1B
+1496222722.229842 /dev/pts/4: \033[K
+1496222722.229862 /dev/pts/4: \033[1B
+1496222722.229880 /dev/pts/4: \033[K
+1496222722.229900 /dev/pts/4: \033[1B
+1496222722.229918 /dev/pts/4: \033[K
+1496222722.229938 /dev/pts/4: \033[1B
+1496222722.229956 /dev/pts/4: \033[K
+1496222722.229976 /dev/pts/4: \033[1B
+1496222722.229994 /dev/pts/4: \033[K
+1496222722.230014 /dev/pts/4: \033[1B
+1496222722.230031 /dev/pts/4: \033[K
+1496222722.230062 input_csi_dispatch: 'm' "" "39"
+1496222722.230085 input_csi_dispatch: 'm' "" "0"
+1496222722.230109 input_csi_dispatch: 'm' "" "49"
+1496222722.230132 input_csi_dispatch: 'm' "" "40"
+1496222722.230155 input_csi_dispatch: 'm' "" "39"
+1496222722.230206 screen_write_collect_end: 26  fnasrullah@fnasrullah-pc  (at 0,0)
+1496222722.230231 input_csi_dispatch: 'm' "" "44"
+1496222722.230253 input_csi_dispatch: 'm' "" "30"
+1496222722.230276 input_utf8_open 3
+1496222722.230295 input_utf8_add
+1496222722.230333 input_utf8_close 3 '\356\202\260' (width 1)
+1496222722.230370 /dev/pts/4: \033[1;27H
+1496222722.230397 /dev/pts/4: \033[30m
+1496222722.230420 /dev/pts/4: \033[44m
+1496222722.230439 /dev/pts/4: \356\202\260
+1496222722.230462 input_csi_dispatch: 'm' "" "30"
+1496222722.230489 screen_write_collect_end: 33  /opt/lampp/htdocs/silaku/public  (at 27,0)
+1496222722.230513 input_csi_dispatch: 'm' "" "43"
+1496222722.230536 input_csi_dispatch: 'm' "" "34"
+1496222722.230556 input_utf8_open 3
+1496222722.230574 input_utf8_add
+1496222722.230595 input_utf8_close 3 '\356\202\260' (width 1)
+1496222722.230619 /dev/pts/4: \033[33C
+1496222722.230642 /dev/pts/4: \033[34m
+1496222722.230665 /dev/pts/4: \033[43m
+1496222722.230683 /dev/pts/4: \356\202\260
+1496222722.230706 input_csi_dispatch: 'm' "" "30"
+1496222722.230775 screen_write_collect_end: 1   (at 61,0)
+1496222722.230799 input_utf8_open 3
+1496222722.230817 input_utf8_add
+1496222722.230838 input_utf8_close 3 '\356\202\240' (width 1)
+1496222722.230857 /dev/pts/4: \033[C
+1496222722.230881 /dev/pts/4: \033[30m
+1496222722.230899 /dev/pts/4: \356\202\240
+1496222722.230921 screen_write_collect_end: 5  cms  (at 63,0)
+1496222722.230940 input_utf8_open 3
+1496222722.230958 input_utf8_add
+1496222722.230978 input_utf8_close 3 '\342\227\217' (width 1)
+1496222722.231000 /dev/pts/4: \033[5C
+1496222722.231019 /dev/pts/4: \342\227\217
+1496222722.231039 screen_write_collect_end: 1   (at 69,0)
+1496222722.231061 input_csi_dispatch: 'm' "" "49"
+1496222722.231084 input_csi_dispatch: 'm' "" "33"
+1496222722.231104 input_utf8_open 3
+1496222722.231123 input_utf8_add
+1496222722.231142 input_utf8_close 3 '\356\202\260' (width 1)
+1496222722.231185 /dev/pts/4: \033[C
+1496222722.231204 /dev/pts/4: \033[49m
+1496222722.231228 /dev/pts/4: \033[33m
+1496222722.231245 /dev/pts/4: \356\202\260
+1496222722.231268 input_csi_dispatch: 'm' "" "39"
+1496222722.231291 screen_write_collect_end: 1   (at 71,0)
+1496222722.231310 /dev/pts/4: \033[H
+1496222722.231328 /dev/pts/4: \033[39m
+1496222722.231351 /dev/pts/4: \033[40m
+1496222722.231370 /dev/pts/4:  fnasrullah@fnasrullah-pc 
+1496222722.231388 /dev/pts/4: \033[C
+1496222722.231411 /dev/pts/4: \033[30m
+1496222722.231434 /dev/pts/4: \033[44m
+1496222722.231454 /dev/pts/4:  /opt/lampp/htdocs/silaku/public 
+1496222722.231472 /dev/pts/4: \033[C
+1496222722.231495 /dev/pts/4: \033[43m
+1496222722.231512 /dev/pts/4:  
+1496222722.231531 /dev/pts/4: \033[C
+1496222722.231549 /dev/pts/4:  cms 
+1496222722.231567 /dev/pts/4: \033[C
+1496222722.231585 /dev/pts/4:  
+1496222722.231603 /dev/pts/4: \033[C
+1496222722.231621 /dev/pts/4: \033[39m
+1496222722.231639 /dev/pts/4: \033[49m
+1496222722.231655 /dev/pts/4:  
+1496222722.231675 screen_write_collect_flush: flushed 6 items (67 bytes)
+1496222722.231694 screen_write_stop: 72 cells (72 written, 0 skipped)
+1496222722.231718 cmdq_next <global>: empty
+1496222722.231738 cmdq_next <0x739ef0>: empty
+1496222722.231761 /dev/pts/4: \033[1;40r
+1496222722.231786 /dev/pts/4: \033[1;73H
+1496222722.231854 /dev/pts/4: wrote 486 bytes (of 486)
+1496222722.232050 cmdq_next <global>: empty
+1496222722.232071 cmdq_next <0x739ef0>: empty
+1496222722.232326 %0 has 3 bytes
+1496222722.232357 @0 alerts timer reset 0
+1496222722.232380 screen_write_start: size 151x39, pane %0
+1496222722.232400 input_parse: %0 ground, 3 bytes: \033[K
+1496222722.232422 input_csi_dispatch: 'K' "" ""
+1496222722.232443 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.232465 /dev/pts/4: \033[K
+1496222722.232489 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.232507 screen_write_stop: 0 cells (0 written, 0 skipped)
+1496222722.232527 cmdq_next <global>: empty
+1496222722.232545 cmdq_next <0x739ef0>: empty
+1496222722.232589 /dev/pts/4: wrote 3 bytes (of 3)
+1496222722.232686 cmdq_next <global>: empty
+1496222722.232705 cmdq_next <0x739ef0>: empty
+1496222722.233020 %0 has 7 bytes
+1496222722.233050 @0 alerts timer reset 0
+1496222722.233074 screen_write_start: size 151x39, pane %0
+1496222722.233095 input_parse: %0 ground, 7 bytes: \033[?1h\033=
+1496222722.233184 input_csi_dispatch: 'h' "?" "1"
+1496222722.233211 input_esc_dispatch: '=', 
+1496222722.233233 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.233252 screen_write_stop: 0 cells (0 written, 0 skipped)
+1496222722.233272 cmdq_next <global>: empty
+1496222722.233290 cmdq_next <0x739ef0>: empty
+1496222722.233532 %0 has 8 bytes
+1496222722.233560 @0 alerts timer reset 0
+1496222722.233583 screen_write_start: size 151x39, pane %0
+1496222722.233603 input_parse: %0 ground, 8 bytes: \033[?2004h
+1496222722.233627 input_csi_dispatch: 'h' "?" "2004"
+1496222722.233649 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222722.233668 screen_write_stop: 0 cells (0 written, 0 skipped)
+1496222722.233687 cmdq_next <global>: empty
+1496222722.233705 cmdq_next <0x739ef0>: empty
+1496222722.233729 /dev/pts/4: \033[?2004h
+1496222722.233776 /dev/pts/4: wrote 8 bytes (of 8)
+1496222722.233888 cmdq_next <global>: empty
+1496222722.233908 cmdq_next <0x739ef0>: empty
+1496222725.500647 /dev/pts/4: read 1 bytes (already 0)
+1496222725.500781 /dev/pts/4: keys are 1 (e)
+1496222725.500864 /dev/pts/4: next key is 1 (e) (expired=0)
+1496222725.500899 /dev/pts/4: complete key e 0x65
+1496222725.500936 session 0 activity 1496222725.500923 (last 1496222721.494380)
+1496222725.500969 session 0 not pasting
+1496222725.500995 key table root (pane %0)
+1496222725.501031 writing key 0x65 (e) to %0
+1496222725.501092 cmdq_next <global>: empty
+1496222725.501124 cmdq_next <0x739ef0>: empty
+1496222725.501217 cmdq_next <global>: empty
+1496222725.501249 cmdq_next <0x739ef0>: empty
+1496222725.504572 %0 has 1 bytes
+1496222725.504639 @0 alerts timer reset 0
+1496222725.504663 screen_write_start: size 151x39, pane %0
+1496222725.504684 input_parse: %0 ground, 1 bytes: e
+1496222725.504703 screen_write_collect_end: 1 e (at 72,0)
+1496222725.504730 /dev/pts/4: e
+1496222725.504751 screen_write_collect_flush: flushed 1 items (1 bytes)
+1496222725.504767 screen_write_stop: 1 cells (1 written, 0 skipped)
+1496222725.504787 cmdq_next <global>: empty
+1496222725.504805 cmdq_next <0x739ef0>: empty
+1496222725.504858 /dev/pts/4: wrote 1 bytes (of 1)
+1496222725.504875 cmdq_next <global>: empty
+1496222725.504890 cmdq_next <0x739ef0>: empty
+1496222725.719580 /dev/pts/4: read 1 bytes (already 0)
+1496222725.719680 /dev/pts/4: keys are 1 (x)
+1496222725.719713 /dev/pts/4: next key is 1 (x) (expired=0)
+1496222725.719745 /dev/pts/4: complete key x 0x78
+1496222725.719782 session 0 activity 1496222725.719769 (last 1496222725.500923)
+1496222725.719816 session 0 not pasting
+1496222725.719842 key table root (pane %0)
+1496222725.719877 writing key 0x78 (x) to %0
+1496222725.719924 cmdq_next <global>: empty
+1496222725.719954 cmdq_next <0x739ef0>: empty
+1496222725.720035 cmdq_next <global>: empty
+1496222725.720066 cmdq_next <0x739ef0>: empty
+1496222725.720935 %0 has 3 bytes
+1496222725.721010 @0 alerts timer reset 0
+1496222725.721047 screen_write_start: size 151x39, pane %0
+1496222725.721080 input_parse: %0 ground, 3 bytes: \bex
+1496222725.721107 input_c0_dispatch: '\b'
+1496222725.721138 screen_write_collect_end: 2 ex (at 72,0)
+1496222725.721176 /dev/pts/4: \b
+1496222725.721208 /dev/pts/4: ex
+1496222725.721280 screen_write_collect_flush: flushed 1 items (2 bytes)
+1496222725.721309 screen_write_stop: 2 cells (2 written, 0 skipped)
+1496222725.721343 cmdq_next <global>: empty
+1496222725.721372 cmdq_next <0x739ef0>: empty
+1496222725.721450 /dev/pts/4: wrote 3 bytes (of 3)
+1496222725.721478 cmdq_next <global>: empty
+1496222725.721505 cmdq_next <0x739ef0>: empty
+1496222725.915092 /dev/pts/4: read 1 bytes (already 0)
+1496222725.915187 /dev/pts/4: keys are 1 (i)
+1496222725.915220 /dev/pts/4: next key is 1 (i) (expired=0)
+1496222725.915251 /dev/pts/4: complete key i 0x69
+1496222725.915287 session 0 activity 1496222725.915274 (last 1496222725.719769)
+1496222725.915320 session 0 not pasting
+1496222725.915347 key table root (pane %0)
+1496222725.915383 writing key 0x69 (i) to %0
+1496222725.915429 cmdq_next <global>: empty
+1496222725.915459 cmdq_next <0x739ef0>: empty
+1496222725.915538 cmdq_next <global>: empty
+1496222725.915569 cmdq_next <0x739ef0>: empty
+1496222725.916343 %0 has 1 bytes
+1496222725.916415 @0 alerts timer reset 0
+1496222725.916454 screen_write_start: size 151x39, pane %0
+1496222725.916486 input_parse: %0 ground, 1 bytes: i
+1496222725.916517 screen_write_collect_end: 1 i (at 74,0)
+1496222725.916559 /dev/pts/4: i
+1496222725.916593 screen_write_collect_flush: flushed 1 items (1 bytes)
+1496222725.916622 screen_write_stop: 1 cells (1 written, 0 skipped)
+1496222725.916655 cmdq_next <global>: empty
+1496222725.916684 cmdq_next <0x739ef0>: empty
+1496222725.916762 /dev/pts/4: wrote 1 bytes (of 1)
+1496222725.916790 cmdq_next <global>: empty
+1496222725.916816 cmdq_next <0x739ef0>: empty
+1496222726.097240 /dev/pts/4: read 1 bytes (already 0)
+1496222726.097335 /dev/pts/4: keys are 1 (t)
+1496222726.097369 /dev/pts/4: next key is 1 (t) (expired=0)
+1496222726.097462 /dev/pts/4: complete key t 0x74
+1496222726.097506 session 0 activity 1496222726.097494 (last 1496222725.915274)
+1496222726.097541 session 0 not pasting
+1496222726.097569 key table root (pane %0)
+1496222726.097605 writing key 0x74 (t) to %0
+1496222726.097653 cmdq_next <global>: empty
+1496222726.097683 cmdq_next <0x739ef0>: empty
+1496222726.097764 cmdq_next <global>: empty
+1496222726.097795 cmdq_next <0x739ef0>: empty
+1496222726.098644 %0 has 1 bytes
+1496222726.098719 @0 alerts timer reset 0
+1496222726.098759 screen_write_start: size 151x39, pane %0
+1496222726.098791 input_parse: %0 ground, 1 bytes: t
+1496222726.098823 screen_write_collect_end: 1 t (at 75,0)
+1496222726.098868 /dev/pts/4: t
+1496222726.098904 screen_write_collect_flush: flushed 1 items (1 bytes)
+1496222726.098933 screen_write_stop: 1 cells (1 written, 0 skipped)
+1496222726.098966 cmdq_next <global>: empty
+1496222726.098995 cmdq_next <0x739ef0>: empty
+1496222726.099072 /dev/pts/4: wrote 1 bytes (of 1)
+1496222726.099101 cmdq_next <global>: empty
+1496222726.099128 cmdq_next <0x739ef0>: empty
+1496222726.335864 /dev/pts/4: read 1 bytes (already 0)
+1496222726.335957 /dev/pts/4: keys are 1 (\r)
+1496222726.335991 /dev/pts/4: next key is 1 (\r) (expired=0)
+1496222726.336023 /dev/pts/4: complete key \r 0xd
+1496222726.336060 session 0 activity 1496222726.336046 (last 1496222726.097494)
+1496222726.336093 session 0 not pasting
+1496222726.336119 key table root (pane %0)
+1496222726.336154 writing key 0xd (Enter) to %0
+1496222726.336200 cmdq_next <global>: empty
+1496222726.336230 cmdq_next <0x739ef0>: empty
+1496222726.336310 cmdq_next <global>: empty
+1496222726.336342 cmdq_next <0x739ef0>: empty
+1496222726.340933 %0 has 34 bytes
+1496222726.340999 @0 alerts timer reset 0
+1496222726.341039 screen_write_start: size 151x39, pane %0
+1496222726.341078 input_parse: %0 ground, 34 bytes: \033[?1l\033>\033[?2004l\r\r\n\033kexit\033\\\033kexit\033\\
+1496222726.341116 input_csi_dispatch: 'l' "?" "1"
+1496222726.341158 input_esc_dispatch: '>', 
+1496222726.341195 input_csi_dispatch: 'l' "?" "2004"
+1496222726.341226 input_c0_dispatch: '\r'
+1496222726.341252 input_c0_dispatch: '\r'
+1496222726.341277 input_c0_dispatch: '\n'
+1496222726.341307 screen_write_linefeed: at 0,0 (region 0-38)
+1496222726.341335 input_enter_rename
+1496222726.341405 input_exit_rename: "exit"
+1496222726.341438 cmd_find_from_window: s=$0
+1496222726.341465 cmd_find_from_window: wl=0 1 w=@0 exit
+1496222726.341489 cmd_find_from_window: wp=%0
+1496222726.341513 cmd_find_from_window: idx=0
+1496222726.341546 input_esc_dispatch: '\\', 
+1496222726.341578 input_enter_rename
+1496222726.341606 input_exit_rename: "exit"
+1496222726.341633 cmd_find_from_window: s=$0
+1496222726.341660 cmd_find_from_window: wl=0 1 w=@0 exit
+1496222726.341684 cmd_find_from_window: wp=%0
+1496222726.341708 cmd_find_from_window: idx=0
+1496222726.341738 input_esc_dispatch: '\\', 
+1496222726.341770 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222726.341797 screen_write_stop: 0 cells (0 written, 0 skipped)
+1496222726.341828 cmdq_next <global>: enter
+1496222726.341858 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222726.341883 notify_callback: window-renamed
+1496222726.341915 session 0 has 3 references
+1496222726.341943 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222726.342081 notify_callback: window-renamed
+1496222726.342112 session 0 has 2 references
+1496222726.342137 cmdq_next <global>: exit (empty)
+1496222726.342165 cmdq_next <0x739ef0>: empty
+1496222726.342189 cmdq_next <global>: empty
+1496222726.342215 cmdq_next <0x739ef0>: empty
+1496222726.342255 screen_write_start: size 151x1, no pane
+1496222726.342331 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222726.342359 screen_write_stop: 151 cells (151 written, 0 skipped)
+1496222726.342645 format '[#S] ' -> '[0] '
+1496222726.342932 format ' "#{=21:pane_title}" 16:25 31-Mei-17' -> ' "fnasrullah-pc" 16:25 31-Mei-17'
+1496222726.343206 format '#{window_flags}' -> '*'
+1496222726.343239 format '#I:#W#{?window_flags,#{window_flags}, }' -> '0:exit*'
+1496222726.343317 screen_write_start: size 8x1, no pane
+1496222726.343356 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222726.343384 screen_write_stop: 8 cells (8 written, 0 skipped)
+1496222726.343414 screen_write_start: size 151x1, no pane
+1496222726.343462 screen_write_collect_flush: flushed 0 items (0 bytes)
+1496222726.343491 screen_write_stop: 44 cells (39 written, 5 skipped)
+1496222726.343573 /dev/pts/4: \033[?25l
+1496222726.343625 /dev/pts/4: \033[40;1H
+1496222726.343676 /dev/pts/4: \033[30m
+1496222726.343712 /dev/pts/4: \033[42m
+1496222726.343749 /dev/pts/4: [0] 0:exit*                                                                                                             "fnasrullah-pc" 16:25 31-Mei-17
+1496222726.343779 /dev/pts/4: \033(B\033[m
+1496222726.343815 /dev/pts/4: \033[2;1H
+1496222726.343845 /dev/pts/4: \033[?12l\033[?25h
+1496222726.343871 /dev/pts/4: \033[?2004l
+1496222726.343956 /dev/pts/4: wrote 206 bytes (of 206)
+1496222726.346882 cmdq_next <global>: empty
+1496222726.346934 cmdq_next <0x739ef0>: empty
+1496222726.347129 cmd_find_from_window: s=$0
+1496222726.347147 cmd_find_from_window: wl=0 1 w=@0 exit
+1496222726.347161 cmd_find_from_window: wp=%0
+1496222726.347175 cmd_find_from_window: idx=0
+1496222726.347188 cmd_find_from_pane: s=$0
+1496222726.347203 cmd_find_from_pane: wl=0 1 w=@0 exit
+1496222726.347217 cmd_find_from_pane: wp=%0
+1496222726.347230 cmd_find_from_pane: idx=0
+1496222726.347250 cmd_find_from_window: s=$0
+1496222726.347265 cmd_find_from_window: wl=0 1 w=@0 exit
+1496222726.347278 cmd_find_from_window: wp=%0
+1496222726.347291 cmd_find_from_window: idx=0
+1496222726.347332 cmd_find_from_session_window: s=$0
+1496222726.347349 cmd_find_from_session_window: wl=0 1 w=@0 exit
+1496222726.347362 cmd_find_from_session_window: wp=none
+1496222726.347376 cmd_find_from_session_window: idx=0
+1496222726.347420 session 0 destroyed
+1496222726.347445 session 0 has 6 references
+1496222726.347555 cmdq_next <global>: enter
+1496222726.347574 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222726.347589 notify_callback: pane-exited
+1496222726.347605 session 0 has 5 references
+1496222726.347621 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222726.347635 notify_callback: window-layout-changed
+1496222726.347650 session 0 has 4 references
+1496222726.347691 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222726.347706 notify_callback: window-unlinked
+1496222726.347721 session 0 has 3 references
+1496222726.347734 session 0 has 2 references
+1496222726.347750 cmdq_next <global>: callback[notify_callback] (1), flags 0
+1496222726.347764 notify_callback: session-closed
+1496222726.347779 session 0 has 1 references
+1496222726.347802 cmdq_next <global>: exit (empty)
+1496222726.347817 cmdq_next <0x739ef0>: empty
+1496222726.347831 cmdq_next <global>: empty
+1496222726.347845 cmdq_next <0x739ef0>: empty
+1496222726.347862 sending message 203 to peer 0x73a6e0 (4 bytes)
+1496222726.347919 session 0 freed (0 references)
+1496222726.347945 cmdq_next <global>: empty
+1496222726.347960 cmdq_next <0x739ef0>: empty
+1496222726.348452 peer 0x73a6e0 message 205
+1496222726.348819 sending message 204 to peer 0x73a6e0 (0 bytes)
+1496222726.348853 cmdq_next <global>: empty
+1496222726.348871 cmdq_next <0x739ef0>: empty
+1496222726.348919 cmdq_next <global>: empty
+1496222726.348938 cmdq_next <0x739ef0>: empty
+1496222726.351573 lost client 0x739ef0
+1496222726.351678 remove peer 0x73a6e0
+1496222726.351735 unref client 0x739ef0 (1 references)
+1496222726.351792 cmdq_next <global>: empty
+1496222726.351812 server loop exit

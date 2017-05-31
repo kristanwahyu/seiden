@@ -73,6 +73,37 @@
       </div>
   </div>
   {{-- AKHIR MODAL TAMBAH TAHUN ANGGARAN --}}
+
+  {{-- AWAL MODAL UBAH TAHUN ANGGARAN --}}
+  <div class="modal fade" id="modal-ubah">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Ubah Tahun Anggaran</h4>
+              </div>
+              <div class="modal-body">
+                  <form action="" method="POST" class="form-horizontal" role="form">
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Tahun Anggaran</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" id="tahun_anggaran" name="tahun_anggaran">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  {{-- AKHIR MODAL UBAH TAHUN ANGGARAN --}}
 @endsection
 
 @push('script')
@@ -88,19 +119,21 @@ $(function(){
           "1",
           "2015",
           "TIDAK AKTIF",
-          `<button class="btn btn-success btn-sm" data-toggle="modal" href='#modal-aktif'> AKTIF</button>`
+          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
+          <button class="btn btn-success btn-sm" data-toggle="modal" href='#modal-aktif'> AKTIF</button>`
       ],
       [
           "2",
           "2016",
           "TIDAK AKTIF",
-          `<button class="btn btn-success btn-sm" data-toggle="modal" href='#modal-aktif'> AKTIF</button>`
+          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
+          <button class="btn btn-success btn-sm" data-toggle="modal" href='#modal-aktif'> AKTIF</button>`
       ],
       [
           "3",
           "2017",
           "AKTIF",
-          " " // YANG MEMILIKI STATUS AKTIF, MAKA BUTTON AKTIF TIDAK DIMUNCULKAN
+          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button> ` // YANG MEMILIKI STATUS AKTIF, MAKA BUTTON AKTIF TIDAK DIMUNCULKAN
       ],
     ];
 
@@ -110,7 +143,7 @@ $(function(){
           { "title" : "#", "width" : "2%" },
           { "title" : "TAHUN ANGGARAN" },
           { "title" : "STATUS"},
-          { "title" : "ACTION","width" : "8%", "orderable": false }
+          { "title" : "ACTION","width" : "10%", "orderable": false }
       ]
   });
 
