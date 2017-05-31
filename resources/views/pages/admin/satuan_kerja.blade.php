@@ -25,7 +25,7 @@
                 </div>
                 {{-- awal panel body --}}
                 <div class="panel-body">
-                  <div class="text-left">
+                  <div class="text-right">
                       <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
                   </div>
                   <br>
@@ -149,21 +149,21 @@ $(function(){
         "1",
         "SAT001",
         "Satuan Kerja-1",
-        "AKTIF",
+        `<span class="label label-success">AKTIF</span>`,
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>`
       ],
       [
         "2",
         "SAT002",
         "Satuan Kerja-2",
-        "AKTIF",
+        `<span class="label label-danger">TIDAK AKTIF</span>`,
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>`
       ],
       [
           "3",
           "SAT003",
           "Satuan Kerja-3",
-          "AKTIF",
+          `<span class="label label-success">AKTIF</span>`,
           `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>`
       ],
     ];

@@ -25,7 +25,7 @@
                 </div>
                 {{-- awal panel body --}}
                 <div class="panel-body">
-                  <div class="text-left">
+                  <div class="text-right">
                       <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
                   </div>
                   <br>
@@ -118,21 +118,21 @@ $(function(){
       [
           "1",
           "2015",
-          "TIDAK AKTIF",
+          `<span class="label label-danger">TIDAK AKTIF</span>`,
           `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-          <button class="btn btn-success btn-sm" data-toggle="modal" href='#modal-aktif'> AKTIF</button>`
+          <button class="btn btn-primary btn-sm" data-toggle="modal" onclick="aktif()"> AKTIF</button>`
       ],
       [
           "2",
           "2016",
-          "TIDAK AKTIF",
+          `<span class="label label-danger">TIDAK AKTIF</span>`,
           `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-          <button class="btn btn-success btn-sm" data-toggle="modal" href='#modal-aktif'> AKTIF</button>`
+          <button class="btn btn-primary btn-sm" data-toggle="modal" onclick="aktif()"> AKTIF</button>`
       ],
       [
           "3",
           "2017",
-          "AKTIF",
+          `<span class="label label-success">AKTIF</span>`,
           `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button> ` // YANG MEMILIKI STATUS AKTIF, MAKA BUTTON AKTIF TIDAK DIMUNCULKAN
       ],
     ];
@@ -148,5 +148,26 @@ $(function(){
   });
 
 });
+
+function aktif(){
+    swal({
+    title: "Apakah Anda Yakin ?",
+    text: "Tahun Anggaran Ini Akan Diaktifkan ",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#00a65a",
+    confirmButtonText: "Ya, Yakin !",
+    cancelButtonText: "Tidak, Batalkan !",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm){
+    if (isConfirm) {
+      swal("Berhasil!", "Tahun Anggaran Berhasil Diaktifkan", "success");
+    } else {
+      swal('Dibatalkan', 'Tahun Anggaran Batal Diaktifkan :)', 'error');
+    }
+  });
+}
 </script>
 @endpush
