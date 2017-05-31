@@ -3,6 +3,9 @@
 <script src="{{ asset('vendor/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('js/klorofil-common.js') }}"></script>
 
+{{-- SWEETALERT JS --}}
+<script src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}"></script>
+ 
 <script>
 $(function(){
     var param = window.location.href.split("/");

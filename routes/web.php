@@ -15,6 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
+Route::get('/dashboard-admin', function () {
     return view('pages.admin.dashboard');
+});
+
+Route::get('/tahun-anggaran', function () {
+    return view('pages.admin.tahun_anggaran');
+});
+
+Route::get('/satuan-kerja', function () {
+    return view('pages.admin.satuan_kerja');
+});
+
+Route::get('/dipa', function () {
+    return view('pages.admin.dipa');
 });
