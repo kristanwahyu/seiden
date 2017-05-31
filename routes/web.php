@@ -20,3 +20,7 @@ Route::get('/satuan-kerja', function () {
 Route::get('/dipa', function () {
     return view('pages.admin.dipa');
 });
+
+Route::get('/dipa-program', function () {
+    return view('pages.admin.dipa_program');
+});

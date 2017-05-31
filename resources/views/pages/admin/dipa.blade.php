@@ -54,19 +54,19 @@ $(function(){
         "1",
         "SAT001",
         "Satuan Kerja-1",
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-pilih'> PILIH</button>`
+        `<button class="btn btn-success btn-sm" data-toggle="modal"><a href="{{ url('/dipa-program') }}"> <span style="color: white;">PILIH</span></button>`
       ],
       [
         "2",
         "SAT002",
         "Satuan Kerja-2",
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-pilih'> PILIH</button>`
+        `<button class="btn btn-success btn-sm" data-toggle="modal" href='{{ url('/dipa-program') }}'> PILIH</button>`
       ],
       [
           "3",
           "SAT003",
           "Satuan Kerja-3",
-          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-pilih'> PILIH</button>`
+          `<button class="btn btn-success btn-sm" data-toggle="modal" href='/dipa-program'> PILIH</button>`
       ],
     ];
 
