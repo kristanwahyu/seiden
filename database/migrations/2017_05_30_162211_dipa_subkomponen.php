@@ -13,12 +13,12 @@ class DipaSubkomponen extends Migration
      */
     public function up()
     {
-         Schema::create('dipa_SubKomponen', function (Blueprint $table) {
+         Schema::create('dipa_subKomponen', function (Blueprint $table) {
             $table->increments('dipa_idSubKomp');
             $table->string('dipa_kodeSubKomp',10)->nullable(false)->change();
             $table->string('dipa_namaSubKomp',100)->nullable(false)->change();
             $table->integer('dipa_idKomp')->unsigned();
-            $table->foreign('dipa_idKomp')->references('dipa_idKomp')->on('dipa_Komponen');
+            $table->foreign('dipa_idKomp')->references('dipa_idKomp')->on('dipa_komponen');
             $table->timestamps();
         });
     }

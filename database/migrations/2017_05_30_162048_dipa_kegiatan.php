@@ -13,12 +13,12 @@ class DipaKegiatan extends Migration
      */
     public function up()
     {
-         Schema::create('dipa_Kegiatan', function (Blueprint $table) {
+         Schema::create('dipa_kegiatan', function (Blueprint $table) {
             $table->increments('dipa_idKeg');
             $table->string('dipa_kodeKeg',10)->nullable(false)->change();
             $table->string('dipa_namaKeg',100)->nullable(false)->change();
             $table->integer('dipa_idProgram')->unsigned();
-            $table->foreign('dipa_idProgram')->references('dipa_idProgram')->on('dipa_Program');
+            $table->foreign('dipa_idProgram')->references('dipa_idProgram')->on('dipa_program');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class DipaKegiatan extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('dipa_Kegiatan');
+         Schema::dropIfExists('dipa_kegiatan');
     }
 }

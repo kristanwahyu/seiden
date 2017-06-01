@@ -48,3 +48,7 @@ Route::get('/dipa-subkomponen', function () {
 Route::get('/dipa-akun', function () {
     return view('pages.admin.dipa_akun');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

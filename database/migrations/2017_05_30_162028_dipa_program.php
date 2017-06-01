@@ -13,7 +13,7 @@ class DipaProgram extends Migration
      */
     public function up()
     {
-        Schema::create('dipa_Program', function (Blueprint $table) {
+        Schema::create('dipa_program', function (Blueprint $table) {
             $table->increments('dipa_idProgram');
             $table->string('dipa_kodeProgram',10)->nullable(false)->change();
             $table->string('dipa_namaProgram',100)->nullable(false)->change();
@@ -32,6 +32,6 @@ class DipaProgram extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('dipa_Program');
+         Schema::dropIfExists('dipa_program');
     }
 }
