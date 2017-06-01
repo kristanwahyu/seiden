@@ -13,11 +13,13 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
+        Schema::create('dipa_user', function (Blueprint $table) {
+            $table->increments('dipa_idUser');
+            $table->string('username',30)->unique();
+            $table->string('dipa_namaUser',70)->nullable(false)->change();
+            $table->string('dipa_passUser',100)->nullable(false)->change();
+            $table->enum('dipa_statusUser',array('0','1'))->default(1);//0 = nonaktif, 1 = aktif
+            $table->enum('dipa_jenisUser',array('1','2','3','4','6','7')); //1=admin, 2=KPA, 3=PPK, 4=satker, 5=ppsm, 6=operator SIMA, 7=operator SIBA
             $table->rememberToken();
             $table->timestamps();
         });
