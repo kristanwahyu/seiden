@@ -13,23 +13,23 @@
 
 @section('content')
   {{-- AWAL MAIN CONTENT --}}
-  <div class="main-content">
+<div class="main-content">
+    {{-- Breadcrumb --}}
+    <div class="breadcrumb-wrapper">
+        <ul class="breadcrumb">
+            <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
+            <li><a href="">DIPA</a></li>
+            <li><a href="">Satuan Kerja-1</a></li>
+            <li><a href="">PRG0001</a></li>
+            <li><a href="">KGT0001</a></li>
+            <li class="active-bread">OP0001</li>
+        </ul>
+    </div>
+    {{-- End Breadcrumb --}}
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-
-                {{-- Breadcrumb --}}
-                <div class="breadcrumb-wrapper">
-                    <ul class="breadcrumb">
-                        <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
-                        <li><a href="">DIPA</a></li>
-                        <li><a href="">Satuan Kerja-1</a></li>
-                        <li><a href="">PRG0001</a></li>
-                        <li><a href="">KGT0001</a></li>
-                        <li class="active-bread">OP0001</li>
-                    </ul>
-                </div>
-                {{-- End Breadcrumb --}}
 
                 <div class="well">
                     <div class="form-group">

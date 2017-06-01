@@ -12,23 +12,23 @@
 @endsection
 
 @section('content')
-  {{-- AWAL MAIN CONTENT --}}
-  <div class="main-content">
+{{-- AWAL MAIN CONTENT --}}
+<div class="main-content">
+    {{-- Breadcrumb --}}
+    <div class="breadcrumb-wrapper">
+        <ul class="breadcrumb">
+            <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
+            <li><a href="">DIPA</a></li>
+            <li class="active-bread">Satuan Kerja-1</li>
+        </ul>
+    </div>
+    {{-- End Breadcrumb --}}
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
 
-                {{-- Breadcrumb --}}
-                <div class="breadcrumb-wrapper">
-                    <ul class="breadcrumb">
-                        <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
-                        <li><a href="">DIPA</a></li>
-                        <li class="active-bread">Satuan Kerja-1</li>
-                    </ul>
-                </div>
-                {{-- End Breadcrumb --}}
-
-                <div class="well">
+                {{-- <div class="well">
                     <div class="form-group">
                         <table style="width:50%">
                             <tr>
@@ -57,7 +57,7 @@
                             </tr>
                         </table>
                     </div>
-                </div>
+                </div> --}}
 
                 {{-- awal tabel DIPA --}}
                 <div class="panel">
@@ -66,12 +66,90 @@
                     </div>
                     {{-- awal panel body --}}
                     <div class="panel-body">
-                        <div class="text-right">
-                            <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
+                        <div class="row detail-box">
+                            <div class="col-md-4">
+                                <table class="table table-borderless detail-table no-margin">
+                                    <tbody>
+                                        <tr>
+                                            <td>KODE SATUAN KERJA</td>
+                                            <td>:</td>
+                                            <td>SAT0001</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SATUAN KERJA</td>
+                                            <td>:</td>
+                                            <td>SATUAN KERJA-1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PROGRAM</td>
+                                            <td>:</td>
+                                            <td>PRG0001-PROGRAM1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>KEGIATAN</td>
+                                            <td>:</td>
+                                            <td>KGT0001-KEGIATAN1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-4">
+                                <table class="table table-borderless detail-table no-margin">
+                                    <tbody>
+                                        <tr>
+                                            <td>OUTPUT</td>
+                                            <td>:</td>
+                                            <td>OP0001-OUTPUT1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SUB OUTPUT</td>
+                                            <td>:</td>
+                                            <td>SOP0001-SUBOUTPUT1.1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>KOMPONEN</td>
+                                            <td>:</td>
+                                            <td>KOMPONEN1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-4">
+                                <table class="table table-borderless detail-table no-margin">
+                                    <tbody>
+                                        <tr>
+                                            <td>SUB KOMPONEN</td>
+                                            <td>:</td>
+                                            <td class="text-right">SUBKOMPONEN1.1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TAHUN ANGGARAN</td>
+                                            <td>:</td>
+                                            <td class="text-right">2017</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NILAI</td>
+                                            <td>:</td>
+                                            <td class="text-right">RP. 12.500.000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <span>Lihat Detail Program &nbsp;</span>
+                                <div class="btn-detail btn-active"><i class="fa fa-chevron-up"></i></div>
+                            </div>
                         </div>
                         <br> 
                         {{-- awal pembungkus tabel DIPA --}}
                         <div class="table-responsive">
+                            {{-- <div class="btn-filter-search"><i class="fa fa-chevron-down"></i></div> --}}
                             <table class="table table-bordered table-condensed table-striped" id="myTable">
 
                             </table>
@@ -169,9 +247,9 @@
 
 <script>
 $(function(){
-  'use strict';
-  var data = [
-      [
+    'use strict';
+    var data = [
+        [
         "1",
         "PRG0001",
         "Program-1",
@@ -179,8 +257,8 @@ $(function(){
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
         <a href="{{ url('/dipa/dipa-kegiatan') }}" class="btn btn-success" role="button"> Pilih</a>`
-      ],
-      [
+        ],
+        [
         "2",
         "PRG0002",
         "Program-2",
@@ -188,19 +266,26 @@ $(function(){
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
         <a href="{{ url('/dipa/dipa-kegiatan') }}" class="btn btn-success" role="button"> Pilih</a>`
-      ],
+        ],
     ];
 
-  $('#myTable').DataTable({
-      "data" : data,
-      "columns" : [
-          { "title" : "#", "width" : "2%" },
-          { "title" : "KODE PROGRAM" },
-          { "title" : "NAMA PROGRAM" },
-          { "title" : "NILAI" },
-          { "title" : "AKSI","width" : "16%", "orderable": false }
-      ]
-  });
+    $('#myTable').DataTable({
+        "data" : data,
+        "columns" : [
+            { "title" : "#", "width" : "2%" },
+            { "title" : "KODE PROGRAM" },
+            { "title" : "NAMA PROGRAM" },
+            { "title" : "NILAI" },
+            { "title" : "AKSI","width" : "16%", "orderable": false }
+        ]
+    });
+
+    //btn filter search
+    $('.btn-detail').click(function(){
+        $('.detail-box').slideToggle(200);
+        $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
+        $(this).toggleClass('btn-active');
+    });
 
 });
 
@@ -215,16 +300,16 @@ function tambah(){
     cancelButtonText: "Tidak, Batalkan !",
     closeOnConfirm: false,
     closeOnCancel: false
-  },
-  function(isConfirm){
+    },
+    function(isConfirm){
     if (isConfirm) {
-      swal("Berhasil!", "Data Program Berhasil Simpan", "success");
-      $('#modal-tambah').modal('hide');
+        swal("Berhasil!", "Data Program Berhasil Simpan", "success");
+        $('#modal-tambah').modal('hide');
     } else {
-      swal('Dibatalkan', 'Data Program Batal Simpan :)', 'error');
-      $('#modal-tambah').modal('hide');
+        swal('Dibatalkan', 'Data Program Batal Simpan :)', 'error');
+        $('#modal-tambah').modal('hide');
     }
-  });
+    });
 }
 
 function ubah(){
