@@ -18,6 +18,7 @@ class DipaSatKerja extends Migration
             $table->string('dipa_kodeSK',10)->nullable(false)->change();
             $table->string('dipa_namaSK',50)->nullable(false)->change();
             $table->enum('dipa_statusSK',array('0','1'))->default(0);//0 = nonaktif, 1 = aktif
+            $table->timestamps();
         });
     }
 
