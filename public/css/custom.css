@@ -1,7 +1,7 @@
 /* Navbar */
 
 .navbar-default .brand{
-    padding: 12px 85px 10px 39px;
+    padding: 15px 30px 10px 20px;
 }
 
 .navbar-btn{
@@ -50,10 +50,22 @@
 
 /* End Sidebar */
 
+/* Breadcrumb */
+.breadcrumb{
+    background-color: #fff;
+}
+.breadcrumb > li > a{
+    color: #2B333E;
+}
+.breadcrumb > li.active-bread{
+    color: #337ab7;
+}
+/* End Breadcrumb*/
+
 /* Content */
 body{
     font-family: "calibri", "Source Sans Pro", sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     min-height: 100%;
     background-color: #e9ebee;
 }
@@ -87,6 +99,12 @@ hr{
     background-color: #fff;
     border-radius: 3px;
     border: 1px solid #d6d6d6;
+}
+
+.panel, .auth-box, .breadcrumb-wrapper{
+    -webkit-box-shadow : 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+	box-shadow : 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
 }
 
 .valign-middle{

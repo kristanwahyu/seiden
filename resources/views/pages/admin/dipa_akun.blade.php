@@ -14,93 +14,139 @@
 @section('content')
   {{-- AWAL MAIN CONTENT --}}
   <div class="main-content">
-      <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
 
-              <div class="well">
-                <div class="form-group">
-                  <table style="width:50%">
-                    <tr>
-                      <td><b><h3>Kode Satuan Kerja </h3></b></td>
-                      <td><b><h3> : </h3></b></td>
-                      <td><b><h3> SAT001</h3></b></td>
-                    </tr>
-                    <tr>
-                      <td><b><h3>Satuan Kerja </h3></b></td>
-                      <td><b><h3> : </h3></b></td>
-                      <td><b><h3> Satuan Kerja-1</h3></b></td>
-                    </tr>
-                    <tr>
-                      <td><b><h3>Program </h3></b></td>
-                      <td><b><h3> : </h3></b></td>
-                      <td><b><h3> PRG0001 - Program-1</h3></b></td>
-                    </tr>
-                    <tr>
-                      <td><b><h3>Kegiatan </h3></b></td>
-                      <td><b><h3> : </h3></b></td>
-                      <td><b><h3> KGT00001 - Kegiatan-1</h3></b></td>
-                    </tr>
-                    <tr>
-                      <td><b><h3>Output </h3></b></td>
-                      <td><b><h3> : </h3></b></td>
-                      <td><b><h3> OP00001 - Output-1.1</h3></b></td>
-                    </tr>
-                    <tr>
-                      <td><b><h3>Sub Output </h3></b></td>
-                      <td><b><h3> : </h3></b></td>
-                      <td><b><h3> SOP00001 - SubOutput-1.1</h3></b></td>
-                    </tr>
-                    <tr>
-                      <td><b><h3>Komponen </h3></b></td>
-                      <td><b><h3> : </h3></b></td>
-                      <td><b><h3> KP00001 - Komponen-1.1</h3></b></td>
-                    </tr>
-                    <tr>
-                      <td><b><h3>Sub Komponen </h3></b></td>
-                      <td><b><h3> : </h3></b></td>
-                      <td><b><h3> SKP00001 - SubKomponen-1.1</h3></b></td>
-                    </tr>
-                    <tr>
-                      <td><b><h3>Tahun Anggaran </h3></b></td>
-                      <td><b><h3> : </h3></b></td>
-                      <td><b><h3> 2017</h3></b></td>
-                    </tr>
-                    <tr>
-                      <td><b><h3>Nilai </h3></b></td>
-                      <td><b><h3> : </h3></b></td>
-                      <td><b><h3> Rp. 12.500.000</h3></b></td>
-                    </tr>
-                  </table>
+                {{-- Breadcrumb --}}
+                <div class="breadcrumb-wrapper">
+                    <ul class="breadcrumb">
+                        <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
+                        <li><a href="">DIPA</a></li>
+                        <li><a href="">Satuan Kerja-1</a></li>
+                        <li><a href="">PRG0001</a></li>
+                        <li><a href="">KGT0001</a></li>
+                        <li><a href="">OP0001</a></li>
+                        <li><a href="">SOP0001</a></li>
+                        <li><a href="">KP0001</a></li>
+                        <li class="active-bread">SKP0001</li>
+                    </ul>
                 </div>
-              </div>
+                {{-- End Breadcrumb --}}
 
-              {{-- awal tabel DIPA --}}
-              <div class="panel">
-                <div class="panel-heading">
-                    <h3 class="panel-title">DIPA Akun</h3>
+                <div class="well">
+                    <div class="form-group">
+                        <table style="width:50%">
+                            <tr>
+                                <td><b><h3>Kode Satuan Kerja </h3></b>
+                                </td>
+                                <td><b><h3> : </h3></b>
+                                </td>
+                                <td><b><h3> SAT001</h3></b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b><h3>Satuan Kerja </h3></b>
+                                </td>
+                                <td><b><h3> : </h3></b>
+                                </td>
+                                <td><b><h3> Satuan Kerja-1</h3></b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b><h3>Program </h3></b>
+                                </td>
+                                <td><b><h3> : </h3></b>
+                                </td>
+                                <td><b><h3> PRG0001 - Program-1</h3></b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b><h3>Kegiatan </h3></b>
+                                </td>
+                                <td><b><h3> : </h3></b>
+                                </td>
+                                <td><b><h3> KGT00001 - Kegiatan-1</h3></b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b><h3>Output </h3></b>
+                                </td>
+                                <td><b><h3> : </h3></b>
+                                </td>
+                                <td><b><h3> OP00001 - Output-1.1</h3></b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b><h3>Sub Output </h3></b>
+                                </td>
+                                <td><b><h3> : </h3></b>
+                                </td>
+                                <td><b><h3> SOP00001 - SubOutput-1.1</h3></b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b><h3>Komponen </h3></b>
+                                </td>
+                                <td><b><h3> : </h3></b>
+                                </td>
+                                <td><b><h3> KP00001 - Komponen-1.1</h3></b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b><h3>Sub Komponen </h3></b>
+                                </td>
+                                <td><b><h3> : </h3></b>
+                                </td>
+                                <td><b><h3> SKP00001 - SubKomponen-1.1</h3></b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b><h3>Tahun Anggaran </h3></b>
+                                </td>
+                                <td><b><h3> : </h3></b>
+                                </td>
+                                <td><b><h3> 2017</h3></b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b><h3>Nilai </h3></b>
+                                </td>
+                                <td><b><h3> : </h3></b>
+                                </td>
+                                <td><b><h3> Rp. 12.500.000</h3></b>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                {{-- awal panel body --}}
-                <div class="panel-body">
-                  <div class="text-right">
-                      <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
-                  </div>
-                  <br>
-                  {{-- awal pembungkus tabel DIPA --}}
-                  <div class="table-responsive">
-                      <table class="table table-bordered table-condensed table-striped" id="myTable">
 
-                      </table>
-                  </div> {{-- akhir pembungkus tabel DIPA --}}
-                  <div class="text-left">
-                      <a href="{{ url('/dipa/dipa-subkomponen') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
-                  </div>
-                </div> {{-- akhir panel body --}}
-              </div> {{-- akhir tabel DIPA --}}
+                {{-- awal tabel DIPA --}}
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">DIPA Akun</h3>
+                    </div>
+                    {{-- awal panel body --}}
+                    <div class="panel-body">
+                        <div class="text-right">
+                            <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
+                        </div>
+                        <br> 
+                        {{-- awal pembungkus tabel DIPA --}}
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-condensed table-striped" id="myTable">
+
+                            </table>
+                        </div> {{-- akhir pembungkus tabel DIPA --}}
+                        <div class="text-left">
+                            <a href="{{ url('/dipa/dipa-subkomponen') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
+                        </div>
+                    </div> {{-- akhir panel body --}}
+                </div> {{-- akhir tabel DIPA --}}
             </div>
         </div>
-      </div>
-  </div>
+    </div>
+</div>
   {{-- AKHIR MAIN CONTENT --}}
 
   {{-- AWAL MODAL TAMBAH AKUN --}}
