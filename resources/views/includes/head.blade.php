@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="{{ asset('vendor/linearicons/style.css') }}">
 <!-- <link rel="stylesheet" href="{{ asset('vendor/chartist/css/chartist-custom.css') }}"> -->
 
+{{-- SWEETALERT CSS --}}
+<link rel="stylesheet" href="{{ asset('vendor/sweetalert/sweetalert.css') }}">
 
 <!-- CHART CSS
 <link rel="stylesheet" href="{{ asset('vendor/chartist/css/chartist-custom.css') }}"> -->
@@ -24,5 +26,5 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 
 <!-- ICONS -->
-<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/apple-icon.png') }}">
-<link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/logo.png') }}">
+<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/favicon.png') }}">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/favicon.png') }}">

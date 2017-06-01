@@ -1,0 +1,69 @@
+1496222721.385059 client started (32399): version 2.4, socket /tmp/tmux-1000/default, protocol 8
+1496222721.385173 on Linux 4.4.70-1-MANJARO #1 SMP PREEMPT Thu May 25 20:19:20 UTC 2017; libevent 2.0.22-stable (poll)
+1496222721.385312 socket is /tmp/tmux-1000/default
+1496222721.385359 trying connect
+1496222721.385435 connect failed: No such file or directory
+1496222721.385490 lock file is /tmp/tmux-1000/default.lock
+1496222721.385591 flock succeeded
+1496222721.385619 got lock (6)
+1496222721.385651 trying connect
+1496222721.385702 connect failed: No such file or directory
+1496222721.386351 add peer 0x70c150: 7 ((nil))
+1496222721.386742 sending message 100 to peer 0x70c150 (4 bytes)
+1496222721.386805 sending message 101 to peer 0x70c150 (15 bytes)
+1496222721.386843 sending message 102 to peer 0x70c150 (11 bytes)
+1496222721.386879 sending message 108 to peer 0x70c150 (32 bytes)
+1496222721.386922 sending message 104 to peer 0x70c150 (0 bytes)
+1496222721.386959 sending message 107 to peer 0x70c150 (4 bytes)
+1496222721.386994 sending message 105 to peer 0x70c150 (25 bytes)
+1496222721.387028 sending message 105 to peer 0x70c150 (88 bytes)
+1496222721.387062 sending message 105 to peer 0x70c150 (17 bytes)
+1496222721.387095 sending message 105 to peer 0x70c150 (11 bytes)
+1496222721.387129 sending message 105 to peer 0x70c150 (8 bytes)
+1496222721.387163 sending message 105 to peer 0x70c150 (19 bytes)
+1496222721.387239 sending message 105 to peer 0x70c150 (36 bytes)
+1496222721.387278 sending message 105 to peer 0x70c150 (47 bytes)
+1496222721.387313 sending message 105 to peer 0x70c150 (20 bytes)
+1496222721.387345 sending message 105 to peer 0x70c150 (25 bytes)
+1496222721.387377 sending message 105 to peer 0x70c150 (40 bytes)
+1496222721.387648 sending message 105 to peer 0x70c150 (23 bytes)
+1496222721.387748 sending message 105 to peer 0x70c150 (23 bytes)
+1496222721.387841 sending message 105 to peer 0x70c150 (20 bytes)
+1496222721.387937 sending message 105 to peer 0x70c150 (44 bytes)
+1496222721.388030 sending message 105 to peer 0x70c150 (30 bytes)
+1496222721.388125 sending message 105 to peer 0x70c150 (27 bytes)
+1496222721.388218 sending message 105 to peer 0x70c150 (21 bytes)
+1496222721.388260 sending message 105 to peer 0x70c150 (23 bytes)
+1496222721.388352 sending message 105 to peer 0x70c150 (24 bytes)
+1496222721.388444 sending message 105 to peer 0x70c150 (92 bytes)
+1496222721.388562 sending message 105 to peer 0x70c150 (17 bytes)
+1496222721.388747 sending message 105 to peer 0x70c150 (32 bytes)
+1496222721.388844 sending message 105 to peer 0x70c150 (17 bytes)
+1496222721.388937 sending message 105 to peer 0x70c150 (30 bytes)
+1496222721.389031 sending message 105 to peer 0x70c150 (19 bytes)
+1496222721.389123 sending message 105 to peer 0x70c150 (20 bytes)
+1496222721.389214 sending message 105 to peer 0x70c150 (15 bytes)
+1496222721.389320 sending message 105 to peer 0x70c150 (20 bytes)
+1496222721.389413 sending message 105 to peer 0x70c150 (27 bytes)
+1496222721.389615 sending message 105 to peer 0x70c150 (91 bytes)
+1496222721.389707 sending message 105 to peer 0x70c150 (22 bytes)
+1496222721.389747 sending message 105 to peer 0x70c150 (16 bytes)
+1496222721.389839 sending message 105 to peer 0x70c150 (31 bytes)
+1496222721.389929 sending message 105 to peer 0x70c150 (23 bytes)
+1496222721.390020 sending message 105 to peer 0x70c150 (39 bytes)
+1496222721.390110 sending message 105 to peer 0x70c150 (26 bytes)
+1496222721.390200 sending message 105 to peer 0x70c150 (11 bytes)
+1496222721.390290 sending message 105 to peer 0x70c150 (8 bytes)
+1496222721.390379 sending message 105 to peer 0x70c150 (32 bytes)
+1496222721.390580 sending message 105 to peer 0x70c150 (1516 bytes)
+1496222721.390707 sending message 105 to peer 0x70c150 (21 bytes)
+1496222721.390827 sending message 105 to peer 0x70c150 (16 bytes)
+1496222721.390926 sending message 106 to peer 0x70c150 (0 bytes)
+1496222721.391021 sending message 200 to peer 0x70c150 (4 bytes)
+1496222721.391109 client loop enter
+1496222721.507039 peer 0x70c150 message 207
+1496222721.507103 sending message 208 to peer 0x70c150 (0 bytes)
+1496222726.348110 peer 0x70c150 message 203
+1496222726.348139 sending message 205 to peer 0x70c150 (0 bytes)
+1496222726.349076 peer 0x70c150 message 204
+1496222726.349102 client loop exit

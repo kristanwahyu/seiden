@@ -2,7 +2,7 @@
     <div class="sidebar-scroll">
         <nav>
             <ul class="nav">
-              <li class="sb-nav-child"><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+              <li class="sb-nav-child"><a href="{{ url('/dashboard-admin') }}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
               {{-- <li class="sb-nav-child sb-has-child">
                   <a href="#report" data-toggle="collapse" class="collapsed"><i class="fa fa-book"></i> <span>Master</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                   <div id="report" class="collapse ">

@@ -14,7 +14,9 @@
 @section('content')
   <div class="main-content">
       <div class="container-fluid">
-        Ini Halaman Dashboard Admin !!!
+        <div class="jumbotron">
+          <h1>Selamat Datang DiHalaman Dashboard Admin DIPA PAPUA</h1>
+        </div>
       </div>
   </div>
 @endsection
