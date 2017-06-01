@@ -72,8 +72,8 @@
                               <div class="form-group">
                                 <label class="col-sm-3 control-label">Status</label>
                                 <div class="col-sm-8">
-                                  <label class="radio-inline"><input type="radio" id="aktif" name="aktif">Aktif</label>
-                                  <label class="radio-inline"><input type="radio" id="tidak_aktif" name="tidak_aktif">Tidak Aktif</label>
+                                  <label class="radio-inline"><input type="radio" id="aktif" name="status">Aktif</label>
+                                  <label class="radio-inline"><input type="radio" id="tidak_aktif" name="status">Tidak Aktif</label>
                                 </div>
                               </div>
                           </div>
@@ -118,8 +118,8 @@
                               <div class="form-group">
                                 <label class="col-sm-3 control-label">Status</label>
                                 <div class="col-sm-8">
-                                  <label class="radio-inline"><input type="radio" id="aktif" name="aktif">Aktif</label>
-                                  <label class="radio-inline"><input type="radio" id="tidak_aktif" name="tidak_aktif">Tidak Aktif</label>
+                                  <label class="radio-inline"><input type="radio" id="aktif" name="ubah_status">Aktif</label>
+                                  <label class="radio-inline"><input type="radio" id="tidak_aktif" name="ubah_status">Tidak Aktif</label>
                                 </div>
                               </div>
                           </div>
