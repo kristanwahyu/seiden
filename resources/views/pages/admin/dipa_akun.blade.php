@@ -233,7 +233,7 @@ $(function(){
         "Rp. 7.500.000",
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa-komponen') }}" class="btn btn-success" role="button"> Pilih</a>`
+        <a href="{{ url('/#') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
       [
         "2",
@@ -245,7 +245,7 @@ $(function(){
         "Rp. 5.000.000",
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa-komponen') }}" class="btn btn-success" role="button"> Pilih</a>`
+        <a href="{{ url('/#') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
     ];
 
