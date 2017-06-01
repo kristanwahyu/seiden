@@ -36,3 +36,15 @@ Route::get('/dipa-output', function () {
 Route::get('/dipa-suboutput', function () {
     return view('pages.admin.dipa_suboutput');
 });
+
+Route::get('/dipa-komponen', function () {
+    return view('pages.admin.dipa_komponen');
+});
+
+Route::get('/dipa-subkomponen', function () {
+    return view('pages.admin.dipa_subkomponen');
+});
+
+Route::get('/dipa-akun', function () {
+    return view('pages.admin.dipa_akun');
+});

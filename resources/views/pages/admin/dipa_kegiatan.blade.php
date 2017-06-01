@@ -32,7 +32,7 @@
                       <td><b><h3> Satuan Kerja-1</h3></b></td>
                     </tr>
                     <tr>
-                      <td><b><h3>Kegiatan </h3></b></td>
+                      <td><b><h3>Program </h3></b></td>
                       <td><b><h3> : </h3></b></td>
                       <td><b><h3> PRG0001 - Kegiatan-1</h3></b></td>
                     </tr>
@@ -68,7 +68,7 @@
                       </table>
                   </div> {{-- akhir pembungkus tabel DIPA --}}
                   <div class="text-left">
-                      <a href="{{ url('/dipa-Kegiatan') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
+                      <a href="{{ url('/dipa-program') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                   </div>
                 </div> {{-- akhir panel body --}}
               </div> {{-- akhir tabel DIPA --}}

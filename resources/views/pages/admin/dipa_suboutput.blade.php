@@ -32,9 +32,9 @@
                       <td><b><h3> Satuan Kerja-1</h3></b></td>
                     </tr>
                     <tr>
-                      <td><b><h3>Sub Output </h3></b></td>
+                      <td><b><h3>Program </h3></b></td>
                       <td><b><h3> : </h3></b></td>
-                      <td><b><h3> PRG0001 - Sub Output-1</h3></b></td>
+                      <td><b><h3> PRG0001 - Program-1</h3></b></td>
                     </tr>
                     <tr>
                       <td><b><h3>Kegiatan </h3></b></td>
@@ -54,7 +54,7 @@
                     <tr>
                       <td><b><h3>Nilai </h3></b></td>
                       <td><b><h3> : </h3></b></td>
-                      <td><b><h3> Rp. 300.000.000</h3></b></td>
+                      <td><b><h3> Rp. 50.000.000</h3></b></td>
                     </tr>
                   </table>
                 </div>
@@ -179,7 +179,7 @@ $(function(){
         "Rp. 25.000.000",
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa-suboutput') }}" class="btn btn-success" role="button"> Pilih</a>`
+        <a href="{{ url('/dipa-komponen') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
       [
         "2",
@@ -188,7 +188,7 @@ $(function(){
         "Rp. 25.000.000",
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa-suboutput') }}" class="btn btn-success" role="button"> Pilih</a>`
+        <a href="{{ url('/dipa-komponen') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
     ];
 
