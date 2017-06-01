@@ -9,6 +9,10 @@ Route::get('/dashboard-admin', function () {
     return view('pages.admin.dashboard');
 });
 
+Route::get('/user', function () {
+    return view('pages.admin.user');
+});
+
 Route::get('/tahun-anggaran', function () {
     return view('pages.admin.tahun_anggaran');
 });
