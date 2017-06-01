@@ -12,6 +12,10 @@ Route::group(['middleware' => 'auth'], function () {
             return view('pages.admin.dashboard');
         });
 
+        Route::get('/user', function () {
+            return view('pages.admin.user');
+        });
+
         Route::get('/tahun-anggaran', function () {
             return view('pages.admin.tahun_anggaran');
         });
@@ -29,35 +33,33 @@ Route::group(['middleware' => 'auth'], function () {
             return view('pages.admin.dipa');
         });
 
-        Route::get('/dipa-program', function () {
+        Route::get('/dipa/dipa-program', function () {
             return view('pages.admin.dipa_program');
         });
 
-        Route::get('/dipa-kegiatan', function () {
+        Route::get('/dipa/dipa-kegiatan', function () {
             return view('pages.admin.dipa_kegiatan');
         });
 
-        Route::get('/dipa-output', function () {
+        Route::get('/dipa/dipa-output', function () {
             return view('pages.admin.dipa_output');
         });
 
-        Route::get('/dipa-suboutput', function () {
+        Route::get('/dipa/dipa-suboutput', function () {
             return view('pages.admin.dipa_suboutput');
         });
 
-        Route::get('/dipa-komponen', function () {
+        Route::get('/dipa/dipa-komponen', function () {
             return view('pages.admin.dipa_komponen');
         });
 
-        Route::get('/dipa-subkomponen', function () {
+        Route::get('/dipa/dipa-subkomponen', function () {
             return view('pages.admin.dipa_subkomponen');
         });
 
-        Route::get('/dipa-akun', function () {
+        Route::get('/dipa/dipa-akun', function () {
             return view('pages.admin.dipa_akun');
         });
-    });
-});
 //==============+++END ADMIN+++============//
 
 Auth::routes();

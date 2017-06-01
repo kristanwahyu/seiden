@@ -14,15 +14,19 @@
 @section('content')
   {{-- AWAL MAIN CONTENT --}}
   <div class="main-content">
-      <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
 
-              {{-- awal tabel satuan kerja --}}
-              <div class="panel">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Satuan Kerja</h3>
+                {{-- Breadcrumb --}}
+                <div class="breadcrumb-wrapper">
+                    <ul class="breadcrumb">
+                        <li><a href=""><i class="fa fa-home fa-fw"></i></a>
+                        </li>
+                        <li class="active-bread">Satuan Kerja</li>
+                    </ul>
                 </div>
+<<<<<<< HEAD
                 {{-- awal panel body --}}
                 <div class="panel-body">
                   <div class="text-right">
@@ -36,10 +40,33 @@
                   </div> {{-- akhir pembungkus tabel satuan kerja --}}
                 </div> {{-- akhir panel body --}}
               </div> {{-- akhir tabel satuan kerja --}}
+=======
+                {{-- End Breadcrumb --}} 
+              
+              	{{-- awal tabel satuan kerja --}}
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Satuan Kerja</h3>
+                    </div>
+                    {{-- awal panel body --}}
+                    <div class="panel-body">
+                        <div class="text-right">
+                            <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
+                        </div>
+                        <br> 
+                        {{-- awal pembungkus tabel satuan kerja --}}
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-condensed table-striped" id="myTable">
+
+                            </table>
+                        </div> {{-- akhir pembungkus tabel satuan kerja --}}
+                    </div> {{-- akhir panel body --}}
+                </div> {{-- akhir tabel satuan kerja --}}
+>>>>>>> cms
             </div>
         </div>
-      </div>
-  </div>
+    </div>
+</div>
   {{-- AKHIR MAIN CONTENT --}}
 
   {{-- AWAL MODAL TAMBAH SATUAN KERJA --}}
