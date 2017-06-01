@@ -14,10 +14,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
+    protected $table = ['dipa_user'];
+    protected $primaryKey = 'dipa_idUser';
+    protected $guarded = ['updated_at'];
     /**
      * The attributes that should be hidden for arrays.
      *
