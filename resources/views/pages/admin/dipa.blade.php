@@ -24,7 +24,7 @@
                 {{-- awal panel body --}}
                 <div class="panel-body">
                   <div class="text-right">
-                      <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
+                      <span class="label label-primary">Tahun Aktif : 2017</span>
                   </div>
                   <br>
                   {{-- awal pembungkus tabel DIPA --}}
@@ -54,19 +54,19 @@ $(function(){
         "1",
         "SAT001",
         "Satuan Kerja-1",
-        `<button class="btn btn-success btn-sm" data-toggle="modal"><a href="{{ url('/dipa-program') }}"> <span style="color: white;">PILIH</span></button>`
+        `<a href="{{ url('/dipa-program') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
       [
         "2",
         "SAT002",
         "Satuan Kerja-2",
-        `<button class="btn btn-success btn-sm" data-toggle="modal" href='{{ url('/dipa-program') }}'> PILIH</button>`
+        `<a href="{{ url('/dipa-program') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
       [
           "3",
           "SAT003",
           "Satuan Kerja-3",
-          `<button class="btn btn-success btn-sm" data-toggle="modal" href='/dipa-program'> PILIH</button>`
+          `<a href="{{ url('/dipa-program') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
     ];
 
@@ -74,9 +74,9 @@ $(function(){
       "data" : data,
       "columns" : [
           { "title" : "#", "width" : "2%" },
-          { "title" : "KODE" },
+          { "title" : "KODE SATUAN KERJA" },
           { "title" : "SATUAN KERJA" },
-          { "title" : "ACTION","width" : "5%", "orderable": false }
+          { "title" : "AKSI","width" : "5%", "orderable": false }
       ]
   });
 

@@ -24,3 +24,15 @@ Route::get('/dipa', function () {
 Route::get('/dipa-program', function () {
     return view('pages.admin.dipa_program');
 });
+
+Route::get('/dipa-kegiatan', function () {
+    return view('pages.admin.dipa_kegiatan');
+});
+
+Route::get('/dipa-output', function () {
+    return view('pages.admin.dipa_output');
+});
+
+Route::get('/dipa-suboutput', function () {
+    return view('pages.admin.dipa_suboutput');
+});

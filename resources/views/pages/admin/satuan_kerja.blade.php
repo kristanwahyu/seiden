@@ -58,14 +58,14 @@
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Kode Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="kode_satuan_kerja" name="kode_satuan_kerja" placeholder="Contoh : SAT001">
+                                      <input type="text" class="form-control" id="tambah_kode_satuan_kerja" name="tambah_kode_satuan_kerja" placeholder="Contoh : SAT001">
                                   </div>
                               </div>
 
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="satuan_kerja" name="satuan_kerja" placeholder="Contoh : Satuan Kerja-1">
+                                      <input type="text" class="form-control" id="tambah_satuan_kerja" name="tambah_satuan_kerja" placeholder="Contoh : Satuan Kerja-1">
                                   </div>
                               </div>
 
@@ -81,7 +81,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-primary" onclick="tambah()">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -104,14 +104,14 @@
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Kode Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="kode_satuan_kerja" name="kode_satuan_kerja">
+                                      <input type="text" class="form-control" id="ubah_kode_satuan_kerja" name="ubah_kode_satuan_kerja">
                                   </div>
                               </div>
 
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="satuan_kerja" name="satuan_kerja">
+                                      <input type="text" class="form-control" id="ubah_satuan_kerja" name="ubah_satuan_kerja">
                                   </div>
                               </div>
 
@@ -127,7 +127,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-primary" onclick="ubah()">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -175,10 +175,56 @@ $(function(){
           { "title" : "KODE" },
           { "title" : "SATUAN KERJA" },
           { "title" : "STATUS"},
-          { "title" : "ACTION","width" : "5%", "orderable": false }
+          { "title" : "AKSI","width" : "5%", "orderable": false }
       ]
   });
 
 });
+
+function tambah(){
+    swal({
+    title: "Apakah Anda Yakin ?",
+    text: "Data Satuan Kerja Ini Akan Disimpan ",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#00a65a",
+    confirmButtonText: "Ya, Yakin !",
+    cancelButtonText: "Tidak, Batalkan !",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm){
+    if (isConfirm) {
+      swal("Berhasil!", "Data Satuan Kerja Berhasil Simpan", "success");
+      $('#modal-tambah').modal('hide');
+    } else {
+      swal('Dibatalkan', 'Data Satuan Kerja Batal Simpan :)', 'error');
+      $('#modal-tambah').modal('hide');
+    }
+  });
+}
+
+function ubah(){
+    swal({
+    title: "Apakah Anda Yakin ?",
+    text: "Data Satuan Kerja Ini Akan Diubah ",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#00a65a",
+    confirmButtonText: "Ya, Yakin !",
+    cancelButtonText: "Tidak, Batalkan !",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm){
+    if (isConfirm) {
+      swal("Berhasil!", "Data Satuan Kerja Berhasil Diubah", "success");
+      $('#modal-ubah').modal('hide');
+    } else {
+      swal('Dibatalkan', 'Data Satuan Kerja Batal Diubah :)', 'error');
+      $('#modal-ubah').modal('hide');
+    }
+  });
+}
 </script>
 @endpush

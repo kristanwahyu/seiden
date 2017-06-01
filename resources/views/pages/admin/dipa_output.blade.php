@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
 @endpush
 
-@section('title', 'Tahun Anggaran')
+@section('title', 'DIPA Output')
 
 @section('sidebar')
     @include('sidebar.admin')
@@ -18,10 +18,47 @@
         <div class="row">
             <div class="col-md-12">
 
-              {{-- awal tabel tahun anggaran --}}
+              <div class="well">
+                <div class="form-group">
+                  <table style="width:50%">
+                    <tr>
+                      <td><b><h3>Kode Satuan Kerja </h3></b></td>
+                      <td><b><h3> : </h3></b></td>
+                      <td><b><h3> SAT001</h3></b></td>
+                    </tr>
+                    <tr>
+                      <td><b><h3>Satuan Kerja </h3></b></td>
+                      <td><b><h3> : </h3></b></td>
+                      <td><b><h3> Satuan Kerja-1</h3></b></td>
+                    </tr>
+                    <tr>
+                      <td><b><h3>Output </h3></b></td>
+                      <td><b><h3> : </h3></b></td>
+                      <td><b><h3> PRG0001 - Output-1</h3></b></td>
+                    </tr>
+                    <tr>
+                      <td><b><h3>Kegiatan </h3></b></td>
+                      <td><b><h3> : </h3></b></td>
+                      <td><b><h3> KGT00001 - Kegiatan-1</h3></b></td>
+                    </tr>
+                    <tr>
+                      <td><b><h3>Tahun Anggaran </h3></b></td>
+                      <td><b><h3> : </h3></b></td>
+                      <td><b><h3> 2017</h3></b></td>
+                    </tr>
+                    <tr>
+                      <td><b><h3>Nilai </h3></b></td>
+                      <td><b><h3> : </h3></b></td>
+                      <td><b><h3> Rp. 300.000.000</h3></b></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+              {{-- awal tabel DIPA --}}
               <div class="panel">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Tahun Anggaran</h3>
+                    <h3 class="panel-title">DIPA Output</h3>
                 </div>
                 {{-- awal panel body --}}
                 <div class="panel-body">
@@ -29,36 +66,45 @@
                       <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
                   </div>
                   <br>
-                  {{-- awal pembungkus tabel tahun anggaran --}}
+                  {{-- awal pembungkus tabel DIPA --}}
                   <div class="table-responsive">
                       <table class="table table-bordered table-condensed table-striped" id="myTable">
 
                       </table>
-                  </div> {{-- akhir pembungkus tabel tahun anggaran --}}
+                  </div> {{-- akhir pembungkus tabel DIPA --}}
+                  <div class="text-left">
+                      <a href="{{ url('/dipa-kegiatan') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
+                  </div>
                 </div> {{-- akhir panel body --}}
-              </div> {{-- akhir tabel tahun anggaran --}}
+              </div> {{-- akhir tabel DIPA --}}
             </div>
         </div>
       </div>
   </div>
   {{-- AKHIR MAIN CONTENT --}}
 
-  {{-- AWAL MODAL TAMBAH TAHUN ANGGARAN --}}
+  {{-- AWAL MODAL TAMBAH OUTPUT --}}
   <div class="modal fade" id="modal-tambah">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Tambah Tahun Anggaran</h4>
+                  <h4 class="modal-title">Tambah Output</h4>
               </div>
               <div class="modal-body">
                   <form action="" method="POST" class="form-horizontal" role="form">
                       <div class="row">
                           <div class="col-sm-12">
                               <div class="form-group">
-                                  <label class="col-sm-3 control-label">Tahun Anggaran</label>
+                                  <label class="col-sm-3 control-label">Kode Output</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_tahun_anggaran" name="tambah_tahun_anggaran" placeholder="Contoh : 2010">
+                                      <input type="text" class="form-control" id="tambah_kode_output" name="tambah_kode_output" placeholder="Contoh : OP00001">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Nama Output</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" id="tambah_nama_output" name="tambah_nama_output" placeholder="Contoh : Output-1.1">
                                   </div>
                               </div>
                           </div>
@@ -72,24 +118,30 @@
           </div>
       </div>
   </div>
-  {{-- AKHIR MODAL TAMBAH TAHUN ANGGARAN --}}
+  {{-- AKHIR MODAL TAMBAH OUTPUT --}}
 
-  {{-- AWAL MODAL UBAH TAHUN ANGGARAN --}}
+  {{-- AWAL MODAL UBAH OUTPUT --}}
   <div class="modal fade" id="modal-ubah">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Ubah Tahun Anggaran</h4>
+                  <h4 class="modal-title">Ubah Output</h4>
               </div>
               <div class="modal-body">
                   <form action="" method="POST" class="form-horizontal" role="form">
                       <div class="row">
                           <div class="col-sm-12">
                               <div class="form-group">
-                                  <label class="col-sm-3 control-label">Tahun Anggaran</label>
+                                  <label class="col-sm-3 control-label">Kode Output</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_tahun_anggaran" name="ubah_tahun_anggaran">
+                                      <input type="text" class="form-control" id="ubah_kode_output" name="ubah_kode_output">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Nama Output</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" id="ubah_nama_output" name="ubah_nama_output">
                                   </div>
                               </div>
                           </div>
@@ -103,7 +155,7 @@
           </div>
       </div>
   </div>
-  {{-- AKHIR MODAL UBAH TAHUN ANGGARAN --}}
+  {{-- AKHIR MODAL UBAH OUTPUT --}}
 @endsection
 
 @push('script')
@@ -116,25 +168,22 @@ $(function(){
   'use strict';
   var data = [
       [
-          "1",
-          "2015",
-          `<span class="label label-danger">TIDAK AKTIF</span>`,
-          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-          <button class="btn btn-primary btn-sm" data-toggle="modal" onclick="aktif()"> AKTIF</button>`
+        "1",
+        "OP00001",
+        "Output-1.1",
+        "Rp. 100.000.000",
+        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
+        <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
+        <a href="{{ url('/dipa-suboutput') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
       [
-          "2",
-          "2016",
-          `<span class="label label-danger">TIDAK AKTIF</span>`,
-          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-          <button class="btn btn-primary btn-sm" data-toggle="modal" onclick="aktif()"> AKTIF</button>`
-      ],
-      [
-          "3",
-          "2017",
-          `<span class="label label-success">AKTIF</span>`,
-          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-          <button class="btn btn-primary btn-sm" data-toggle="modal" onclick="aktif()" disabled> AKTIF</button>` // YANG MEMILIKI STATUS AKTIF, MAKA BUTTON AKTIF TIDAK DIMUNCULKAN
+        "2",
+        "OP00002",
+        "Output-1.2",
+        "Rp. 200.000.000",
+        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
+        <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
+        <a href="{{ url('/dipa-suboutput') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
     ];
 
@@ -142,9 +191,10 @@ $(function(){
       "data" : data,
       "columns" : [
           { "title" : "#", "width" : "2%" },
-          { "title" : "TAHUN ANGGARAN" },
-          { "title" : "STATUS"},
-          { "title" : "AKSI","width" : "10%", "orderable": false }
+          { "title" : "KODE OUTPUT" },
+          { "title" : "NAMA OUTPUT" },
+          { "title" : "NILAI" },
+          { "title" : "AKSI","width" : "16%", "orderable": false }
       ]
   });
 
@@ -153,7 +203,7 @@ $(function(){
 function tambah(){
     swal({
     title: "Apakah Anda Yakin ?",
-    text: "Data Tahun Anggaran Ini Akan Disimpan ",
+    text: "Data Output Ini Akan Disimpan ",
     type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#00a65a",
@@ -164,10 +214,10 @@ function tambah(){
   },
   function(isConfirm){
     if (isConfirm) {
-      swal("Berhasil!", "Data Tahun Anggaran Berhasil Simpan", "success");
+      swal("Berhasil!", "Data Output Berhasil Simpan", "success");
       $('#modal-tambah').modal('hide');
     } else {
-      swal('Dibatalkan', 'Data Tahun Anggaran Batal Simpan :)', 'error');
+      swal('Dibatalkan', 'Data Output Batal Simpan :)', 'error');
       $('#modal-tambah').modal('hide');
     }
   });
@@ -176,7 +226,7 @@ function tambah(){
 function ubah(){
     swal({
     title: "Apakah Anda Yakin ?",
-    text: "Data Tahun Anggaran Ini Akan Diubah ",
+    text: "Data Output Ini Akan Diubah ",
     type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#00a65a",
@@ -187,22 +237,22 @@ function ubah(){
   },
   function(isConfirm){
     if (isConfirm) {
-      swal("Berhasil!", "Data Tahun Anggaran Berhasil Diubah", "success");
+      swal("Berhasil!", "Data Output Berhasil Diubah", "success");
       $('#modal-ubah').modal('hide');
     } else {
-      swal('Dibatalkan', 'Data Tahun Anggaran Batal Diubah :)', 'error');
+      swal('Dibatalkan', 'Data Output Batal Diubah :)', 'error');
       $('#modal-ubah').modal('hide');
     }
   });
 }
 
-function aktif(){
+function hapus(){
     swal({
     title: "Apakah Anda Yakin ?",
-    text: "Tahun Anggaran Ini Akan Diaktifkan ",
+    text: "Output Ini Akan Dihapus",
     type: "warning",
     showCancelButton: true,
-    confirmButtonColor: "#00a65a",
+    confirmButtonColor: "#DD6B55",
     confirmButtonText: "Ya, Yakin !",
     cancelButtonText: "Tidak, Batalkan !",
     closeOnConfirm: false,
@@ -210,11 +260,9 @@ function aktif(){
   },
   function(isConfirm){
     if (isConfirm) {
-      swal("Berhasil!", "Tahun Anggaran Berhasil Diaktifkan", "success");
-      $('#modal-aktif').modal('hide');
+      swal("Berhasil!", "Output Berhasil Dihapus", "success");
     } else {
-      swal('Dibatalkan', 'Tahun Anggaran Batal Diaktifkan :)', 'error');
-      $('#modal-aktif').modal('hide');
+      swal('Dibatalkan', 'Output Batal Dihapus :)', 'error');
     }
   });
 }
