@@ -15,8 +15,8 @@ class DipaKegiatan extends Migration
     {
          Schema::create('dipa_kegiatan', function (Blueprint $table) {
             $table->increments('dipa_idKeg');
-            $table->string('dipa_kodeKeg',10)->nullable(false)->change();
-            $table->string('dipa_namaKeg',100)->nullable(false)->change();
+            $table->string('dipa_kodeKeg',10);
+            $table->string('dipa_namaKeg',100);
             $table->integer('dipa_idProgram')->unsigned();
             $table->foreign('dipa_idProgram')->references('dipa_idProgram')->on('dipa_program');
             $table->timestamps();

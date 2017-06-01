@@ -15,8 +15,8 @@ class DipaSubkomponen extends Migration
     {
          Schema::create('dipa_subKomponen', function (Blueprint $table) {
             $table->increments('dipa_idSubKomp');
-            $table->string('dipa_kodeSubKomp',10)->nullable(false)->change();
-            $table->string('dipa_namaSubKomp',100)->nullable(false)->change();
+            $table->string('dipa_kodeSubKomp',10);
+            $table->string('dipa_namaSubKomp',100);
             $table->integer('dipa_idKomp')->unsigned();
             $table->foreign('dipa_idKomp')->references('dipa_idKomp')->on('dipa_komponen');
             $table->timestamps();

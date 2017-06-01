@@ -36,4 +36,28 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function username()
+    {
+        return 'username';
+    }
+
+    protected function authenticated($request, $user)
+    {
+        if($user->dipa_jenisUser == '1') {
+            return redirect()->intended('/dashboard-admin');
+        } elseif ($user->dipa_jenisUser == '2') {
+            return redirect()->intended('/kpa');
+        } elseif ($user->dipa_jenisUser == '3') {
+            return redirect()->intended('/ppk');
+        } elseif ($user->dipa_jenisUser == '4') {
+            return redirect()->intended('/satker');
+        } elseif ($user->dipa_jenisUser == '5') {
+            return redirect()->intended('/ppsm');
+        } elseif ($user->dipa_jenisUser == '6') {
+            return redirect()->intended('/sima'); 
+        } else {
+            return redirect()->intended('/siba');
+        }
+    }
 }

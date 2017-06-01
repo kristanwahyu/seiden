@@ -15,8 +15,8 @@ class DipaProgram extends Migration
     {
         Schema::create('dipa_program', function (Blueprint $table) {
             $table->increments('dipa_idProgram');
-            $table->string('dipa_kodeProgram',10)->nullable(false)->change();
-            $table->string('dipa_namaProgram',100)->nullable(false)->change();
+            $table->string('dipa_kodeProgram',10);
+            $table->string('dipa_namaProgram',100);
             $table->integer('dipa_idTAng')->unsigned();
             $table->foreign('dipa_idTAng')->references('dipa_idTAng')->on('dipa_tahunAnggaran');
             $table->integer('dipa_idSK')->unsigned();

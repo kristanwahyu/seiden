@@ -15,8 +15,8 @@ class DipaRincian extends Migration
     {
         Schema::create('dipa_rincian', function (Blueprint $table) {
             $table->increments('dipa_idRincian');
-            $table->string('dipa_kodeRincian',10)->nullable(false)->change();
-            $table->string('dipa_namaRincian',100)->nullable(false)->change();
+            $table->string('dipa_kodeRincian',10);
+            $table->string('dipa_namaRincian',100);
             $table->integer('dipa_volume')->default(0);
             $table->integer('dipa_satuan')->default(0);
             $table->integer('dipa_hargaSat')->default(0);
