@@ -54,19 +54,19 @@ $(function(){
         "1",
         "SAT001",
         "Satuan Kerja-1",
-        `<a href="{{ url('/dipa-program') }}" class="btn btn-success" role="button"> Pilih</a>`
+        `<a href="{{ url('/dipa/dipa-program') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
       [
         "2",
         "SAT002",
         "Satuan Kerja-2",
-        `<a href="{{ url('/dipa-program') }}" class="btn btn-success" role="button"> Pilih</a>`
+        `<a href="{{ url('/dipa/dipa-program') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
       [
           "3",
           "SAT003",
           "Satuan Kerja-3",
-          `<a href="{{ url('/dipa-program') }}" class="btn btn-success" role="button"> Pilih</a>`
+          `<a href="{{ url('/dipa/dipa-program') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
     ];
 

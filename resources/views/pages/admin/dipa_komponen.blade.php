@@ -83,7 +83,7 @@
                       </table>
                   </div> {{-- akhir pembungkus tabel DIPA --}}
                   <div class="text-left">
-                      <a href="{{ url('/dipa-output') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
+                      <a href="{{ url('/dipa/dipa-suboutput') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                   </div>
                 </div> {{-- akhir panel body --}}
               </div> {{-- akhir tabel DIPA --}}
@@ -184,7 +184,7 @@ $(function(){
         "Rp. 25.000.000",
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa-subkomponen') }}" class="btn btn-success" role="button"> Pilih</a>`
+        <a href="{{ url('/dipa/dipa-subkomponen') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
       [
         "2",
@@ -193,7 +193,7 @@ $(function(){
         "Rp. 0",
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa-subkomponen') }}" class="btn btn-success" role="button"> Pilih</a>`
+        <a href="{{ url('/dipa/dipa-subkomponen') }}" class="btn btn-success" role="button"> Pilih</a>`
       ],
     ];
 
