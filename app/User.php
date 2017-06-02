@@ -15,20 +15,20 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $table = 'dipa_user';
-    protected $primaryKey = 'dipa_idUser';
+    protected $table = 'tbl_pengguna';
+    protected $primaryKey = 'dipa_id_pengguna';
     protected $guarded = ['updated_at'];
     /**
      * The attributes that should be hidden for arrays.
-     *
+     * 
      * @var array
      */
     protected $hidden = [
-        'dipa_passUser', 'remember_token',
+        'dipa_password_pengguna', 'remember_token',
     ];
 
     public function getAuthPassword()
     {
-        return $this->dipa_passUser;
+        return $this->dipa_password_pengguna;
     }
 }

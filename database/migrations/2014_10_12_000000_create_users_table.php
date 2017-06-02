@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('tbl_pengguna', function (Blueprint $table) {
             $table->increments('dipa_id_pengguna');
-            $table->string('dipa_username',30)->unique();
+            $table->string('username',30)->unique();
             $table->string('dipa_nama_pengguna',70);
             $table->string('dipa_password_pengguna',100);
             $table->enum('dipa_pengguna_status',array('0','1'))->default(1);//0 = nonaktif, 1 = aktif

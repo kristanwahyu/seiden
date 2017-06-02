@@ -22,9 +22,9 @@ class SatuanKerjaController extends Controller
         $status = $request->status;
 
         DipaSatker::create([
-            'dipa_kodeSK'   => $kode,
-            'dipa_namaSK'   => $nama,
-            'dipa_statusSK' => $status, 
+            'dipa_kode_satuan_kerja'   => $kode,
+            'dipa_satuan_kerja'        => $nama,
+            'dipa_satuan_kerja_status' => $status, 
         ]);
 
         return response()->json(["status"=>"success"],200);
@@ -37,7 +37,7 @@ class SatuanKerjaController extends Controller
         if ($param == 0) {
             $code = 'ST00001';
         } else {
-            $last_code = DipaSatker::select('dipa_kodeSK')->orderBy('dipa_idSK','desc')->first();
+            $last_code = DipaSatker::select('dipa_kode_satuan_kerja')->orderBy('dipa_id_satuan_kerja','desc')->first();
             $temp_code = substr($last_code->dipa_kodeSK, 2);
             $number = (int)$temp_code;
             $number++;
@@ -50,7 +50,7 @@ class SatuanKerjaController extends Controller
     
     public function show()
     {
-        $job = DipaSatker::select('dipa_idSK','dipa_kodeSK','dipa_namaSK','dipa_statusSK');
+        $job = DipaSatker::select('dipa_id_satuan_kerja','dipa_kode_satuan_kerja','dipa_satuan_kerja','dipa_satuan_kerja_status');
         return $this->makeDataTable($job);
     }
 
@@ -77,8 +77,8 @@ class SatuanKerjaController extends Controller
         }
 
         DipaSatker::find($id)->update([
-            'dipa_namaSK'   => $request->nama_satKer,
-            'dipa_statusSK' => $request->status 
+            'dipa_satuan_kerja'        => $request->nama_satKer,
+            'dipa_satuan_kerja_status' => $request->status 
         ]);
 
         return response()->json(['status'=>'success'],200);
@@ -86,9 +86,9 @@ class SatuanKerjaController extends Controller
 
     public function getAll()
     {
-        return DipaSatker::select('dipa_idSK', 'dipa_kodeSK','dipa_namaSK')
-            ->where('dipa_statusSK','1')
-            ->orderBy('dipa_kodeSK','asc')
+        return DipaSatker::select('dipa_id_satuan_kerja', 'dipa_kode_satuan_kerja','dipa_satuan_kerja')
+            ->where('dipa_satuan_kerja_status','1')
+            ->orderBy('dipa_kode_satuan_kerja','asc')
             ->get();
     }
 }

@@ -11,8 +11,8 @@ class UserController extends Controller
     //
     public function show()
     {
-        $job = User::withTrashed()->select('dipa_idUser','username','dipa_namaUser','dipa_statusUser', 'dipa_jenisUser')
-                ->where('dipa_statusUser','!=','9');
+        $job = User::withTrashed()->select('dipa_id_pengguna','username','dipa_nama_pengguna','dipa_pengguna_status', 'dipa_jenis_pengguna')
+                ->where('dipa_pengguna_status','!=','9');
         return $this->makeDataTable($job);
     }
 
@@ -34,11 +34,11 @@ class UserController extends Controller
         $password = bcrypt($request->password);
 
         User::create([
-            'username'       => $request->username,
-            'dipa_namaUser'  => $request->nama_user,
-            'dipa_passUser'  => $password,
-            'dipa_statusUser'=> $request->status,
-            'dipa_jenisUser' => $request->jenis
+            'username'                => $request->username,
+            'dipa_nama_pengguna'      => $request->nama_user,
+            'dipa_password_pengguna'  => $password,
+            'dipa_pengguna_status'    => $request->status,
+            'dipa_jenis_pengguna'     => $request->jenis
         ]);
 
         if($request->status == 0){
@@ -63,10 +63,10 @@ class UserController extends Controller
     	]);
 
         User::withTrashed()->find($id)->update([
-            'username'       => $request->username,
-            'dipa_namaUser'  => $request->nama_user,
-            'dipa_statusUser'=> $request->status,
-            'dipa_jenisUser' => $request->jenis
+            'username'                => $request->username,
+            'dipa_nama_pengguna'      => $request->nama_user,
+            'dipa_pengguna_status'    => $request->status,
+            'dipa_jenis_pengguna'     => $request->jenis
         ]); 
 
         if($request->status == 0){

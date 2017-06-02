@@ -15,6 +15,7 @@ class DipaSatKerja extends Migration
     {
         Schema::create('tbl_satuan_kerja', function (Blueprint $table) {
             $table->increments('dipa_id_satuan_kerja');
+            $table->string('dipa_kode_satuan_kerja',10);
             $table->string('dipa_satuan_kerja',100);
             $table->enum('dipa_satuan_kerja_status',array('0','1'))->default(0);//0 = nonaktif, 1 = aktif
             $table->timestamps();

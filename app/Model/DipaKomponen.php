@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class DipaKomponen extends Model
 {
-    protected $primaryKey = 'dipa_idKomp';
+    protected $primaryKey = 'dipa_id_komponen';
     protected $guarded = ['updated_at'];
-    protected $table = 'dipa_komponen';
+    protected $table = 'tbl_dipa_komponen';
 
     public function subOutput(){
-        return $this->belongsTo('App\Model\DipaSubOutput','dipa_idSubOut');
+        return $this->belongsTo('App\Model\DipaSubOutput','dipa_id_sub_output');
     }
     public function subKomponen(){
-        return $this->hasMany('App\Model\DipaKomponen','dipa_idKomp');
+        return $this->hasMany('App\Model\DipaKomponen','dipa_id_komponen');
     }
-}
+} 

@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class DipaRincian extends Model
 {
-    protected $primaryKey = 'dipa_idRincian';
+    protected $primaryKey = 'dipa_id_detail_akun';
     protected $guarded = ['updated_at'];
-    protected $table = 'dipa_rincian';
+    protected $table = 'tbl_dipa_akun_detail';
 
     public function AkunRincian(){
-        return $this->belongsTo('App\Model\DipaSubKomponen','dipa_idSubKomp');
+        return $this->belongsTo('App\Model\DipaAkun','dipa_id_akun');
     }
     
 }

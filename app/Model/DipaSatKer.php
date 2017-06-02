@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class DipaSatKer extends Model
 {
-    protected $primaryKey = 'dipa_idSK';
+    protected $primaryKey = 'dipa_id_satuan_kerja';
     protected $guarded = ['updated_at'];
-    protected $table = 'dipa_satKer';
+    protected $table = 'tbl_satuan_kerja';
 
      public function program(){
-        return $this->hasMany('App\Model\DipaProgram','dipa_idSK');
+        return $this->hasMany('App\Model\DipaProgram','dipa_id_satuan_kerja');
     }
 }

@@ -16,7 +16,7 @@ class TahunAnggaranController extends Controller
     	]);
 
         DipaTahunAnggaran::create([
-            'dipa_tahun' => $request->tahun,
+            'dipa_tahun_anggaran' => $request->tahun,
         ]);
 
         return response()->json(['status'=>'success'],200);
@@ -37,7 +37,7 @@ class TahunAnggaranController extends Controller
         if ($tahun == null) return abort(503);
         // end validasi
         $tahun->update([
-            'dipa_tahun' => $request->tahun,
+            'dipa_tahun_anggaran' => $request->tahun,
         ]);
 
         return response()->json(['status','success'],200);
@@ -49,11 +49,11 @@ class TahunAnggaranController extends Controller
         if ($tahun == null) return abort(503);
 
         DipaTahunAnggaran::update([
-            'dipa_statusTA' => '0',
+            'dipa_status' => '0',
         ]);
 
         DipaTahunAnggaran::find($id)->update([
-            'dipa_statusTA' => '1',
+            'dipa_status' => '1',
         ]);
 
         return response()->json(['status','success'],200);
