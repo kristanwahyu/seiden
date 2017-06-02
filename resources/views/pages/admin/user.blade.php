@@ -361,11 +361,13 @@ $(function(){
                 $("#ubah_nama_lengkap").val(data['dipa_namaUser']);
                 $("#ubah_jenis_user").val(data['dipa_jenisUser']);
                 if(data['dipa_statusUser'] == 1) {
-                    $('#ubah_tidak_aktif').removeAttr('checked');
-                    $("#ubah_aktif").attr('checked','checked');
+                    alert('bangke');
+                    $('#ubah_tidak_aktif').prop('checked', false);
+                    $("#ubah_aktif").prop('checked', true);
                 } else {
-                    $('#ubah_aktif').removeAttr('checked');
-                    $("#ubah_tidak_aktif").attr('checked','checked');
+                    alert('bangsat');
+                    $('#ubah_aktif').prop('checked', false);
+                    $("#ubah_tidak_aktif").prop('checked', true);
                 }
                 $("#id_binding").val(data['dipa_idUser']);
             }
