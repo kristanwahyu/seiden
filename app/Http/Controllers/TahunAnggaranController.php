@@ -57,4 +57,15 @@ class TahunAnggaranController extends Controller
 
         return response()->json(['status','success'],200);
     }
+
+    public function show()
+    {
+        $tahun = DipaTahunAnggaran::select('*');
+        return $this->makeDataTable($tahun);
+    }
+
+    public function makeDataTable($data)
+    {
+        return Datatables::eloquent($data)->addIndexColumn()->make(true);
+    }
 }

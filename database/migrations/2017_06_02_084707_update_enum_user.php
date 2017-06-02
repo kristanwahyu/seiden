@@ -14,7 +14,7 @@ class UpdateEnumUser extends Migration
     public function up()
     {
         //
-        DB::statement("ALTER TABLE dipa_user MODIFY COLUMN dipa_jenisUser enum('1', '2', '3', '4', '5', '6', '7', '8')");
+        DB::statement("ALTER TABLE dipa_user MODIFY COLUMN dipa_jenisUser enum('1', '2', '3', '4', '5', '6', '7', '8', '9')");
     }
 
     /**
