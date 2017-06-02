@@ -127,35 +127,56 @@ $(function(){
       [
           "1",
           "2015",
-          `<span class="label label-danger">TIDAK AKTIF</span>`,
-          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-          <button class="btn btn-primary btn-sm" data-toggle="modal" onclick="aktif()"> AKTIF</button>`
+          `<div class="switch">
+                <input type="radio" class="switch-input" name="radio1" value="nonaktif" id="radio1" checked>
+                <label for="radio1" class="switch-label switch-label-off">NON-AKTIF</label>
+                <input type="radio" class="switch-input" name="radio1" value="aktif" id="radio2">
+                <label for="radio2" class="switch-label switch-label-on">AKTIF</label>
+                <span class="switch-selection"></span>
+            </div>`,
+          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>`
       ],
       [
           "2",
           "2016",
-          `<span class="label label-danger">TIDAK AKTIF</span>`,
-          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-          <button class="btn btn-primary btn-sm" data-toggle="modal" onclick="aktif()"> AKTIF</button>`
+          `<div class="switch">
+                <input type="radio" class="switch-input" name="radio2" value="nonaktif" id="radio3">
+                <label for="radio3" class="switch-label switch-label-off">NON-AKTIF</label>
+                <input type="radio" class="switch-input" name="radio2" value="aktif" id="radio4" checked>
+                <label for="radio4" class="switch-label switch-label-on">AKTIF</label>
+                <span class="switch-selection"></span>
+            </div>`,
+          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>`
       ],
       [
           "3",
           "2017",
-          `<span class="label label-success">AKTIF</span>`,
-          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-          <button class="btn btn-primary btn-sm" data-toggle="modal" onclick="aktif()" disabled> AKTIF</button>` // YANG MEMILIKI STATUS AKTIF, MAKA BUTTON AKTIF TIDAK DIMUNCULKAN
+          `<div class="switch">
+                <input type="radio" class="switch-input" name="radio3" value="nonaktif" id="radio5" checked>
+                <label for="radio5" class="switch-label switch-label-off">NON-AKTIF</label>
+                <input type="radio" class="switch-input" name="radio3" value="aktif" id="radio6">
+                <label for="radio6" class="switch-label switch-label-on">AKTIF</label>
+                <span class="switch-selection"></span>
+            </div>`,
+          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>` // YANG MEMILIKI STATUS AKTIF, MAKA BUTTON AKTIF TIDAK DIMUNCULKAN
       ],
     ];
 
-  $('#myTable').DataTable({
-      "data" : data,
-      "columns" : [
-          { "title" : "#", "width" : "2%" },
-          { "title" : "TAHUN ANGGARAN" },
-          { "title" : "STATUS"},
-          { "title" : "AKSI","width" : "10%", "orderable": false }
-      ]
-  });
+    $('#myTable').DataTable({
+        "data" : data,
+        "columns" : [
+            { "title" : "#", "width" : "2%" },
+            { "title" : "TAHUN ANGGARAN" },
+            { "title" : "STATUS", sClass: 'text-center'},
+            { "title" : "AKSI","width" : "1%", "orderable": false }
+        ]
+    });
+
+    $('.switch-input').click(function(){
+        if($(this).val() == 'aktif'){
+            $(this).parents('tr').siblings().find('.switch-input').attr('checked', false);
+        }
+    });
 
 });
 
