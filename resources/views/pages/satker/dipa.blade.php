@@ -8,7 +8,7 @@
 @section('title', 'DIPA')
 
 @section('sidebar')
-    @include('sidebar.admin')
+    @include('sidebar.satker')
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
         </ul>
     </div>
     {{-- End Breadcrumb --}}
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">

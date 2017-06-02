@@ -5,26 +5,20 @@
     <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
 @endpush
 
-@section('title', 'DIPA Sub Komponen')
+@section('title', 'DIPA Program')
 
 @section('sidebar')
-    @include('sidebar.admin')
+    @include('sidebar.satker')
 @endsection
 
 @section('content')
-  {{-- AWAL MAIN CONTENT --}}
+{{-- AWAL MAIN CONTENT --}}
 <div class="main-content">
     {{-- Breadcrumb --}}
     <div class="breadcrumb-wrapper">
         <ul class="breadcrumb">
             <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
-            <li><a href="">DIPA</a></li>
-            <li><a href="">Satuan Kerja-1</a></li>
-            <li><a href="">PRG0001</a></li>
-            <li><a href="">KGT0001</a></li>
-            <li><a href="">OP0001</a></li>
-            <li><a href="">SOP0001</a></li>
-            <li class="active-bread">KP0001</li>
+            <li class="active-bread"><a href="">DIPA</a></li>
         </ul>
     </div>
     {{-- End Breadcrumb --}}
@@ -36,70 +30,23 @@
                 {{-- awal tabel DIPA --}}
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">DIPA Sub Komponen</h3>
+                        <h3 class="panel-title">DIPA Program</h3>
                     </div>
                     {{-- awal panel body --}}
                     <div class="panel-body">
                         <div class="row detail-box">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <table class="table table-borderless detail-table no-margin">
                                     <tbody>
                                         <tr>
-                                            <td>KODE SATUAN KERJA</td>
+                                            <td>KODE / SATUAN KERJA</td>
                                             <td>:</td>
-                                            <td>SAT0001</td>
-                                        </tr>
-                                        <tr>
-                                            <td>SATUAN KERJA</td>
-                                            <td>:</td>
-                                            <td>SATUAN KERJA-1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>PROGRAM</td>
-                                            <td>:</td>
-                                            <td>PRG0001-PROGRAM1</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-4">
-                                <table class="table table-borderless detail-table no-margin">
-                                    <tbody>
-                                        <tr>
-                                            <td>KEGIATAN</td>
-                                            <td>:</td>
-                                            <td>KGT0001-KEGIATAN1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>OUTPUT</td>
-                                            <td>:</td>
-                                            <td>OP0001-OUTPUT1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>SUB OUTPUT</td>
-                                            <td>:</td>
-                                            <td>SOP0001-SUBOUTPUT1.1</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-4">
-                                <table class="table table-borderless detail-table no-margin">
-                                    <tbody>
-                                        <tr>
-                                            <td>KOMPONEN</td>
-                                            <td>:</td>
-                                            <td class="text-right">KOMPONEN1</td>
+                                            <td>SAT0001 / SATUAN KERJA-1</td>
                                         </tr>
                                         <tr>
                                             <td>TAHUN ANGGARAN</td>
                                             <td>:</td>
-                                            <td class="text-right">2017</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NILAI</td>
-                                            <td>:</td>
-                                            <td class="text-right">RP. 12.500.000</td>
+                                            <td>2017</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -115,17 +62,14 @@
                                 <div class="btn-detail btn-active"><i class="fa fa-chevron-up"></i></div>
                             </div>
                         </div>
-                        <br> 
-
+                        <br>
                         {{-- awal pembungkus tabel DIPA --}}
                         <div class="table-responsive">
+                            {{-- <div class="btn-filter-search"><i class="fa fa-chevron-down"></i></div> --}}
                             <table class="table table-bordered table-condensed table-striped" id="myTable">
 
                             </table>
                         </div> {{-- akhir pembungkus tabel DIPA --}}
-                        <div class="text-left">
-                            <a href="{{ url('/dipa/dipa-komponen') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
-                        </div>
                     </div> {{-- akhir panel body --}}
                 </div> {{-- akhir tabel DIPA --}}
             </div>
@@ -134,28 +78,28 @@
 </div>
   {{-- AKHIR MAIN CONTENT --}}
 
-  {{-- AWAL MODAL TAMBAH SUB KOMPONEN --}}
+  {{-- AWAL MODAL TAMBAH PROGRRAM --}}
   <div class="modal fade" id="modal-tambah">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Tambah Sub Komponen</h4>
+                  <h4 class="modal-title">Tambah Program</h4>
               </div>
               <div class="modal-body">
                   <form action="" method="POST" class="form-horizontal" role="form">
                       <div class="row">
                           <div class="col-sm-12">
                               <div class="form-group">
-                                  <label class="col-sm-4 control-label">Kode Sub Komponen</label>
+                                  <label class="col-sm-3 control-label">Kode Program</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_kode_subkomponen" name="tambah_kode_subkomponen" placeholder="Contoh : SKP00001">
+                                      <input type="text" class="form-control" id="tambah_kode_program" name="tambah_kode_program" placeholder="Contoh : PRG0001">
                                   </div>
                               </div>
                               <div class="form-group">
-                                  <label class="col-sm-4 control-label">Nama Sub Komponen</label>
+                                  <label class="col-sm-3 control-label">Nama Program</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_nama_subkomponen" name="tambah_nama_subkomponen" placeholder="Contoh : SubKomponen-1.1">
+                                      <input type="text" class="form-control" id="tambah_nama_program" name="tambah_nama_program" placeholder="Contoh : Program-1">
                                   </div>
                               </div>
                           </div>
@@ -169,30 +113,30 @@
           </div>
       </div>
   </div>
-  {{-- AKHIR MODAL TAMBAH SUB KOMPONEN --}}
+  {{-- AKHIR MODAL TAMBAH PROGRRAM --}}
 
-  {{-- AWAL MODAL UBAH SUB KOMPONEN --}}
+  {{-- AWAL MODAL UBAH PROGRRAM --}}
   <div class="modal fade" id="modal-ubah">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Ubah Sub Komponen</h4>
+                  <h4 class="modal-title">Ubah Program</h4>
               </div>
               <div class="modal-body">
                   <form action="" method="POST" class="form-horizontal" role="form">
                       <div class="row">
                           <div class="col-sm-12">
                               <div class="form-group">
-                                  <label class="col-sm-4 control-label">Kode Sub Komponen</label>
+                                  <label class="col-sm-3 control-label">Kode Program</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_kode_subkomponent" name="ubah_kode_subkomponen">
+                                      <input type="text" class="form-control" id="ubah_kode_program" name="ubah_kode_program">
                                   </div>
                               </div>
                               <div class="form-group">
-                                  <label class="col-sm-4 control-label">Nama Sub Komponen</label>
+                                  <label class="col-sm-3 control-label">Nama Program</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_nama_subkomponent" name="ubah_nama_subkomponen">
+                                      <input type="text" class="form-control" id="ubah_nama_program" name="ubah_nama_program">
                                   </div>
                               </div>
                           </div>
@@ -206,7 +150,7 @@
           </div>
       </div>
   </div>
-  {{-- AKHIR MODAL UBAH SUB KOMPONEN --}}
+  {{-- AKHIR MODAL UBAH PROGRRAM --}}
 @endsection
 
 @push('script')
@@ -220,21 +164,21 @@ $(function(){
     var data = [
         [
         "1",
-        "SKP00001",
-        "SubKomponen-1.1",
-        "Rp. 12.500.000",
+        "PRG0001",
+        "Program-1",
+        "Rp. 300.000.000",
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa/dipa-akun') }}" class="btn btn-success" role="button"> Pilih</a>`
+        <a href="{{ url('/dipa/dipa-kegiatan') }}" class="btn btn-success" role="button"> Pilih</a>`
         ],
         [
         "2",
-        "SKP00002",
-        "SubKomponen-1.2",
-        "Rp. 0",
+        "PRG0002",
+        "Program-2",
+        "Rp. 10.000.000",
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa/dipa-akun') }}" class="btn btn-success" role="button"> Pilih</a>`
+        <a href="{{ url('/dipa/dipa-kegiatan') }}" class="btn btn-success" role="button"> Pilih</a>`
         ],
     ];
 
@@ -242,8 +186,8 @@ $(function(){
         "data" : data,
         "columns" : [
             { "title" : "#", "width" : "2%" },
-            { "title" : "KODE SUB KOMPONEN" },
-            { "title" : "NAMA SUB KOMPONEN" },
+            { "title" : "KODE PROGRAM" },
+            { "title" : "NAMA PROGRAM" },
             { "title" : "NILAI" },
             { "title" : "AKSI","width" : "16%", "orderable": false }
         ]
@@ -262,7 +206,7 @@ $(function(){
 function tambah(){
     swal({
     title: "Apakah Anda Yakin ?",
-    text: "Data Sub Komponen Ini Akan Disimpan ",
+    text: "Data Program Ini Akan Disimpan ",
     type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#00a65a",
@@ -270,22 +214,22 @@ function tambah(){
     cancelButtonText: "Tidak, Batalkan !",
     closeOnConfirm: false,
     closeOnCancel: false
-  },
-  function(isConfirm){
+    },
+    function(isConfirm){
     if (isConfirm) {
-      swal("Berhasil!", "Data Sub Komponen Berhasil Simpan", "success");
-      $('#modal-tambah').modal('hide');
+        swal("Berhasil!", "Data Program Berhasil Simpan", "success");
+        $('#modal-tambah').modal('hide');
     } else {
-      swal('Dibatalkan', 'Data Sub Komponen Batal Simpan :)', 'error');
-      $('#modal-tambah').modal('hide');
+        swal('Dibatalkan', 'Data Program Batal Simpan :)', 'error');
+        $('#modal-tambah').modal('hide');
     }
-  });
+    });
 }
 
 function ubah(){
     swal({
     title: "Apakah Anda Yakin ?",
-    text: "Data Sub Komponen Ini Akan Diubah ",
+    text: "Data Program Ini Akan Diubah ",
     type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#00a65a",
@@ -296,10 +240,10 @@ function ubah(){
   },
   function(isConfirm){
     if (isConfirm) {
-      swal("Berhasil!", "Data Sub Komponen Berhasil Diubah", "success");
+      swal("Berhasil!", "Data Program Berhasil Diubah", "success");
       $('#modal-ubah').modal('hide');
     } else {
-      swal('Dibatalkan', 'Data Sub Komponen Batal Diubah :)', 'error');
+      swal('Dibatalkan', 'Data Program Batal Diubah :)', 'error');
       $('#modal-ubah').modal('hide');
     }
   });
@@ -308,7 +252,7 @@ function ubah(){
 function hapus(){
     swal({
     title: "Apakah Anda Yakin ?",
-    text: "Sub Komponen Ini Akan Dihapus",
+    text: "Program Ini Akan Dihapus",
     type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#DD6B55",
@@ -319,9 +263,9 @@ function hapus(){
   },
   function(isConfirm){
     if (isConfirm) {
-      swal("Berhasil!", "Sub Komponen Berhasil Dihapus", "success");
+      swal("Berhasil!", "Program Berhasil Dihapus", "success");
     } else {
-      swal('Dibatalkan', 'Sub Komponen Batal Dihapus :)', 'error');
+      swal('Dibatalkan', 'Program Batal Dihapus :)', 'error');
     }
   });
 }
