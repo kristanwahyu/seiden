@@ -15,8 +15,8 @@ class DipaSatKerja extends Migration
     {
         Schema::create('dipa_satKer', function (Blueprint $table) {
             $table->increments('dipa_idSK');
-            $table->string('dipa_kodeSK',10)->nullable(false)->change();
-            $table->string('dipa_namaSK',50)->nullable(false)->change();
+            $table->string('dipa_kodeSK',10);
+            $table->string('dipa_namaSK',50);
             $table->enum('dipa_statusSK',array('0','1'))->default(0);//0 = nonaktif, 1 = aktif
             $table->timestamps();
         });

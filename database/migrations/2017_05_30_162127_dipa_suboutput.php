@@ -15,8 +15,8 @@ class DipaSuboutput extends Migration
     {
          Schema::create('dipa_subOutput', function (Blueprint $table) {
             $table->increments('dipa_idSubOut');
-            $table->string('dipa_kodeSubOut',10)->nullable(false)->change();
-            $table->string('dipa_namaSubOut',100)->nullable(false)->change();
+            $table->string('dipa_kodeSubOut',10);
+            $table->string('dipa_namaSubOut',100);
             $table->integer('dipa_idOut')->unsigned();
             $table->foreign('dipa_idOut')->references('dipa_idOut')->on('dipa_output');
             $table->timestamps();

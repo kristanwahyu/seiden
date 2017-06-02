@@ -27,6 +27,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                {{-- Breadcrumb --}}
+
+                {{-- End Breadcrumb --}}
               
               	{{-- awal tabel satuan kerja --}}
                 <div class="panel">
@@ -62,28 +65,29 @@
                   <h4 class="modal-title">Tambah Satuan Kerja</h4>
               </div>
               <div class="modal-body">
-                  <form action="" method="POST" class="form-horizontal" role="form">
+                  <form action="{{url('/satuan-kerja/store')}}" method="POST" class="form-horizontal" role="form" id="formTambah">
+                    {{ csrf_field() }}
                       <div class="row">
                           <div class="col-sm-12">
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Kode Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_kode_satuan_kerja" name="tambah_kode_satuan_kerja" placeholder="Contoh : SAT001">
+                                      <input type="text" class="form-control" id="tambah_kode_satuan_kerja" name="kode_satKer" readonly>
                                   </div>
                               </div>
 
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_satuan_kerja" name="tambah_satuan_kerja" placeholder="Contoh : Satuan Kerja-1">
+                                      <input type="text" class="form-control" id="tambah_satuan_kerja" name="nama_satKer" placeholder="Contoh : Satuan Kerja-1">
                                   </div>
                               </div>
 
                               <div class="form-group">
                                 <label class="col-sm-3 control-label">Status</label>
                                 <div class="col-sm-8">
-                                  <label class="radio-inline"><input type="radio" id="aktif" name="status">Aktif</label>
-                                  <label class="radio-inline"><input type="radio" id="tidak_aktif" name="status">Tidak Aktif</label>
+                                  <label class="radio-inline"><input type="radio" id="aktif" name="status" value="1" checked>Aktif</label>
+                                  <label class="radio-inline"><input type="radio" id="tidak_aktif" name="status" value="0">Tidak Aktif</label>
                                 </div>
                               </div>
                           </div>
@@ -91,7 +95,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="tambah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-simpan">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -108,28 +112,29 @@
                   <h4 class="modal-title">Ubah Satuan Kerja</h4>
               </div>
               <div class="modal-body">
-                  <form action="" method="POST" class="form-horizontal" role="form">
+                  <form action="" method="POST" class="form-horizontal" role="form" id="formUbah">
                       <div class="row">
                           <div class="col-sm-12">
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Kode Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_kode_satuan_kerja" name="ubah_kode_satuan_kerja">
+                                      <input type="text" class="form-control" id="ubah_kode_satuan_kerja" name="kode_satKer" disabled>
+                                      <input type="hidden" id="id_binding">
                                   </div>
                               </div>
 
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_satuan_kerja" name="ubah_satuan_kerja">
+                                      <input type="text" class="form-control" id="ubah_satuan_kerja" name="nama_satKer">
                                   </div>
                               </div>
 
                               <div class="form-group">
                                 <label class="col-sm-3 control-label">Status</label>
                                 <div class="col-sm-8">
-                                  <label class="radio-inline"><input type="radio" id="aktif" name="ubah_status">Aktif</label>
-                                  <label class="radio-inline"><input type="radio" id="tidak_aktif" name="ubah_status">Tidak Aktif</label>
+                                  <label class="radio-inline"><input type="radio" id="edit_aktif" name="ubah_status" value="1">Aktif</label>
+                                  <label class="radio-inline"><input type="radio" id="edit_tidak_aktif" name="ubah_status" value="0">Tidak Aktif</label>
                                 </div>
                               </div>
                           </div>
@@ -137,7 +142,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="ubah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-ubah-simpan">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -149,92 +154,204 @@
 @push('script')
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
 
 <script>
 $(function(){
-  'use strict';
-  var data = [
-      [
-        "1",
-        "SAT001",
-        "Satuan Kerja-1",
-        `<span class="label label-success">AKTIF</span>`,
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>`
-      ],
-      [
-        "2",
-        "SAT002",
-        "Satuan Kerja-2",
-        `<span class="label label-danger">TIDAK AKTIF</span>`,
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>`
-      ],
-      [
-          "3",
-          "SAT003",
-          "Satuan Kerja-3",
-          `<span class="label label-success">AKTIF</span>`,
-          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>`
-      ],
-    ];
+    'use strict';
+    var table = $('#myTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":{
+            type : "GET",
+            url : "/satuan-kerja/show"
+        },
+        "columns": [
+            { 
+                title: "NO",
+                data: "DT_Row_Index", 
+                name: "DT_Row_Index", 
+                orderable: false,
+                searchable: false,
+                width: "1%"
+            },
+            {
+                title: 'KODE',
+                data: 'dipa_kodeSK',
+                defaultContent: "-",
+                name: 'dipa_kodeSK'
+            },
+            {
+                title: 'NAMA SATUAN KERJA',
+                data: 'dipa_namaSK',
+                defaultContent: "-",
+                name: 'dipa_namaSK'
+            },
+            {
+                title: '<div class="text-center">STATUS</div>',
+                data: null,
+                defaultContent: "-",
+                name: 'dipa_statusSK',
+                render: function (data) {
+                    var status = '';
+                    if(data['dipa_statusSK'] == 1) {
+                        status = "<div class='text-center'><span class='label label-success' style='font-size:12px'>Aktif</span></div>";
+                    } else {
+                        status = "<div class='text-center'><span class='label label-danger' style='font-size:12px'>Tidak Aktif</span></div>";
+                    }
+                    return status.replace();
+                },
+                width: "10%",
+                orderable: false
+            },
+            {  
+                title: '<div class="text-center">ACTION</div>',
+                data: null,
+                name: 'action',
+                render: function (data) {
+                    var actions = '';
+                    actions = "<button class='btn btn-warning btn-sm center-block ubah-satker' data-toggle='modal'' data-id='"+data['dipa_idSK']+"' href='#modal-ubah'><i class='fa fa-pencil'></i> Ubah</button>";
+                    return actions.replace();
+                },
+                width: "8%",
+                orderable: false
+            }
 
-  $('#myTable').DataTable({
-      "data" : data,
-      "columns" : [
-          { "title" : "#", "width" : "2%" },
-          { "title" : "KODE" },
-          { "title" : "SATUAN KERJA" },
-          { "title" : "STATUS"},
-          { "title" : "AKSI","width" : "5%", "orderable": false }
-      ]
-  });
 
+        ],
+    });
+
+    //generate code
+    $("#new-satker").on('click', function(){
+        $.get("/satuan-kerja/code-generate", function(data, status){
+            if(status == 'success'){
+                $('#tambah_kode_satuan_kerja').val(data);
+            }
+        });
+    });
+    //sweet
+
+    $("#btn-simpan").click(function(){
+            swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Satuan Kerja Ini Akan Disimpan ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/satuan-kerja/store",
+                    type : "POST",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "kode_satKer" : $("#tambah_kode_satuan_kerja").val(),
+                        "nama_satKer" : $("#tambah_satuan_kerja").val(),
+                        "status" : $('input[name=status]:checked', '#formTambah').val()
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    }, 
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-tambah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+            swal('Dibatalkan', 'Data Satuan Kerja Batal Simpan :)', 'error');
+            $('#modal-tambah').modal('hide');
+            }
+        });
+    });
+
+    //UBAH
+    $("#myTable").on('click','.ubah-satker', function(){
+        $.get("/satuan-kerja/get/"+$(this).data('id'), function(data, status){
+            if(status == 'success'){
+                console.log(data);
+                $("#ubah_kode_satuan_kerja").val(data['dipa_kodeSK']);
+                $("#ubah_satuan_kerja").val(data['dipa_namaSK']);
+                if(data['dipa_statusSK'] == 1) {
+                    $("#edit_aktif").attr('checked',true);
+                } else {
+                    $("#edit_tidak_aktif").attr('checked',true);
+                }
+                $("#id_binding").val(data['dipa_idSK']);
+            }
+        });
+    }); 
+
+    $("#btn-ubah-simpan").click(function(){
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Satuan Kerja Ini Akan Diubah ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/satuan-kerja/update/"+$("#id_binding").val(),
+                    type : "PUT",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "kode_satKer" : $("#ubah_kode_satuan_kerja").val(),
+                        "nama_satKer" : $("#ubah_satuan_kerja").val(),
+                        "status" : $('input[name=ubah_status]:checked', '#formUbah').val()
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    }, 
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-ubah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+            swal('Dibatalkan', 'Data Satuan Kerja Batal Simpan :)', 'error');
+                $('#modal-tambah').modal('hide');
+            }
+        });
+    });
 });
 
-function tambah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Satuan Kerja Ini Akan Disimpan ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Satuan Kerja Berhasil Simpan", "success");
-      $('#modal-tambah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Satuan Kerja Batal Simpan :)', 'error');
-      $('#modal-tambah').modal('hide');
-    }
-  });
-}
-
-function ubah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Satuan Kerja Ini Akan Diubah ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Satuan Kerja Berhasil Diubah", "success");
-      $('#modal-ubah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Satuan Kerja Batal Diubah :)', 'error');
-      $('#modal-ubah').modal('hide');
-    }
-  });
-}
+ 
 </script>
 @endpush

@@ -3,18 +3,19 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $table = ['dipa_user'];
+    protected $table = 'dipa_user';
     protected $primaryKey = 'dipa_idUser';
     protected $guarded = ['updated_at'];
     /**
@@ -23,6 +24,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'dipa_passUser', 'remember_token',
     ];
+
+    public function getAuthPassword()
+    {
+        return $this->dipa_passUser;
+    }
 }
