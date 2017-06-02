@@ -356,16 +356,13 @@ $(function(){
     $("#myTable").on('click','.ubah-user', function(){
         $.get("/user/get/"+$(this).data('id'), function(data, status){
             if(status == 'success'){
-                console.log(data);
                 $("#ubah_username").val(data['username']);
                 $("#ubah_nama_lengkap").val(data['dipa_namaUser']);
                 $("#ubah_jenis_user").val(data['dipa_jenisUser']);
                 if(data['dipa_statusUser'] == 1) {
-                    alert('bangke');
                     $('#ubah_tidak_aktif').prop('checked', false);
                     $("#ubah_aktif").prop('checked', true);
                 } else {
-                    alert('bangsat');
                     $('#ubah_aktif').prop('checked', false);
                     $("#ubah_tidak_aktif").prop('checked', true);
                 }
