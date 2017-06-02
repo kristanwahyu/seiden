@@ -13,10 +13,10 @@ class DipaTahunAnggaran extends Migration
      */
     public function up()
     {
-        Schema::create('dipa_tahunAnggaran', function (Blueprint $table) {
-            $table->increments('dipa_idTAng');
-            $table->integer('dipa_tahun');
-            $table->enum('dipa_statusTA',array('0','1'))->default(0);//0 = nonaktif, 1 = aktif
+        Schema::create('tbl_tahun_anggaran', function (Blueprint $table) {
+            $table->increments('dipa_id_tahun_anggaran');
+            $table->integer('dipa_tahun_anggaran');
+            $table->enum('dipa_status',array('0','1'))->default(0);//0 = nonaktif, 1 = aktif
         });
     }
 
@@ -27,6 +27,6 @@ class DipaTahunAnggaran extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('dipa_tahunAnggaran');
+         Schema::dropIfExists('tbl_tahun_anggaran');
     }
 }

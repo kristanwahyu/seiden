@@ -13,12 +13,12 @@ class DipaSuboutput extends Migration
      */
     public function up()
     {
-         Schema::create('dipa_subOutput', function (Blueprint $table) {
-            $table->increments('dipa_idSubOut');
-            $table->string('dipa_kodeSubOut',10);
-            $table->string('dipa_namaSubOut',100);
-            $table->integer('dipa_idOut')->unsigned();
-            $table->foreign('dipa_idOut')->references('dipa_idOut')->on('dipa_output');
+         Schema::create('tbl_dipa_sub_output', function (Blueprint $table) {
+            $table->increments('dipa_id_sub_output');
+            $table->string('dipa_kode_sub_output',10);
+            $table->string('dipa_nama_sub_output',100);
+            $table->integer('dipa_id_output')->unsigned();
+            $table->foreign('dipa_id_output')->references('dipa_id_output')->on('tbl_dipa_output');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class DipaSuboutput extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('dipa_subOutput');
+         Schema::dropIfExists('tbl_dipa_sub_output');
     }
 }

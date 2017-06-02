@@ -13,11 +13,10 @@ class DipaSatKerja extends Migration
      */
     public function up()
     {
-        Schema::create('dipa_satKer', function (Blueprint $table) {
-            $table->increments('dipa_idSK');
-            $table->string('dipa_kodeSK',10);
-            $table->string('dipa_namaSK',50);
-            $table->enum('dipa_statusSK',array('0','1'))->default(0);//0 = nonaktif, 1 = aktif
+        Schema::create('tbl_satuan_kerja', function (Blueprint $table) {
+            $table->increments('dipa_id_satuan_kerja');
+            $table->string('dipa_satuan_kerja',100);
+            $table->enum('dipa_satuan_kerja_status',array('0','1'))->default(0);//0 = nonaktif, 1 = aktif
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class DipaSatKerja extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('dipa_satKer');
+         Schema::dropIfExists('tbl_satuan_kerja');
     }
 }

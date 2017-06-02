@@ -13,12 +13,12 @@ class DipaAkun extends Migration
      */
     public function up()
     {
-        Schema::create('dipa_akun', function (Blueprint $table) {
-            $table->increments('dipa_idAkun');
-            $table->string('dipa_kodeAkun',10);
-            $table->string('dipa_namaAkun',100);
-            $table->integer('dipa_idSubKomp')->unsigned();
-            $table->foreign('dipa_idSubKomp')->references('dipa_idKomp')->on('dipa_subKomponen');
+        Schema::create('tbl_dipa_akun', function (Blueprint $table) {
+            $table->increments('dipa_id_akun');
+            $table->string('dipa_kode_akun',10);
+            $table->string('dipa_nama_akun',100);
+            $table->integer('dipa_id_sub_komponen')->unsigned();
+            $table->foreign('dipa_id_sub_komponen')->references('dipa_id_sub_komponen')->on('tbl_dipa_sub_komponen');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class DipaAkun extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('dipa_Akun');
+         Schema::dropIfExists('tbl_dipa_akun');
     }
 }

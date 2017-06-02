@@ -13,12 +13,12 @@ class DipaKomponen extends Migration
      */
     public function up()
     {
-         Schema::create('dipa_komponen', function (Blueprint $table) {
-            $table->increments('dipa_idKomp');
-            $table->string('dipa_kodeKomp',10);
-            $table->string('dipa_namaKomp',100);
-            $table->integer('dipa_idSubOut')->unsigned();
-            $table->foreign('dipa_idSubOut')->references('dipa_idSubOut')->on('dipa_subOutput');
+         Schema::create('tbl_dipa_komponen', function (Blueprint $table) {
+            $table->increments('dipa_id_komponen');
+            $table->string('dipa_kode_komponen',10);
+            $table->string('dipa_nama_komponen',100);
+            $table->integer('dipa_id_sub_output')->unsigned();
+            $table->foreign('dipa_id_sub_output')->references('dipa_id_sub_output')->on('tbl_dipa_sub_output');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class DipaKomponen extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('dipa_komponen');
+         Schema::dropIfExists('tbl_dipa_komponen');
     }
 }

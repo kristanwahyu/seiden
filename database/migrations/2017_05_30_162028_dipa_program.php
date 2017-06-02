@@ -13,14 +13,14 @@ class DipaProgram extends Migration
      */
     public function up()
     {
-        Schema::create('dipa_program', function (Blueprint $table) {
-            $table->increments('dipa_idProgram');
-            $table->string('dipa_kodeProgram',10);
-            $table->string('dipa_namaProgram',100);
-            $table->integer('dipa_idTAng')->unsigned();
-            $table->foreign('dipa_idTAng')->references('dipa_idTAng')->on('dipa_tahunAnggaran');
-            $table->integer('dipa_idSK')->unsigned();
-            $table->foreign('dipa_idSK')->references('dipa_idSK')->on('dipa_satKer');
+        Schema::create('tbl_dipa_program', function (Blueprint $table) {
+            $table->increments('dipa_id_program');
+            $table->string('dipa_kode_program',10);
+            $table->string('dipa_nama_program',100);
+            $table->integer('dipa_id_tahun_anggaran')->unsigned();
+            $table->foreign('dipa_id_tahun_anggaran')->references('dipa_id_tahun_anggaran')->on('tbl_tahun_anggaran');
+            $table->integer('dipa_id_satuan_kerja')->unsigned();
+            $table->foreign('dipa_id_satuan_kerja')->references('dipa_id_satuan_kerja')->on('tbl_satuan_kerja');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class DipaProgram extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('dipa_program');
+         Schema::dropIfExists('tbl_dipa_program');
     }
 }
