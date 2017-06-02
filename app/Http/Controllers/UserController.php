@@ -11,7 +11,8 @@ class UserController extends Controller
     //
     public function show()
     {
-        $job = User::withTrashed()->select('dipa_idUser','username','dipa_namaUser','dipa_statusUser', 'dipa_jenisUser');
+        $job = User::withTrashed()->select('dipa_idUser','username','dipa_namaUser','dipa_statusUser', 'dipa_jenisUser')
+                ->where('dipa_statusUser','!=','9');
         return $this->makeDataTable($job);
     }
 

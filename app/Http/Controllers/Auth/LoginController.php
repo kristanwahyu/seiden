@@ -44,7 +44,7 @@ class LoginController extends Controller
 
     protected function authenticated($request, $user)
     {
-        if($user->dipa_jenisUser == '1') {
+        if($user->dipa_jenisUser == '1' || $user->dipa_jenisUser == '9' ) {
             return redirect()->intended('/dashboard-admin');
         } elseif ($user->dipa_jenisUser == '2') {
             return redirect()->intended('/kpa');
@@ -56,8 +56,10 @@ class LoginController extends Controller
             return redirect()->intended('/ppsm');
         } elseif ($user->dipa_jenisUser == '6') {
             return redirect()->intended('/sima'); 
-        } else {
+        } elseif ($user->dipa_jenisUser == '7') {
             return redirect()->intended('/siba');
+        } else {
+            return redirect()->intended('/bendahara');
         }
     }
 }

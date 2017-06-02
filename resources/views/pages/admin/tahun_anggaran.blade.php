@@ -128,9 +128,9 @@ $(function(){
           "1",
           "2015",
           `<div class="switch">
-                <input type="radio" class="switch-input" name="radio1" value="nonaktif" id="radio1" checked>
+                <input type="radio" class="switch-input switch-input-off" name="radio1" value="nonaktif" id="radio1" onclick="radioNonAktif(this)" checked>
                 <label for="radio1" class="switch-label switch-label-off">NON-AKTIF</label>
-                <input type="radio" class="switch-input" name="radio1" value="aktif" id="radio2">
+                <input type="radio" class="switch-input switch-input-on" name="radio1" value="aktif" id="radio2" onclick="radioAktif(this)">
                 <label for="radio2" class="switch-label switch-label-on">AKTIF</label>
                 <span class="switch-selection"></span>
             </div>`,
@@ -140,9 +140,9 @@ $(function(){
           "2",
           "2016",
           `<div class="switch">
-                <input type="radio" class="switch-input" name="radio2" value="nonaktif" id="radio3">
+                <input type="radio" class="switch-input switch-input-off" name="radio2" value="nonaktif" id="radio3" onclick="radioNonAktif(this)">
                 <label for="radio3" class="switch-label switch-label-off">NON-AKTIF</label>
-                <input type="radio" class="switch-input" name="radio2" value="aktif" id="radio4" checked>
+                <input type="radio" class="switch-input switch-input-on" name="radio2" value="aktif" id="radio4" onclick="radioAktif(this)" checked>
                 <label for="radio4" class="switch-label switch-label-on">AKTIF</label>
                 <span class="switch-selection"></span>
             </div>`,
@@ -152,9 +152,9 @@ $(function(){
           "3",
           "2017",
           `<div class="switch">
-                <input type="radio" class="switch-input" name="radio3" value="nonaktif" id="radio5" checked>
+                <input type="radio" class="switch-input switch-input-off" name="radio3" value="nonaktif" id="radio5" onclick="radioNonAktif(this)" checked>
                 <label for="radio5" class="switch-label switch-label-off">NON-AKTIF</label>
-                <input type="radio" class="switch-input" name="radio3" value="aktif" id="radio6">
+                <input type="radio" class="switch-input switch-input-on" name="radio3" value="aktif" id="radio6" onclick="radioAktif(this)">
                 <label for="radio6" class="switch-label switch-label-on">AKTIF</label>
                 <span class="switch-selection"></span>
             </div>`,
@@ -171,13 +171,6 @@ $(function(){
             { "title" : "AKSI","width" : "1%", "orderable": false }
         ]
     });
-
-    $('.switch-input').click(function(){
-        if($(this).val() == 'aktif'){
-            $(this).parents('tr').siblings().find('.switch-input').attr('checked', false);
-        }
-    });
-
 });
 
 function tambah(){
@@ -247,6 +240,69 @@ function aktif(){
       $('#modal-aktif').modal('hide');
     }
   });
+}
+
+function radioAktif(tes){
+    var elem = $(tes);
+
+    if($(tes).val() == 'aktif'){
+        
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Tahun Anggaran Ini Akan Diaktifkan ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                swal("Berhasil!", "Data Tahun Anggaran Berhasil Simpan", "success");
+                $('#modal-tambah').modal('hide');
+                elem.parents('tr').siblings().find('.switch-input-off').prop('checked', true);
+                //elem.parents('tr').siblings().find('.switch-input-on').prop('checked', false);
+            } 
+            else {
+                swal('Dibatalkan', 'Data Tahun Anggaran Batal Simpan :)', 'error');
+                $('#modal-tambah').modal('hide');
+                //elem.attr('checked', false);
+                elem.siblings('.switch-input-off').prop('checked', true);
+            }
+        });
+    }
+}
+
+function radioNonAktif(tes){
+    var elem = $(tes);
+
+    if($(tes).val() == 'nonaktif'){
+        
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Tahun Anggaran Ini Akan Dinonaktifkan ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                swal("Berhasil!", "Data Tahun Anggaran Berhasil Simpan", "success");
+                $('#modal-tambah').modal('hide');
+            } 
+            else {
+                swal('Dibatalkan', 'Data Tahun Anggaran Batal Simpan :)', 'error');
+                $('#modal-tambah').modal('hide');
+                elem.siblings('.switch-input-on').prop('checked', true);
+            }
+        });
+    }
 }
 </script>
 @endpush

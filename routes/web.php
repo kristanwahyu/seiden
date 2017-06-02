@@ -19,10 +19,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/user/show','UserController@show');
         Route::get('/user/get/{id}','UserController@getOne');
         Route::put('/user/update/{id}','UserController@update');
-
+        //TAHUN ANGGARAN
         Route::get('/tahun-anggaran', function () {
             return view('pages.admin.tahun_anggaran');
         });
+        Route::get('/tahun-anggaran/show','TahunAnggaranController@show');
+        Route::post('/tahun-anggaran/store','TahunAnggaranController@store');
+        Route::put('/tahun-anggaran/update/{id}', 'TahunAnggaranController@update');
+        Route::get('/tahun-anggaran/get/{id}','TahunAnggaranController@show');
+
         //Satuan KErja
         Route::get('/satuan-kerja', function () {
             return view('pages.admin.satuan_kerja');

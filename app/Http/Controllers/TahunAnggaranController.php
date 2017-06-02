@@ -47,5 +47,25 @@ class TahunAnggaranController extends Controller
         $tahun = DipaTahunAnggaran::find($id);
         if ($tahun == null) return abort(503);
 
+        DipaTahunAnggaran::update([
+            'dipa_statusTA' => '0',
+        ]);
+
+        DipaTahunAnggaran::find($id)->update([
+            'dipa_statusTA' => '1',
+        ]);
+
+        return response()->json(['status','success'],200);
+    }
+
+    public function show()
+    {
+        $tahun = DipaTahunAnggaran::select('*');
+        return $this->makeDataTable($tahun);
+    }
+
+    public function makeDataTable($data)
+    {
+        return Datatables::eloquent($data)->addIndexColumn()->make(true);
     }
 }
