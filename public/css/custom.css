@@ -1,4 +1,7 @@
 /* Navbar */
+.navbar.navbar-default{
+    box-shadow: none;
+}
 
 .navbar-default .brand{
     padding: 15px 30px 10px 20px;
@@ -32,8 +35,11 @@
     font-size: 14px;
 }
 
-#wrapper #sidebar-nav, #wrapper .main{
+#wrapper #sidebar-nav{
     padding-top: 53px;
+} 
+#wrapper .main{
+    padding-top: 51px;
 }
 
 .slimScrollDiv{
@@ -53,6 +59,7 @@
 /* Breadcrumb */
 .breadcrumb{
     background-color: #fff;
+    border-radius: 0;
 }
 .breadcrumb > li > a{
     color: #2B333E;
@@ -162,7 +169,7 @@ hr{
 }
 
 .main-content{
-    padding: 15px 0;
+    padding: 0 0 15px;
 }
 
 .tabs-close{
@@ -243,6 +250,9 @@ td > .btn{
 
 .filter-search{
     display: none;
+}
+
+.detail-box, .filter-search{
     padding-bottom: 10px;
     margin-bottom: 15px;
     border-bottom: 1px solid #d6d6d6;
@@ -380,6 +390,15 @@ td.td-input .input-sm{
 .table-responsive{
     position: relative;
 }
+
+.btn-detail{
+    display: inline-block;
+    border:1px solid #d6d6d6;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px 8px;
+    transition: all 0.1s linear;
+}
 .btn-filter-search{
     border:1px solid #d6d6d6;
     cursor: pointer;
@@ -391,7 +410,7 @@ td.td-input .input-sm{
     padding: 5px 8px;
     transition: all 0.1s linear;
 }
-.btn-filter-search:hover, .btn-active{
+.btn-filter-search:hover, .btn-detail:hover,.btn-active{
     background-color: #00AAFF;
     border-color: #00a0f0;
     box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);

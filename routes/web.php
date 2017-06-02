@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/satuan-kerja/update/{id}', 'SatuanKerjaController@update');
         Route::get('/satuan-kerja/code-generate', 'SatuanKerjaController@codeGenerate');
         Route::get('/satuan-kerja/get/{id}', 'SatuanKerjaController@getOne');
+        Route::get('/satuan-kerja/get','SatuanKerjaController@getAll');
 
         Route::get('/dipa', function () {
             return view('pages.admin.dipa');

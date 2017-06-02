@@ -13,21 +13,23 @@
 
 @section('content')
   {{-- AWAL MAIN CONTENT --}}
-  <div class="main-content">
+<div class="main-content">
+    {{-- Breadcrumb --}}
+    <div class="breadcrumb-wrapper">
+        <ul class="breadcrumb">
+            <li><a href=""><i class="fa fa-home fa-fw"></i></a>
+            </li>
+            <li class="active-bread">Satuan Kerja</li>
+        </ul>
+    </div>
+    {{-- End Breadcrumb --}} 
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-
                 {{-- Breadcrumb --}}
-                <div class="breadcrumb-wrapper">
-                    <ul class="breadcrumb">
-                        <li><a href=""><i class="fa fa-home fa-fw"></i></a>
-                        </li>
-                        <li class="active-bread">Satuan Kerja</li>
-                    </ul>
-                </div>
 
-                {{-- End Breadcrumb --}} 
+                {{-- End Breadcrumb --}}
               
               	{{-- awal tabel satuan kerja --}}
                 <div class="panel">

@@ -12,37 +12,45 @@
 @endsection
 
 @section('content')
-  {{-- AWAL MAIN CONTENT --}}
-  <div class="main-content">
-      <div class="container-fluid">
+{{-- AWAL MAIN CONTENT --}}
+<div class="main-content">
+    {{-- Breadcrumb --}}
+    <div class="breadcrumb-wrapper">
+        <ul class="breadcrumb">
+            <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
+            <li class="active-bread">User</li>
+        </ul>
+    </div>
+    {{-- End Breadcrumb --}} 
+
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
 
-              {{-- awal tabel user --}}
-              <div class="panel">
-                <div class="panel-heading">
-                    <h3 class="panel-title">User</h3>
-                </div>
-                {{-- awal panel body --}}
-                <div class="panel-body">
-                  <div class="text-right">
-                      <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
-                  </div>
-                  <br>
-                  {{-- awal pembungkus tabel user --}}
-                  <div class="table-responsive">
-                      <table class="table table-bordered table-condensed table-striped" id="myTable">
+                {{-- awal tabel user --}}
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">User</h3>
+                    </div>
+                    {{-- awal panel body --}}
+                    <div class="panel-body">
+                        <div class="text-right">
+                            <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
+                        </div>
+                        <br>
+                        {{-- awal pembungkus tabel user --}}
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-condensed table-striped" id="myTable">
 
-                      </table>
-                  </div> {{-- akhir pembungkus tabel user --}}
-                </div> {{-- akhir panel body --}}
-              </div> {{-- akhir tabel user --}}
+                            </table>
+                        </div> {{-- akhir pembungkus tabel user --}}
+                    </div> {{-- akhir panel body --}}
+                </div> {{-- akhir tabel user --}}
             </div>
         </div>
-      </div>
-  </div>
-  {{-- AKHIR MAIN CONTENT --}}
-
+    </div>
+</div>
+{{-- AKHIR MAIN CONTENT --}}
   {{-- AWAL MODAL TAMBAH USER --}}
   <div class="modal fade" id="modal-tambah">
       <div class="modal-dialog">
@@ -89,6 +97,14 @@
                                   </div>
                               </div>
                               <div class="form-group">
+                                  <label class="col-sm-3 control-label" id="label_satker" style="display:none">Satuan Kerja</label>
+                                  <div class="col-sm-8">
+                                    <select id="tambah_satker_user" class="form-control" data-style="btn-white" disabled style="display:none">
+                                      {{-- ajax satker --}}
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="form-group">
                                 <label class="col-sm-3 control-label">Status</label>
                                 <div class="col-sm-8">
                                   <label class="radio-inline"><input type="radio" id="aktif" name="tambah_status" value="1" checked>Aktif</label>
@@ -130,13 +146,14 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Nama Lengkap</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="ubah_nama_lengkap" name="ubah_nama_lengkap">
+                                    <input type="text" class="form-control" id="ubah_nama_lengkap" name="ubah_nama_lengkap" placeholder="Contoh : Fais Nasrullah">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Jenis User</label>
                                 <div class="col-sm-8">
-                                  <select id="ubah_jenis_user" class="form-control" data-style="btn-white">
+                                <select id="ubah_jenis_user" class="form-control" data-style="btn-white">
+                                    <option selected>- Pilih Jenis User -</option>
                                     <option value="1">Admin</option>
                                     <option value="2">KPA</option>
                                     <option value="3">PPK</option>
@@ -144,7 +161,7 @@
                                     <option value="5">PPSM</option>
                                     <option value="6">Operator SIMA</option>
                                     <option value="7">Operator SIBA</option>
-                                  </select>
+                                </select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -173,6 +190,7 @@
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 
 <script>
+var satker = "";
 $(function(){
     'use strict';
      var table = $('#myTable').DataTable({
@@ -264,7 +282,21 @@ $(function(){
 
         ],
     });
-
+    //APABILA PPK DAN STAFF
+    $("#tambah_jenis_user").change(function(){
+        if($(this).val() == 3 || $(this).val() == 4) {
+            $('#label_satker').show(200);
+            $('#tambah_satker_user').show(200);
+            $('#tambah_satker_user').removeAttr('disabled');
+            if(satker == ""){
+                loadSatker($('#tambah_satker_user'));
+            }
+        } else {
+            $('#label_satker').hide(200);
+            $('#tambah_satker_user').hide(200);
+            $('#tambah_satker_user').attr('disabled', true);
+        }
+    });
     //SWEET TAMBAH
      $("#btn-simpan").click(function(){
             swal({
@@ -324,13 +356,16 @@ $(function(){
     $("#myTable").on('click','.ubah-user', function(){
         $.get("/user/get/"+$(this).data('id'), function(data, status){
             if(status == 'success'){
+                console.log(data);
                 $("#ubah_username").val(data['username']);
                 $("#ubah_nama_lengkap").val(data['dipa_namaUser']);
                 $("#ubah_jenis_user").val(data['dipa_jenisUser']);
                 if(data['dipa_statusUser'] == 1) {
-                    $("#ubah_aktif").attr('checked',true);
+                    $('#ubah_tidak_aktif').removeAttr('checked');
+                    $("#ubah_aktif").attr('checked','checked');
                 } else {
-                    $("#ubah_tidak_aktif").attr('checked',true);
+                    $('#ubah_aktif').removeAttr('checked');
+                    $("#ubah_tidak_aktif").attr('checked','checked');
                 }
                 $("#id_binding").val(data['dipa_idUser']);
             }
@@ -391,6 +426,18 @@ $(function(){
     });
 
 });
+
+function loadSatker(e){
+    $.get("/satuan-kerja/get", function(data, status){
+        if(status == 'success') {
+            satker += "<option selected>- Pilih Satuan Kerja -</option>";
+            for(var i = 0; i < data.length; i++) {
+                satker += '<option value="'+data[i]['dipa_idSK']+'">'+data[i]['dipa_kodeSK']+' - '+data[i]['dipa_namaSK']+'</option>';
+            }
+            e.append(satker);
+        }
+    });
+}
 
 </script>
 @endpush

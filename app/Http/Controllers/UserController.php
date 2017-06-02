@@ -49,7 +49,7 @@ class UserController extends Controller
 
     public function getOne($id)
     {
-        return User::find($id);
+        return User::withTrashed()->find($id);
     }
 
     public function update(Request $request, $id)
@@ -61,7 +61,7 @@ class UserController extends Controller
             'jenis'     => 'required',
     	]);
 
-        User::find($id)->update([
+        User::withTrashed()->find($id)->update([
             'username'       => $request->username,
             'dipa_namaUser'  => $request->nama_user,
             'dipa_statusUser'=> $request->status,

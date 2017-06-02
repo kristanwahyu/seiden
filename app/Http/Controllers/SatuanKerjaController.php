@@ -83,4 +83,12 @@ class SatuanKerjaController extends Controller
 
         return response()->json(['status'=>'success'],200);
     }
+
+    public function getAll()
+    {
+        return DipaSatker::select('dipa_idSK', 'dipa_kodeSK','dipa_namaSK')
+            ->where('dipa_statusSK','1')
+            ->orderBy('dipa_kodeSK','asc')
+            ->get();
+    }
 }
