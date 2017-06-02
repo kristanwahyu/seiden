@@ -106,7 +106,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="ubah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-simpan">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -123,53 +123,114 @@
 <script>
 $(function(){
   'use strict';
-  var data = [
-      [
-          "1",
-          "2015",
-          `<div class="switch">
-                <input type="radio" class="switch-input switch-input-off" name="radio1" value="nonaktif" id="radio1" onclick="radioNonAktif(this)" checked>
-                <label for="radio1" class="switch-label switch-label-off">NON-AKTIF</label>
-                <input type="radio" class="switch-input switch-input-on" name="radio1" value="aktif" id="radio2" onclick="radioAktif(this)">
-                <label for="radio2" class="switch-label switch-label-on">AKTIF</label>
-                <span class="switch-selection"></span>
-            </div>`,
-          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>`
-      ],
-      [
-          "2",
-          "2016",
-          `<div class="switch">
-                <input type="radio" class="switch-input switch-input-off" name="radio2" value="nonaktif" id="radio3" onclick="radioNonAktif(this)">
-                <label for="radio3" class="switch-label switch-label-off">NON-AKTIF</label>
-                <input type="radio" class="switch-input switch-input-on" name="radio2" value="aktif" id="radio4" onclick="radioAktif(this)" checked>
-                <label for="radio4" class="switch-label switch-label-on">AKTIF</label>
-                <span class="switch-selection"></span>
-            </div>`,
-          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>`
-      ],
-      [
-          "3",
-          "2017",
-          `<div class="switch">
-                <input type="radio" class="switch-input switch-input-off" name="radio3" value="nonaktif" id="radio5" onclick="radioNonAktif(this)" checked>
-                <label for="radio5" class="switch-label switch-label-off">NON-AKTIF</label>
-                <input type="radio" class="switch-input switch-input-on" name="radio3" value="aktif" id="radio6" onclick="radioAktif(this)">
-                <label for="radio6" class="switch-label switch-label-on">AKTIF</label>
-                <span class="switch-selection"></span>
-            </div>`,
-          `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>` // YANG MEMILIKI STATUS AKTIF, MAKA BUTTON AKTIF TIDAK DIMUNCULKAN
-      ],
-    ];
+  var table = $('#myTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":{
+            type : "GET",
+            url : "/tahun-anggaran/show"
+        },
+        "columns": [
+            { 
+                title: "NO",
+                data: "DT_Row_Index", 
+                name: "DT_Row_Index", 
+                orderable: false,
+                searchable: false,
+                width: "1%"
+            },
+            {
+                title: 'TAHUN ANGGARAN',
+                data: 'dipa_tahun',
+                defaultContent: "-",
+                name: 'dipa_tahun'
+            },
+            {
+                title: 'STATUS',
+                data: null,
+                defaultContent: "-",
+                name: 'dipa_statusTA',
+                render: function (data) {
+                    var nama = data['dipa_idTAng'];
+                    var nama2 = parseInt(nama)+9999;
+                    var actions = '';
+                    actions = `<div class="switch">
+                                    <input type="radio" class="switch-input switch-input-off" name="radio${nama}" value="nonaktif" data-id="${nama}" id="radio${nama}" onclick="radioNonAktif(this)" checked>
+                                    <label for="radio1" class="switch-label switch-label-off">NON-AKTIF</label>
+                                    <input type="radio" class="switch-input switch-input-on" name="radio${nama}" value="aktif" data-id="${nama}" id="radio${nama2}" onclick="radioAktif(this)">
+                                    <label for="radio2" class="switch-label switch-label-on">AKTIF</label>
+                                    <span class="switch-selection"></span>
+                                </div>`;
+                    return actions.replace();
+                },
+            },
+            {  
+                title: '<div class="text-center">AKSI</div>',
+                data: null,
+                name: 'action',
+                render: function (data) {
+                    var actions = '';
+                    actions = "<button class='btn btn-warning btn-sm center-block ubah-tahun' data-toggle='modal'' data-id='"+data['dipa_idTAng']+"' href='#modal-ubah'><i class='fa fa-pencil'></i> Ubah</button>";
+                    return actions.replace();
+                },
+                width: "8%",
+                orderable: false
+            }
 
-    $('#myTable').DataTable({
-        "data" : data,
-        "columns" : [
-            { "title" : "#", "width" : "2%" },
-            { "title" : "TAHUN ANGGARAN" },
-            { "title" : "STATUS", sClass: 'text-center'},
-            { "title" : "AKSI","width" : "1%", "orderable": false }
-        ]
+
+        ],
+    });
+
+
+    //=======SIMPAN=====//
+    $("#btn-simpan").on('click', function(){
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Tahun Ini Akan Disimpan ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/tahun-anggaran/store",
+                    type : "POST",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "tahun" : $("#tambah_tahun_anggaran").val(),
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    }, 
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-tambah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+                swal('Dibatalkan', 'Data Satuan Kerja Batal Simpan :)', 'error');
+                $('#modal-tambah').modal('hide');
+            }
+        });
     });
 });
 
@@ -244,7 +305,7 @@ function aktif(){
 
 function radioAktif(tes){
     var elem = $(tes);
-
+    console.log("adasd");
     if($(tes).val() == 'aktif'){
         
         swal({

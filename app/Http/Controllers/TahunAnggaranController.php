@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\DipaTahunAnggaran;
+use Yajra\Datatables\Facades\Datatables;
 
 class TahunAnggaranController extends Controller
 {
