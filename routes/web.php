@@ -15,11 +15,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/user', function () {
             return view('pages.admin.user');
         });
+        Route::post('/user/store', 'UserController@store');
+        Route::get('/user/show','UserController@show');
+        Route::get('/user/get/{id}','UserController@getOne');
+        Route::put('/user/update/{id}','UserController@update');
 
         Route::get('/tahun-anggaran', function () {
             return view('pages.admin.tahun_anggaran');
         });
-
+        //Satuan KErja
         Route::get('/satuan-kerja', function () {
             return view('pages.admin.satuan_kerja');
         });
@@ -60,6 +64,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/dipa/dipa-akun', function () {
             return view('pages.admin.dipa_akun');
         });
+    });
+});
 //==============+++END ADMIN+++============//
 
 Auth::routes();

@@ -26,21 +26,7 @@
                         <li class="active-bread">Satuan Kerja</li>
                     </ul>
                 </div>
-<<<<<<< HEAD
-                {{-- awal panel body --}}
-                <div class="panel-body">
-                  <div class="text-right">
-                      <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah' id="new-satker"><i class="fa fa-plus"></i> Tambah</button>
-                  </div>
-                  <br>
-                  {{-- awal pembungkus tabel satuan kerja --}}
-                  <div class="table-responsive">
-                      <table class="table table-bordered table-condensed table-striped" id="myTable">
-                      </table>
-                  </div> {{-- akhir pembungkus tabel satuan kerja --}}
-                </div> {{-- akhir panel body --}}
-              </div> {{-- akhir tabel satuan kerja --}}
-=======
+
                 {{-- End Breadcrumb --}} 
               
               	{{-- awal tabel satuan kerja --}}
@@ -62,7 +48,6 @@
                         </div> {{-- akhir pembungkus tabel satuan kerja --}}
                     </div> {{-- akhir panel body --}}
                 </div> {{-- akhir tabel satuan kerja --}}
->>>>>>> cms
             </div>
         </div>
     </div>
