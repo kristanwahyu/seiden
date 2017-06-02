@@ -29,53 +29,6 @@
         <div class="row">
             <div class="col-md-12">
 
-                <div class="well">
-                    <div class="form-group">
-                        <table style="width:50%">
-                            <tr>
-                                <td><b><h3>Kode Satuan Kerja </h3></b>
-                                </td>
-                                <td><b><h3> : </h3></b>
-                                </td>
-                                <td><b><h3> SAT001</h3></b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><b><h3>Satuan Kerja </h3></b>
-                                </td>
-                                <td><b><h3> : </h3></b>
-                                </td>
-                                <td><b><h3> Satuan Kerja-1</h3></b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><b><h3>Program </h3></b>
-                                </td>
-                                <td><b><h3> : </h3></b>
-                                </td>
-                                <td><b><h3> PRG0001 - Kegiatan-1</h3></b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><b><h3>Tahun Anggaran </h3></b>
-                                </td>
-                                <td><b><h3> : </h3></b>
-                                </td>
-                                <td><b><h3> 2017</h3></b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><b><h3>Nilai </h3></b>
-                                </td>
-                                <td><b><h3> : </h3></b>
-                                </td>
-                                <td><b><h3> Rp. 300.000.000</h3></b>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
                 {{-- awal tabel DIPA --}}
                 <div class="panel">
                     <div class="panel-heading">
@@ -83,10 +36,65 @@
                     </div>
                     {{-- awal panel body --}}
                     <div class="panel-body">
-                        <div class="text-right">
-                            <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
+
+                        <div class="row detail-box">
+                            <div class="col-md-4">
+                                <table class="table table-borderless detail-table no-margin">
+                                    <tbody>
+                                        <tr>
+                                            <td>KODE SATUAN KERJA</td>
+                                            <td>:</td>
+                                            <td>SAT0001</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SATUAN KERJA</td>
+                                            <td>:</td>
+                                            <td>SATUAN KERJA-1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-4">
+                                <table class="table table-borderless detail-table no-margin">
+                                    <tbody>
+                                        <tr>
+                                            <td>PROGRAM</td>
+                                            <td>:</td>
+                                            <td>PRG0001-PROGRAM1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-4">
+                                <table class="table table-borderless detail-table no-margin">
+                                    <tbody>
+                                        <tr>
+                                            <td>TAHUN ANGGARAN</td>
+                                            <td>:</td>
+                                            <td class="text-right">2017</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NILAI</td>
+                                            <td>:</td>
+                                            <td class="text-right">RP. 12.500.000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <br> {{-- awal pembungkus tabel DIPA --}}
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <span class="btn-detail-open-text"></span> &nbsp;
+                                <div class="btn-detail btn-active"><i class="fa fa-chevron-up"></i></div>
+                            </div>
+                        </div>
+                        <br> 
+                        
+                        {{-- awal pembungkus tabel DIPA --}}
                         <div class="table-responsive">
                             <table class="table table-bordered table-condensed table-striped" id="myTable">
 
@@ -185,9 +193,9 @@
 
 <script>
 $(function(){
-  'use strict';
-  var data = [
-      [
+    'use strict';
+    var data = [
+        [
         "1",
         "KGT00001",
         "Kegiatan-1",
@@ -195,8 +203,8 @@ $(function(){
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
         <a href="{{ url('/dipa/dipa-output') }}" class="btn btn-success" role="button"> Pilih</a>`
-      ],
-      [
+        ],
+        [
         "2",
         "KGT00002",
         "Kegiatan-2",
@@ -204,20 +212,27 @@ $(function(){
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
         <a href="{{ url('/dipa/dipa-output') }}" class="btn btn-success" role="button"> Pilih</a>`
-      ],
+        ],
     ];
 
-  $('#myTable').DataTable({
-      "data" : data,
-      "columns" : [
-          { "title" : "#", "width" : "2%" },
-          { "title" : "KODE KEGIATAN" },
-          { "title" : "NAMA KEGIATAN" },
-          { "title" : "NILAI" },
-          { "title" : "AKSI","width" : "16%", "orderable": false }
-      ]
-  });
+    $('#myTable').DataTable({
+        "data" : data,
+        "columns" : [
+            { "title" : "#", "width" : "2%" },
+            { "title" : "KODE KEGIATAN" },
+            { "title" : "NAMA KEGIATAN" },
+            { "title" : "NILAI" },
+            { "title" : "AKSI","width" : "16%", "orderable": false }
+        ]
+    });
 
+    //btn detail box
+    $('.btn-detail').click(function(){
+        $('.detail-box').slideToggle(200);
+        $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
+        $(this).siblings('span').toggleClass('btn-detail-open-text btn-detail-close-text')
+        $(this).toggleClass('btn-active');
+    });
 });
 
 function tambah(){
