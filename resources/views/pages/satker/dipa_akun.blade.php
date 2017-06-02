@@ -8,7 +8,7 @@
 @section('title', 'DIPA Akun')
 
 @section('sidebar')
-    @include('sidebar.admin')
+    @include('sidebar.satker')
 @endsection
 
 @section('content')
@@ -18,18 +18,17 @@
     <div class="breadcrumb-wrapper">
         <ul class="breadcrumb">
             <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
-            <li><a href="">DIPA</a></li>
-            <li><a href="">Satuan Kerja-1</a></li>
-            <li><a href="">PRG0001</a></li>
-            <li><a href="">KGT0001</a></li>
-            <li><a href="">OP0001</a></li>
-            <li><a href="">SOP0001</a></li>
-            <li><a href="">KP0001</a></li>
+            <li><a href="{{ url('/dipa/dipa-program') }}">DIPA</a></li>
+            <li><a href="{{ url('/dipa/dipa-kegiatan') }}">PRG0001</a></li>
+            <li><a href="{{ url('/dipa/dipa-output') }}">KGT0001</a></li>
+            <li><a href="{{ url('/dipa/dipa-suboutput') }}">OP0001</a></li>
+            <li><a href="{{ url('/dipa/dipa-komponen') }}">SOP0001</a></li>
+            <li><a href="{{ url('/dipa/dipa-subkomponen') }}">KP0001</a></li>
             <li class="active-bread">SKP0001</li>
         </ul>
     </div>
     {{-- End Breadcrumb --}}
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -42,74 +41,57 @@
                     {{-- awal panel body --}}
                     <div class="panel-body">
                         <div class="row detail-box">
-                            <div class="col-md-4">
-                                <table class="table table-borderless detail-table no-margin">
-                                    <tbody>
-                                        <tr>
-                                            <td>KODE SATUAN KERJA</td>
-                                            <td>:</td>
-                                            <td>SAT0001</td>
-                                        </tr>
-                                        <tr>
-                                            <td>SATUAN KERJA</td>
-                                            <td>:</td>
-                                            <td>SATUAN KERJA-1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>PROGRAM</td>
-                                            <td>:</td>
-                                            <td>PRG0001-PROGRAM1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>KEGIATAN</td>
-                                            <td>:</td>
-                                            <td>KGT0001-KEGIATAN1</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-4">
-                                <table class="table table-borderless detail-table no-margin">
-                                    <tbody>
-                                        <tr>
-                                            <td>OUTPUT</td>
-                                            <td>:</td>
-                                            <td>OP0001-OUTPUT1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>SUB OUTPUT</td>
-                                            <td>:</td>
-                                            <td>SOP0001-SUBOUTPUT1.1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>KOMPONEN</td>
-                                            <td>:</td>
-                                            <td>KOMPONEN1</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-4">
-                                <table class="table table-borderless detail-table no-margin">
-                                    <tbody>
-                                        <tr>
-                                            <td>SUB KOMPONEN</td>
-                                            <td>:</td>
-                                            <td class="text-right">SUBKOMPONEN1.1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>TAHUN ANGGARAN</td>
-                                            <td>:</td>
-                                            <td class="text-right">2017</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NILAI</td>
-                                            <td>:</td>
-                                            <td class="text-right">RP. 12.500.000</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                          <div class="col-md-6">
+                              <table class="table table-borderless detail-table no-margin">
+                                  <tbody>
+                                      <tr>
+                                          <td>KODE / SATUAN KERJA</td>
+                                          <td>:</td>
+                                          <td>SAT0001 / SATUAN KERJA-1</td>
+                                      </tr>
+                                      <tr>
+                                          <td>KODE / NAMA PROGRAM</td>
+                                          <td>:</td>
+                                          <td>PRG0001 / PROGRAM1</td>
+                                      </tr>
+                                      <tr>
+                                          <td>KODE / NAMA KEGIATAN</td>
+                                          <td>:</td>
+                                          <td>KGT0001 / KEGIATAN1</td>
+                                      </tr>
+                                      <tr>
+                                          <td>KODE / NAMA OUTPUT</td>
+                                          <td>:</td>
+                                          <td>OP0001 / OUTPUT1.1</td>
+                                      </tr>
+                                      <tr>
+                                          <td>KODE / NAMA SUB OUTPUT</td>
+                                          <td>:</td>
+                                          <td>SOP0001 / SUBOUTPUT1.1</td>
+                                      </tr>
+                                      <tr>
+                                          <td>KODE / NAMA KOMPONEN</td>
+                                          <td>:</td>
+                                          <td>KP0001 / KOMPONEN1.1</td>
+                                      </tr>
+                                      <tr>
+                                          <td>KODE / NAMA SUB KOMPONEN</td>
+                                          <td>:</td>
+                                          <td>SKP0001 / SUBKOMPONEN1.1</td>
+                                      </tr>
+                                      <tr>
+                                          <td>TAHUN ANGGARAN</td>
+                                          <td>:</td>
+                                          <td>2017</td>
+                                      </tr>
+                                      <tr>
+                                          <td>NILAI</td>
+                                          <td>:</td>
+                                          <td>RP. 12.500.000</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
                         </div>
 
                         <div class="row">
@@ -121,7 +103,7 @@
                                 <div class="btn-detail btn-active"><i class="fa fa-chevron-up"></i></div>
                             </div>
                         </div>
-                        <br> 
+                        <br>
 
                         {{-- awal pembungkus tabel DIPA --}}
                         <div class="table-responsive">
@@ -264,25 +246,17 @@ $(function(){
         "1",
         "AK0001",
         "Akun 01",
-        "1",
-        "Orang",
-        "Rp. 7.500.000",
-        "Rp. 7.500.000",
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/#') }}" class="btn btn-success" role="button"> Pilih</a>`
+        <a href="{{ url('/dipa/dipa-rincian') }}" class="btn btn-success" role="button"> Pilih</a>`
         ],
         [
         "2",
         "AK0002",
         "Akun 02",
-        "2",
-        "Kegiatan",
-        "Rp. 2.500.000",
-        "Rp. 5.000.000",
         `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
         <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/#') }}" class="btn btn-success" role="button"> Pilih</a>`
+        <a href="{{ url('/dipa/dipa-rincian') }}" class="btn btn-success" role="button"> Pilih</a>`
         ],
     ];
 
@@ -292,10 +266,6 @@ $(function(){
             { "title" : "#", "width" : "2%" },
             { "title" : "KODE AKUN" },
             { "title" : "NAMA AKUN" },
-            { "title" : "VOL" },
-            { "title" : "SATUAN" },
-            { "title" : "HARGA SATUAN" },
-            { "title" : "NILAI" },
             { "title" : "AKSI","width" : "16%", "orderable": false }
         ]
     });

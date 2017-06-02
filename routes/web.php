@@ -33,38 +33,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/satuan-kerja/code-generate', 'SatuanKerjaController@codeGenerate');
         Route::get('/satuan-kerja/get/{id}', 'SatuanKerjaController@getOne');
         Route::get('/satuan-kerja/get','SatuanKerjaController@getAll');
-
-        Route::get('/dipa', function () {
-            return view('pages.admin.dipa');
-        });
-
-        Route::get('/dipa/dipa-program', function () {
-            return view('pages.admin.dipa_program');
-        });
-
-        Route::get('/dipa/dipa-kegiatan', function () {
-            return view('pages.admin.dipa_kegiatan');
-        });
-
-        Route::get('/dipa/dipa-output', function () {
-            return view('pages.admin.dipa_output');
-        });
-
-        Route::get('/dipa/dipa-suboutput', function () {
-            return view('pages.admin.dipa_suboutput');
-        });
-
-        Route::get('/dipa/dipa-komponen', function () {
-            return view('pages.admin.dipa_komponen');
-        });
-
-        Route::get('/dipa/dipa-subkomponen', function () {
-            return view('pages.admin.dipa_subkomponen');
-        });
-
-        Route::get('/dipa/dipa-akun', function () {
-            return view('pages.admin.dipa_akun');
-        });
     });
 });
 //==============+++END ADMIN+++============//
@@ -78,3 +46,45 @@ Route::get('/logout', function(){
 
 Route::get('/tes','SatuanKerjaController@codeGenerate');
 Route::get('/home', 'HomeController@index')->name('home');
+
+//==============+++START SATUAN KERJA+++============//
+Route::get('/dashboard-satker', function () {
+    return view('pages.satker.dashboard');
+});
+
+// Route::get('/dipa', function () {
+//     return view('pages.satker.dipa');
+// });
+
+Route::get('/dipa/dipa-program', function () {
+    return view('pages.satker.dipa_program');
+});
+
+Route::get('/dipa/dipa-kegiatan', function () {
+    return view('pages.satker.dipa_kegiatan');
+});
+
+Route::get('/dipa/dipa-output', function () {
+    return view('pages.satker.dipa_output');
+});
+
+Route::get('/dipa/dipa-suboutput', function () {
+    return view('pages.satker.dipa_suboutput');
+});
+
+Route::get('/dipa/dipa-komponen', function () {
+    return view('pages.satker.dipa_komponen');
+});
+
+Route::get('/dipa/dipa-subkomponen', function () {
+    return view('pages.satker.dipa_subkomponen');
+});
+
+Route::get('/dipa/dipa-akun', function () {
+    return view('pages.satker.dipa_akun');
+});
+
+Route::get('/dipa/dipa-rincian', function () {
+    return view('pages.satker.dipa_rincian');
+});
+//==============+++END SATUAN KERJA+++============//
