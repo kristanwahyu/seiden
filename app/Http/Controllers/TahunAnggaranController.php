@@ -43,18 +43,20 @@ class TahunAnggaranController extends Controller
         return response()->json(['status','success'],200);
     }
 
-    public function setAktif($id)
+    public function aktifToggle(Request $request)
     {
-        $tahun = DipaTahunAnggaran::find($id);
+        $tahun = DipaTahunAnggaran::find($request->id_tahun);
         if ($tahun == null) return abort(503);
 
-        DipaTahunAnggaran::update([
+        DipaTahunAnggaran::where('dipa_status', '1')->update([
             'dipa_status' => '0',
         ]);
 
-        DipaTahunAnggaran::find($id)->update([
-            'dipa_status' => '1',
-        ]);
+        if($request->status == 1){
+            DipaTahunAnggaran::find($request->id_tahun)->update([
+                'dipa_status' => '1',
+            ]);   
+        }
 
         return response()->json(['status','success'],200);
     }
