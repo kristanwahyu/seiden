@@ -14,9 +14,8 @@ class AddSoftDeletesUser extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('dipa_user', function($table) {
-            $table->softDeletes(); //1 untuk charges, 2 untuk freight charge, 3 untuk freight charges collect
+        Schema::table('tbl_pengguna', function(Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
