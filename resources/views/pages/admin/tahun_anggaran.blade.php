@@ -75,7 +75,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="tambah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-simpan">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -106,7 +106,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btn-simpan">Simpan</button>
+                <button type="button" class="btn btn-primary">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -141,17 +141,17 @@ $(function(){
             },
             {
                 title: 'TAHUN ANGGARAN',
-                data: 'dipa_tahun',
+                data: 'dipa_tahun_anggaran',
                 defaultContent: "-",
-                name: 'dipa_tahun'
+                name: 'dipa_tahun_anggaran'
             },
             {
                 title: 'STATUS',
                 data: null,
                 defaultContent: "-",
-                name: 'dipa_statusTA',
+                name: 'dipa_status',
                 render: function (data) {
-                    var nama = data['dipa_idTAng'];
+                    var nama = data['dipa_id_tahun_anggaran'];
                     var nama2 = parseInt(nama)+9999;
                     var actions = '';
                     actions = `<div class="switch">
@@ -163,6 +163,7 @@ $(function(){
                                 </div>`;
                     return actions.replace();
                 },
+                sClass: 'text-center'
             },
             {  
                 title: '<div class="text-center">AKSI</div>',
@@ -222,7 +223,7 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Error input data!", "Please try again", "error");
                         }, 1000);
                     }
                 });
@@ -234,7 +235,7 @@ $(function(){
     });
 });
 
-function tambah(){
+/*function tambah(){
     swal({
     title: "Apakah Anda Yakin ?",
     text: "Data Tahun Anggaran Ini Akan Disimpan ",
@@ -255,7 +256,7 @@ function tambah(){
       $('#modal-tambah').modal('hide');
     }
   });
-}
+}*/
 
 function ubah(){
     swal({

@@ -8,7 +8,6 @@ use Yajra\Datatables\Facades\Datatables;
 
 class TahunAnggaranController extends Controller
 {
-    //
     public function store(Request $request) 
     {
         $this->validate($request, [
@@ -17,6 +16,7 @@ class TahunAnggaranController extends Controller
 
         DipaTahunAnggaran::create([
             'dipa_tahun_anggaran' => $request->tahun,
+            'dipa_status' => '0'
         ]);
 
         return response()->json(['status'=>'success'],200);
