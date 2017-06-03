@@ -155,11 +155,12 @@ $(function(){
                     var nama2 = parseInt(nama)+9999;
                     var checked = (data['dipa_status'] == 1) ? 'checked' : '';
                     var classNonAktif = (data['dipa_status'] == 1) ? 'radio-nonaktif' : '';
+                    var classAktif = (data['dipa_status'] == 1) ? 'radio-aktif' : '';
                     var actions = '';
                     actions = `<div class="switch">
                         <input type="radio" class="switch-input switch-input-off ${classNonAktif}" name="radio${nama}" value="0" data-id="${nama}" id="radio${nama}" checked>
                         <label for="radio${nama}" class="switch-label switch-label-off">NON-AKTIF</label>
-                        <input type="radio" class="switch-input switch-input-on" name="radio${nama}" value="1" data-id="${nama}" id="radio${nama2}" ${checked}>
+                        <input type="radio" class="switch-input switch-input-on ${classAktif}" name="radio${nama}" value="1" data-id="${nama}" id="radio${nama2}" ${checked}>
                         <label for="radio${nama2}" class="switch-label switch-label-on">AKTIF</label>
                         <span class="switch-selection"></span>
                     </div>`;
