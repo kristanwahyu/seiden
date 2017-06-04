@@ -217,28 +217,28 @@ $(function(){
             },
             {
                 title: 'NAMA LENGKAP',
-                data: 'dipa_namaUser',
+                data: 'dipa_nama_pengguna',
                 defaultContent: "-",
-                name: 'dipa_namaUser'
+                name: 'dipa_nama_pengguna'
             },
             {
                 title: '<div class="text-center">JENIS USER</div>',
                 data: null,
                 defaultContent: "-",
-                name: 'dipa_jenisUser',
+                name: 'dipa_jenis_pengguna',
                 render: function (data) {
                     var status = '';
-                    if (data['dipa_jenisUser'] == 1) {
+                    if (data['dipa_jenis_pengguna'] == 1) {
                         status = '<div class="text-center">ADMIN</div>';
-                    } else if (data['dipa_jenisUser'] == 2) {
+                    } else if (data['dipa_jenis_pengguna'] == 2) {
                         status = '<div class="text-center">KPA</div>';
-                    } else if (data['dipa_jenisUser'] == 3) {
+                    } else if (data['dipa_jenis_pengguna'] == 3) {
                         status = '<div class="text-center">PPK</div>';
-                    } else if (data['dipa_jenisUser'] == 4) {
+                    } else if (data['dipa_jenis_pengguna'] == 4) {
                         status = '<div class="text-center">STAF (SATKER)</div>';
-                    } else if (data['dipa_jenisUser'] == 5) {
+                    } else if (data['dipa_jenis_pengguna'] == 5) {
                         status = '<div class="text-center">PPSM</div>';
-                    } else if (data['dipa_jenisUser'] == 6) {
+                    } else if (data['dipa_jenis_pengguna'] == 6) {
                         status = '<div class="text-center">OP. SIMA</div>';
                     } else {
                         status = '<div class="text-center">OP. SIBA</div>';
@@ -252,10 +252,10 @@ $(function(){
                 title: '<div class="text-center">STATUS</div>',
                 data: null,
                 defaultContent: "-",
-                name: 'dipa_statusSK',
+                name: 'dipa_pengguna_status',
                 render: function (data) {
                     var status = '';
-                    if(data['dipa_statusUser'] == 1) {
+                    if(data['dipa_pengguna_status'] == 1) {
                         status = "<div class='text-center'><span class='label label-success' style='font-size:12px'>Aktif</span></div>";
                     } else {
                         status = "<div class='text-center'><span class='label label-danger' style='font-size:12px'>Tidak Aktif</span></div>";
@@ -271,12 +271,13 @@ $(function(){
                 name: 'action',
                 render: function (data) {
                     var actions = '';
-                    actions = `<button class='btn btn-warning btn-sm ubah-user' data-toggle='modal' data-id='${data['dipa_idUser']}' href='#modal-ubah'><i class='fa fa-pencil'></i> Ubah</button>
-                                <button class='btn btn-danger btn-sm hapus-user' data-toggle='modal' data-id='${data['dipa_idUser']}' href='#modal-ubah'><i class='fa fa-trash'></i> Hapus</button>`;
+                    actions = `<button class='btn btn-warning btn-sm ubah-user' data-toggle='modal' data-id='${data['dipa_id_pengguna']}' href='#modal-ubah'><i class='fa fa-pencil'></i> Ubah</button>
+                                <button class='btn btn-danger btn-sm hapus-user' data-toggle='modal' data-id='${data['dipa_id_pengguna']}' href='#modal-ubah'><i class='fa fa-trash'></i> Hapus</button>`;
                     return actions.replace();
                 },
                 width: "12.3%",
-                orderable: false
+                orderable: false,
+                searchable: false
             }
 
 
@@ -357,16 +358,16 @@ $(function(){
         $.get("/user/get/"+$(this).data('id'), function(data, status){
             if(status == 'success'){
                 $("#ubah_username").val(data['username']);
-                $("#ubah_nama_lengkap").val(data['dipa_namaUser']);
-                $("#ubah_jenis_user").val(data['dipa_jenisUser']);
-                if(data['dipa_statusUser'] == 1) {
+                $("#ubah_nama_lengkap").val(data['dipa_nama_pengguna']);
+                $("#ubah_jenis_user").val(data['dipa_jenis_pengguna']);
+                if(data['dipa_pengguna_status'] == 1) {
                     $('#ubah_tidak_aktif').prop('checked', false);
                     $("#ubah_aktif").prop('checked', true);
                 } else {
                     $('#ubah_aktif').prop('checked', false);
                     $("#ubah_tidak_aktif").prop('checked', true);
                 }
-                $("#id_binding").val(data['dipa_idUser']);
+                $("#id_binding").val(data['dipa_id_pengguna']);
             }
         });
     }); 

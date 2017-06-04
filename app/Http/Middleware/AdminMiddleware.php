@@ -17,7 +17,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         if (Auth::check()){
-            if (Auth::user()->dipa_jenisUser != '1'){
+            if (Auth::user()->dipa_jenis_pengguna != '1'){
                 return abort(503);
             }
         }

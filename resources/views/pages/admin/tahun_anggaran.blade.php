@@ -75,7 +75,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="tambah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-simpan">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -106,7 +106,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btn-simpan">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-edit">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -122,8 +122,8 @@
 
 <script>
 $(function(){
-  'use strict';
-  var table = $('#myTable').DataTable({
+    'use strict';
+    var table = $('#myTable').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax":{
@@ -141,28 +141,32 @@ $(function(){
             },
             {
                 title: 'TAHUN ANGGARAN',
-                data: 'dipa_tahun',
+                data: 'dipa_tahun_anggaran',
                 defaultContent: "-",
-                name: 'dipa_tahun'
+                name: 'dipa_tahun_anggaran'
             },
             {
                 title: 'STATUS',
                 data: null,
                 defaultContent: "-",
-                name: 'dipa_statusTA',
+                name: 'dipa_status',
                 render: function (data) {
-                    var nama = data['dipa_idTAng'];
+                    var nama = data['dipa_id_tahun_anggaran'];
                     var nama2 = parseInt(nama)+9999;
+                    var checked = (data['dipa_status'] == 1) ? 'checked' : '';
+                    var classNonAktif = (data['dipa_status'] == 1) ? 'radio-nonaktif' : '';
+                    var classAktif = (data['dipa_status'] == 1) ? 'radio-aktif' : '';
                     var actions = '';
                     actions = `<div class="switch">
-                                    <input type="radio" class="switch-input switch-input-off" name="radio${nama}" value="nonaktif" data-id="${nama}" id="radio${nama}" onclick="radioNonAktif(this)" checked>
-                                    <label for="radio1" class="switch-label switch-label-off">NON-AKTIF</label>
-                                    <input type="radio" class="switch-input switch-input-on" name="radio${nama}" value="aktif" data-id="${nama}" id="radio${nama2}" onclick="radioAktif(this)">
-                                    <label for="radio2" class="switch-label switch-label-on">AKTIF</label>
-                                    <span class="switch-selection"></span>
-                                </div>`;
+                        <input type="radio" class="switch-input switch-input-off ${classNonAktif}" name="radio${nama}" value="0" data-id="${nama}" id="radio${nama}" checked>
+                        <label for="radio${nama}" class="switch-label switch-label-off">NON-AKTIF</label>
+                        <input type="radio" class="switch-input switch-input-on ${classAktif}" name="radio${nama}" value="1" data-id="${nama}" id="radio${nama2}" ${checked}>
+                        <label for="radio${nama2}" class="switch-label switch-label-on">AKTIF</label>
+                        <span class="switch-selection"></span>
+                    </div>`;
                     return actions.replace();
                 },
+                sClass: 'text-center'
             },
             {  
                 title: '<div class="text-center">AKSI</div>',
@@ -170,17 +174,14 @@ $(function(){
                 name: 'action',
                 render: function (data) {
                     var actions = '';
-                    actions = "<button class='btn btn-warning btn-sm center-block ubah-tahun' data-toggle='modal'' data-id='"+data['dipa_idTAng']+"' href='#modal-ubah'><i class='fa fa-pencil'></i> Ubah</button>";
+                    actions = "<button class='btn btn-warning btn-sm center-block ubah-tahun' data-toggle='modal'' data-id='"+data['dipa_id_tahun_anggaran']+"' href='#modal-ubah'><i class='fa fa-pencil'></i> Ubah</button>";
                     return actions.replace();
                 },
                 width: "8%",
                 orderable: false
             }
-
-
         ],
     });
-
 
     //=======SIMPAN=====//
     $("#btn-simpan").on('click', function(){
@@ -222,7 +223,7 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Error input data!", "Please try again", "error");
                         }, 1000);
                     }
                 });
@@ -232,30 +233,127 @@ $(function(){
             }
         });
     });
-});
 
-function tambah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Tahun Anggaran Ini Akan Disimpan ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Tahun Anggaran Berhasil Simpan", "success");
-      $('#modal-tambah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Tahun Anggaran Batal Simpan :)', 'error');
-      $('#modal-tambah').modal('hide');
-    }
-  });
-}
+    /* Aktifkan tahun anggaran */
+    $('.table').on('click', '.switch-input-on', function(){
+        var elem = $(this);
+        
+        if(elem.val() == '1' && elem.hasClass('radio-aktif') == false){
+            swal({
+                title: "Apakah Anda Yakin ?",
+                text: "Tahun Anggaran Ini Akan Diaktifkan ",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#00a65a",
+                confirmButtonText: "Ya, Yakin !",
+                cancelButtonText: "Tidak, Batalkan !",
+                closeOnConfirm: false,
+                closeOnCancel: false,
+                showLoaderOnConfirm: true
+            },
+            function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url : "/tahun-anggaran/aktif-toggle",
+                        type : "PUT",
+                        data : {
+                            "_token"   : "{{ csrf_token() }}",
+                            "id_tahun" : elem.data('id'),
+                            "status"   : elem.val() 
+                        },
+                        success : function(data, status){
+                            if(status=="success"){
+                                setTimeout(function(){
+                                    swal({
+                                        title: "Berhasil!",
+                                        text: "Tahun Anggaran Berhasil Di Aktifkan",
+                                        type: "success"
+                                        })
+                                        /*function(){
+                                            table.ajax.reload();
+                                        });*/
+                                    }, 1000);
+                            }
+                            $('#modal-tambah').modal('hide');
+                            elem.parents('tr').siblings().find('.switch-input-on:checked').removeClass('radio-aktif')
+                                              .siblings('.switch-input-off').prop('checked', true);
+                            elem.addClass('radio-aktif').siblings('.switch-input-off').addClass('radio-nonaktif');
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            setTimeout(function(){
+                                swal("Error input data!", "Please try again", "error");
+                            }, 1000);
+                        }
+                    });
+                } 
+                else {
+                    swal('Dibatalkan', 'Data Tahun Anggaran Batal Di Aktifkan :)', 'error');
+                    $('#modal-tambah').modal('hide');
+                    elem.siblings('.switch-input-off').prop('checked', true);
+                }
+            });
+        }
+    });
+
+    /* Non-aktifkan tahun anggaran */
+    $('.table').on('click', '.switch-input-off', function(){
+       var elem = $(this);
+        
+        if(elem.val() == '0' && elem.hasClass('radio-nonaktif')){
+            swal({
+                title: "Apakah Anda Yakin ?",
+                text: "Tahun Anggaran Ini Akan Dinonaktifkan ",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#00a65a",
+                confirmButtonText: "Ya, Yakin !",
+                cancelButtonText: "Tidak, Batalkan !",
+                closeOnConfirm: false,
+                closeOnCancel: false,
+                showLoaderOnConfirm: true
+            },
+            function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url : "/tahun-anggaran/aktif-toggle",
+                        type : "PUT",
+                        data : {
+                            "_token"   : "{{ csrf_token() }}",
+                            "id_tahun" : elem.data('id'),
+                            "status"   : elem.val() 
+                        },
+                        success : function(data, status){
+                            if(status=="success"){
+                                setTimeout(function(){
+                                    swal({
+                                        title: "Berhasil!",
+                                        text: "Tahun Anggaran Berhasil Di Nonaktifkan",
+                                        type: "success"
+                                        })
+                                        /*function(){
+                                            table.ajax.reload();
+                                        });*/
+                                    }, 1000);
+                            }
+                            $('#modal-tambah').modal('hide');
+                            elem.removeClass('radio-nonaktif').siblings('.switch-input-on').removeClass('radio-aktif');
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            setTimeout(function(){
+                                swal("Error input data!", "Please try again", "error");
+                            }, 1000);
+                        }
+                    });
+                } 
+                else {
+                    swal('Dibatalkan', 'Data Tahun Anggaran Batal Di Nonaktifkan :)', 'error');
+                    $('#modal-tambah').modal('hide');
+                    elem.siblings('.switch-input-on').prop('checked', true);
+                }
+            });
+        }
+    });
+});
 
 function ubah(){
     swal({
@@ -278,92 +376,6 @@ function ubah(){
       $('#modal-ubah').modal('hide');
     }
   });
-}
-
-function aktif(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Tahun Anggaran Ini Akan Diaktifkan ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Tahun Anggaran Berhasil Diaktifkan", "success");
-      $('#modal-aktif').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Tahun Anggaran Batal Diaktifkan :)', 'error');
-      $('#modal-aktif').modal('hide');
-    }
-  });
-}
-
-function radioAktif(tes){
-    var elem = $(tes);
-    console.log("adasd");
-    if($(tes).val() == 'aktif'){
-        
-        swal({
-            title: "Apakah Anda Yakin ?",
-            text: "Tahun Anggaran Ini Akan Diaktifkan ",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#00a65a",
-            confirmButtonText: "Ya, Yakin !",
-            cancelButtonText: "Tidak, Batalkan !",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        },
-        function(isConfirm){
-            if (isConfirm) {
-                swal("Berhasil!", "Data Tahun Anggaran Berhasil Simpan", "success");
-                $('#modal-tambah').modal('hide');
-                elem.parents('tr').siblings().find('.switch-input-off').prop('checked', true);
-                //elem.parents('tr').siblings().find('.switch-input-on').prop('checked', false);
-            } 
-            else {
-                swal('Dibatalkan', 'Data Tahun Anggaran Batal Simpan :)', 'error');
-                $('#modal-tambah').modal('hide');
-                //elem.attr('checked', false);
-                elem.siblings('.switch-input-off').prop('checked', true);
-            }
-        });
-    }
-}
-
-function radioNonAktif(tes){
-    var elem = $(tes);
-
-    if($(tes).val() == 'nonaktif'){
-        
-        swal({
-            title: "Apakah Anda Yakin ?",
-            text: "Tahun Anggaran Ini Akan Dinonaktifkan ",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#00a65a",
-            confirmButtonText: "Ya, Yakin !",
-            cancelButtonText: "Tidak, Batalkan !",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        },
-        function(isConfirm){
-            if (isConfirm) {
-                swal("Berhasil!", "Data Tahun Anggaran Berhasil Simpan", "success");
-                $('#modal-tambah').modal('hide');
-            } 
-            else {
-                swal('Dibatalkan', 'Data Tahun Anggaran Batal Simpan :)', 'error');
-                $('#modal-tambah').modal('hide');
-                elem.siblings('.switch-input-on').prop('checked', true);
-            }
-        });
-    }
 }
 </script>
 @endpush

@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/tahun-anggaran/store','TahunAnggaranController@store');
         Route::put('/tahun-anggaran/update/{id}', 'TahunAnggaranController@update');
         Route::get('/tahun-anggaran/get/{id}','TahunAnggaranController@show');
+        Route::put('/tahun-anggaran/aktif-toggle', 'TahunAnggaranController@aktifToggle');
 
         //Satuan KErja
         Route::get('/satuan-kerja', function () {
