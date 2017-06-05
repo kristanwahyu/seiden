@@ -76,6 +76,7 @@ class UserController extends Controller
         }
         else{
             User::withTrashed()->where('dipa_id_pengguna', $id)->restore();
+            
         }
 
         return response()->json(["status"=>"success"],200);
