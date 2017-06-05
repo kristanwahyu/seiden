@@ -19,13 +19,13 @@
         <ul class="breadcrumb">
             <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
            <li><a href="{{ url('/dipa/dipa-program') }}">DIPA</a></li>
-            <li><a href="{{ url('/dipa/dipa-kegiatan/'.$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_id_program']) }}">{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}}</a></li>
+            {{-- <li><a href="{{ url('/dipa/dipa-kegiatan/'.$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_id_program']) }}">{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}}</a></li>
             <li><a href="{{ url('/dipa/dipa-output/'.$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_id_kegiatan']) }}">{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}}</a></li>
             <li><a href="{{ url('/dipa/dipa-suboutput/'.$sub_komponen['komponen']['sub_output']['output']['dipa_id_output']) }}">{{$sub_komponen['komponen']['sub_output']['output']['dipa_kode_output']}}</a></li>
             <li><a href="{{ url('/dipa/dipa-komponen/'.$sub_komponen['komponen']['sub_output']['dipa_id_sub_output']) }}">{{$sub_komponen['komponen']['sub_output']['dipa_kode_sub_output']}}</a></li>
             <li><a href="{{ url('/dipa/dipa-subkomponen/'.$sub_komponen['komponen']['dipa_id_komponen']) }}">{{$sub_komponen['komponen']['dipa_kode_komponen']}}</a></li>
             <li><a href="{{ url('/dipa/dipa-akun/'.$sub_komponen['dipa_id_sub_komponen']) }}">{{$sub_komponen['dipa_kode_sub_komponen']}}</a></li>
-            <li class="active-bread">{{$dipa_kode_akun}}</li>
+            <li class="active-bread">{{$dipa_kode_akun}}</li> --}}
         </ul>
     </div>
     {{-- End Breadcrumb --}}
@@ -48,52 +48,72 @@
                                       <tr>
                                           <td>KODE / SATUAN KERJA</td>
                                           <td>:</td>
-                                          <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_satuan_kerja']}}</td>
+                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_satuan_kerja']}}</td> --}}
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA PROGRAM</td>
                                           <td>:</td>
-                                          <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_nama_program']}}</td>
+                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_nama_program']}}</td> --}}
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA KEGIATAN</td>
                                           <td>:</td>
-                                          <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_nama_kegiatan']}}</td>
+                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_nama_kegiatan']}}</td> --}}
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA OUTPUT</td>
                                           <td>:</td>
-                                          <td>{{$sub_komponen['komponen']['sub_output']['output']['dipa_kode_output']}} / {{$sub_komponen['komponen']['sub_output']['output']['dipa_nama_output']}}</td>
+                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['output']['dipa_kode_output']}} / {{$sub_komponen['komponen']['sub_output']['output']['dipa_nama_output']}}</td> --}}
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA SUB OUTPUT</td>
                                           <td>:</td>
-                                          <td>{{$sub_komponen['komponen']['sub_output']['dipa_kode_sub_output']}} / {{$sub_komponen['komponen']['sub_output']['dipa_nama_sub_output']}}</td>
+                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['dipa_kode_sub_output']}} / {{$sub_komponen['komponen']['sub_output']['dipa_nama_sub_output']}}</td> --}}
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA KOMPONEN</td>
                                           <td>:</td>
-                                          <td>{{$sub_komponen['komponen']['dipa_kode_komponen']}} / {{$sub_komponen['komponen']['dipa_nama_komponen']}}</td>
+                                          {{-- <td>{{$sub_komponen['komponen']['dipa_kode_komponen']}} / {{$sub_komponen['komponen']['dipa_nama_komponen']}}</td> --}}
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA SUB KOMPONEN</td>
                                           <td>:</td>
-                                          <td>{{$sub_komponen['dipa_kode_sub_komponen']}} / {{$sub_komponen['dipa_nama_sub_komponen']}}</td>
+                                          {{-- <td>{{$sub_komponen['dipa_kode_sub_komponen']}} / {{$sub_komponen['dipa_nama_sub_komponen']}}</td> --}}
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA AKUN</td>
                                           <td>:</td>
-                                          <td>{{$dipa_kode_akun}} / {{$dipa_nama_akun}}</td>
+                                          {{-- <td>{{$dipa_kode_akun}} / {{$dipa_nama_akun}}</td> --}}
                                       </tr>
                                       <tr>
                                           <td>TAHUN ANGGARAN</td>
                                           <td>:</td>
-                                          <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['tahun']['dipa_tahun_anggaran']}}</td>
+                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['tahun']['dipa_tahun_anggaran']}}</td> --}}
                                       </tr>
                                       <tr>
                                           <td>NILAI</td>
                                           <td>:</td>
                                           <td>RP. 12.500.000</td>
+                                      </tr>
+                                      <tr>
+                                          <td>RINCIAN</td>
+                                          <td>:</td>
+                                          <td>Pembayaran Dana - Belanja Pegawai - Volume : 2 - Satuan : 2 Orang</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Harga Satuan</td>
+                                          <td>:</td>
+                                          <td>Rp. 1.500.000</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Total harga</td>
+                                          <td>:</td>
+                                          <td>Rp. 3.000.000</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Dana Yang Terpakai</td>
+                                          <td>:</td>
+                                          <td>Rp. 0 -</td>
                                       </tr>
                                   </tbody>
                               </table>
@@ -101,22 +121,64 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
-                            </div>
-                            <div class="col-sm-6 text-right">
+                            <div class="col-md-12 text-right">
                                 <span class="btn-detail-open-text"></span> &nbsp;
                                 <div class="btn-detail btn-active"><i class="fa fa-chevron-up"></i></div>
                             </div>
                         </div>
                         <br>
 
-                        {{-- awal pembungkus tabel DIPA --}}
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-condensed table-striped" id="myTable">
+                        {{-- awal pembungkus form persyaratan --}}
+                        <div class="col-md-12">
+                              <form action="" method="POST" class="form-horizontal" role="form">
+                                    <div class="form-group clearfix">
+                                        <label class="col-sm-4 control-label">PEMBAYARAN</label>
+                                        <div class="col-sm-8">
+                                            <label class="radio-inline"><input type="radio" id="tambah_up" name="tambah" value="1">UP</label>
+                                            <label class="radio-inline"><input type="radio" id="tambah_ls" name="tambah" value="0">LS</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group clearfix">
+                                        <label class="col-sm-4 control-label">SYARAT</label>
+                                        {{-- <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="tambah_syarat" name="tambah_syarat">
+                                        </div> --}}
 
-                            </table>
-                        </div> {{-- akhir pembungkus tabel DIPA --}}
+                                         <div class="checkbox col-sm-8">
+                                            <label><input type="checkbox" value="1">Syarat 1</label>
+                                            <br>
+                                            <label><input type="checkbox" value="2">Syarat 2</label>
+                                            <br>
+                                            <label><input type="checkbox" value="3">Syarat 3</label>
+                                            <br>
+                                            <label><input type="checkbox" value="4">Syarat 4</label>
+                                            <br>
+                                            <label><input type="checkbox" value="5">Syarat 5</label>
+                                        </div> 
+                                    </div>
+                                    <div class="form-group clearfix">
+                                        <label class="col-sm-4 control-label">NILAI</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="tambah_nilai" name="tambah_nilai" placeholder="Contoh : Rp. 15.000.000">
+                                        </div>
+                                    </div>
+                                    <div class="form-group clearfix">
+                                        <label class="col-sm-4 control-label">KETERANGAN</label>
+                                        <div class="col-sm-8">
+                                            <textarea type="text" class="form-control" id="tambah_keterangan" name="tambah_keterangan" placeholder="Contoh : Isi keterangan disini"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            <div class="row">
+                                <div class="text-right">
+                                    <button class="btn btn-primary" data-toggle="modal" href='#modal-draft'><i class="fa fa-plus"></i> Draft</button>
+                                    <button class="btn btn-success" data-toggle="modal" href='#modal-ajukan'><i class="fa fa-plus"></i> Ajukan</button>
+                                </div>
+                            </div>
+                          </div>
+                          
+                        {{-- akhir pembungkus form persyaratan --}}
+
                         <div class="text-left">
                             <a href="{{ url('/dipa/dipa-subkomponen') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                         </div>
@@ -185,7 +247,7 @@
                                   <label class="col-sm-3 control-label">Total</label>
                                   <div class="col-sm-8">
                                       <input type="text" class="form-control" id="tambah_kode_detail" name="tambah_kode_detail" placeholder="0.00" readonly>
-                                      <input type="hidden" name="id_akun" value="{{$dipa_id_akun}}" id="id_akun"/>
+                                      {{-- <input type="hidden" name="id_akun" value="{{$dipa_id_akun}}" id="id_akun"/> --}}
                                   </div>
                               </div>
                           </div>
@@ -283,7 +345,7 @@
 <script>
 $(function(){
     'use strict';
-    var id_akun = "{{$dipa_id_akun}}";
+    {{-- var id_akun = "{{$dipa_id_akun}}"; --}}
     var table = $('#myTable').DataTable({
         "processing": true,
         "serverSide": true,
@@ -346,7 +408,7 @@ $(function(){
                     var actions = '';
                     actions = `<button class="btn btn-warning btn-sm ubah-detail" data-id="${data['dipa_id_detail_akun']}" data-toggle="modal" href='#modal-ubah'> UBAH</button>
                         <button class="btn btn-danger btn-sm hapus-detail" data-id="${data['dipa_id_detail_akun']}"> HAPUS</button>
-                        <a href="/dipa/dipa-rincian/${data['dipa_id_akun']}" class="btn btn-success" role="button"> Detail</a>`;
+                        {{-- <a href="/dipa/dipa-rincian/${data['dipa_id_akun']}" class="btn btn-success" role="button"> Detail</a>`; --}}
                     return actions.replace();
                 },
                 width: "16%",
