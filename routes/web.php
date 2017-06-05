@@ -107,6 +107,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/dipa/dipa-rincian/store', 'DetailAkunController@store');
         Route::put('/dipa/dipa-rincian/update/{id}', 'DetailAkunController@update');
         Route::delete('/dipa/dipa-rincian/delete/{id}', 'DetailAkunController@delete');
+
+
         //==============+++END SATUAN KERJA+++============//
      });
 });
@@ -122,3 +124,6 @@ Route::get('/logout', function(){
 Route::get('/tes','ProgramController@coba');
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/dipa/dipa-pembayaran', function () {
+    return view('pages.satker.dipa_pembayaran');
+});
