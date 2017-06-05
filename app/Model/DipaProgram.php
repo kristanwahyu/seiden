@@ -14,7 +14,7 @@ class DipaProgram extends Model
     public function tahun(){
 		return $this->belongsTo('App\Model\DipaTahunAnggaran', 'dipa_id_tahun_anggaran');
 	} 
-    public function satker(){
+    public function satuanKerja(){
         return $this->belongsTo('App\Model\DipaSatKer','dipa_id_satuan_kerja');
     }
     public function kegiatan(){

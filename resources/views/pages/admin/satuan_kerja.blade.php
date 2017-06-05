@@ -39,7 +39,7 @@
                     {{-- awal panel body --}}
                     <div class="panel-body">
                         <div class="text-right">
-                            <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
+                            <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'  id="new-satker"><i class="fa fa-plus"></i> Tambah</button>
                         </div>
                         <br> 
                         {{-- awal pembungkus tabel satuan kerja --}}
@@ -72,7 +72,7 @@
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Kode Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_kode_satuan_kerja" name="kode_satKer" readonly>
+                                      <input type="text" class="form-control" id="tambah_kode_satuan_kerja" name="kode_satKer">
                                   </div>
                               </div>
 
@@ -118,7 +118,7 @@
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Kode Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_kode_satuan_kerja" name="kode_satKer" disabled>
+                                      <input type="text" class="form-control" id="ubah_kode_satuan_kerja" name="kode_satKer">
                                       <input type="hidden" id="id_binding">
                                   </div>
                               </div>
@@ -176,13 +176,13 @@ $(function(){
             },
             {
                 title: 'KODE',
-                data: 'dipa_kodeSK',
+                data: 'dipa_kode_satuan_kerja',
                 defaultContent: "-",
                 name: 'dipa_kodeSK'
             },
             {
                 title: 'NAMA SATUAN KERJA',
-                data: 'dipa_namaSK',
+                data: 'dipa_satuan_kerja',
                 defaultContent: "-",
                 name: 'dipa_namaSK'
             },
@@ -190,10 +190,10 @@ $(function(){
                 title: '<div class="text-center">STATUS</div>',
                 data: null,
                 defaultContent: "-",
-                name: 'dipa_statusSK',
+                name: 'dipa_satuan_kerja_status',
                 render: function (data) {
                     var status = '';
-                    if(data['dipa_statusSK'] == 1) {
+                    if(data['dipa_satuan_kerja_status'] == 1) {
                         status = "<div class='text-center'><span class='label label-success' style='font-size:12px'>Aktif</span></div>";
                     } else {
                         status = "<div class='text-center'><span class='label label-danger' style='font-size:12px'>Tidak Aktif</span></div>";
@@ -209,7 +209,7 @@ $(function(){
                 name: 'action',
                 render: function (data) {
                     var actions = '';
-                    actions = "<button class='btn btn-warning btn-sm center-block ubah-satker' data-toggle='modal'' data-id='"+data['dipa_idSK']+"' href='#modal-ubah'><i class='fa fa-pencil'></i> Ubah</button>";
+                    actions = "<button class='btn btn-warning btn-sm center-block ubah-satker' data-toggle='modal'' data-id='"+data['dipa_id_satuan_kerja']+"' href='#modal-ubah'><i class='fa fa-pencil'></i> Ubah</button>";
                     return actions.replace();
                 },
                 width: "8%",
@@ -221,13 +221,13 @@ $(function(){
     });
 
     //generate code
-    $("#new-satker").on('click', function(){
-        $.get("/satuan-kerja/code-generate", function(data, status){
-            if(status == 'success'){
-                $('#tambah_kode_satuan_kerja').val(data);
-            }
-        });
-    });
+   // $("#new-satker").on('click', function(){
+     //   $.get("/satuan-kerja/code-generate", function(data, status){
+       //     if(status == 'success'){
+         //       $('#tambah_kode_satuan_kerja').val(data);
+           // }
+       // });
+   // });
     //sweet
 
     $("#btn-simpan").click(function(){
@@ -287,14 +287,16 @@ $(function(){
         $.get("/satuan-kerja/get/"+$(this).data('id'), function(data, status){
             if(status == 'success'){
                 console.log(data);
-                $("#ubah_kode_satuan_kerja").val(data['dipa_kodeSK']);
-                $("#ubah_satuan_kerja").val(data['dipa_namaSK']);
-                if(data['dipa_statusSK'] == 1) {
-                    $("#edit_aktif").attr('checked',true);
+                $("#ubah_kode_satuan_kerja").val(data['dipa_kode_satuan_kerja']);
+                $("#ubah_satuan_kerja").val(data['dipa_satuan_kerja']);
+                if(data['dipa_satuan_kerja_status'] == 1) {
+                    $("#edit_tidak_aktif").prop('checked',false);
+                    $("#edit_aktif").prop('checked',true);
                 } else {
-                    $("#edit_tidak_aktif").attr('checked',true);
+                    $("#edit_tidak_aktif").prop('checked',false);
+                    $("#edit_tidak_aktif").prop('checked',true);
                 }
-                $("#id_binding").val(data['dipa_idSK']);
+                $("#id_binding").val(data['dipa_id_satuan_kerja']);
             }
         });
     }); 

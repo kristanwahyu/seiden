@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->dipa_password_pengguna;
     }
+
+    public function satuanKerja()
+    {
+        return $this->belongsTo('App\Model\DipaSatKer','dipa_id_satuan_kerja');
+    }
 }

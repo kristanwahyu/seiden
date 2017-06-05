@@ -14,6 +14,6 @@ class DipaOutput extends Model
         return $this->belongsTo('App\Model\DipaKegiatan','dipa_id_kegiatan');
     }
     public function subOutput(){
-        return $this->hasMany('App\Model\DipaKomponen','dipa_id_output');
+        return $this->hasMany('App\Model\DipaSubOutput','dipa_id_output');
     }
 }

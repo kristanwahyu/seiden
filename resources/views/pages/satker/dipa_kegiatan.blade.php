@@ -19,7 +19,7 @@
         <ul class="breadcrumb">
             <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
             <li><a href="{{ url('/dipa/dipa-program') }}">DIPA</a></li>
-            <li class="active-bread">PRG0001</li>
+            <li class="active-bread">{{$dipa_kode_program}}</li>
         </ul>
     </div>
     {{-- End Breadcrumb --}}
@@ -43,17 +43,17 @@
                                       <tr>
                                           <td>KODE / SATUAN KERJA</td>
                                           <td>:</td>
-                                          <td>SAT0001 / SATUAN KERJA-1</td>
+                                          <td>{{$satuan_kerja['dipa_kode_satuan_kerja']}} / {{$satuan_kerja['dipa_satuan_kerja']}}</td>
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA PROGRAM</td>
                                           <td>:</td>
-                                          <td>PRG0001 / PROGRAM1</td>
+                                          <td>{{$dipa_kode_program}} / {{$dipa_nama_program}}</td>
                                       </tr>
                                       <tr>
                                           <td>TAHUN ANGGARAN</td>
                                           <td>:</td>
-                                          <td>2017</td>
+                                          <td>{{$tahun['dipa_tahun_anggaran']}}</td>
                                       </tr>
                                       <tr>
                                           <td>NILAI</td>
@@ -109,6 +109,7 @@
                                   <label class="col-sm-3 control-label">Kode Kegiatan</label>
                                   <div class="col-sm-8">
                                       <input type="text" class="form-control" id="tambah_kode_kegiatan" name="tambah_kode_kegiatan" placeholder="Contoh : KGT00001">
+                                      <input type="hidden" name="id_program" value="{{$dipa_id_program}}" id="id_program"/>
                                   </div>
                               </div>
                               <div class="form-group">
@@ -122,7 +123,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="tambah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-tambah">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -146,6 +147,7 @@
                                   <label class="col-sm-3 control-label">Kode Kegiatan</label>
                                   <div class="col-sm-8">
                                       <input type="text" class="form-control" id="ubah_kode_kegiatan" name="ubah_kode_kegiatan">
+                                      <input type="hidden" id="param_id">
                                   </div>
                               </div>
                               <div class="form-group">
@@ -159,7 +161,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="ubah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-ubah">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -176,38 +178,96 @@
 <script>
 $(function(){
     'use strict';
-    var data = [
-        [
-        "1",
-        "KGT00001",
-        "Kegiatan-1",
-        "Rp. 100.000.000",
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-        <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa/dipa-output') }}" class="btn btn-success" role="button"> Pilih</a>`
-        ],
-        [
-        "2",
-        "KGT00002",
-        "Kegiatan-2",
-        "Rp. 200.000.000",
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-        <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa/dipa-output') }}" class="btn btn-success" role="button"> Pilih</a>`
-        ],
-    ];
+    var id_program = "{{$dipa_id_program}}";
+    var table = $('#myTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":{
+            type : "GET",
+            url : "/dipa/dipa-kegiatan/show/"+id_program
+        },
+        "columns": [
+            { 
+                title: "NO",
+                data: "DT_Row_Index", 
+                name: "DT_Row_Index", 
+                orderable: false,
+                searchable: false,
+                width: "1%"
+            },
+            {
+                title: 'KODE KEGIATAN',
+                data: 'dipa_kode_kegiatan',
+                defaultContent: "-",
+                name: 'dipa_kode_kegiatan'
+            },
+            {
+                title: 'NAMA KEGIATAN',
+                data: 'dipa_nama_kegiatan',
+                defaultContent: "-",
+                name: 'dipa_nama_kegiatan'
+            },
+            {
+                title: '<div class="text-center">NILAI</div>',
+                data: null,
+                defaultContent: "-",
+                name: 'kegiatan.output.subOutput.komponen.subKomponen.akun.akunDetail',
+                render: function (data) {
+                    var status = '';
+                    //CCD
+                    if(data['kegiatan'] != null) {
+                        if(data['output'] != null) {
+                            if(data['sub_output'] != null) {
+                                if(data['komponen'] != null) {
+                                    if(data['sub_komponen'] != null) {
+                                        if(data['akun'] != null) {
+                                            if(data['akun_detail'] != null) {
+                                                var len = data['akun_detail'].length;
+                                                var total = 0;
+                                                for (var i=0; i<len; i++) {
+                                                    total = parseFloat(data['akun_detail'][i])
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        status = "0";
+                        //status = "<div class='text-center'><span class='label label-success' style='font-size:12px'>Aktif</span></div>";
+                    } else {
+                        status = "0";
+                    }
+                    return status.replace();
+                },
+                width: "10%",
+                orderable: false,
+                searchable: false
+            },
+            {  
+                title: '<div class="text-center">ACTION</div>',
+                data: null,
+                name: 'action',
+                render: function (data) {
+                    var param = '';
+                    if(data['output'].length > 0) {
+                        param = 'data-toggle="tooltip" data-placement="top" title="Program Sudah Memiliki Kegiatan, tidak bisa dihapus" disabled';
+                    }
+                    var actions = '';
+                    actions = `<button class="btn btn-warning btn-sm ubah-kegiatan" data-id="${data['dipa_id_kegiatan']}" data-toggle="modal" href='#modal-ubah'> UBAH</button>
+                        <button class="btn btn-danger btn-sm hapus-kegiatan" ${param} data-id="${data['dipa_id_kegiatan']}"> HAPUS</button>
+                        <a href="/dipa/dipa-output/${data['dipa_id_kegiatan']}" class="btn btn-success" role="button"> Pilih</a>`;
+                    return actions.replace();
+                },
+                width: "15.6%",
+                orderable: false,
+                searchable: false
+            }
 
-    $('#myTable').DataTable({
-        "data" : data,
-        "columns" : [
-            { "title" : "#", "width" : "2%" },
-            { "title" : "KODE KEGIATAN" },
-            { "title" : "NAMA KEGIATAN" },
-            { "title" : "NILAI" },
-            { "title" : "AKSI","width" : "16%", "orderable": false }
-        ]
+
+        ],
     });
-
+    
     //btn detail box
     $('.btn-detail').click(function(){
         $('.detail-box').slideToggle(200);
@@ -215,73 +275,175 @@ $(function(){
         $(this).siblings('span').toggleClass('btn-detail-open-text btn-detail-close-text')
         $(this).toggleClass('btn-active');
     });
+
+     $("#btn-tambah").click(function(){
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Kegiatan Ini Akan Disimpan",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/dipa/dipa-kegiatan/store",
+                    type : "POST",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "kode_kegiatan" : $("#tambah_kode_kegiatan").val(),
+                        "nama_kegiatan" : $("#tambah_nama_kegiatan").val(),
+                        "id_program" : $("#id_program").val()
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    }, 
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-tambah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+            swal('Dibatalkan', 'Data Program Batal Simpan :)', 'error');
+            $('#modal-tambah').modal('hide');
+            }
+        });
+    });
+
+    $("#myTable").on('click','.ubah-kegiatan', function(){
+        $.get("/dipa/dipa-kegiatan/get/"+$(this).data('id'), function(data, status){
+            if(status == 'success'){
+                $("#ubah_kode_kegiatan").val(data['dipa_kode_kegiatan']);
+                $("#ubah_nama_kegiatan").val(data['dipa_nama_kegiatan']);
+                $('#param_id').val(data['dipa_id_kegiatan']);
+            }
+        });
+    }); 
+
+    $("#btn-ubah").click(function(){
+        var id = $('#param_id').val();
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Kegiatan Ini Akan Diubah",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/dipa/dipa-kegiatan/update/"+id,
+                    type : "PUT",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "kode_kegiatan" : $("#ubah_kode_kegiatan").val(),
+                        "nama_kegiatan" : $("#ubah_nama_kegiatan").val()
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    }, 
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-ubah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+            swal('Dibatalkan', 'Data Kegiatan Batal Simpan :)', 'error');
+                $('#modal-ubah').modal('hide');
+            }
+        });
+    });
+
+    $("#myTable").on('click','.hapus-kegiatan', function(){
+        var id = $(this).data('id');
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Kegiatan Ini Akan Dihapus PERMANEN !",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "red",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/dipa/dipa-kegiatan/delete/"+id,
+                    type : "delete",
+                    data : {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    }, 
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+                swal('Dibatalkan', 'Data Program Batal Hapus :)', 'error');
+            }
+        });
+    });
+
+    $('#modal-tambah').on('hidden.bs.modal', function (e) {
+        $(this)
+            .find("input")
+            .val('')
+            .end()
+    })
 });
-
-function tambah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Kegiatan Ini Akan Disimpan ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Kegiatan Berhasil Simpan", "success");
-      $('#modal-tambah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Kegiatan Batal Simpan :)', 'error');
-      $('#modal-tambah').modal('hide');
-    }
-  });
-}
-
-function ubah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Kegiatan Ini Akan Diubah ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Kegiatan Berhasil Diubah", "success");
-      $('#modal-ubah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Kegiatan Batal Diubah :)', 'error');
-      $('#modal-ubah').modal('hide');
-    }
-  });
-}
-
-function hapus(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Kegiatan Ini Akan Dihapus",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Kegiatan Berhasil Dihapus", "success");
-    } else {
-      swal('Dibatalkan', 'Kegiatan Batal Dihapus :)', 'error');
-    }
-  });
-}
 </script>
 @endpush

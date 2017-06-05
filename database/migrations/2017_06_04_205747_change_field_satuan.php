@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateEnumUser extends Migration
+class ChangeFieldSatuan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,8 @@ class UpdateEnumUser extends Migration
      */
     public function up()
     {
-        DB::statement("ALTER TABLE tbl_pengguna MODIFY COLUMN dipa_jenis_pengguna enum('1', '2', '3', '4', '5', '6', '7', '8')");
+        //
+        DB::statement("ALTER TABLE tbl_dipa_akun_detail MODIFY COLUMN dipa_satuan varchar(20)");
     }
 
     /**

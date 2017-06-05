@@ -19,12 +19,12 @@
         <ul class="breadcrumb">
             <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
             <li><a href="{{ url('/dipa/dipa-program') }}">DIPA</a></li>
-            <li><a href="{{ url('/dipa/dipa-kegiatan') }}">PRG0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-output') }}">KGT0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-suboutput') }}">OP0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-komponen') }}">SOP0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-subkomponen') }}">KP0001</a></li>
-            <li class="active-bread">SKP0001</li>
+            <li><a href="{{ url('/dipa/dipa-kegiatan/'.$komponen['sub_output']['output']['kegiatan']['program']['dipa_id_program']) }}">{{$komponen['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-output/'.$komponen['sub_output']['output']['kegiatan']['dipa_id_kegiatan']) }}">{{$komponen['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-suboutput/'.$komponen['sub_output']['output']['dipa_id_output']) }}">{{$komponen['sub_output']['output']['dipa_kode_output']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-komponen/'.$komponen['sub_output']['dipa_id_sub_output']) }}">{{$komponen['sub_output']['dipa_kode_sub_output']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-subkomponen/'.$komponen['dipa_id_komponen']) }}">{{$komponen['dipa_kode_komponen']}}</a></li>
+            <li class="active-bread">{{$dipa_kode_sub_komponen}}</li>
         </ul>
     </div>
     {{-- End Breadcrumb --}}
@@ -47,42 +47,42 @@
                                       <tr>
                                           <td>KODE / SATUAN KERJA</td>
                                           <td>:</td>
-                                          <td>SAT0001 / SATUAN KERJA-1</td>
+                                          <td>{{$komponen['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$komponen['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_satuan_kerja']}}</td>
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA PROGRAM</td>
                                           <td>:</td>
-                                          <td>PRG0001 / PROGRAM1</td>
+                                          <td>{{$komponen['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}} / {{$komponen['sub_output']['output']['kegiatan']['program']['dipa_nama_program']}}</td>
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA KEGIATAN</td>
                                           <td>:</td>
-                                          <td>KGT0001 / KEGIATAN1</td>
+                                          <td>{{$komponen['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}} / {{$komponen['sub_output']['output']['kegiatan']['dipa_nama_kegiatan']}}</td>
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA OUTPUT</td>
                                           <td>:</td>
-                                          <td>OP0001 / OUTPUT1.1</td>
+                                          <td>{{$komponen['sub_output']['output']['dipa_kode_output']}} / {{$komponen['sub_output']['output']['dipa_nama_output']}}</td>
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA SUB OUTPUT</td>
                                           <td>:</td>
-                                          <td>SOP0001 / SUBOUTPUT1.1</td>
+                                          <td>{{$komponen['sub_output']['dipa_kode_sub_output']}} / {{$komponen['sub_output']['dipa_nama_sub_output']}}</td>
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA KOMPONEN</td>
                                           <td>:</td>
-                                          <td>KP0001 / KOMPONEN1.1</td>
+                                          <td>{{$komponen['dipa_kode_komponen']}} / {{$komponen['dipa_nama_komponen']}}</td>
                                       </tr>
                                       <tr>
                                           <td>KODE / NAMA SUB KOMPONEN</td>
                                           <td>:</td>
-                                          <td>SKP0001 / SUBKOMPONEN1.1</td>
+                                          <td>{{$dipa_kode_sub_komponen}} / {{$dipa_nama_sub_komponen}}</td>
                                       </tr>
                                       <tr>
                                           <td>TAHUN ANGGARAN</td>
                                           <td>:</td>
-                                          <td>2017</td>
+                                          <td>{{$komponen['sub_output']['output']['kegiatan']['program']['tahun']['dipa_tahun_anggaran']}}</td>
                                       </tr>
                                       <tr>
                                           <td>NILAI</td>
@@ -138,6 +138,7 @@
                                   <label class="col-sm-3 control-label">Kode Akun</label>
                                   <div class="col-sm-8">
                                       <input type="text" class="form-control" id="tambah_kode_akun" name="tambah_kode_akun" placeholder="Contoh : AK0001">
+                                      <input type="hidden" name="id_sub_komponen" value="{{$dipa_id_sub_komponen}}" id="id_sub_komponen"/>
                                   </div>
                               </div>
                               <div class="form-group">
@@ -146,30 +147,12 @@
                                       <input type="text" class="form-control" id="tambah_nama_akun" name="tambah_nama_akun" placeholder="Contoh : Akun 01">
                                   </div>
                               </div>
-                              <div class="form-group">
-                                  <label class="col-sm-3 control-label">Vol</label>
-                                  <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_vol" name="tambah_vol" placeholder="Contoh : 3">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <label class="col-sm-3 control-label">Satuan</label>
-                                  <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_satuan" name="tambah_satuan" placeholder="Contoh : Orang">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <label class="col-sm-3 control-label">Harga Satuan</label>
-                                  <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_harga_satuan" name="tambah_harga_satuan" placeholder="Contoh : Rp. 2.500.000">
-                                  </div>
-                              </div>
                           </div>
                       </div>
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="tambah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-tambah">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -193,6 +176,7 @@
                                 <label class="col-sm-3 control-label">Kode Akun</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="ubah_kode_akun" name="ubah_kode_akun">
+                                    <input type="hidden" id="param_id">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -201,30 +185,12 @@
                                     <input type="text" class="form-control" id="ubah_nama_akun" name="ubah_nama_akun">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Vol</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="ubah_vol" name="ubah_vol">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Satuan</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="ubah_satuan" name="ubah_satuan">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Harga Satuan</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="ubah_harga_satuan" name="ubah_harga_satuan">
-                                </div>
-                            </div>
                           </div>
                       </div>
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="ubah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-ubah">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -241,34 +207,96 @@
 <script>
 $(function(){
     'use strict';
-    var data = [
-        [
-        "1",
-        "AK0001",
-        "Akun 01",
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-        <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa/dipa-rincian') }}" class="btn btn-success" role="button"> Pilih</a>`
-        ],
-        [
-        "2",
-        "AK0002",
-        "Akun 02",
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-        <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa/dipa-rincian') }}" class="btn btn-success" role="button"> Pilih</a>`
-        ],
-    ];
+    var id_sub_komponen = "{{$dipa_id_sub_komponen}}";
+    var table = $('#myTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":{
+            type : "GET",
+            url : "/dipa/dipa-akun/show/"+id_sub_komponen
+        },
+        "columns": [
+            { 
+                title: "NO",
+                data: "DT_Row_Index", 
+                name: "DT_Row_Index", 
+                orderable: false,
+                searchable: false,
+                width: "1%"
+            },
+            {
+                title: 'KODE AKUN',
+                data: 'dipa_kode_akun',
+                defaultContent: "-",
+                name: 'dipa_kode_akun'
+            },
+            {
+                title: 'NAMA AKUN',
+                data: 'dipa_nama_akun',
+                defaultContent: "-",
+                name: 'dipa_nama_akun'
+            },
+            {
+                title: '<div class="text-center">NILAI</div>',
+                data: null,
+                defaultContent: "-",
+                name: null,
+                render: function (data) {
+                    var status = '';
+                    //CCD
+                    if(data['kegiatan'] != null) {
+                        if(data['output'] != null) {
+                            if(data['sub_output'] != null) {
+                                if(data['komponen'] != null) {
+                                    if(data['sub_komponen'] != null) {
+                                        if(data['akun'] != null) {
+                                            if(data['akun_detail'] != null) {
+                                                var len = data['akun_detail'].length;
+                                                var total = 0;
+                                                for (var i=0; i<len; i++) {
+                                                    total = parseFloat(data['akun_detail'][i])
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        status = "0";
+                        //status = "<div class='text-center'><span class='label label-success' style='font-size:12px'>Aktif</span></div>";
+                    } else {
+                        status = "0";
+                    }
+                    return status.replace();
+                },
+                width: "10%",
+                orderable: false,
+                searchable: false
+            },
+            {  
+                title: '<div class="text-center">ACTION</div>',
+                data: null,
+                name: 'action',
+                render: function (data) {
+                    var param = '';
+                    if(data['akun_detail'].length > 0) {
+                        param = 'data-toggle="tooltip" data-placement="top" title="Program Sudah Memiliki Kegiatan, tidak bisa dihapus" disabled';
+                    }
+                    var actions = '';
+                    actions = `<button class="btn btn-warning btn-sm ubah-akun" data-id="${data['dipa_id_akun']}" data-toggle="modal" href='#modal-ubah'> UBAH</button>
+                        <button class="btn btn-danger btn-sm hapus-akun" ${param} data-id="${data['dipa_id_akun']}"> HAPUS</button>
+                        <a href="/dipa/dipa-rincian/${data['dipa_id_akun']}" class="btn btn-success" role="button"> Pilih</a>`;
+                    return actions.replace();
+                },
+                width: "15.6%",
+                orderable: false,
+                searchable: false
+            }
 
-    $('#myTable').DataTable({
-        "data" : data,
-        "columns" : [
-            { "title" : "#", "width" : "2%" },
-            { "title" : "KODE AKUN" },
-            { "title" : "NAMA AKUN" },
-            { "title" : "AKSI","width" : "16%", "orderable": false }
-        ]
+
+        ],
     });
+
 
     //btn detail box
     $('.btn-detail').click(function(){
@@ -278,73 +306,173 @@ $(function(){
         $(this).toggleClass('btn-active');
     });
 
+     $("#btn-tambah").click(function(){
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Akun Ini Akan Disimpan",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/dipa/dipa-akun/store",
+                    type : "POST",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "kode_akun" : $("#tambah_kode_akun").val(),
+                        "nama_akun" : $("#tambah_nama_akun").val(),
+                        "id_sub_komponen" : $("#id_sub_komponen").val()
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    }, 
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-tambah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+            swal('Dibatalkan', 'Data Akun Batal Simpan :)', 'error');
+                $('#modal-tambah').modal('hide');
+            }
+        });
+    });
+
+    $("#myTable").on('click','.ubah-akun', function(){
+        $.get("/dipa/dipa-akun/get/"+$(this).data('id'), function(data, status){
+            if(status == 'success'){
+                $("#ubah_kode_akun").val(data['dipa_kode_akun']);
+                $("#ubah_nama_akun").val(data['dipa_nama_akun']);
+                $('#param_id').val(data['dipa_id_akun']);
+            }
+        });
+    }); 
+
+    $("#btn-ubah").click(function(){
+        var id = $('#param_id').val();
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Akun Ini Akan Diubah",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/dipa/dipa-akun/update/"+id,
+                    type : "PUT",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "kode_akun" : $("#ubah_kode_akun").val(),
+                        "nama_akun" : $("#ubah_nama_akun").val()
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    }, 
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-ubah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+            swal('Dibatalkan', 'Data Akun Batal di Ubah :)', 'error');
+                $('#modal-ubah').modal('hide');
+            }
+        });
+    });
+    $("#myTable").on('click','.hapus-akun', function(){
+        var id = $(this).data('id');
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Akun Ini Akan Dihapus PERMANEN !",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "red",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/dipa/dipa-akun/delete/"+id,
+                    type : "delete",
+                    data : {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    }, 
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+                swal('Dibatalkan', 'Data Akun Batal Hapus :)', 'error');
+            }
+        });
+    });
+    $('#modal-tambah').on('hidden.bs.modal', function (e) {
+        $(this)
+            .find("input")
+            .val('')
+            .end()
+    })
 });
 
-function tambah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Akun Ini Akan Disimpan ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Simpan", "success");
-      $('#modal-tambah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Akun Batal Simpan :)', 'error');
-      $('#modal-tambah').modal('hide');
-    }
-  });
-}
-
-function ubah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Akun Ini Akan Diubah ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Diubah", "success");
-      $('#modal-ubah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Akun Batal Diubah :)', 'error');
-      $('#modal-ubah').modal('hide');
-    }
-  });
-}
-
-function hapus(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Akun Ini Akan Dihapus",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Dihapus", "success");
-    } else {
-      swal('Dibatalkan', 'Data Akun Batal Dihapus :)', 'error');
-    }
-  });
-}
 </script>
 @endpush

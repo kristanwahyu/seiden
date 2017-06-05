@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateEnumUser extends Migration
+class AddIdSatkerUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,11 @@ class UpdateEnumUser extends Migration
      */
     public function up()
     {
-        DB::statement("ALTER TABLE tbl_pengguna MODIFY COLUMN dipa_jenis_pengguna enum('1', '2', '3', '4', '5', '6', '7', '8')");
+        //
+        Schema::table('tbl_pengguna', function(Blueprint $table) {
+            $table->unsignedInteger('dipa_id_satuan_kerja')->nullable()->after('dipa_jenis_pengguna');
+            $table->foreign('dipa_id_satuan_kerja')->references('dipa_id_satuan_kerja')->on('tbl_satuan_kerja')->onDelete('set null');
+        });
     }
 
     /**
