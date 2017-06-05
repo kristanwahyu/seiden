@@ -74,6 +74,9 @@ class UserController extends Controller
         if($request->status == 0){
             $this->block($id);
         }
+        else{
+            User::withTrashed()->where('dipa_id_pengguna', $id)->restore();
+        }
 
         return response()->json(["status"=>"success"],200);
     }
@@ -84,7 +87,7 @@ class UserController extends Controller
     }
 
     public function delete($id) {
-        User::find($id)->forceDelete();
+        User::withTrashed()->where('dipa_id_pengguna', $id)->forceDelete();
         return response()->json(["status"=>"success"],200);
     }
 }

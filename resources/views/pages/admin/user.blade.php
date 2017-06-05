@@ -279,7 +279,8 @@ $(function(){
                     return status.replace();
                 },
                 width: "10%",
-                orderable: false
+                orderable: false,
+                searchable: false
             },
             {  
                 title: '<div class="text-center">ACTION</div>',
