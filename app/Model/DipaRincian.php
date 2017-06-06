@@ -13,5 +13,7 @@ class DipaRincian extends Model
     public function AkunRincian(){
         return $this->belongsTo('App\Model\DipaAkun','dipa_id_akun');
     }
-    
+    public function AkunRincian(){
+        return $this->hasMany('App\Model\DipaPembayaran','dipa_id_detail_akun');
+    }
 }

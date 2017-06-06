@@ -19,8 +19,8 @@ class DipaRincian extends Migration
             $table->integer('dipa_volume')->default(0);
             $table->integer('dipa_satuan')->default(0);
             $table->integer('dipa_harga_satuan')->default(0);
-            $table->enum('dipa_jenis_akun',array('1','2','3','4','5','6','7','8','9','10'));
-            // 1 = Gaji Bulanan, 2 = Kenaikan pangkat, 3 = Uang Makan, 4 = Tukin, 5 = TPG, 6 = Keperluan Kantor, 7 = Perjalanan Dinas, 8 = Bantuan dalam bentuk uang, 9 = Bantuan dalam bentuk barang, 10 = Bantuan Modal
+            $table->enum('dipa_jenis_akun',array('0','1'));
+            //0 = Belanja Gaji 1 = Belanja Non Gaji
             $table->integer('dipa_id_akun')->unsigned();
             $table->foreign('dipa_id_akun')->references('dipa_id_akun')->on('tbl_dipa_akun');
             $table->timestamps();
