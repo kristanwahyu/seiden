@@ -8,7 +8,7 @@ Route::group(['middleware' => 'auth'], function () {
     //===========YANG PERLU AUTH MASUKIN SINI=============//
     Route::group(['middleware' => 'admin'], function () {
 //====================== ROUTE ADMIN ======================//
-        Route::get('/dashboard-admin', function () {
+        Route::get('/dashboard', function () {
             return view('pages.admin.dashboard');
         });
 
@@ -125,3 +125,27 @@ Route::get('/logout', function(){
 
 Route::get('/tes','ProgramController@coba');
 Route::get('/home', 'HomeController@index')->name('home');
+
+//==============+++START PPK+++============//
+Route::get('/dashboard-ppk', function () {
+    return view('pages.ppk.dashboard');
+});
+
+Route::get('/spp', function () {
+    return view('pages.ppk.spp');
+});
+//==============+++END PPK+++============//
+
+//==============+++START PPSPM+++============//
+Route::get('/dashboard-ppspm', function () {
+    return view('pages.ppspm.dashboard');
+});
+
+Route::get('/spm', function () {
+    return view('pages.ppspm.spm');
+});
+
+Route::get('/sp2d', function () {
+    return view('pages.ppspm.sp2d');
+});
+//==============+++END PPSPM+++============//

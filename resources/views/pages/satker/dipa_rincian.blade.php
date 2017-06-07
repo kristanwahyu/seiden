@@ -292,10 +292,10 @@ $(function(){
             url : "/dipa/dipa-rincian/show/"+id_akun
         },
         "columns": [
-            { 
+            {
                 title: "NO",
-                data: "DT_Row_Index", 
-                name: "DT_Row_Index", 
+                data: "DT_Row_Index",
+                name: "DT_Row_Index",
                 orderable: false,
                 searchable: false,
                 width: "1%"
@@ -338,7 +338,7 @@ $(function(){
                 orderable: false,
                 searchable: false
             },
-            {  
+            {
                 title: '<div class="text-center">ACTION</div>',
                 data: null,
                 name: 'action',
@@ -349,7 +349,7 @@ $(function(){
                         <a href="/dipa/dipa-pembayaran" class="btn btn-success" role="button"> Bayar</a>`;
                     return actions.replace();
                 },
-                width: "16%",
+                width: "16.1%",
                 orderable: false,
                 searchable: false
             }
@@ -357,7 +357,7 @@ $(function(){
 
         ],
     });
-   
+
     //btn detail box
     $('.btn-detail').click(function(){
         $('.detail-box').slideToggle(200);
@@ -400,7 +400,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -431,7 +431,7 @@ $(function(){
                 $("#ubah_vol").val(data['dipa_volume']);
             }
         });
-    }); 
+    });
 
     $("#btn-ubah").click(function(){
         var id = $('#param_id').val();
@@ -464,7 +464,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -513,7 +513,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
