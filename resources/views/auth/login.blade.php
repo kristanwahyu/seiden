@@ -3,7 +3,7 @@
 
 <head>
 	@include('includes.head')
-	<title>Gex Cargo-Login</title>
+	<title>E-Silaku - Login</title>
 </head>
 
 <body>
