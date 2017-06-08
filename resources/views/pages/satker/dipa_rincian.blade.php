@@ -438,11 +438,12 @@ $(function(){
     $("#myTable").on('click','.ubah-detail', function(){
         $.get("/dipa/dipa-rincian/get/"+$(this).data('id'), function(data, status){
             if(status == 'success'){
+                console.log(data);
                 $("#ubah_harga_satuan").val(data['dipa_harga_satuan']);
                 $("#ubah_nama_detail").val(data['dipa_nama_detail']);
                 $("#ubah_satuan").val(data['dipa_satuan']);
                 $("#ubah_vol").val(data['dipa_volume']);
-                $("#param_id").val(data['dipa_id_detail_akun']);
+                $("#param-id").val(data['dipa_id_detail_akun']);
                 $('select[name="ubah_jenis_akun"]').find('option').prop('selected', false);
                 if(data['dipa_jenis_akun'] == 1) {
                     $('option[value="1"]').prop('selected', true);
@@ -454,7 +455,7 @@ $(function(){
     });
 
     $("#btn-ubah").click(function(){
-        var id = $('#param_id').val();
+        var id = $('#param-id').val();
         swal({
             title: "Apakah Anda Yakin ?",
             text: "Data Akun Ini Akan Diubah",
