@@ -21,12 +21,12 @@
             <li class="active-bread">Tahun Anggaran</li>
         </ul>
     </div>
-    {{-- End Breadcrumb --}} 
+    {{-- End Breadcrumb --}}
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                
+
                 {{-- awal tabel tahun anggaran --}}
                 <div class="panel">
                     <div class="panel-heading">
@@ -37,7 +37,7 @@
                         <div class="text-right">
                             <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'><i class="fa fa-plus"></i> Tambah</button>
                         </div>
-                        <br> 
+                        <br>
                         {{-- awal pembungkus tabel tahun anggaran --}}
                         <div class="table-responsive">
                             <table class="table table-bordered table-condensed table-striped" id="myTable">
@@ -131,10 +131,10 @@ $(function(){
             url : "/tahun-anggaran/show"
         },
         "columns": [
-            { 
+            {
                 title: "NO",
-                data: "DT_Row_Index", 
-                name: "DT_Row_Index", 
+                data: "DT_Row_Index",
+                name: "DT_Row_Index",
                 orderable: false,
                 searchable: false,
                 width: "1%"
@@ -168,7 +168,7 @@ $(function(){
                 },
                 sClass: 'text-center'
             },
-            {  
+            {
                 title: '<div class="text-center">AKSI</div>',
                 data: null,
                 name: 'action',
@@ -213,7 +213,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -237,7 +237,7 @@ $(function(){
     /* Aktifkan tahun anggaran */
     $('.table').on('click', '.switch-input-on', function(){
         var elem = $(this);
-        
+
         if(elem.val() == '1' && elem.hasClass('radio-aktif') == false){
             swal({
                 title: "Apakah Anda Yakin ?",
@@ -259,7 +259,7 @@ $(function(){
                         data : {
                             "_token"   : "{{ csrf_token() }}",
                             "id_tahun" : elem.data('id'),
-                            "status"   : elem.val() 
+                            "status"   : elem.val()
                         },
                         success : function(data, status){
                             if(status=="success"){
@@ -285,7 +285,7 @@ $(function(){
                             }, 1000);
                         }
                     });
-                } 
+                }
                 else {
                     swal('Dibatalkan', 'Data Tahun Anggaran Batal Di Aktifkan :)', 'error');
                     $('#modal-tambah').modal('hide');
@@ -298,7 +298,7 @@ $(function(){
     /* Non-aktifkan tahun anggaran */
     $('.table').on('click', '.switch-input-off', function(){
        var elem = $(this);
-        
+
         if(elem.val() == '0' && elem.hasClass('radio-nonaktif')){
             swal({
                 title: "Apakah Anda Yakin ?",
@@ -320,7 +320,7 @@ $(function(){
                         data : {
                             "_token"   : "{{ csrf_token() }}",
                             "id_tahun" : elem.data('id'),
-                            "status"   : elem.val() 
+                            "status"   : elem.val()
                         },
                         success : function(data, status){
                             if(status=="success"){
@@ -344,7 +344,7 @@ $(function(){
                             }, 1000);
                         }
                     });
-                } 
+                }
                 else {
                     swal('Dibatalkan', 'Data Tahun Anggaran Batal Di Nonaktifkan :)', 'error');
                     $('#modal-tambah').modal('hide');
@@ -352,6 +352,13 @@ $(function(){
                 }
             });
         }
+    });
+
+    $('#modal-tambah').on('hidden.bs.modal', function (e) {
+        $(this)
+            .find("input[type='text']")
+            .val('')
+            .end()
     });
 });
 

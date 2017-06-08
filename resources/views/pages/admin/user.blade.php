@@ -21,7 +21,7 @@
             <li class="active-bread">User</li>
         </ul>
     </div>
-    {{-- End Breadcrumb --}} 
+    {{-- End Breadcrumb --}}
 
     <div class="container-fluid">
         <div class="row">
@@ -90,9 +90,11 @@
                                       <option value="2">KPA</option>
                                       <option value="3">PPK</option>
                                       <option value="4">Staf Pengelolah / Satuan Kerja</option>
-                                      <option value="5">PPSM</option>
-                                      <option value="6">Operator SIMA</option>
-                                      <option value="7">Operator SIBA</option>
+                                      <option value="5">PPSPM</option>
+                                      <option value="6">Operator SIMAK</option>
+                                      <option value="7">Operator SAIBA</option>
+                                      <option value="8">Operator Perlengkapan</option>
+                                      <option value="9">Bendahara</option>
                                     </select>
                                   </div>
                               </div>
@@ -209,10 +211,10 @@ $(function(){
             url : "/user/show"
         },
         "columns": [
-            { 
+            {
                 title: "NO",
-                data: "DT_Row_Index", 
-                name: "DT_Row_Index", 
+                data: "DT_Row_Index",
+                name: "DT_Row_Index",
                 orderable: false,
                 searchable: false,
                 width: "1%"
@@ -245,11 +247,15 @@ $(function(){
                     } else if (data['dipa_jenis_pengguna'] == 4) {
                         status = '<div class="text-center">STAF (SATKER)</div>';
                     } else if (data['dipa_jenis_pengguna'] == 5) {
-                        status = '<div class="text-center">PPSM</div>';
+                        status = '<div class="text-center">PPSPM</div>';
                     } else if (data['dipa_jenis_pengguna'] == 6) {
-                        status = '<div class="text-center">OP. SIMA</div>';
+                        status = '<div class="text-center">OP. SIMAK</div>';
+                    } else if (data['dipa_jenis_pengguna'] == 7) {
+                        status = '<div class="text-center">OP. SAIBA</div>';
+                    } else if (data['dipa_jenis_pengguna'] == 8) {
+                        status = '<div class="text-center">OP. Perlengkapan</div>';
                     } else {
-                        status = '<div class="text-center">OP. SIBA</div>';
+                        status = '<div class="text-center">Bendahara</div>';
                     }
                     return status.replace();
                 },
@@ -282,7 +288,7 @@ $(function(){
                 orderable: false,
                 searchable: false
             },
-            {  
+            {
                 title: '<div class="text-center">ACTION</div>',
                 data: null,
                 name: 'action',
@@ -366,7 +372,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -417,10 +423,10 @@ $(function(){
                     $('#ubah_satker_user').hide(200);
                     $('#ubah_satker_user').val('');
                 }
-                
+
             }
         });
-    }); 
+    });
 
     $("#btn-ubah-simpan").click(function(){
         swal({
@@ -455,7 +461,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -506,7 +512,7 @@ $("#myTable").on('click','.hapus-user', function(){
                                     title: "Sukses",
                                     text: "Data Terhapus!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -526,11 +532,11 @@ $("#myTable").on('click','.hapus-user', function(){
 });
 
     $('#modal-tambah').on('hidden.bs.modal', function (e) {
-        $(this)
-            .find("input,select")
-            .val('')
-            .end()
-        })
+      $(this)
+        .find("input[type='text'], select")
+        .val('')
+        .end()
+    });
 
 });
 
@@ -555,8 +561,8 @@ function loadSatker(e,f){
                 e.empty();
                 e.append(satker2);
             }
-            
-            
+
+
         }
     });
 }

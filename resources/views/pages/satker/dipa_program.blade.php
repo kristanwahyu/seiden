@@ -173,10 +173,10 @@ $(function(){
             url : "/dipa/dipa-program/show"
         },
         "columns": [
-            { 
+            {
                 title: "NO",
-                data: "DT_Row_Index", 
-                name: "DT_Row_Index", 
+                data: "DT_Row_Index",
+                name: "DT_Row_Index",
                 orderable: false,
                 searchable: false,
                 width: "1%"
@@ -197,6 +197,7 @@ $(function(){
                 title: '<div class="text-center">NILAI</div>',
                 data: null,
                 defaultContent: "-",
+
                 name: 'total',
                 render: function(data) {
                     var number = data['total'];
@@ -208,7 +209,7 @@ $(function(){
                 },
                 width: "10%"
             },
-            {  
+            {
                 title: '<div class="text-center">ACTION</div>',
                 data: null,
                 name: 'action',
@@ -272,7 +273,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -301,7 +302,7 @@ $(function(){
                 $('#param_id').val(data['dipa_id_program']);
             }
         });
-    }); 
+    });
 
     $("#btn-ubah").click(function(){
         var id = $('#param_id').val();
@@ -334,7 +335,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -384,7 +385,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
