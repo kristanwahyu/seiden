@@ -15,7 +15,7 @@
   <div class="main-content">
       <div class="container-fluid">
         <div class="jumbotron">
-          <h1>Selamat Datang DiHalaman Dashboard SATKER DIPA PAPUA</h1>
+          <h1>Selamat Datang Di Halaman Dashboard SATKER DIPA PAPUA</h1>
         </div>
       </div>
   </div>

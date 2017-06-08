@@ -46,7 +46,7 @@
                                           <td>{{$satuan_kerja['dipa_kode_satuan_kerja']}} / {{$satuan_kerja['dipa_satuan_kerja']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA PROGRAM</td>
+                                          <td>PROGRAM</td>
                                           <td>:</td>
                                           <td>{{$dipa_kode_program}} / {{$dipa_nama_program}}</td>
                                       </tr>

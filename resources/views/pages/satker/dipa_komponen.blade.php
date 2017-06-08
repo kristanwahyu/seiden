@@ -48,22 +48,22 @@
                                           <td>{{$output['kegiatan']['program']['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$output['kegiatan']['program']['satuan_kerja']['dipa_satuan_kerja']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA PROGRAM</td>
+                                          <td>PROGRAM</td>
                                           <td>:</td>
                                           <td>{{$output['kegiatan']['program']['dipa_kode_program']}} / {{$output['kegiatan']['program']['dipa_nama_program']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA KEGIATAN</td>
+                                          <td>KEGIATAN</td>
                                           <td>:</td>
                                           <td>{{$output['kegiatan']['dipa_kode_kegiatan']}} / {{$output['kegiatan']['dipa_nama_kegiatan']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA OUTPUT</td>
+                                          <td>OUTPUT</td>
                                           <td>:</td>
                                           <td>{{$output['dipa_kode_output']}} / {{$output['dipa_nama_output']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA SUB OUTPUT</td>
+                                          <td>SUB OUTPUT</td>
                                           <td>:</td>
                                           <td>{{$dipa_kode_sub_output}} / {{$dipa_nama_sub_output}}</td>
                                       </tr>

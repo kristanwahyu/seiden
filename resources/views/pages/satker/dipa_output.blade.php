@@ -46,12 +46,12 @@
                                           <td>{{$program['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$program['satuan_kerja']['dipa_satuan_kerja']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA PROGRAM</td>
+                                          <td>PROGRAM</td>
                                           <td>:</td>
                                           <td>{{$program['dipa_kode_program']}} / {{$program['dipa_nama_program']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA KEGIATAN</td>
+                                          <td>KEGIATAN</td>
                                           <td>:</td>
                                           <td>{{$dipa_kode_kegiatan}} / {{$dipa_nama_kegiatan}}</td>
                                       </tr>

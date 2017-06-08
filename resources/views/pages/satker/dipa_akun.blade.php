@@ -50,32 +50,32 @@
                                           <td>{{$komponen['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$komponen['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_satuan_kerja']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA PROGRAM</td>
+                                          <td>PROGRAM</td>
                                           <td>:</td>
                                           <td>{{$komponen['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}} / {{$komponen['sub_output']['output']['kegiatan']['program']['dipa_nama_program']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA KEGIATAN</td>
+                                          <td>KEGIATAN</td>
                                           <td>:</td>
                                           <td>{{$komponen['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}} / {{$komponen['sub_output']['output']['kegiatan']['dipa_nama_kegiatan']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA OUTPUT</td>
+                                          <td>OUTPUT</td>
                                           <td>:</td>
                                           <td>{{$komponen['sub_output']['output']['dipa_kode_output']}} / {{$komponen['sub_output']['output']['dipa_nama_output']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA SUB OUTPUT</td>
+                                          <td>SUB OUTPUT</td>
                                           <td>:</td>
                                           <td>{{$komponen['sub_output']['dipa_kode_sub_output']}} / {{$komponen['sub_output']['dipa_nama_sub_output']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA KOMPONEN</td>
+                                          <td>KOMPONEN</td>
                                           <td>:</td>
                                           <td>{{$komponen['dipa_kode_komponen']}} / {{$komponen['dipa_nama_komponen']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA SUB KOMPONEN</td>
+                                          <td>SUB KOMPONEN</td>
                                           <td>:</td>
                                           <td>{{$dipa_kode_sub_komponen}} / {{$dipa_nama_sub_komponen}}</td>
                                       </tr>
