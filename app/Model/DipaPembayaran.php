@@ -31,7 +31,7 @@ class DipaPembayaran extends Model
     public function PembayaranSyncPerlengkapan(){
         return $this->hasMany('App\Model\DipaPembayaranSyncPerlengkapan','dipa_pembayaran_id');
     }
-    public function detail(){
-        return $this->belongsTo('App\Model\DipaRincian','dipa_id_detail_akun');
+    public function akunDetail(){
+        return $this->belongsTo('App\Model\DipaAkunDetail','dipa_id_detail_akun');
     }
 }

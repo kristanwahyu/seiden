@@ -89,7 +89,7 @@ class DetailAkunController extends Controller
             'jenis_akun' => 'required',
     	]);
 
-        $output = DipaAkunDetail::where('dipa_id_akun',$id);
+        $output = DipaAkunDetail::where('dipa_id_detail_akun',$id);
         if($output == null) return abort(503);
 
         $number = $this->clearComma($request->harga_satuan);

@@ -13,7 +13,7 @@ class DipaAkunDetail extends Model
     public function akun(){
         return $this->belongsTo('App\Model\DipaAkun','dipa_id_akun');
     }
-    public function AkunRincian(){
+    public function pembayaran(){
         return $this->hasMany('App\Model\DipaPembayaran','dipa_id_detail_akun');
     }
 }
