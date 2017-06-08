@@ -93,7 +93,7 @@
                                       <tr>
                                           <td>NILAI</td>
                                           <td>:</td>
-                                          <td>RP. 12.500.000</td>
+                                          <td>RP. <span id="nilai">@if($total->total != null) {{$total->total}} @else 0 @endif </span></td>
                                       </tr>
                                   </tbody>
                               </table>
@@ -150,16 +150,8 @@
                                   <label class="col-sm-3 control-label">Jenis Akun</label>
                                   <div class="col-sm-8">
                                       <select name="tambah_jenis_akun" id="tambah_jenis_akun" class="form-control">
-                                            <option value="1">Belanja Pegawai (Gaji Bulanan)</option>
-                                            <option value="2">Belanja Pegawai (Kenaikan Pangkat)</option>
-                                            <option value="3">Belanja Pegawai (Uang Makan)</option>
-                                            <option value="4">Belanja Pegawai (Tukin)</option>
-                                            <option value="5">Belanja Pegawai (TGB)</option>
-                                            <option value="6">Belanja Barang (Keperluan Kantor)</option>
-                                            <option value="7">Belanja Barang (Perjalanan Dinas)</option>
-                                            <option value="8">Belanja Bantuan (Bantuan Dalam Bentuk Uang)</option>
-                                            <option value="9">Belanja Bantuan (Bantuan Dalam Bentuk Barang)</option>
-                                            <option value="10">Belanja Modal</option>
+                                            <option value="1">Belanja Gaji</option>
+                                            <option value="2">Belanja Non Gaji</option>
                                       </select>
                                   </div>
                               </div>
@@ -178,14 +170,20 @@
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Harga Satuan</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_harga_satuan" name="tambah_harga_satuan" placeholder="Contoh : Rp. 2.500.000">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Rp.</span>
+										<input type="text" class="form-control text-right format-number" id="tambah_harga_satuan" name="tambah_harga_satuan" placeholder="Contoh : Rp. 2.500.000" onkeyup="count(this)">
+                                    </div>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Total</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_kode_detail" name="tambah_kode_detail" placeholder="0.00" readonly>
-                                      <input type="hidden" name="id_akun" value="{{$dipa_id_akun}}" id="id_akun"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Rp.</span>
+                                        <input type="text" class="form-control text-right format-number" id="tambah_kode_detail" name="tambah_kode_detail" placeholder="0.00" readonly>
+                                        <input type="hidden" name="id_akun" value="{{$dipa_id_akun}}" id="id_akun"/>
+                                    </div>
                                   </div>
                               </div>
                           </div>
@@ -223,16 +221,8 @@
                                   <label class="col-sm-3 control-label">Jenis Akun</label>
                                   <div class="col-sm-8">
                                       <select name="ubah_jenis_akun" id="ubah_jenis_akun" class="form-control">
-                                            <option value="1">Belanja Pegawai (Gaji Bulanan)</option>
-                                            <option value="2">Belanja Pegawai (Kenaikan Pangkat)</option>
-                                            <option value="3">Belanja Pegawai (Uang Makan)</option>
-                                            <option value="4">Belanja Pegawai (Tukin)</option>
-                                            <option value="5">Belanja Pegawai (TGB)</option>
-                                            <option value="6">Belanja Barang (Keperluan Kantor)</option>
-                                            <option value="7">Belanja Barang (Perjalanan Dinas)</option>
-                                            <option value="8">Belanja Bantuan (Bantuan Dalam Bentuk Uang)</option>
-                                            <option value="9">Belanja Bantuan (Bantuan Dalam Bentuk Barang)</option>
-                                            <option value="10">Belanja Modal</option>
+                                            <option value="1">Belanja Gaji</option>
+                                            <option value="2">Belanja Non Gaji</option>
                                       </select>
                                   </div>
                               </div>
@@ -251,14 +241,20 @@
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Harga Satuan</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_harga_satuan" name="ubah_harga_satuan" placeholder="Contoh : Rp. 2.500.000">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Rp.</span>
+                                        <input type="text" class="form-control text-right format-number" id="ubah_harga_satuan" name="ubah_harga_satuan" placeholder="Contoh : Rp. 2.500.000" onkeyup="count(this)">
+                                    </div>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Total</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_kode_detail" name="ubah_kode_detail" placeholder="0.00" readonly>
-                                      <input type="hidden" name="param-id" id="param-id"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Rp.</span>
+										<input type="text" class="form-control text-right format-number" id="ubah_kode_detail" name="ubah_kode_detail" placeholder="0.00" readonly>
+                                        <input type="hidden" name="param-id" id="param-id"/>
+                                    </div>
                                   </div>
                               </div>
                           </div>
@@ -282,6 +278,12 @@
 
 <script>
 $(function(){
+    $('#nilai').text(function(index, value) {
+        return value
+        .replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        ;
+    });
     'use strict';
     var id_akun = "{{$dipa_id_akun}}";
     var table = $('#myTable').DataTable({
@@ -320,9 +322,19 @@ $(function(){
             },
             {
                 title: 'HARGA SATUAN',
-                data: 'dipa_harga_satuan',
+                data: null,
                 defaultContent: "-",
-                name: 'dipa_harga_satuan'
+                name: 'dipa_harga_satuan',
+                render: function(data) {
+                    var number = data['dipa_harga_satuan'];
+                    if (number != null) {
+                        var number_change = formatNumber(number);
+                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                        return currency.replace();
+                    }
+                },
+                orderable: false,
+                searchable: false
             },
             {
                 title: 'TOTAL',
@@ -332,8 +344,10 @@ $(function(){
                 render: function (data) {
                     var number = 0;
                     number = parseFloat(data['dipa_harga_satuan']) * parseFloat(data['dipa_volume']);
-                    var actions = `<div class="text-right">${number}</div>`;
-                    return actions.replace();
+                    number = number.toString();
+                    var number_change = formatNumber(number);
+                    var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                    return currency.replace();
                 },
                 orderable: false,
                 searchable: false
@@ -605,6 +619,19 @@ function hapus(){
       swal('Dibatalkan', 'Data Akun Batal Dihapus :)', 'error');
     }
   });
+}
+
+function formatNumber(x) {
+    return x.replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function count(e) {
+    $(e).val(function(index, value) {
+            return value
+            .replace(/\D/g, "")
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        });
 }
 </script>
 @endpush

@@ -87,7 +87,7 @@
                                       <tr>
                                           <td>NILAI</td>
                                           <td>:</td>
-                                          <td>RP. 12.500.000</td>
+                                          <td>RP. <span id="nilai">@if($total->total != null) {{$total->total}} @else 0 @endif </span></td>
                                       </tr>
                                   </tbody>
                               </table>
@@ -206,6 +206,12 @@
 
 <script>
 $(function(){
+    $('#nilai').text(function(index, value) {
+        return value
+        .replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        ;
+    });
     'use strict';
     var id_sub_komponen = "{{$dipa_id_sub_komponen}}";
     var table = $('#myTable').DataTable({
@@ -240,38 +246,16 @@ $(function(){
                 title: '<div class="text-center">NILAI</div>',
                 data: null,
                 defaultContent: "-",
-                name: null,
-                render: function (data) {
-                    var status = '';
-                    //CCD
-                    if(data['kegiatan'] != null) {
-                        if(data['output'] != null) {
-                            if(data['sub_output'] != null) {
-                                if(data['komponen'] != null) {
-                                    if(data['sub_komponen'] != null) {
-                                        if(data['akun'] != null) {
-                                            if(data['akun_detail'] != null) {
-                                                var len = data['akun_detail'].length;
-                                                var total = 0;
-                                                for (var i=0; i<len; i++) {
-                                                    total = parseFloat(data['akun_detail'][i])
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        status = "0";
-                        //status = "<div class='text-center'><span class='label label-success' style='font-size:12px'>Aktif</span></div>";
-                    } else {
-                        status = "0";
+                name: 'total',
+                render: function(data) {
+                    var number = data['total'];
+                    if (number != null) {
+                        var number_change = formatNumber(number);
+                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                        return currency.replace();
                     }
-                    return status.replace();
                 },
-                width: "10%",
-                orderable: false,
-                searchable: false
+                width: "10%"
             },
             {  
                 title: '<div class="text-center">ACTION</div>',
@@ -279,7 +263,7 @@ $(function(){
                 name: 'action',
                 render: function (data) {
                     var param = '';
-                    if(data['akun_detail'].length > 0) {
+                    if(data['count_sub_akun_detail'].length > 0) {
                         param = 'data-toggle="tooltip" data-placement="top" title="Program Sudah Memiliki Kegiatan, tidak bisa dihapus" disabled';
                     }
                     var actions = '';
@@ -473,6 +457,11 @@ $(function(){
             .end()
     })
 });
+
+function formatNumber(x) {
+    return x.replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 
 </script>
 @endpush
