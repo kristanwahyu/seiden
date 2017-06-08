@@ -197,38 +197,17 @@ $(function(){
                 title: '<div class="text-center">NILAI</div>',
                 data: null,
                 defaultContent: "-",
-                name: null,
-                render: function (data) {
-                    var status = '';
-                    //CCD
-                    if(data['kegiatan'] != null) {
-                        if(data['output'] != null) {
-                            if(data['sub_output'] != null) {
-                                if(data['komponen'] != null) {
-                                    if(data['sub_komponen'] != null) {
-                                        if(data['akun'] != null) {
-                                            if(data['akun_detail'] != null) {
-                                                var len = data['akun_detail'].length;
-                                                var total = 0;
-                                                for (var i=0; i<len; i++) {
-                                                    total = parseFloat(data['akun_detail'][i])
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        status = "0";
-                        //status = "<div class='text-center'><span class='label label-success' style='font-size:12px'>Aktif</span></div>";
-                    } else {
 
+                name: 'total',
+                render: function(data) {
+                    var number = data['total'];
+                    if (number != null) {
+                        var number_change = formatNumber(number);
+                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                        return currency.replace();
                     }
-                    return status.replace();
                 },
-                width: "10%",
-                orderable: false,
-                searchable: false
+                width: "10%"
             },
             {
                 title: '<div class="text-center">ACTION</div>',
@@ -236,7 +215,7 @@ $(function(){
                 name: 'action',
                 render: function (data) {
                     var param = '';
-                    if(data['kegiatan'].length > 0) {
+                    if(data['count_kegiatan'] > 0) {
                         param = 'data-toggle="tooltip" data-placement="top" title="Program Sudah Memiliki Kegiatan, tidak bisa dihapus" disabled';
                     }
                     var actions = '';
@@ -430,8 +409,14 @@ $(function(){
             .find("input[type='text']")
             .val('')
             .end()
-    })
+    });
+
 });
+
+function formatNumber(x) {
+    return x.replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 
 </script>
 @endpush
