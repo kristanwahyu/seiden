@@ -14,7 +14,7 @@ class DipaAkun extends Model
         return $this->belongsTo('App\Model\DipaSubKomponen','dipa_id_sub_komponen');
     }
     public function akunDetail(){
-        return $this->hasMany('App\Model\DipaAkunDetail','dipa_id_akun');
+        return $this->hasMany('App\Model\DipaAkunDetail','dipa_id_akun')->selectRaw('tbl_dipa_akun_detail.*, sum(dipa_harga_satuan * dipa_volume) as total')->groupBy('dipa_id_akun');;
     }
 }
  

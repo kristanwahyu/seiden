@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Support\Facades\Auth;
 use App\Model\DipaKomponen;
@@ -21,20 +22,43 @@ class KomponenController extends Controller
                 }));
             }))
             ->where('dipa_id_sub_output',$id)->first();
+
+        $data['total'] = DB::table('tbl_dipa_sub_output')
+                ->leftJoin('tbl_dipa_komponen','tbl_dipa_sub_output.dipa_id_sub_output', '=', 'tbl_dipa_komponen.dipa_id_sub_output')
+                ->leftJoin('tbl_dipa_sub_komponen','tbl_dipa_komponen.dipa_id_komponen', '=', 'tbl_dipa_sub_komponen.dipa_id_komponen')
+                ->leftJoin('tbl_dipa_akun','tbl_dipa_sub_komponen.dipa_id_sub_komponen', '=', 'tbl_dipa_akun.dipa_id_sub_komponen')
+                ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
+                ->where('tbl_dipa_sub_output.dipa_id_sub_output',$id)
+                ->first([
+                    DB::raw('SUM(tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume) as total')
+                    ]);
         // return $data;
         return view('pages.satker.dipa_komponen',$data);
     }
 
     public function show($id_sub_output)
     {
-        $job = DipaKomponen::with('subKomponen')->where('dipa_id_sub_output',$id_sub_output);
+        $job = DB::table('tbl_dipa_sub_output')
+                ->leftJoin('tbl_dipa_komponen','tbl_dipa_sub_output.dipa_id_sub_output', '=', 'tbl_dipa_komponen.dipa_id_sub_output')
+                ->leftJoin('tbl_dipa_sub_komponen','tbl_dipa_komponen.dipa_id_komponen', '=', 'tbl_dipa_sub_komponen.dipa_id_komponen')
+                ->leftJoin('tbl_dipa_akun','tbl_dipa_sub_komponen.dipa_id_sub_komponen', '=', 'tbl_dipa_akun.dipa_id_sub_komponen')
+                ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
+                ->groupBy('tbl_dipa_komponen.dipa_id_komponen')
+                ->groupBy('tbl_dipa_komponen.dipa_kode_komponen')
+                ->groupBy('tbl_dipa_komponen.dipa_nama_komponen')
+                ->where('tbl_dipa_sub_output.dipa_id_sub_output', $id_sub_output)
+                ->get([
+                    'tbl_dipa_komponen.dipa_id_komponen',
+                    'tbl_dipa_komponen.dipa_kode_komponen',
+                    'tbl_dipa_komponen.dipa_nama_komponen',
+                    DB::raw('SUM(tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume) as total, count(tbl_dipa_sub_komponen.dipa_id_sub_komponen) as count_sub_komponen')]);
 
         return $this->makeDataTable($job);
     }
 
     public function makeDataTable($data)
     {
-        return Datatables::eloquent($data)->addIndexColumn()->make(true);
+        return Datatables::collection($data)->addIndexColumn()->make(true);
     }
 
     public function store(Request $request)
