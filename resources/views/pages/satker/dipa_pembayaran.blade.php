@@ -318,8 +318,8 @@
                                 <a href="{{ url('/dipa/dipa-subkomponen') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                             </div>
                             <div class="col-sm-6 text-right">
-                                <button class="btn btn-primary" data-toggle="modal" href='#modal-draft'><i class="fa fa-plus"></i> Draft</button>
-                                <button class="btn btn-success" data-toggle="modal" href='#modal-ajukan'><i class="fa fa-plus"></i> Ajukan</button>
+                                <button class="btn btn-primary" data-toggle="modal" href='#modal-draft'><i class="fa fa-tasks"></i> Draft</button>
+                                <button class="btn btn-success" data-toggle="modal" href='#modal-ajukan'><i class="fa fa-save"></i> Ajukan</button>
                             </div>
                         </div>
                     </div>

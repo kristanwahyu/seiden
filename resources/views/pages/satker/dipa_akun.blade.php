@@ -112,7 +112,7 @@
                             </table>
                         </div> {{-- akhir pembungkus tabel DIPA --}}
                         <div class="text-left">
-                            <a href="{{ url('/dipa/dipa-subkomponen') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
+                            <a href="{{ url('/dipa/dipa-subkomponen/'.$komponen['dipa_id_komponen']) }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                         </div>
                     </div> {{-- akhir panel body --}}
                 </div> {{-- akhir tabel DIPA --}}
