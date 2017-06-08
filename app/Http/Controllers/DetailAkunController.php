@@ -65,11 +65,13 @@ class DetailAkunController extends Controller
             'id_akun' => 'required',
     	]);
 
+        $number = $this->clearComma($request->harga_satuan);
+
         DipaAkunDetail::create([
             'dipa_nama_detail'  => $request->nama_detail,
             'dipa_volume'       => $request->volume,
             'dipa_satuan'       => $request->satuan,
-            'dipa_harga_satuan' => $request->harga_satuan,
+            'dipa_harga_satuan' => $number,
             'dipa_jenis_akun'   => $request->jenis_akun,
             'dipa_id_akun'      => $request->id_akun
         ]);
@@ -80,15 +82,24 @@ class DetailAkunController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'kode_akun' => 'required',
-            'nama_akun'  => 'required',
+            'nama_detail' => 'required',
+            'volume'  => 'required',
+            'satuan' => 'required',
+            'harga_satuan' => 'required',
+            'jenis_akun' => 'required',
     	]);
-        $output = DipaAkun::where('dipa_id_akun',$id);
+
+        $output = DipaAkunDetail::where('dipa_id_akun',$id);
         if($output == null) return abort(503);
 
+        $number = $this->clearComma($request->harga_satuan);
+
         $output->update([
-            'dipa_kode_akun'      => $request->kode_akun,
-            'dipa_nama_akun'      => $request->nama_akun,
+            'dipa_nama_detail'  => $request->nama_detail,
+            'dipa_volume'       => $request->volume,
+            'dipa_satuan'       => $request->satuan,
+            'dipa_harga_satuan' => $number,
+            'dipa_jenis_akun'   => $request->jenis_akun
         ]);
 
         return response()->json(["status"=>"success"],200);
@@ -103,5 +114,17 @@ class DetailAkunController extends Controller
         $output = DipaAkun::where('dipa_id_akun', $id);
         if($output == null) return abort(503);
         $output->delete();
+    }
+
+    public function clearComma($number)
+    {
+        $arr_ammount = explode('.',$number);
+        $count = count($arr_ammount);
+        $ammount = "";
+        for ($i = 0; $i < $count; $i++){
+            $ammount .= $arr_ammount[$i];
+        }
+
+        return $ammount;
     }
 }

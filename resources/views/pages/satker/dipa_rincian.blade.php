@@ -438,11 +438,17 @@ $(function(){
     $("#myTable").on('click','.ubah-detail', function(){
         $.get("/dipa/dipa-rincian/get/"+$(this).data('id'), function(data, status){
             if(status == 'success'){
-                console.log(data);
                 $("#ubah_harga_satuan").val(data['dipa_harga_satuan']);
                 $("#ubah_nama_detail").val(data['dipa_nama_detail']);
                 $("#ubah_satuan").val(data['dipa_satuan']);
                 $("#ubah_vol").val(data['dipa_volume']);
+                $("#param_id").val(data['dipa_id_detail_akun']);
+                $('select[name="ubah_jenis_akun"]').find('option').prop('selected', false);
+                if(data['dipa_jenis_akun'] == 1) {
+                    $('option[value="1"]').prop('selected', true);
+                } else {
+                    $('option[value="2"]').prop('selected', true);
+                }
             }
         });
     });
@@ -464,12 +470,15 @@ $(function(){
         function(isConfirm){
             if (isConfirm) {
                 $.ajax({
-                    url : "/dipa/dipa-akun/update/"+id,
+                    url : "/dipa/dipa-rincian/update/"+id,
                     type : "PUT",
                     data : {
                         "_token": "{{ csrf_token() }}",
-                        "kode_akun" : $("#ubah_kode_akun").val(),
-                        "nama_akun" : $("#ubah_nama_akun").val()
+                        "nama_detail" : $("#ubah_nama_detail").val(),
+                        "volume" : $("#ubah_vol").val(),
+                        "satuan" :$("#ubah_satuan").val(),
+                        "harga_satuan" : $("#ubah_harga_satuan").val(),
+                        "jenis_akun" : $("#ubah_jenis_akun").val()
                     },
                     success : function(data, status){
                         if(status=="success"){
@@ -547,7 +556,7 @@ $(function(){
     });
     $('#modal-tambah').on('hidden.bs.modal', function (e) {
         $(this)
-            .find("input")
+            .find("input[type='text']")
             .val('')
             .end()
     })
