@@ -187,10 +187,10 @@ $(function(){
             url : "/dipa/dipa-kegiatan/show/"+id_program
         },
         "columns": [
-            { 
+            {
                 title: "NO",
-                data: "DT_Row_Index", 
-                name: "DT_Row_Index", 
+                data: "DT_Row_Index",
+                name: "DT_Row_Index",
                 orderable: false,
                 searchable: false,
                 width: "1%"
@@ -244,7 +244,7 @@ $(function(){
                 orderable: false,
                 searchable: false
             },
-            {  
+            {
                 title: '<div class="text-center">ACTION</div>',
                 data: null,
                 name: 'action',
@@ -267,7 +267,7 @@ $(function(){
 
         ],
     });
-    
+
     //btn detail box
     $('.btn-detail').click(function(){
         $('.detail-box').slideToggle(200);
@@ -307,7 +307,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -336,7 +336,7 @@ $(function(){
                 $('#param_id').val(data['dipa_id_kegiatan']);
             }
         });
-    }); 
+    });
 
     $("#btn-ubah").click(function(){
         var id = $('#param_id').val();
@@ -369,7 +369,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -419,7 +419,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -440,7 +440,7 @@ $(function(){
 
     $('#modal-tambah').on('hidden.bs.modal', function (e) {
         $(this)
-            .find("input")
+            .find("input[type='text']")
             .val('')
             .end()
     })

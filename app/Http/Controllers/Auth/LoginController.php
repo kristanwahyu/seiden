@@ -46,7 +46,7 @@ class LoginController extends Controller
     {
         switch ($user->dipa_jenis_pengguna) {
             case "1":
-                return redirect()->intended('/dashboard-admin');
+                return redirect()->intended('/dashboard');
                 break;
             case "2":
                 return redirect()->intended('/kpa');

@@ -22,15 +22,15 @@
             <li class="active-bread">Satuan Kerja</li>
         </ul>
     </div>
-    {{-- End Breadcrumb --}} 
-    
+    {{-- End Breadcrumb --}}
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 {{-- Breadcrumb --}}
 
                 {{-- End Breadcrumb --}}
-              
+
               	{{-- awal tabel satuan kerja --}}
                 <div class="panel">
                     <div class="panel-heading">
@@ -41,7 +41,7 @@
                         <div class="text-right">
                             <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'  id="new-satker"><i class="fa fa-plus"></i> Tambah</button>
                         </div>
-                        <br> 
+                        <br>
                         {{-- awal pembungkus tabel satuan kerja --}}
                         <div class="table-responsive">
                             <table class="table table-bordered table-condensed table-striped" id="myTable">
@@ -72,7 +72,7 @@
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Kode Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_kode_satuan_kerja" name="kode_satKer">
+                                      <input type="text" class="form-control" id="tambah_kode_satuan_kerja" placeholer="Contoh : SATKER01" name="kode_satKer">
                                   </div>
                               </div>
 
@@ -166,10 +166,10 @@ $(function(){
             url : "/satuan-kerja/show"
         },
         "columns": [
-            { 
+            {
                 title: "NO",
-                data: "DT_Row_Index", 
-                name: "DT_Row_Index", 
+                data: "DT_Row_Index",
+                name: "DT_Row_Index",
                 orderable: false,
                 searchable: false,
                 width: "1%"
@@ -203,7 +203,7 @@ $(function(){
                 width: "10%",
                 orderable: false
             },
-            {  
+            {
                 title: '<div class="text-center">ACTION</div>',
                 data: null,
                 name: 'action',
@@ -261,7 +261,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -299,7 +299,7 @@ $(function(){
                 $("#id_binding").val(data['dipa_id_satuan_kerja']);
             }
         });
-    }); 
+    });
 
     $("#btn-ubah-simpan").click(function(){
         swal({
@@ -332,7 +332,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -352,8 +352,15 @@ $(function(){
             }
         });
     });
+
+    $('#modal-tambah').on('hidden.bs.modal', function (e) {
+        $(this)
+            .find("input[type='text']")
+            .val('')
+            .end()
+    });
 });
 
- 
+
 </script>
 @endpush

@@ -533,7 +533,7 @@ $(function(){
     });
     $('#modal-tambah').on('hidden.bs.modal', function (e) {
         $(this)
-            .find("input")
+            .find("input[type='text']")
             .val('')
             .end()
     })
