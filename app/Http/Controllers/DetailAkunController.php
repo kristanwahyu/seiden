@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Model\DipaAkun;
 use App\Model\DipaAkunDetail;
@@ -27,6 +28,14 @@ class DetailAkunController extends Controller
                 }));
             }))
             ->where('dipa_id_akun',$id)->first();
+
+        $data['total'] = DB::table('tbl_dipa_akun')
+                ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
+                ->where('tbl_dipa_akun.dipa_id_akun',$id)
+                ->first([
+                    DB::raw('SUM(tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume) as total')
+                    ]);
+
         return view('pages.satker.dipa_rincian',$data);
     }
 
