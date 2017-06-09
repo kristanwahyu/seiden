@@ -106,7 +106,7 @@
                             </table>
                         </div> {{-- akhir pembungkus tabel DIPA --}}
                         <div class="text-left">
-                            <a href="{{ url('/dipa/dipa-komponen') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
+                            <a href="{{ url('/dipa/dipa-komponen/'.$sub_output['dipa_id_sub_output']) }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                         </div>
                     </div> {{-- akhir panel body --}}
                 </div> {{-- akhir tabel DIPA --}}
@@ -349,7 +349,7 @@ $(function(){
         var id = $('#param_id').val();
         swal({
             title: "Apakah Anda Yakin ?",
-            text: "Data Sub Output Ini Akan Diubah",
+            text: "Data Sub Komponen Ini Akan Diubah",
             type: "info",
             showCancelButton: true,
             confirmButtonColor: "#00a65a",

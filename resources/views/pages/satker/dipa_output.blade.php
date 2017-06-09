@@ -88,7 +88,7 @@
                             </table>
                         </div> {{-- akhir pembungkus tabel DIPA --}}
                         <div class="text-left">
-                            <a href="{{ url('/dipa/dipa-kegiatan') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
+                            <a href="{{ url('/dipa/dipa-kegiatan/'.$program['dipa_id_program']) }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                         </div>
                     </div> {{-- akhir panel body --}}
                 </div> {{-- akhir tabel DIPA --}}
