@@ -252,8 +252,9 @@
                                   <div class="col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon">Rp.</span>
-										<input type="text" class="form-control text-right format-number" id="ubah_kode_detail" name="ubah_kode_detail" placeholder="0.00" readonly>
+										<input type="text" class="form-control text-right format-number" id="ubah_total" name="ubah_total" placeholder="0.00" readonly>
                                         <input type="hidden" name="param-id" id="param-id"/>
+                                        <input type="hidden" name="id_akun" value="{{$dipa_id_akun}}"/>
                                     </div>
                                   </div>
                               </div>
@@ -413,7 +414,6 @@ $(function(){
                         "id_akun" : $("#id_akun").val()
                     },
                     success : function(data, status){
-                        var total = data.total;
                         if(status=="success"){
                             setTimeout(function(){
                                 swal({
@@ -422,7 +422,7 @@ $(function(){
                                     type: "success"
                                     },
                                     function(){
-                                        $('#nilai').text(formatNumber(total));
+                                        $('#nilai').text(formatNumber(data.total));
                                         table.ajax.reload();
                                     });
                                 }, 1000);
@@ -445,8 +445,9 @@ $(function(){
     $("#myTable").on('click','.ubah-detail', function(){
         $.get("/dipa/dipa-rincian/get/"+$(this).data('id'), function(data, status){
             if(status == 'success'){
-                console.log(data);
-                $("#ubah_harga_satuan").val(data['dipa_harga_satuan']);
+                //console.log(data);
+                var total = data['dipa_volume'] * data['dipa_harga_satuan'];
+                $("#ubah_harga_satuan").val(formatNumber(String(data['dipa_harga_satuan'])));
                 $("#ubah_nama_detail").val(data['dipa_nama_detail']);
                 $("#ubah_satuan").val(data['dipa_satuan']);
                 $("#ubah_vol").val(data['dipa_volume']);
@@ -457,6 +458,7 @@ $(function(){
                 } else {
                     $('option[value="2"]').prop('selected', true);
                 }
+                $("#ubah_total").val(formatNumber(String(total)));
             }
         });
     });
@@ -486,9 +488,11 @@ $(function(){
                         "volume" : $("#ubah_vol").val(),
                         "satuan" :$("#ubah_satuan").val(),
                         "harga_satuan" : $("#ubah_harga_satuan").val(),
-                        "jenis_akun" : $("#ubah_jenis_akun").val()
+                        "jenis_akun" : $("#ubah_jenis_akun").val(),
+                        "id_akun" : $("#id_akun").val()
                     },
                     success : function(data, status){
+                        console.log(data.total);
                         if(status=="success"){
                             setTimeout(function(){
                                 swal({
@@ -497,6 +501,7 @@ $(function(){
                                     type: "success"
                                     },
                                     function(){
+                                        $('#nilai').text(formatNumber(data.total));
                                         table.ajax.reload();
                                     });
                                 }, 1000);
@@ -579,8 +584,22 @@ $(function(){
         harga = (harga != '') ? parseFloat( harga.replace(/\D/g, "") ) : 0;
 
         var total = harga * vol;
+        
         //console.log(formatNumber(total)); //error total sudah berbentuk number
         $('#tambah_total').val(formatNumber(String(total)));
+    });
+
+    //total form edit
+    $('#ubah_vol, #ubah_harga_satuan').keyup(function(){
+        var vol = $('#ubah_vol').val();
+        var harga = $('#ubah_harga_satuan').val();
+
+        harga = (harga != '') ? parseFloat( harga.replace(/\D/g, "") ) : 0;
+
+        var total = harga * vol;
+        
+        //console.log(formatNumber(total)); //error total sudah berbentuk number
+        $('#ubah_total').val(formatNumber(String(total)));
     });
 
     //number format for all existing text-money element

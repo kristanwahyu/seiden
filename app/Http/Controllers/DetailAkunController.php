@@ -96,6 +96,7 @@ class DetailAkunController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'id_akun'      => 'required',
             'nama_detail' => 'required',
             'volume'  => 'required',
             'satuan' => 'required',
@@ -116,7 +117,9 @@ class DetailAkunController extends Controller
             'dipa_jenis_akun'   => $request->jenis_akun
         ]);
 
-        return response()->json(["status"=>"success"],200);
+        $total = $this->total($request->id_akun);
+
+        return response()->json(["status"=>"success", "total" => $total->total],200);
     }
     public function getOne($id)
     {
