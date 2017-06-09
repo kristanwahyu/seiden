@@ -19,13 +19,14 @@
         <ul class="breadcrumb">
             <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
            <li><a href="{{ url('/dipa/dipa-program') }}">DIPA</a></li>
-            {{-- <li><a href="{{ url('/dipa/dipa-kegiatan/'.$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_id_program']) }}">{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}}</a></li>
-            <li><a href="{{ url('/dipa/dipa-output/'.$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_id_kegiatan']) }}">{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}}</a></li>
-            <li><a href="{{ url('/dipa/dipa-suboutput/'.$sub_komponen['komponen']['sub_output']['output']['dipa_id_output']) }}">{{$sub_komponen['komponen']['sub_output']['output']['dipa_kode_output']}}</a></li>
-            <li><a href="{{ url('/dipa/dipa-komponen/'.$sub_komponen['komponen']['sub_output']['dipa_id_sub_output']) }}">{{$sub_komponen['komponen']['sub_output']['dipa_kode_sub_output']}}</a></li>
-            <li><a href="{{ url('/dipa/dipa-subkomponen/'.$sub_komponen['komponen']['dipa_id_komponen']) }}">{{$sub_komponen['komponen']['dipa_kode_komponen']}}</a></li>
-            <li><a href="{{ url('/dipa/dipa-akun/'.$sub_komponen['dipa_id_sub_komponen']) }}">{{$sub_komponen['dipa_kode_sub_komponen']}}</a></li>
-            <li class="active-bread">{{$dipa_kode_akun}}</li> --}}
+            <li><a href="{{ url('/dipa/dipa-kegiatan/'.$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['dipa_id_program']) }}">{{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-output/'.$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['dipa_id_kegiatan']) }}">{{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-suboutput/'.$akun['sub_komponen']['komponen']['sub_output']['output']['dipa_id_output']) }}">{{$akun['sub_komponen']['komponen']['sub_output']['output']['dipa_kode_output']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-komponen/'.$akun['sub_komponen']['komponen']['sub_output']['dipa_id_sub_output']) }}">{{$akun['sub_komponen']['komponen']['sub_output']['dipa_kode_sub_output']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-subkomponen/'.$akun['sub_komponen']['komponen']['dipa_id_komponen']) }}">{{$akun['sub_komponen']['komponen']['dipa_kode_komponen']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-akun/'.$akun['sub_komponen']['dipa_id_sub_komponen']) }}">{{$akun['sub_komponen']['dipa_kode_sub_komponen']}}</a></li>
+            <li class="active-bread">{{$akun['dipa_kode_akun']}}</li>
+            <li class="active-bread">{{$dipa_nama_detail}}</li>
         </ul>
     </div>
     {{-- End Breadcrumb --}}
@@ -48,61 +49,52 @@
                                       <tr>
                                           <td>KODE / SATUAN KERJA</td>
                                           <td>:</td>
-                                          <td></td>
-                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_satuan_kerja']}}</td> --}}
+                                          <td>{{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_satuan_kerja']}}</td>
                                       </tr>
                                       <tr>
                                           <td>PROGRAM</td>
                                           <td>:</td>
-                                          <td></td>
-                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_nama_program']}}</td> --}}
+                                          <td>{{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}} / {{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['dipa_nama_program']}}</td>
                                       </tr>
                                       <tr>
                                           <td>KEGIATAN</td>
                                           <td>:</td>
-                                          <td></td>
-                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_nama_kegiatan']}}</td> --}}
+                                          <td>{{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}} / {{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['dipa_nama_kegiatan']}}</td>
                                       </tr>
                                       <tr>
                                           <td>OUTPUT</td>
                                           <td>:</td>
-                                          <td></td>
-                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['output']['dipa_kode_output']}} / {{$sub_komponen['komponen']['sub_output']['output']['dipa_nama_output']}}</td> --}}
+                                          <td>{{$akun['sub_komponen']['komponen']['sub_output']['output']['dipa_kode_output']}} / {{$akun['sub_komponen']['komponen']['sub_output']['output']['dipa_nama_output']}}</td>
                                       </tr>
                                       <tr>
                                           <td>SUB OUTPUT</td>
                                           <td>:</td>
-                                          <td></td>
-                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['dipa_kode_sub_output']}} / {{$sub_komponen['komponen']['sub_output']['dipa_nama_sub_output']}}</td> --}}
+                                          <td>{{$akun['sub_komponen']['komponen']['sub_output']['dipa_kode_sub_output']}} / {{$akun['sub_komponen']['komponen']['sub_output']['dipa_nama_sub_output']}}</td>
                                       </tr>
                                       <tr>
                                           <td>KOMPONEN</td>
                                           <td>:</td>
-                                          <td></td>
-                                          {{-- <td>{{$sub_komponen['komponen']['dipa_kode_komponen']}} / {{$sub_komponen['komponen']['dipa_nama_komponen']}}</td> --}}
+                                          <td>{{$akun['sub_komponen']['komponen']['dipa_kode_komponen']}} / {{$akun['sub_komponen']['komponen']['dipa_nama_komponen']}}</td>
                                       </tr>
                                       <tr>
                                           <td>SUB KOMPONEN</td>
                                           <td>:</td>
-                                          <td></td>
-                                          {{-- <td>{{$sub_komponen['dipa_kode_sub_komponen']}} / {{$sub_komponen['dipa_nama_sub_komponen']}}</td> --}}
+                                          <td>{{$akun['sub_komponen']['dipa_kode_sub_komponen']}} / {{$akun['sub_komponen']['dipa_nama_sub_komponen']}}</td>
                                       </tr>
                                       <tr>
                                           <td>AKUN</td>
                                           <td>:</td>
-                                          <td></td>
-                                          {{-- <td>{{$dipa_kode_akun}} / {{$dipa_nama_akun}}</td> --}}
+                                          <td>{{$akun['dipa_kode_akun']}} / {{$akun['dipa_nama_akun']}}</td>
                                       </tr>
                                       <tr>
                                           <td>TAHUN ANGGARAN</td>
                                           <td>:</td>
-                                          <td></td>
-                                          {{-- <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['tahun']['dipa_tahun_anggaran']}}</td> --}}
+                                          <td>{{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['tahun']['dipa_tahun_anggaran']}}</td>
                                       </tr>
                                       <tr>
                                           <td>NILAI</td>
                                           <td>:</td>
-                                          <td>RP. 12.500.000</td>
+                                          <td>RP. <span id="nilai">@if($total->total != null) {{$total->total}} @else 0 @endif </span></td>
                                       </tr>
                                       <tr>
                                           <td>RINCIAN</td>

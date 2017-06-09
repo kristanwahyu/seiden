@@ -3,7 +3,7 @@
 
 <head>
 	@include('includes.head')
-	<title>E-Silaku - Login</title>
+	@section('title', 'Login')
 </head>
 
 <body>

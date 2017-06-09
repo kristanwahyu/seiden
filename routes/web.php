@@ -108,9 +108,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/dipa/dipa-rincian/update/{id}', 'DetailAkunController@update');
         Route::delete('/dipa/dipa-rincian/delete/{id}', 'DetailAkunController@delete');
 
-        Route::get('/dipa/dipa-pembayaran', function () {
-            return view('pages.satker.dipa_pembayaran');
-        });
+        Route::get('/dipa/dipa-pembayaran/{id}/{id_akun}', 'PembayaranController@showPage');
         //==============+++END SATUAN KERJA+++============//
      });
 });

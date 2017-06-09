@@ -360,7 +360,7 @@ $(function(){
                     var actions = '';
                     actions = `<button class="btn btn-warning btn-sm ubah-detail" data-id="${data['dipa_id_detail_akun']}" data-toggle="modal" href='#modal-ubah'> UBAH</button>
                         <button class="btn btn-danger btn-sm hapus-detail" data-id="${data['dipa_id_detail_akun']}"> HAPUS</button>
-                        <a href="/dipa/dipa-pembayaran" class="btn btn-success" role="button"> Bayar</a>`;
+                        <a href="/dipa/dipa-pembayaran/${data['dipa_id_detail_akun']}/${data['dipa_id_akun']}" class="btn btn-success" role="button"> Bayar</a>`;
                     return actions.replace();
                 },
                 width: "16.1%",
