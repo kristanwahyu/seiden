@@ -158,7 +158,7 @@
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Vol</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_vol" name="tambah_vol" placeholder="Contoh : 3">
+                                      <input type="text" class="form-control format-number" id="tambah_vol" name="tambah_vol" placeholder="Contoh : 3" value="1">
                                   </div>
                               </div>
                               <div class="form-group">
@@ -172,7 +172,7 @@
                                   <div class="col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon">Rp.</span>
-										<input type="text" class="form-control text-right format-number" id="tambah_harga_satuan" name="tambah_harga_satuan" placeholder="Contoh : Rp. 2.500.000" onkeyup="count(this)">
+										<input type="text" class="form-control text-right format-number" id="tambah_harga_satuan" name="tambah_harga_satuan" placeholder="Contoh : Rp. 2.500.000">
                                     </div>
                                   </div>
                               </div>
@@ -181,7 +181,7 @@
                                   <div class="col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon">Rp.</span>
-                                        <input type="text" class="form-control text-right format-number" id="tambah_kode_detail" name="tambah_kode_detail" placeholder="0.00" readonly>
+                                        <input type="text" class="form-control text-right format-number" id="tambah_total" name="tambah_total" placeholder="0.00" readonly>
                                         <input type="hidden" name="id_akun" value="{{$dipa_id_akun}}" id="id_akun"/>
                                     </div>
                                   </div>
@@ -229,7 +229,7 @@
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Vol</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_vol" name="ubah_vol" placeholder="Contoh : 3">
+                                      <input type="text" class="form-control format-number" id="ubah_vol" name="ubah_vol" placeholder="Contoh : 3">
                                   </div>
                               </div>
                               <div class="form-group">
@@ -274,17 +274,13 @@
 @push('script')
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('vendor/cleave.js/cleave.min.js') }}"></script>
 
 <script>
 $(function(){
-    $('#nilai').text(function(index, value) {
-        return value
-        .replace(/\D/g, "")
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-        ;
-    });
     'use strict';
+
     var id_akun = "{{$dipa_id_akun}}";
     var table = $('#myTable').DataTable({
         "processing": true,
@@ -297,65 +293,68 @@ $(function(){
             {
                 title: "NO",
                 data: "DT_Row_Index",
-                name: "DT_Row_Index",
                 orderable: false,
                 searchable: false,
                 width: "1%"
             },
             {
+                //table buat order default
+                data: 'dipa_id_detail_akun',
+                searchable: false,
+                visible: false
+            },
+            {
                 title: 'NAMA DETAIL',
                 data: 'dipa_nama_detail',
                 defaultContent: "-",
-                name: 'dipa_nama_detail'
             },
             {
                 title: 'VOLUME',
                 data: 'dipa_volume',
                 defaultContent: "-",
-                name: 'dipa_volume'
             },
             {
                 title: 'SATUAN',
                 data: 'dipa_satuan',
                 defaultContent: "-",
-                name: 'dipa_satuan'
             },
             {
                 title: 'HARGA SATUAN',
-                data: null,
+                data: 'dipa_harga_satuan',
                 defaultContent: "-",
-                name: 'dipa_harga_satuan',
                 render: function(data) {
-                    var number = data['dipa_harga_satuan'];
+                    var number = data;
                     if (number != null) {
                         var number_change = formatNumber(number);
                         var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
                         return currency.replace();
                     }
-                },
-                orderable: false,
-                searchable: false
+                }
             },
+            /*{
+                title: 'JENIS AKUN',
+                data: 'dipa_jenis_akun',
+                defaultContent: "-",
+                render: function (data) {
+                    var jenis = data == '1' ? 'Belanja Gaji' : 'Belanja Non Gaji';
+                    return jenis.replace();
+                },
+                searchable: false
+            },*/
             {
                 title: 'TOTAL',
-                data: null,
+                data: 'total',
                 defaultContent: "-",
-                name: 'total',
                 render: function (data) {
-                    var number = 0;
-                    number = parseFloat(data['dipa_harga_satuan']) * parseFloat(data['dipa_volume']);
-                    number = number.toString();
-                    var number_change = formatNumber(number);
+                    var number_change = formatNumber(data);
                     var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
                     return currency.replace();
                 },
-                orderable: false,
                 searchable: false
             },
             {
                 title: '<div class="text-center">ACTION</div>',
                 data: null,
-                name: 'action',
                 render: function (data) {
                     var actions = '';
                     actions = `<button class="btn btn-warning btn-sm ubah-detail" data-id="${data['dipa_id_detail_akun']}" data-toggle="modal" href='#modal-ubah'> UBAH</button>
@@ -367,9 +366,15 @@ $(function(){
                 orderable: false,
                 searchable: false
             }
-
-
         ],
+        "order": [[ 1, "desc" ]]
+    });
+
+    $('#nilai').text(function(index, value) {
+        return value
+        .replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        ;
     });
 
     //btn detail box
@@ -408,6 +413,7 @@ $(function(){
                         "id_akun" : $("#id_akun").val()
                     },
                     success : function(data, status){
+                        var total = data.total;
                         if(status=="success"){
                             setTimeout(function(){
                                 swal({
@@ -416,6 +422,7 @@ $(function(){
                                     type: "success"
                                     },
                                     function(){
+                                        $('#nilai').text(formatNumber(total));
                                         table.ajax.reload();
                                     });
                                 }, 1000);
@@ -508,6 +515,7 @@ $(function(){
             }
         });
     });
+
     $("#myTable").on('click','.hapus-akun', function(){
         var id = $(this).data('id');
         swal({
@@ -555,12 +563,36 @@ $(function(){
             }
         });
     });
+
     $('#modal-tambah').on('hidden.bs.modal', function (e) {
         $(this)
             .find("input[type='text']")
             .val('')
             .end()
-    })
+    });
+
+    //total form tambah
+    $('#tambah_vol, #tambah_harga_satuan').keyup(function(){
+        var vol = $('#tambah_vol').val();
+        var harga = $('#tambah_harga_satuan').val();
+
+        harga = (harga != '') ? parseFloat( harga.replace(/\D/g, "") ) : 0;
+
+        var total = harga * vol;
+        //console.log(formatNumber(total)); //error total sudah berbentuk number
+        $('#tambah_total').val(formatNumber(String(total)));
+    });
+
+    //number format for all existing text-money element
+    $('.format-number').toArray().forEach((field) => {
+        //cleave.js number format
+        return new Cleave(field, {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand',
+            numeralDecimalMark: ',',
+            delimiter: '.'
+        });
+    });
 
 });
 
@@ -632,9 +664,9 @@ function hapus(){
 }
 
 function formatNumber(x) {
-    return x.replace(/\D/g, "")
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
+        return x.replace(/\D/g, "")
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
 
 function count(e) {
     $(e).val(function(index, value) {

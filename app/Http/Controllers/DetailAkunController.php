@@ -11,7 +11,6 @@ use App\Model\DipaAkunDetail;
 
 class DetailAkunController extends Controller
 {
-    //
     public function showPage($id)
     {   
         $data = DipaAkun::with(array('subKomponen'=>function($l){
@@ -29,21 +28,34 @@ class DetailAkunController extends Controller
             }))
             ->where('dipa_id_akun',$id)->first();
 
-        $data['total'] = DB::table('tbl_dipa_akun')
-                ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
-                ->where('tbl_dipa_akun.dipa_id_akun',$id)
-                ->first([
-                    DB::raw('SUM(tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume) as total')
-                    ]);
+        // $data['total'] = DB::table('tbl_dipa_akun')
+        //         ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
+        //         ->where('tbl_dipa_akun.dipa_id_akun',$id)
+        //         ->first([
+        //             DB::raw('SUM(tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume) as total')
+        //             ]);
 
+        $data['total'] = $this->total($id);
+        
         return view('pages.satker.dipa_rincian',$data);
     }
 
     public function show($id_akun)
     {
 
-        $job = DipaAkunDetail::where('dipa_id_akun',$id_akun)
-            ->orderBy('dipa_id_detail_akun', 'desc');
+        // $job = DipaAkunDetail::where('dipa_id_akun',$id_akun)
+        //     ->orderBy('dipa_id_detail_akun', 'desc');
+
+        //mode ONLY_FULL_GROUP_BY : disabled
+        // $job = DipaAkunDetail::select('*', DB::raw('SUM(dipa_harga_satuan * dipa_volume) AS total'))
+        //         ->where('dipa_id_akun', $id_akun)
+        //         ->groupBy('dipa_id_detail_akun');
+
+        //mode ONLY_FULL_GROUP_BY : enabled
+        $job = DipaAkunDetail::select('dipa_id_detail_akun', 'dipa_nama_detail', 'dipa_volume', 'dipa_satuan', 
+                'dipa_harga_satuan', 'dipa_jenis_akun', DB::raw('SUM(dipa_harga_satuan * dipa_volume) AS total'))
+                ->where('dipa_id_akun', $id_akun)
+                ->groupBy('dipa_id_detail_akun', 'dipa_nama_detail', 'dipa_volume', 'dipa_satuan', 'dipa_harga_satuan', 'dipa_jenis_akun');
 
         return $this->makeDataTable($job);
     }
@@ -76,7 +88,9 @@ class DetailAkunController extends Controller
             'dipa_id_akun'      => $request->id_akun
         ]);
 
-        return response()->json(["status"=>"success"],200);
+        $total = $this->total($request->id_akun);
+
+        return response()->json(["status"=>"success", "total" => $total->total],200);
     }
 
     public function update(Request $request, $id)
@@ -126,5 +140,12 @@ class DetailAkunController extends Controller
         }
 
         return $ammount;
+    }
+
+    public function total($id){
+        $total = DipaAkunDetail::select(DB::raw('SUM(dipa_harga_satuan * dipa_volume) AS total'))
+                        ->where('dipa_id_akun', $id)->first();
+
+        return $total;
     }
 }
