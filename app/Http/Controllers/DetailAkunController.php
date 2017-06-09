@@ -53,9 +53,9 @@ class DetailAkunController extends Controller
 
         //mode ONLY_FULL_GROUP_BY : enabled
         $job = DipaAkunDetail::select('dipa_id_detail_akun', 'dipa_nama_detail', 'dipa_volume', 'dipa_satuan', 
-                'dipa_harga_satuan', 'dipa_jenis_akun', DB::raw('SUM(dipa_harga_satuan * dipa_volume) AS total'))
+                'dipa_harga_satuan', 'dipa_jenis_akun', 'dipa_id_akun', DB::raw('SUM(dipa_harga_satuan * dipa_volume) AS total'))
                 ->where('dipa_id_akun', $id_akun)
-                ->groupBy('dipa_id_detail_akun', 'dipa_nama_detail', 'dipa_volume', 'dipa_satuan', 'dipa_harga_satuan', 'dipa_jenis_akun');
+                ->groupBy('dipa_id_detail_akun', 'dipa_nama_detail', 'dipa_volume', 'dipa_satuan', 'dipa_harga_satuan', 'dipa_jenis_akun', 'dipa_id_akun');
 
         return $this->makeDataTable($job);
     }
@@ -89,7 +89,6 @@ class DetailAkunController extends Controller
         ]);
 
         $total = $this->total($request->id_akun);
-
         return response()->json(["status"=>"success", "total" => $total->total],200);
     }
 
@@ -118,7 +117,6 @@ class DetailAkunController extends Controller
         ]);
 
         $total = $this->total($request->id_akun);
-
         return response()->json(["status"=>"success", "total" => $total->total],200);
     }
     public function getOne($id)
@@ -126,11 +124,14 @@ class DetailAkunController extends Controller
         return DipaAkunDetail::where('dipa_id_detail_akun',$id)->first();
     }
 
-    public function delete($id)
+    public function delete($id, $id_akun)
     {
-        $output = DipaAkun::where('dipa_id_akun', $id);
+        $output = DipaAkunDetail::where('dipa_id_detail_akun', $id);
         if($output == null) return abort(503);
         $output->delete();
+
+        $total = $this->total($id_akun);
+        return response()->json(["status"=>"success", "total" => $total->total],200);
     }
 
     public function clearComma($number)

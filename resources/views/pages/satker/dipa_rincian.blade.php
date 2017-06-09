@@ -243,7 +243,7 @@
                                   <div class="col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon">Rp.</span>
-                                        <input type="text" class="form-control text-right format-number" id="ubah_harga_satuan" name="ubah_harga_satuan" placeholder="Contoh : Rp. 2.500.000" onkeyup="count(this)">
+                                        <input type="text" class="form-control text-right format-number" id="ubah_harga_satuan" name="ubah_harga_satuan" placeholder="Contoh : Rp. 2.500.000">
                                     </div>
                                   </div>
                               </div>
@@ -359,7 +359,7 @@ $(function(){
                 render: function (data) {
                     var actions = '';
                     actions = `<button class="btn btn-warning btn-sm ubah-detail" data-id="${data['dipa_id_detail_akun']}" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-                        <button class="btn btn-danger btn-sm hapus-detail" data-id="${data['dipa_id_detail_akun']}"> HAPUS</button>
+                        <button class="btn btn-danger btn-sm hapus-detail" data-id="${data['dipa_id_detail_akun']}" data-akun="${data['dipa_id_akun']}"> HAPUS</button>
                         <a href="/dipa/dipa-pembayaran/${data['dipa_id_detail_akun']}/${data['dipa_id_akun']}" class="btn btn-success" role="button"> Bayar</a>`;
                     return actions.replace();
                 },
@@ -386,6 +386,7 @@ $(function(){
         $(this).toggleClass('btn-active');
     });
 
+    //tambah rincian
      $("#btn-tambah").click(function(){
         swal({
             title: "Apakah Anda Yakin ?",
@@ -442,12 +443,13 @@ $(function(){
         });
     });
 
+    //edit rincian
     $("#myTable").on('click','.ubah-detail', function(){
         $.get("/dipa/dipa-rincian/get/"+$(this).data('id'), function(data, status){
             if(status == 'success'){
                 //console.log(data);
                 var total = data['dipa_volume'] * data['dipa_harga_satuan'];
-                $("#ubah_harga_satuan").val(formatNumber(String(data['dipa_harga_satuan'])));
+                $("#ubah_harga_satuan").val(formatNumber(data['dipa_harga_satuan']));
                 $("#ubah_nama_detail").val(data['dipa_nama_detail']);
                 $("#ubah_satuan").val(data['dipa_satuan']);
                 $("#ubah_vol").val(data['dipa_volume']);
@@ -458,11 +460,12 @@ $(function(){
                 } else {
                     $('option[value="2"]').prop('selected', true);
                 }
-                $("#ubah_total").val(formatNumber(String(total)));
+                $("#ubah_total").val(formatNumber(total));
             }
         });
     });
 
+    //update rincian
     $("#btn-ubah").click(function(){
         var id = $('#param-id').val();
         swal({
@@ -492,7 +495,6 @@ $(function(){
                         "id_akun" : $("#id_akun").val()
                     },
                     success : function(data, status){
-                        console.log(data.total);
                         if(status=="success"){
                             setTimeout(function(){
                                 swal({
@@ -521,8 +523,10 @@ $(function(){
         });
     });
 
-    $("#myTable").on('click','.hapus-akun', function(){
+    //hapus rincian
+    $("#myTable").on('click','.hapus-detail', function(){
         var id = $(this).data('id');
+        var idAkun = $(this).data('akun');
         swal({
             title: "Apakah Anda Yakin ?",
             text: "Data Akun Ini Akan Dihapus PERMANEN !",
@@ -538,8 +542,8 @@ $(function(){
         function(isConfirm){
             if (isConfirm) {
                 $.ajax({
-                    url : "/dipa/dipa-akun/delete/"+id,
-                    type : "delete",
+                    url : `/dipa/dipa-rincian/delete/${id}/${idAkun}`,
+                    type : "DELETE",
                     data : {
                         "_token": "{{ csrf_token() }}"
                     },
@@ -552,6 +556,7 @@ $(function(){
                                     type: "success"
                                     },
                                     function(){
+                                        $('#nilai').text(formatNumber(data.total));
                                         table.ajax.reload();
                                     });
                                 }, 1000);
@@ -585,8 +590,7 @@ $(function(){
 
         var total = harga * vol;
         
-        //console.log(formatNumber(total)); //error total sudah berbentuk number
-        $('#tambah_total').val(formatNumber(String(total)));
+        $('#tambah_total').val(formatNumber(total));
     });
 
     //total form edit
@@ -598,8 +602,7 @@ $(function(){
 
         var total = harga * vol;
         
-        //console.log(formatNumber(total)); //error total sudah berbentuk number
-        $('#ubah_total').val(formatNumber(String(total)));
+        $('#ubah_total').val(formatNumber(total));
     });
 
     //number format for all existing text-money element
@@ -613,86 +616,11 @@ $(function(){
         });
     });
 
+    //native number format converter
+    function formatNumber(value){
+        var currency = new Intl.NumberFormat('de-DE');
+        return currency.format(value);
+    }
 });
-
-function tambah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Akun Ini Akan Disimpan ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Simpan", "success");
-      $('#modal-tambah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Akun Batal Simpan :)', 'error');
-      $('#modal-tambah').modal('hide');
-    }
-  });
-}
-
-function ubah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Akun Ini Akan Diubah ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Diubah", "success");
-      $('#modal-ubah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Akun Batal Diubah :)', 'error');
-      $('#modal-ubah').modal('hide');
-    }
-  });
-}
-
-function hapus(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Akun Ini Akan Dihapus",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Dihapus", "success");
-    } else {
-      swal('Dibatalkan', 'Data Akun Batal Dihapus :)', 'error');
-    }
-  });
-}
-
-function formatNumber(x) {
-        return x.replace(/\D/g, "")
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    }
-
-function count(e) {
-    $(e).val(function(index, value) {
-            return value
-            .replace(/\D/g, "")
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        });
-}
 </script>
 @endpush

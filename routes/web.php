@@ -106,7 +106,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/dipa/dipa-rincian/get/{id}', 'DetailAkunController@getOne');
         Route::post('/dipa/dipa-rincian/store', 'DetailAkunController@store');
         Route::put('/dipa/dipa-rincian/update/{id}', 'DetailAkunController@update');
-        Route::delete('/dipa/dipa-rincian/delete/{id}', 'DetailAkunController@delete');
+        Route::delete('/dipa/dipa-rincian/delete/{id}/{id_akun}', 'DetailAkunController@delete');
 
         Route::get('/dipa/dipa-pembayaran/{id}/{id_akun}', 'PembayaranController@showPage');
         //==============+++END SATUAN KERJA+++============//
