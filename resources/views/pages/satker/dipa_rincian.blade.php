@@ -172,7 +172,7 @@
                                   <div class="col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon">Rp.</span>
-										<input type="text" class="form-control text-right format-number" id="tambah_harga_satuan" name="tambah_harga_satuan" placeholder="Contoh : Rp. 2.500.000">
+                      										<input type="text" class="form-control text-right format-number" id="tambah_harga_satuan" name="tambah_harga_satuan" placeholder="Contoh : Rp. 2.500.000">
                                     </div>
                                   </div>
                               </div>
@@ -589,7 +589,7 @@ $(function(){
         harga = (harga != '') ? parseFloat( harga.replace(/\D/g, "") ) : 0;
 
         var total = harga * vol;
-        
+
         $('#tambah_total').val(formatNumber(total));
     });
 
@@ -601,7 +601,7 @@ $(function(){
         harga = (harga != '') ? parseFloat( harga.replace(/\D/g, "") ) : 0;
 
         var total = harga * vol;
-        
+
         $('#ubah_total').val(formatNumber(total));
     });
 

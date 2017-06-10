@@ -308,7 +308,7 @@
                     <div class="panel-footer clearfix">
                         <div class="row">
                             <div class="col-sm-6">
-                                <a href="{{ url('/dipa/dipa-subkomponen') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
+                                <a href="{{ url('/#') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                             </div>
                             <div class="col-sm-6 text-right">
                                 <button class="btn btn-primary btn-tambah" status="0" data-id="1"><i class="fa fa-tasks"></i> Draft</button>

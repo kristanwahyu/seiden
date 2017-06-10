@@ -148,3 +148,31 @@ Route::get('/sp2d', function () {
     return view('pages.ppspm.sp2d');
 });
 //==============+++END PPSPM+++============//
+
+//==============+++START OPERATOR SIMAK+++============//
+Route::get('/dashboard-simak', function () {
+    return view('pages.operator_simak.dashboard');
+});
+
+Route::get('/sinkronisasi-simak', function () {
+    return view('pages.operator_simak.sinkronisasi');
+});
+//==============+++END OPERATOR SIMAK+++============//
+
+//==============+++START OPERATOR SAIBA+++============//
+Route::get('/dashboard-saiba', function () {
+    return view('pages.operator_saiba.dashboard');
+});
+Route::get('/sinkronisasi-saiba', function () {
+    return view('pages.operator_saiba.sinkronisasi');
+});
+//==============+++END OPERATOR SAIBA+++============//
+
+//==============+++START OPERATOR PERLENGKAPAN+++============//
+Route::get('/dashboard-perlengkapan', function () {
+    return view('pages.operator_perlengkapan.dashboard');
+});
+Route::get('/sinkronisasi-perlengkapan', function () {
+    return view('pages.operator_perlengkapan.sinkronisasi');
+});
+//==============+++END OPERATOR PERLENGKAPAN+++============//
