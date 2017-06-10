@@ -94,7 +94,7 @@
                                       <tr>
                                           <td>NILAI</td>
                                           <td>:</td>
-                                          <td>RP. <span id="nilai">@if($total->total != null) {{$total->total}} @else 0 @endif </span></td>
+                                          <td>RP. <span class="nilai">@if($total->total != null) {{$total->total}} @else 0 @endif </span></td>
                                       </tr>
                                       <tr>
                                           <td>RINCIAN</td>
@@ -104,17 +104,17 @@
                                       <tr>
                                           <td>HARGA SATUAN</td>
                                           <td>:</td>
-                                          <td>RP. <span id="nilai">{{$dipa_harga_satuan}}</span></td>
+                                          <td>RP. <span class="nilai">{{$dipa_harga_satuan}}</span></td>
                                       </tr>
                                       <tr>
                                           <td>TOTAL HARGA</td>
                                           <td>:</td>
-                                          <td>RP. <span id="nilai">{{$dipa_harga_satuan * $dipa_volume}}</span></td>
+                                          <td>RP. <span class="nilai">{{$dipa_harga_satuan * $dipa_volume}}</span></td>
                                       </tr>
                                       <tr>
                                           <td>DANA TERPAKAI</td>
                                           <td>:</td>
-                                          <td>Rp. 0 -</td>
+                                          <td>RP. <span class="nilai">@if($total_bayar->total_bayar != null) {{$total_bayar->total_bayar}} @else 0 @endif </span></td>
                                       </tr>
                                   </tbody>
                               </table>
@@ -167,7 +167,7 @@
                                     <div class="form-group clearfix">
                                         <label class="col-sm-3 control-label">PEMBAYARAN</label>
                                         <div class="col-sm-9">
-                                            <label class="radio-inline"><input type="radio" id="tambah_up" name="jenis_pembayaran" value="1">UP</label>
+                                            <label class="radio-inline"><input type="radio" id="tambah_up" name="jenis_pembayaran" value="1" checked>UP</label>
                                             <label class="radio-inline"><input type="radio" id="tambah_ls" name="jenis_pembayaran" value="0">LS</label>
                                         </div>
                                     </div>
@@ -288,14 +288,14 @@
                                     <div class="form-group clearfix">
                                         <label class="col-sm-3 control-label">NILAI</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="pembayaran_nilai" name="pembayaran_nilai" placeholder="Contoh : Rp. 15.000.000">
+                                            <input type="text" class="form-control" id="pembayaran_nilai" name="pembayaran_nilai" placeholder="Contoh : Rp. 15.000.000" required>
                                             <input type="hidden" value="{{$dipa_id_detail_akun}}" id="id_detail_akun">
                                         </div>
                                     </div>
                                     <div class="form-group clearfix">
                                         <label class="col-sm-3 control-label">KETERANGAN</label>
                                         <div class="col-sm-9">
-                                            <textarea type="text" class="form-control" id="pembayaran_keterangan" name="pembayaran_keterangan" placeholder="Contoh : Isi keterangan disini"></textarea>
+                                            <textarea type="text" class="form-control" id="pembayaran_keterangan" name="pembayaran_keterangan" placeholder="Contoh : Isi keterangan disini" required></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -333,6 +333,12 @@
 <script>
 $(function(){
     'use strict';
+    $('.nilai').text(function(index, value) {
+        return value
+        .replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        ;
+    });
 
     //btn detail box
     $('.btn-detail').click(function(){
@@ -350,8 +356,14 @@ $(function(){
     });
 
      $(".btn-tambah").click(function(){
+         if(parseFloat($("#pembayaran_nilai").val()) > parseFloat("{{$dipa_harga_satuan * $dipa_volume - $total_bayar->total_bayar}}")){
+             return swal("Maaf Dana Tidak Cukup");
+         }
         var id_pembayaran = $(this).data('id');
         if (id_pembayaran == "") {
+            if($('input[name="syarat1"]').val() == "" || $('input[name="syarat2"]').val() == ""  || $('input[name="syarat3"]').val() == ""  || $('input[name="syarat4"]').val() == ""  || $('input[name="syarat5"]').val() == ""  || $('input[name="syarat6"]').val() == ""  || $('input[name="syarat7"]').val() == "") {
+                return swal("Maaf Dokumen Belum Lengkap, Anda Tidak Bisa Menyimpan Data Ini, Silahkan Di Draft Terlebih Dahulu");
+            }
             var text_sweet = 'Data Pembayaran ini akan di simpan. dan tidak dapat di rubah lagi';
             var tanggal = '{{date("Y-m-d")}}';
             var status = '1';

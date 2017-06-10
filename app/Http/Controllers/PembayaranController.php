@@ -35,12 +35,17 @@ class PembayaranController extends Controller
             ->where('dipa_id_detail_akun',$id)->first();
         $data['total'] = DB::table('tbl_dipa_akun')
                 ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
-                ->rightJoin('tbl_dipa_pembayaran','tbl_dipa_akun_detail.dipa_id_detail_akun', '=', 'tbl_dipa_pembayaran.dipa_id_detail_akun')
                 ->where('tbl_dipa_akun.dipa_id_akun',$id_akun)
                 ->first([
-                    DB::raw('SUM(tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume) as total, SUM(tbl_dipa_pembayaran.dipa_pembayaran_nilai) as total_bayar')
+                    DB::raw('SUM(tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume) as total')
                     ]);
-  
+
+        $data['total_bayar'] = DB::table('tbl_dipa_akun_detail')
+                ->rightJoin('tbl_dipa_pembayaran','tbl_dipa_akun_detail.dipa_id_detail_akun', '=', 'tbl_dipa_pembayaran.dipa_id_detail_akun')
+                ->where('tbl_dipa_akun_detail.dipa_id_akun',$id_akun)
+                ->first([
+                    DB::raw('SUM(tbl_dipa_pembayaran.dipa_pembayaran_nilai) as total_bayar')
+                    ]);
         return view('pages.satker.dipa_pembayaran',$data);
     }
 
