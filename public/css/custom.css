@@ -478,6 +478,13 @@ td > input[type='checkbox']{
 .table-syarat td:nth-child(4){
     width: 5%;
 }
+.table-syarat tr:nth-child(even){
+    background-color: #f9f9f9;
+}
+.table-syarat ul{
+    padding-left: 20px;
+    margin-bottom: 0;
+}
 
 td > .btn-xxs{
     padding: 0 4px;
