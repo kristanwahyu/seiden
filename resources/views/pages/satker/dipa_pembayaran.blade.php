@@ -25,7 +25,7 @@
             <li><a href="{{ url('/dipa/dipa-komponen/'.$akun['sub_komponen']['komponen']['sub_output']['dipa_id_sub_output']) }}">{{$akun['sub_komponen']['komponen']['sub_output']['dipa_kode_sub_output']}}</a></li>
             <li><a href="{{ url('/dipa/dipa-subkomponen/'.$akun['sub_komponen']['komponen']['dipa_id_komponen']) }}">{{$akun['sub_komponen']['komponen']['dipa_kode_komponen']}}</a></li>
             <li><a href="{{ url('/dipa/dipa-akun/'.$akun['sub_komponen']['dipa_id_sub_komponen']) }}">{{$akun['sub_komponen']['dipa_kode_sub_komponen']}}</a></li>
-            <li>{{$akun['dipa_kode_akun']}}</li>
+            <li><a href="{{ url('/dipa/dipa-rincian/'.$akun['dipa_id_akun']) }}">{{$akun['dipa_kode_akun']}}</a></li>
             <li class="active-bread">{{$dipa_nama_detail}}</li>
         </ul>
     </div>
@@ -129,10 +129,8 @@
                         </div>
 
                         <?php
-                            //$jenis = (jenis_akun_Belanja_Gaji = 1) ? 'BG' : 'BNG';
                             $jenis = $dipa_jenis_akun;
-
-                            //BG = Belanja Gaji, BNG = Belanja Non Gaji
+                            //1 = Belanja Gaji, 2 = Belanja Non Gaji
                             $syarat = [
                                 '1'  => [
                                     'Dafar Rekapitulasi/ Dafar Nominatif Pembayaran',
@@ -175,15 +173,36 @@
                                         <label class="col-sm-3 control-label">SYARAT</label>
                                             <div class="checkbox col-sm-9">
                                             <table class="table table-bordered table-condensed table-hover table-syarat no-margin">
-                                                {{-- <thead>
-                                                    <tr>
-                                                        <th width="3%">#</th>
-                                                        <th width="15%">SYARAT</th>
-                                                        <th>KETERANGAN</th>
-                                                    </tr>
-                                                </thead> --}}
                                                 <tbody>
-                                                    <tr>
+                                                    @for($i = 0; $i < 7; $i++)
+                                                        <tr>
+                                                            <td><input type="checkbox" disabled></td>
+                                                            <td><strong>Syarat {!! $i+1 !!}</strong></td>
+                                                            <td class="td-file">
+                                                                <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
+                                                                <span><input type="file" name="syarat{!! $i+1 !!}" class="file_syarat"></span>
+                                                            </td>
+                                                            <td><a href="#" class="btn btn-success btn-xxs disabled"><i class="fa fa-download"></i></a></td>
+                                                            <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
+                                                        </tr>
+
+                                                        @php
+                                                            $expSy = explode(', ', $syarat[$jenis][$i]);
+                                                        @endphp
+
+                                                        <tr class="row-hidden">
+                                                            <td></td>
+                                                            <td colspan="4">
+                                                                <ul>
+                                                                @foreach($expSy as $value)
+                                                                    <li>{{$value}}</li>
+                                                                @endforeach
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    @endfor
+
+                                                    {{-- <tr>
                                                         <td><input type="checkbox" disabled></td>
                                                         <td>Syarat 1</td>
                                                         <td class="td-file">
@@ -280,7 +299,7 @@
                                                     <tr class="row-hidden">
                                                         <td>-</td>
                                                         <td colspan="4">{{ $syarat[$jenis][6] }}</td>
-                                                    </tr>
+                                                    </tr> --}}
                                                 </tbody>
                                             </table>
                                         </div>
@@ -308,7 +327,7 @@
                     <div class="panel-footer clearfix">
                         <div class="row">
                             <div class="col-sm-6">
-                                <a href="{{ url('/#') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
+                                <a href="{{ url('/dipa/dipa-rincian/'.$akun['dipa_id_akun']) }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                             </div>
                             <div class="col-sm-6 text-right">
                                 <button class="btn btn-primary btn-tambah" status="0" data-id="1"><i class="fa fa-tasks"></i> Draft</button>
@@ -328,11 +347,21 @@
 @push('script')
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('vendor/cleave.js/cleave.min.js') }}"></script>
 
 <script>
 $(function(){
     'use strict';
+
+    //cleave.js number format
+    var pmbNilai = new Cleave('#pembayaran_nilai', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        numeralDecimalMark: ',',
+        delimiter: '.'
+    });
+
     $('.nilai').text(function(index, value) {
         return value
         .replace(/\D/g, "")
@@ -559,8 +588,7 @@ $(function(){
             .find("input")
             .val('')
             .end()
-    })
-
+    });
 });
 
 function tambah(){
