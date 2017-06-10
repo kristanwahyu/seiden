@@ -43,9 +43,7 @@ class AkunController extends Controller
         $job = DB::table('tbl_dipa_akun')
                 ->leftJoin('tbl_dipa_sub_komponen','tbl_dipa_sub_komponen.dipa_id_sub_komponen', '=', 'tbl_dipa_akun.dipa_id_sub_komponen')
                 ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
-                ->groupBy('tbl_dipa_akun.dipa_id_akun')
-                ->groupBy('tbl_dipa_akun.dipa_kode_akun')
-                ->groupBy('tbl_dipa_akun.dipa_nama_akun')
+                ->groupBy('tbl_dipa_akun.dipa_id_akun','tbl_dipa_akun.dipa_kode_akun','tbl_dipa_akun.dipa_nama_akun')
                 ->where('tbl_dipa_sub_komponen.dipa_id_sub_komponen', $id_sub_komponen)
                 ->orderBy('tbl_dipa_akun.dipa_id_akun', 'desc')
                 ->get([

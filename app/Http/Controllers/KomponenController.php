@@ -43,9 +43,7 @@ class KomponenController extends Controller
                 ->leftJoin('tbl_dipa_sub_komponen','tbl_dipa_komponen.dipa_id_komponen', '=', 'tbl_dipa_sub_komponen.dipa_id_komponen')
                 ->leftJoin('tbl_dipa_akun','tbl_dipa_sub_komponen.dipa_id_sub_komponen', '=', 'tbl_dipa_akun.dipa_id_sub_komponen')
                 ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
-                ->groupBy('tbl_dipa_komponen.dipa_id_komponen')
-                ->groupBy('tbl_dipa_komponen.dipa_kode_komponen')
-                ->groupBy('tbl_dipa_komponen.dipa_nama_komponen')
+                ->groupBy('tbl_dipa_komponen.dipa_id_komponen','tbl_dipa_komponen.dipa_kode_komponen','tbl_dipa_komponen.dipa_nama_komponen')
                 ->where('tbl_dipa_sub_output.dipa_id_sub_output', $id_sub_output)
                 ->get([
                     'tbl_dipa_komponen.dipa_id_komponen',

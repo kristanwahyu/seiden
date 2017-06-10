@@ -43,9 +43,7 @@ class OutputController extends Controller
                 ->leftJoin('tbl_dipa_sub_komponen','tbl_dipa_komponen.dipa_id_komponen', '=', 'tbl_dipa_sub_komponen.dipa_id_komponen')
                 ->leftJoin('tbl_dipa_akun','tbl_dipa_sub_komponen.dipa_id_sub_komponen', '=', 'tbl_dipa_akun.dipa_id_sub_komponen')
                 ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
-                ->groupBy('tbl_dipa_output.dipa_id_output')
-                ->groupBy('tbl_dipa_output.dipa_kode_output')
-                ->groupBy('tbl_dipa_output.dipa_nama_output')
+                ->groupBy('tbl_dipa_output.dipa_id_output','tbl_dipa_output.dipa_kode_output','tbl_dipa_output.dipa_nama_output')
                 ->where('tbl_dipa_kegiatan.dipa_id_kegiatan', $id_kegiatan)
                 ->get([
                     'tbl_dipa_output.dipa_id_output',

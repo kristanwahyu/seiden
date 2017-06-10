@@ -25,7 +25,7 @@
             <li><a href="{{ url('/dipa/dipa-komponen/'.$akun['sub_komponen']['komponen']['sub_output']['dipa_id_sub_output']) }}">{{$akun['sub_komponen']['komponen']['sub_output']['dipa_kode_sub_output']}}</a></li>
             <li><a href="{{ url('/dipa/dipa-subkomponen/'.$akun['sub_komponen']['komponen']['dipa_id_komponen']) }}">{{$akun['sub_komponen']['komponen']['dipa_kode_komponen']}}</a></li>
             <li><a href="{{ url('/dipa/dipa-akun/'.$akun['sub_komponen']['dipa_id_sub_komponen']) }}">{{$akun['sub_komponen']['dipa_kode_sub_komponen']}}</a></li>
-            <li class="active-bread">{{$akun['dipa_kode_akun']}}</li>
+            <li>{{$akun['dipa_kode_akun']}}</li>
             <li class="active-bread">{{$dipa_nama_detail}}</li>
         </ul>
     </div>
@@ -99,17 +99,17 @@
                                       <tr>
                                           <td>RINCIAN</td>
                                           <td>:</td>
-                                          <td>Pembayaran Dana - Belanja Pegawai - Volume : 2 - Satuan : 2 Orang</td>
+                                          <td>{{$dipa_nama_detail}} | @if($dipa_jenis_akun == 1) Belanja Gaji @else Belanja Non Gaji @endif | Volume : {{$dipa_volume}} {{$dipa_satuan}}</td>
                                       </tr>
                                       <tr>
                                           <td>HARGA SATUAN</td>
                                           <td>:</td>
-                                          <td>Rp. 1.500.000</td>
+                                          <td>RP. <span id="nilai">{{$dipa_harga_satuan}}</span></td>
                                       </tr>
                                       <tr>
                                           <td>TOTAL HARGA</td>
                                           <td>:</td>
-                                          <td>Rp. 3.000.000</td>
+                                          <td>RP. <span id="nilai">{{$dipa_harga_satuan * $dipa_volume}}</span></td>
                                       </tr>
                                       <tr>
                                           <td>DANA TERPAKAI</td>
@@ -120,7 +120,7 @@
                               </table>
                           </div>
                         </div>
-
+{{-- LOAD PAKE AJAX --}}
                         <div class="row">
                             <div class="col-md-12 text-right">
                                 <span class="btn-detail-open-text"></span> &nbsp;
@@ -130,11 +130,11 @@
 
                         <?php
                             //$jenis = (jenis_akun_Belanja_Gaji = 1) ? 'BG' : 'BNG';
-                            $jenis = 'BG';
+                            $jenis = $dipa_jenis_akun;
 
                             //BG = Belanja Gaji, BNG = Belanja Non Gaji
                             $syarat = [
-                                'BG'  => [
+                                '1'  => [
                                     'Dafar Rekapitulasi/ Dafar Nominatif Pembayaran',
                                     'Surat pernyataan tanggung jawab belanja (SPTJB)',
                                     'Kuintansi / Tanda Bukti Pembayaran',
@@ -146,7 +146,7 @@
                                     'SK Tim Verifikasi, SK Perjanjian Kerjasama, SK Penetapan Bantuan, SPTJM Penerima, SPTJB Penerima,
                                      BA Verifikasi, Proposal'
                                 ],
-                                'BNG' => [
+                                '2' => [
                                     'Dafar Rekapitulasi/ Dafar Nominatif (Gaji)',
                                     'Surat pernyataan tanggung jawab belanja (SPTJB)',
                                     'Kuintansi / Tanda Bukti Pembayaran',
@@ -167,8 +167,8 @@
                                     <div class="form-group clearfix">
                                         <label class="col-sm-3 control-label">PEMBAYARAN</label>
                                         <div class="col-sm-9">
-                                            <label class="radio-inline"><input type="radio" id="tambah_up" name="tambah" value="1">UP</label>
-                                            <label class="radio-inline"><input type="radio" id="tambah_ls" name="tambah" value="0">LS</label>
+                                            <label class="radio-inline"><input type="radio" id="tambah_up" name="jenis_pembayaran" value="1">UP</label>
+                                            <label class="radio-inline"><input type="radio" id="tambah_ls" name="jenis_pembayaran" value="0">LS</label>
                                         </div>
                                     </div>
                                     <div class="form-group clearfix">
@@ -184,25 +184,25 @@
                                                 </thead> --}}
                                                 <tbody>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox" disabled></td>
                                                         <td>Syarat 1</td>
                                                         <td class="td-file">
                                                             <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
-                                                            <span><input type="file"></span>
+                                                            <span><input type="file" name="syarat1" class="file_syarat"></span>
                                                         </td>
                                                         <td><a href="#" class="btn btn-success btn-xxs disabled"><i class="fa fa-download"></i></a></td>
                                                         <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
                                                     </tr>
                                                     <tr class="row-hidden">
-                                                        <td>-</td>
+                                                        <td></td>
                                                         <td colspan="4">{{ $syarat[$jenis][0] }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox" disabled></td>
                                                         <td>Syarat 2</td>
                                                         <td class="td-file">
                                                             <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
-                                                            <span><input type="file"></span>
+                                                            <span><input type="file" name="syarat2" class="file_syarat"></span>
                                                         </td>
                                                         <td><a href="#" class="btn btn-success btn-xxs disabled"><i class="fa fa-download"></i></a></td>
                                                         <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
@@ -212,13 +212,13 @@
                                                         <td colspan="4">{{ $syarat[$jenis][1] }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox" disabled></td>
                                                         <td>Syarat 3</td>
                                                         <td class="td-file">
-                                                            <button href="#" class="btn btn-success btn-xxs disabled"><i class="fa fa-upload"></i></button>
-                                                            <span><input type="file"></span>
+                                                            <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
+                                                            <span><input type="file" name="syarat3" class="file_syarat"></span>
                                                         </td>
-                                                        <td><a href="#" class="btn btn-success btn-xxs "><i class="fa fa-download"></i></a></td>
+                                                        <td><a href="#" class="btn btn-success btn-xxs disabled"><i class="fa fa-download"></i></a></td>
                                                         <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
                                                     </tr>
                                                     <tr class="row-hidden">
@@ -226,11 +226,11 @@
                                                         <td colspan="4">{{ $syarat[$jenis][2] }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox" disabled></td>
                                                         <td>Syarat 4</td>
                                                         <td class="td-file">
                                                             <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
-                                                            <span><input type="file"></span>
+                                                            <span><input type="file" name="syarat4" class="file_syarat"></span>
                                                         </td>
                                                         <td><a href="#" class="btn btn-success btn-xxs disabled"><i class="fa fa-download"></i></a></td>
                                                         <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
@@ -240,11 +240,11 @@
                                                         <td colspan="4">{{ $syarat[$jenis][3] }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox" disabled></td>
                                                         <td>Syarat 5</td>
                                                         <td class="td-file">
                                                             <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
-                                                            <span><input type="file"></span>
+                                                            <span><input type="file" name="syarat5" class="file_syarat"></span>
                                                         </td>
                                                         <td><a href="#" class="btn btn-success btn-xxs disabled"><i class="fa fa-download"></i></a></td>
                                                         <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
@@ -254,11 +254,11 @@
                                                         <td colspan="4">{{ $syarat[$jenis][4] }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox" disabled></td>
                                                         <td>Syarat 6</td>
                                                         <td class="td-file">
                                                             <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
-                                                            <span><input type="file"></span>
+                                                            <span><input type="file" name="syarat6" class="file_syarat"></span>
                                                         </td>
                                                         <td><a href="#" class="btn btn-success btn-xxs disabled"><i class="fa fa-download"></i></a></td>
                                                         <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
@@ -268,11 +268,11 @@
                                                         <td colspan="4">{{ $syarat[$jenis][5] }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox" disabled></td>
                                                         <td>Syarat 7</td>
                                                         <td class="td-file">
                                                             <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
-                                                            <span><input type="file"></span>
+                                                            <span><input type="file" name="syarat7" class="file_syarat"></span>
                                                         </td>
                                                         <td><a href="#" class="btn btn-success btn-xxs disabled"><i class="fa fa-download"></i></a></td>
                                                         <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
@@ -288,13 +288,14 @@
                                     <div class="form-group clearfix">
                                         <label class="col-sm-3 control-label">NILAI</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="tambah_nilai" name="tambah_nilai" placeholder="Contoh : Rp. 15.000.000">
+                                            <input type="text" class="form-control" id="pembayaran_nilai" name="pembayaran_nilai" placeholder="Contoh : Rp. 15.000.000">
+                                            <input type="hidden" value="{{$dipa_id_detail_akun}}" id="id_detail_akun">
                                         </div>
                                     </div>
                                     <div class="form-group clearfix">
                                         <label class="col-sm-3 control-label">KETERANGAN</label>
                                         <div class="col-sm-9">
-                                            <textarea type="text" class="form-control" id="tambah_keterangan" name="tambah_keterangan" placeholder="Contoh : Isi keterangan disini"></textarea>
+                                            <textarea type="text" class="form-control" id="pembayaran_keterangan" name="pembayaran_keterangan" placeholder="Contoh : Isi keterangan disini"></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -310,8 +311,8 @@
                                 <a href="{{ url('/dipa/dipa-subkomponen') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                             </div>
                             <div class="col-sm-6 text-right">
-                                <button class="btn btn-primary" data-toggle="modal" href='#modal-draft'><i class="fa fa-tasks"></i> Draft</button>
-                                <button class="btn btn-success" data-toggle="modal" href='#modal-ajukan'><i class="fa fa-save"></i> Ajukan</button>
+                                <button class="btn btn-primary btn-tambah" status="0" data-id="1"><i class="fa fa-tasks"></i> Draft</button>
+                                <button class="btn btn-success btn-tambah" status="1" data-id=""><i class="fa fa-save"></i> Ajukan</button>
                             </div>
                         </div>
                     </div>
@@ -348,10 +349,36 @@ $(function(){
         $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
     });
 
-     $("#btn-tambah").click(function(){
+     $(".btn-tambah").click(function(){
+        var id_pembayaran = $(this).data('id');
+        if (id_pembayaran == "") {
+            var text_sweet = 'Data Pembayaran ini akan di simpan. dan tidak dapat di rubah lagi';
+            var tanggal = '{{date("Y-m-d")}}';
+            var status = '1';
+        } else {
+            var text_sweet = 'Data Pembayaran ini akan di simpan di draft, dan dapat di rubah lagi';
+            var tanggal = null;
+            var status = '0';
+        }
+        var formData = new FormData();
+        formData.append('_token', '{{ csrf_token() }}');
+        formData.append('pembayaran_tanggal', tanggal);
+        formData.append('jenis_pembayaran', $('input[type="radio"][name="jenis_pembayaran"]').val());
+        formData.append('id_detail_akun', $('#id_detail_akun').val());
+        formData.append('pembayaran_nilai', $('#pembayaran_nilai').val());
+        formData.append('pembayaran_keterangan', $('#pembayaran_keterangan').val());
+        formData.append('pembayaran_status', status);
+        formData.append('syarat1', $('input[name="syarat1"]')[0].files[0]);
+        formData.append('syarat2', $('input[name="syarat2"]')[0].files[0]);
+        formData.append('syarat3', $('input[name="syarat3"]')[0].files[0]);
+        formData.append('syarat4', $('input[name="syarat4"]')[0].files[0]);
+        formData.append('syarat5', $('input[name="syarat5"]')[0].files[0]);
+        formData.append('syarat6', $('input[name="syarat6"]')[0].files[0]);
+        formData.append('syarat7', $('input[name="syarat7"]')[0].files[0]);
+
         swal({
             title: "Apakah Anda Yakin ?",
-            text: "Data Detail Ini Akan Disimpan",
+            text: text_sweet,
             type: "info",
             showCancelButton: true,
             confirmButtonColor: "#00a65a",
@@ -364,17 +391,11 @@ $(function(){
         function(isConfirm){
             if (isConfirm) {
                 $.ajax({
-                    url : "/dipa/dipa-rincian/store",
+                    url : "/dipa/dipa-pembayaran/store",
                     type : "POST",
-                    data : {
-                        "_token": "{{ csrf_token() }}",
-                        "nama_detail" : $("#tambah_nama_detail").val(),
-                        "volume" : $("#tambah_vol").val(),
-                        "satuan" :$("#tambah_satuan").val(),
-                        "harga_satuan" : $("#tambah_harga_satuan").val(),
-                        "jenis_akun" : $("#tambah_jenis_akun").val(),
-                        "id_akun" : $("#id_akun").val()
-                    },
+                    data : formData,
+                    contentType: false, // ini di perlukan
+                    processData: false, // ini juga
                     success : function(data, status){
                         if(status=="success"){
                             setTimeout(function(){
@@ -384,7 +405,7 @@ $(function(){
                                     type: "success"
                                     },
                                     function(){
-                                        table.ajax.reload();
+                                        window.location = "/bangke";
                                     });
                                 }, 1000);
                         }
@@ -401,6 +422,14 @@ $(function(){
                 $('#modal-tambah').modal('hide');
             }
         });
+    });
+
+    $(".file_syarat").on('change', function(){
+        if($(this).val() == "") {
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', false);
+        } else {
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true);
+        }
     });
 
     $("#myTable").on('click','.ubah-detail', function(){
