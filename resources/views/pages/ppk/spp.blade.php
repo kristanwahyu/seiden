@@ -46,57 +46,57 @@
                                       <tr>
                                           <td>PROGRAM</td>
                                           <td>:</td>
-                                          <td>PRG001 / Program 001</td>
+                                          <td>{{ $data[0]->dipa_kode_program }} / {{$data[0]->dipa_nama_program}}</td>
                                       </tr>
                                       <tr>
                                           <td>KEGIATAN</td>
                                           <td>:</td>
-                                          <td>KGT001 / Kegiatan 001</td>
+                                          <td>{{$data[0]->dipa_kode_kegiatan}} / {{$data[0]->dipa_nama_kegiatan}}</td>
                                       </tr>
                                       <tr>
                                           <td>OUTPUT</td>
                                           <td>:</td>
-                                          <td>OP001 / Output 001</td>
+                                          <td>{{$data[0]->dipa_kode_output}} / {{$data[0]->dipa_nama_output}}</td>
                                       </tr>
                                       <tr>
                                           <td>SUB OUTPUT</td>
                                           <td>:</td>
-                                          <td>SOP001.1 / Sub Output 001.1</td>
+                                          <td>{{$data[0]->dipa_kode_sub_output}} / {{$data[0]->dipa_nama_sub_output}}</td>
                                       </tr>
                                       <tr>
                                           <td>KOMPONEN</td>
                                           <td>:</td>
-                                          <td>KP001 / Komponen 001</td>
+                                          <td>{{$data[0]->dipa_kode_komponen}} / {{$data[0]->dipa_nama_komponen}}</td>
                                       </tr>
                                       <tr>
                                           <td>SUB KOMPONEN</td>
                                           <td>:</td>
-                                          <td>KP001.1 / Sub Komponen 001.1</td>
+                                          <td>{{$data[0]->dipa_kode_sub_komponen}} / {{$data[0]->dipa_nama_sub_komponen}}</td>
                                       </tr>
                                       <tr>
                                           <td>AKUN</td>
                                           <td>:</td>
-                                          <td>AK001 / Akun 001</td>
+                                          <td>{{$data[0]->dipa_kode_akun}} / {{$data[0]->dipa_nama_akun}}</td>
                                       </tr>
                                       <tr>
                                           <td>RINCIAN</td>
                                           <td>:</td>
-                                          <td>Penbayaran Dana - Belanja Gaji - 2 Orang</td>
+                                          <td>Pembayaran Dana - {{$data[0]->dipa_jenis_akun}} - {{$data[0]->dipa_volume}} {{$data[0]->dipa_satuan}}</td>
                                       </tr>
                                       <tr>
                                           <td>HARGA SATUAN</td>
                                           <td>:</td>
-                                          <td>RP. 1.500.000</td>
+                                          <td>{{$data[0]->dipa_harga_satuan}}</td>
                                       </tr>
                                       <tr>
                                           <td>TOTAL HARGA</td>
                                           <td>:</td>
-                                          <td>RP. 3.000.000</td>
+                                          <td>{{$data[0]->dipa_harga_satuan * $data[0]->dipa_volume}}</td>
                                       </tr>
                                       <tr>
                                           <td>TAHUN ANGGARAN</td>
                                           <td>:</td>
-                                          <td>2017</td>
+                                          <td>{{$data[0]->dipa_id_tahun_anggaran}}</td>
                                       </tr>
                                       <tr>
                                           <td>DANA YANG TERPAKAI</td>

@@ -50,41 +50,152 @@
 <script>
   'use strict';
 
-  var data = [
-    [
-        "1",
-        "123.456.789.001",
-        "Penbayaran Dana - Belanja Gaji - 2 Orang",
-        "2 Orang",
-        "Rp. 1.500.000",
-        "Rp. 3.000.000",
-        "Rp. 3.000.000",
-        `<a href="{{ url('/spp') }}" class="btn btn-success" role="button">SPP</a>`
-    ],
-    [
-        "1",
-        "123.456.789.002",
-        "Penbayaran Dana - Belanja Non Gaji - 3 Orang",
-        "3 Orang",
-        "Rp. 500.000",
-        "Rp. 1.500.000",
-        "Rp. 1.500.000",
-        `<a href="{{ url('/spp') }}" class="btn btn-success" role="button">SPP</a>`
-    ],
-  ];
+  'use strict';
+    
+    var table = $('#myTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":{
+            type : "GET",
+            url : "/ppk/show/"
+        },
+        "columns": [
+            {
+                title: "NO",
+                data: "DT_Row_Index",
+                name: "DT_Row_Index",
+                orderable: false,
+                searchable: false,
+                width: "1%"
+            },
+            {
+                title: 'KODE',
+                data: 'kode',
+                defaultContent: "-",
+                name: 'kode'
+            },
+            {
+                title: 'RINCIAN',
+                data: 'rincian',
+                defaultContent: "-",
+                name: 'rincian'
+            },
+            {
+                title: 'VOL',
+                data: 'dipa_volume',
+                defaultContent: "-",
+                name: 'dipa_volume'
+            },
+            {
+                title: '<div class="text-center">NILAI</div>',
+                data: null,
+                defaultContent: "-",
+                name: 'dipa_harga_satuan',
+                render: function(data) {
+                    var number = data['dipa_harga_satuan'];
+                    if (number != null) {
+                        var number_change = formatNumber(number);
+                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                        return currency.replace();
+                    }
+                },
+                width: "10%"
+            },
+            {
+                title: '<div class="text-center">TOTAL</div>',
+                data: null,
+                defaultContent: "-",
+                name: 'total',
+                render: function(data) {
+                    var number = data['total'];
+                    if (number != null) {
+                        var number_change = formatNumber(number);
+                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                        return currency.replace();
+                    }
+                },
+                width: "10%"
+            },
+            {
+                title: '<div class="text-center">DIBAYAR</div>',
+                data: null,
+                defaultContent: "-",
+                name: 'bayar',
+                render: function(data) {
+                    var number = data['bayar'];
+                    if (number != null) {
+                        var number_change = formatNumber(number);
+                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                        return currency.replace();
+                    }
+                },
+                width: "10%"
+            },
+            {
+                title: '<div class="text-center">ACTION</div>',
+                data: null,
+                name: 'action',
+                render: function (data) {
+                    var param = '';
+                    // if(data['count_output'] > 0) {
+                    //     param = 'data-toggle="tooltip" data-placement="top" title="Program Sudah Memiliki Kegiatan, tidak bisa dihapus" disabled';
+                    // }
+                    // var actions = '';
+                    // actions = `<button class="btn btn-warning btn-sm ubah-kegiatan" data-id="${data['dipa_id_kegiatan']}" data-toggle="modal" href='#modal-ubah'> UBAH</button>
+                    //     <button class="btn btn-danger btn-sm hapus-kegiatan" ${param} data-id="${data['dipa_id_kegiatan']}"> HAPUS</button>
+                    //     <a href="/dipa/dipa-output/${data['dipa_id_kegiatan']}" class="btn btn-success" role="button"> Pilih</a>`;
+                    var actions = `<a href="/spp/${data['dipa_id_detail_akun']}" class="btn btn-success" role="button">SPP</a>`;
+                    return actions.replace();
+                },
+                width: "15.6%",
+                orderable: false,
+                searchable: false
+            }
 
-  $('#myTable').DataTable({
-    "data": data,
-    "columns" : [
-      { "title": "NO", "width": "1%" },
-      { "title": "KODE" },
-      { "title": "RINCIAN" },
-      { "title": "VOL" },
-      { "title": "NILAI" },
-      { "title": "TOTAL" },
-      { "title": "DIBAYAR" },
-      { "title": "ACTION", "width": "1%", "orderable": false }
-    ]
-  });
+
+        ],
+    });
+
+    function formatNumber(x) {
+      return x.replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+  // var data = [
+  //   [
+  //       "1",
+  //       "123.456.789.001",
+  //       "Penbayaran Dana - Belanja Gaji - 2 Orang",
+  //       "2 Orang",
+  //       "Rp. 1.500.000",
+  //       "Rp. 3.000.000",
+  //       "Rp. 3.000.000",
+  //       `<a href="" class="btn btn-success" role="button">SPP</a>`
+  //   ],
+  //   [
+  //       "1",
+  //       "123.456.789.002",
+  //       "Penbayaran Dana - Belanja Non Gaji - 3 Orang",
+  //       "3 Orang",
+  //       "Rp. 500.000",
+  //       "Rp. 1.500.000",
+  //       "Rp. 1.500.000",
+  //       `<a href="" class="btn btn-success" role="button">SPP</a>`
+  //   ],
+  // ];
+
+  // $('#myTable').DataTable({
+  //   "data": data,
+  //   "columns" : [
+  //     { "title": "NO", "width": "1%" },
+  //     { "title": "KODE" },
+  //     { "title": "RINCIAN" },
+  //     { "title": "VOL" },
+  //     { "title": "NILAI" },
+  //     { "title": "TOTAL" },
+  //     { "title": "DIBAYAR" },
+  //     { "title": "ACTION", "width": "1%", "orderable": false }
+  //   ]
+  // });
 </script>
 @endpush

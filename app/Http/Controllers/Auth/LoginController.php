@@ -52,7 +52,7 @@ class LoginController extends Controller
                 return redirect()->intended('/kpa');
                 break;
             case "3":
-                return redirect()->intended('/ppk');
+                return redirect()->intended('/dashboard-ppk');
                 break;
             case "4":
                 return redirect()->intended('/dashboard-satker');

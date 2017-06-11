@@ -126,13 +126,10 @@ Route::get('/tes','ProgramController@coba');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //==============+++START PPK+++============//
-Route::get('/dashboard-ppk', function () {
-    return view('pages.ppk.dashboard');
-});
+Route::get('/dashboard-ppk', 'SppController@showPage');
+Route::get('/ppk/show', 'SppController@show');
 
-Route::get('/spp', function () {
-    return view('pages.ppk.spp');
-});
+Route::get('/spp/{id}','SppController@getOne');
 //==============+++END PPK+++============//
 
 //==============+++START PPSPM+++============//
