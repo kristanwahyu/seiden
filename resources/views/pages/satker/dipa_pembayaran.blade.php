@@ -165,8 +165,9 @@
                                     <div class="form-group clearfix">
                                         <label class="col-sm-3 control-label">PEMBAYARAN</label>
                                         <div class="col-sm-9">
-                                            <label class="radio-inline"><input type="radio" id="tambah_up" name="jenis_pembayaran" value="1" checked>UP</label>
-                                            <label class="radio-inline"><input type="radio" id="tambah_ls" name="jenis_pembayaran" value="0">LS</label>
+                                        
+                                            <label class="radio-inline"><input type="radio" id="tambah_up" name="jenis_pembayaran" value="1" @if($pembayaran_param != null) @if($pembayaran_param['dipa_jenis_pembayaran'] == 1) checked @endif @else checked @endif>UP</label>
+                                            <label class="radio-inline"><input type="radio" id="tambah_ls" name="jenis_pembayaran" value="2" @if($pembayaran_param != null) @if($pembayaran_param['dipa_jenis_pembayaran'] == 2) checked @endif @endif>LS</label>
                                         </div>
                                     </div>
                                     <div class="form-group clearfix">
@@ -175,8 +176,24 @@
                                             <table class="table table-bordered table-condensed table-hover table-syarat no-margin">
                                                 <tbody>
                                                     @for($i = 0; $i < 7; $i++)
+                                                        @if($pembayaran_param != null)
+                                                        @php
+                                                            $text = "dipa_syarat_".($i+1);
+                                                            $text2 = "dipa_dokumen_syarat_".($i+1);
+                                                        @endphp
                                                         <tr>
-                                                            <td><input type="checkbox" disabled></td>
+                                                            <td><input type="checkbox" name="check{!! $i+1 !!}" class="check_syarat" @if($pembayaran_param->syaratPembayaran[0][$text] == '1') checked  value="1" @else value="" @endif></td>
+                                                            <td><strong>Syarat {!! $i+1 !!}</strong></td>
+                                                            <td class="td-file">
+                                                                <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
+                                                                <span><input type="file" name="syarat{!! $i+1 !!}" class="file_syarat"></span>
+                                                            </td>
+                                                            <td><a href="{{url('/dipa/download/'.$pembayaran_param->syaratPembayaran[0][$text2])}}" class="btn btn-success btn-xxs" @if($pembayaran_param->syaratPembayaran[0][$text2] == null) disabled @endif><i class="fa fa-download"></i></a></td>
+                                                            <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
+                                                        </tr>
+                                                        @else
+                                                         <tr>
+                                                            <td><input type="checkbox" name="check{!! $i+1 !!}" value="" class="check_syarat"></td>
                                                             <td><strong>Syarat {!! $i+1 !!}</strong></td>
                                                             <td class="td-file">
                                                                 <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
@@ -185,7 +202,7 @@
                                                             <td><a href="#" class="btn btn-success btn-xxs disabled"><i class="fa fa-download"></i></a></td>
                                                             <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
                                                         </tr>
-
+                                                        @endif
                                                         @php
                                                             $expSy = explode(', ', $syarat[$jenis][$i]);
                                                         @endphp
@@ -307,14 +324,14 @@
                                     <div class="form-group clearfix">
                                         <label class="col-sm-3 control-label">NILAI</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="pembayaran_nilai" name="pembayaran_nilai" placeholder="Contoh : Rp. 15.000.000" required>
+                                            <input type="text" class="form-control" id="pembayaran_nilai" name="pembayaran_nilai" placeholder="Contoh : Rp. 15.000.000" required @if($pembayaran_param != null) value="{{$pembayaran_param['dipa_pembayaran_nilai']}}" @endif>
                                             <input type="hidden" value="{{$dipa_id_detail_akun}}" id="id_detail_akun">
                                         </div>
                                     </div>
                                     <div class="form-group clearfix">
                                         <label class="col-sm-3 control-label">KETERANGAN</label>
                                         <div class="col-sm-9">
-                                            <textarea type="text" class="form-control" id="pembayaran_keterangan" name="pembayaran_keterangan" placeholder="Contoh : Isi keterangan disini" required></textarea>
+                                            <textarea type="text" class="form-control" id="pembayaran_keterangan" name="pembayaran_keterangan" placeholder="Contoh : Isi keterangan disini" required>@if($pembayaran_param != null) {{$pembayaran_param['dipa_pembayaran_keterangan']}} @endif</textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -330,8 +347,8 @@
                                 <a href="{{ url('/dipa/dipa-rincian/'.$akun['dipa_id_akun']) }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                             </div>
                             <div class="col-sm-6 text-right">
-                                <button class="btn btn-primary btn-tambah" status="0" data-id="1"><i class="fa fa-tasks"></i> Draft</button>
-                                <button class="btn btn-success btn-tambah" status="1" data-id=""><i class="fa fa-save"></i> Ajukan</button>
+                                <button class="btn btn-primary btn-tambah" status="0" data-id="0"><i class="fa fa-tasks"></i> Draft</button>
+                                <button class="btn btn-success btn-tambah" status="1" data-id="1"><i class="fa fa-save"></i> Ajukan</button>
                             </div>
                         </div>
                     </div>
@@ -384,13 +401,36 @@ $(function(){
         $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
     });
 
+    $('.check_syarat').change(function(){
+        $(this).val('');
+        if(this.checked) {
+            $(this).val('1');
+        }
+    });
+
      $(".btn-tambah").click(function(){
-         if(parseFloat($("#pembayaran_nilai").val()) > parseFloat("{{$dipa_harga_satuan * $dipa_volume - $total_bayar->total_bayar}}")){
-             return swal("Maaf Dana Tidak Cukup");
+         var newValue = $('#pembayaran_nilai').val().replace(/\./g, '');
+         var parameter = "{{$pembayaran_param}}";
+         var param_pmb = null;
+         if(parameter == null) {
+            if(parseFloat(newValue) > parseFloat("{{$dipa_harga_satuan * $dipa_volume - $total_bayar->total_bayar}}")){
+                return swal("Maaf Dana Tidak Cukup");
+            }
+         } else {
+             var pmb = parseFloat("{{$pembayaran_param['dipa_pembayaran_nilai']}}");
+             var cek = parseFloat("{{$dipa_harga_satuan * $dipa_volume - $total_bayar->total_bayar}}")+pmb;
+             if(parseFloat(newValue) > cek){
+                return swal("Maaf Dana Tidak Cukup");
+            }
+            param_pmb = "{{$pembayaran_param['dipa_pembayaran_id']}}";
+
          }
+
+
         var id_pembayaran = $(this).data('id');
-        if (id_pembayaran == "") {
-            if($('input[name="syarat1"]').val() == "" || $('input[name="syarat2"]').val() == ""  || $('input[name="syarat3"]').val() == ""  || $('input[name="syarat4"]').val() == ""  || $('input[name="syarat5"]').val() == ""  || $('input[name="syarat6"]').val() == ""  || $('input[name="syarat7"]').val() == "") {
+        if (id_pembayaran != "0") {
+            console.log($('input[name="check2"]').val());
+            if($('input[name="check1"]').val() == "" || $('input[name="check2"]').val() == ""  || $('input[name="check3"]').val() == ""  || $('input[name="check4"]').val() == ""  || $('input[name="check5"]').val() == ""  || $('input[name="check6"]').val() == ""  || $('input[name="check7"]').val() == "") {
                 return swal("Maaf Dokumen Belum Lengkap, Anda Tidak Bisa Menyimpan Data Ini, Silahkan Di Draft Terlebih Dahulu");
             }
             var text_sweet = 'Data Pembayaran ini akan di simpan. dan tidak dapat di rubah lagi';
@@ -404,6 +444,7 @@ $(function(){
         var formData = new FormData();
         formData.append('_token', '{{ csrf_token() }}');
         formData.append('pembayaran_tanggal', tanggal);
+        formData.append('id_pembayaran', param_pmb);
         formData.append('jenis_pembayaran', $('input[type="radio"][name="jenis_pembayaran"]').val());
         formData.append('id_detail_akun', $('#id_detail_akun').val());
         formData.append('pembayaran_nilai', $('#pembayaran_nilai').val());
@@ -416,6 +457,13 @@ $(function(){
         formData.append('syarat5', $('input[name="syarat5"]')[0].files[0]);
         formData.append('syarat6', $('input[name="syarat6"]')[0].files[0]);
         formData.append('syarat7', $('input[name="syarat7"]')[0].files[0]);
+        formData.append('check1', $('input[name="check1"]').val());
+        formData.append('check2', $('input[name="check2"]').val());
+        formData.append('check3', $('input[name="check3"]').val());
+        formData.append('check4', $('input[name="check4"]').val());
+        formData.append('check5', $('input[name="check5"]').val());
+        formData.append('check6', $('input[name="check6"]').val());
+        formData.append('check7', $('input[name="check7"]').val());
 
         swal({
             title: "Apakah Anda Yakin ?",
@@ -446,7 +494,7 @@ $(function(){
                                     type: "success"
                                     },
                                     function(){
-                                        window.location = "/bangke";
+                                        window.location = "/dipa/dipa-rincian/"+"{{$akun['dipa_id_akun']}}";
                                     });
                                 }, 1000);
                         }
@@ -467,9 +515,9 @@ $(function(){
 
     $(".file_syarat").on('change', function(){
         if($(this).val() == "") {
-            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', false);
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', false).prop('disabled', false).val('');;
         } else {
-            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true);
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true).prop('disabled', true).val('1');
         }
     });
 
