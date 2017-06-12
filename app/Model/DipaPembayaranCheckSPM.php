@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class DipaPembayaranCheckSPM extends Model
 {
-    protected $primaryKey = 'dipa_pembayaran_checklist_spm_id';
+    protected $primaryKey = 'dipa_pmb_check_spm_id';
     protected $guarded = ['updated_at'];
-    protected $table = 'tbl_dipa_pembayaran_checklist_spm';
+    protected $table = 'tbl_dipa_pmb_check_spm';
 
-    public function pembayaranspm(){
+    public function pembayaran(){
         return $this->belongsTo('App\Model\DipaPembayaran','dipa_pembayaran_id');
     }
 }
