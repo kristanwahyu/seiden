@@ -114,6 +114,7 @@
                                       <label class="col-sm-2 control-label">No SPP</label>
                                       <div class="col-sm-5">
                                           <input type="text" class="form-control" id="no_spp" name="no_spp" placeholder="Contoh : 123">
+                                          <input type="hidden" class="form-control" id="id" name="id" value="{{$data[0]->dipa_pembayaran_id}}">
                                       </div>
                                   </div>
                                   <div class="form-group clearfix">
@@ -137,9 +138,9 @@
                                   <div class="form-group clearfix">
                                     <label class="col-sm-2 control-label">Sinkronisasi</label>
                                     <div class="col-sm-5">
-                                      <label class="checkbox-inline"><input type="checkbox" value="1">Operator SIMAK</label>
-                                      <label class="checkbox-inline"><input type="checkbox" value="2">Operator SAIBA</label>
-                                      <label class="checkbox-inline"><input type="checkbox" value="3">Operator Perlengkapan</label>
+                                      <label class="checkbox-inline"><input type="checkbox" name="sinkronisasi" id="check_simak">Operator SIMAK</label>
+                                      <label class="checkbox-inline"><input type="checkbox" name="sinkronisasi" id="check_saiba">Operator SAIBA</label>
+                                      <label class="checkbox-inline"><input type="checkbox" name="sinkronisasi" id="check_perlengkapan">Operator Perlengkapan</label>
                                     </div>
                                   </div>
                                 </div>
@@ -147,7 +148,7 @@
                         </form>
                         <div class="col-sm-7">
                           <div class="text-right clearfix">
-                              <button class="btn btn-primary" onclick="simpan()"><i class="fa fa-save"></i> Simpan</button>
+                              <button type="button" class="btn btn-primary" id="btn-simpan"><i class="fa fa-save"></i> Simpan</button>
                           </div>
                         </div>
                         {{-- <br>
@@ -179,25 +180,61 @@ $(function () {
     });
 });
 
-function simpan(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data SPP Ini Akan Disimpan ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data SPP Berhasil Simpan", "success");
-    } else {
-      swal('Dibatalkan', 'Data SPP Batal Simpan :)', 'error');
-    }
+$("#btn-simpan").click(function(){
+      swal({
+          title: "Apakah Anda Yakin ?",
+          text: "Data Output Ini Akan Disimpan",
+          type: "info",
+          showCancelButton: true,
+          confirmButtonColor: "#00a65a",
+          confirmButtonText: "Ya, Yakin !",
+          cancelButtonText: "Tidak, Batalkan !",
+          closeOnConfirm: false,
+          closeOnCancel: false,
+          showLoaderOnConfirm: true
+      },
+      function(isConfirm){
+          if (isConfirm) {
+              $.ajax({
+                  url : "/spp",
+                  type : "POST",
+                  data : {
+                      "_token": "{{ csrf_token() }}",
+                      "no_spp" : $("#no_spp").val(),
+                      "nilai_spp" : $("#nilai_spp").val(),
+                      "addDate" : $("#date").val(),
+                      "tambah_keterangan" : $("#tambah_keterangan").val(),
+                      "check_simak" : $("#check_simak").is(":checked"),
+                      "check_saiba" : $("#check_saiba").is(":checked"),
+                      "check_perlengkapan" : $("#check_perlengkapan").is(":checked"),
+                      "id" : $("#id").val()
+                  },
+                  success : function(data, status){
+                      if(status=="success"){
+                          setTimeout(function(){
+                              swal({
+                                  title: "Sukses",
+                                  text: "Data Tersimpan!",
+                                  type: "success"
+                                  });
+                              }, 1000);
+                          
+                      }
+                      $('#modal-tambah').modal('hide');
+                      window.location.replace("/dashboard-ppk");
+                  },
+                  error: function (xhr, ajaxOptions, thrownError) {
+                      setTimeout(function(){
+                          swal("Error Saving!", "Please try again", "error");
+                      }, 1000);
+                      $('#modal-tambah').modal('hide');
+                  }
+              });
+          } else {
+          swal('Dibatalkan', 'Data Output Batal Simpan :)', 'error');
+          $('#modal-tambah').modal('hide');
+          }
+      });
   });
-}
 </script>
 @endpush

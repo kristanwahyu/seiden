@@ -130,6 +130,7 @@ Route::get('/dashboard-ppk', 'SppController@showPage');
 Route::get('/ppk/show', 'SppController@show');
 
 Route::get('/spp/{id}','SppController@getOne');
+Route::post('/spp','SppController@store');
 //==============+++END PPK+++============//
 
 //==============+++START PPSPM+++============//

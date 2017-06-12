@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Model\DipaPembayaran;
-use App\Model\DipaAkunDetail;
+use App\Model\DipaPembayaranSyncSimak;
+use App\Model\DipaPembayaranSyncSaiba;
+use App\Model\DipaPembayaranSyncPerlengkapan;
+use App\Model\DipaPembayaranCheckSPP;
 
 class SppController extends Controller
 {
@@ -34,7 +36,6 @@ class SppController extends Controller
                 ->leftJoin('tbl_dipa_sub_komponen','tbl_dipa_komponen.dipa_id_komponen', '=', 'tbl_dipa_sub_komponen.dipa_id_komponen')
                 ->leftJoin('tbl_dipa_akun','tbl_dipa_sub_komponen.dipa_id_sub_komponen', '=', 'tbl_dipa_akun.dipa_id_sub_komponen')
                 ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
-                ->groupBy('tbl_dipa_program.dipa_id_program', 'tbl_dipa_program.dipa_kode_program', 'tbl_dipa_program.dipa_nama_program')
                 ->get([
                 		DB::raw('CONCAT(
                 			tbl_dipa_akun_detail.dipa_nama_detail," | ",
@@ -60,8 +61,8 @@ class SppController extends Controller
                     DB::raw('SUM(tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume) AS bayar'),
                     'tbl_dipa_akun_detail.dipa_id_detail_akun'
                     ]);
-
-    return $this->makeDataTable($data);
+    return $data;
+    // return $this->makeDataTable($data);
 	}
 
 	public function getOne($id){
@@ -78,6 +79,56 @@ class SppController extends Controller
                 ->get();
         
   	return view('pages.ppk.spp', compact("data"));
+	}
+
+	public function store(Request $request){
+		$this->validate($request, [
+      'no_spp'	    => 'required',
+      'nilai_spp'      => 'required',
+      'addDate' => 'required',
+      'tambah_keterangan'  => 'required',
+      'id'  => 'required',
+  	]);
+
+		if($request->check_simak=="true"){
+			$simak="1";
+			DipaPembayaranSyncSimak::create([
+				'dipa_pembayaran_id'	=> $request->id,
+			]);
+		}else{
+			$simak="0";
+		}
+
+		if($request->check_saiba=="true"){
+			$saiba="1";
+			DipaPembayaranSyncSaiba::create([
+				'dipa_pembayaran_id'	=> $request->id,
+			]);
+		}else{
+			$saiba="0";
+		}
+
+		if($request->check_perlengkapan=="true"){
+			$perlengkapan="1";
+			DipaPembayaranSyncPerlengkapan::create([
+				'dipa_pembayaran_id'	=> $request->id,
+			]);
+		}else{
+			$perlengkapan="0";
+		}
+
+    DipaPembayaranCheckSPP::create([
+      'dipa_spp_no'      		=> $request->no_spp,
+      'dipa_spp_nilai'      => $request->nilai_spp,
+      'dipa_spp_tanggal' 		=> $request->addDate,
+      'dipa_spp_keterangan'   		=> $request->tambah_keterangan,
+      'dipa_sinkronisasi_simak'   => $simak,
+      'dipa_sinkronisasi_saiba'   => $saiba,
+      'dipa_sinkronisasi_perlengkapan'   => $perlengkapan,
+      'dipa_pembayaran_id'   			=> $request->id,
+    ]);
+
+    return response()->json(["status"=>"success"],200);
 	}
 
 	public function makeDataTable($data){
