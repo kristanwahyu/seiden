@@ -110,6 +110,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/dipa/dipa-pembayaran/{id}/{id_akun}', 'PembayaranController@showPage');
         Route::post('/dipa/dipa-pembayaran/store', 'PembayaranController@storeOrUpdate');
+        Route::get('/dipa/download/{url}','SyaratPembayaranController@download');
         //==============+++END SATUAN KERJA+++============//
      });
 });
@@ -174,3 +175,4 @@ Route::get('/sinkronisasi-perlengkapan', function () {
     return view('pages.operator_perlengkapan.sinkronisasi');
 });
 //==============+++END OPERATOR PERLENGKAPAN+++============//
+

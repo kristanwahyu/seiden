@@ -354,13 +354,36 @@ $(function(){
                 searchable: false
             },
             {
+                title: 'SISA PEMBAYARAN',
+                data: null,
+                defaultContent: "-",
+                render: function (data) {
+                    var angka = data['total'] - data['total_pembayaran'];
+                    var number_change = formatNumber(angka);
+                    var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                    return currency.replace();
+                },
+                searchable: false
+            },
+            {
                 title: '<div class="text-center">ACTION</div>',
                 data: null,
                 render: function (data) {
+                    var par_del = '';
+                    if(data['total_pembayaran'] != null) {
+                        par_del ='disabled';
+                    }
+                    var par = '';
+                    var tag = 'a';
+                    if(data['total'] <= data['total_pembayaran'])
+                    {
+                        par = 'disabled';
+                        tag = 'button';
+                    }
                     var actions = '';
-                    actions = `<button class="btn btn-warning btn-sm ubah-detail" data-id="${data['dipa_id_detail_akun']}" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-                        <button class="btn btn-danger btn-sm hapus-detail" data-id="${data['dipa_id_detail_akun']}" data-akun="${data['dipa_id_akun']}"> HAPUS</button>
-                        <a href="/dipa/dipa-pembayaran/${data['dipa_id_detail_akun']}/${data['dipa_id_akun']}" class="btn btn-success" role="button"> Bayar</a>`;
+                    actions = `<button class="btn btn-warning btn-sm ubah-detail" data-id="${data['dipa_id_detail_akun']}" data-toggle="modal" href='#modal-ubah' ${par_del}> UBAH</button>
+                        <button class="btn btn-danger btn-sm hapus-detail" data-id="${data['dipa_id_detail_akun']}" data-akun="${data['dipa_id_akun']}" ${par_del}> HAPUS</button>
+                        <${tag} href="/dipa/dipa-pembayaran/${data['dipa_id_detail_akun']}/${data['dipa_id_akun']}" class="btn btn-success" role="button" ${par}> Bayar</${tag}>`;
                     return actions.replace();
                 },
                 width: "16.1%",

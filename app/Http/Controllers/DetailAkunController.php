@@ -52,17 +52,29 @@ class DetailAkunController extends Controller
         //         ->groupBy('dipa_id_detail_akun');
 
         //mode ONLY_FULL_GROUP_BY : enabled
-        $job = DipaAkunDetail::select('dipa_id_detail_akun', 'dipa_nama_detail', 'dipa_volume', 'dipa_satuan', 
-                'dipa_harga_satuan', 'dipa_jenis_akun', 'dipa_id_akun', DB::raw('SUM(dipa_harga_satuan * dipa_volume) AS total'))
-                ->where('dipa_id_akun', $id_akun)
-                ->groupBy('dipa_id_detail_akun', 'dipa_nama_detail', 'dipa_volume', 'dipa_satuan', 'dipa_harga_satuan', 'dipa_jenis_akun', 'dipa_id_akun');
+       
+        $job = DB::table('tbl_dipa_akun_detail')
+                ->leftJoin('tbl_dipa_pembayaran','tbl_dipa_akun_detail.dipa_id_detail_akun', '=', 'tbl_dipa_pembayaran.dipa_id_detail_akun')
+                ->groupBy('tbl_dipa_akun_detail.dipa_id_detail_akun', 'tbl_dipa_akun_detail.dipa_nama_detail', 'tbl_dipa_akun_detail.dipa_volume', 'tbl_dipa_akun_detail.dipa_satuan', 'tbl_dipa_akun_detail.dipa_harga_satuan', 'tbl_dipa_akun_detail.dipa_jenis_akun', 'tbl_dipa_akun_detail.dipa_id_akun')
+                ->where('tbl_dipa_akun_detail.dipa_id_akun', $id_akun)
+                ->get([
+                    'tbl_dipa_akun_detail.dipa_id_detail_akun',
+                    'tbl_dipa_akun_detail.dipa_nama_detail',
+                    'tbl_dipa_akun_detail.dipa_volume',
+                    'tbl_dipa_akun_detail.dipa_satuan',
+                    'tbl_dipa_akun_detail.dipa_harga_satuan',
+                    'tbl_dipa_akun_detail.dipa_jenis_akun',
+                    'tbl_dipa_akun_detail.dipa_id_akun',
+                    DB::raw('tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume AS total, SUM(tbl_dipa_pembayaran.dipa_pembayaran_nilai) as total_pembayaran')
+                ]);
+
 
         return $this->makeDataTable($job);
     }
 
     public function makeDataTable($data)
     {
-        return Datatables::eloquent($data)->addIndexColumn()->make(true);
+        return Datatables::collection($data)->addIndexColumn()->make(true);
     }
 
     public function store(Request $request)
