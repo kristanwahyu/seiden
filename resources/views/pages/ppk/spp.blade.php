@@ -86,17 +86,17 @@
                                       <tr>
                                           <td>HARGA SATUAN</td>
                                           <td>:</td>
-                                          <td>{{$data[0]->dipa_harga_satuan}}</td>
+                                          <td>RP. <span class="nilai">{{$data[0]->dipa_harga_satuan}}</span></td>
                                       </tr>
                                       <tr>
                                           <td>TOTAL HARGA</td>
                                           <td>:</td>
-                                          <td>{{$data[0]->dipa_harga_satuan * $data[0]->dipa_volume}}</td>
+                                          <td>RP. <span class="nilai">{{$data[0]->dipa_harga_satuan * $data[0]->dipa_volume}}</span></td>
                                       </tr>
                                       <tr>
                                           <td>TAHUN ANGGARAN</td>
                                           <td>:</td>
-                                          <td>{{$data[0]->dipa_id_tahun_anggaran}}</td>
+                                          <td>{{$data[0]->dipa_tahun_anggaran}}</td>
                                       </tr>
                                       <tr>
                                           <td>DANA YANG TERPAKAI</td>
@@ -171,6 +171,13 @@
 <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
 
 <script>
+$('.nilai').text(function(index, value) {
+        return value
+        .replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        ;
+    });
+
 $(function () {
     $('.datepicker').datepicker({
       autoclose: 'true',
@@ -236,5 +243,10 @@ $("#btn-simpan").click(function(){
           }
       });
   });
+
+  function formatNumber(x) {
+    return x.replace(/\D/g, "")
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
 </script>
 @endpush

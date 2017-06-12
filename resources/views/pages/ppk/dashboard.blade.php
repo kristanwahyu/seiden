@@ -136,14 +136,6 @@
                 data: null,
                 name: 'action',
                 render: function (data) {
-                    var param = '';
-                    // if(data['count_output'] > 0) {
-                    //     param = 'data-toggle="tooltip" data-placement="top" title="Program Sudah Memiliki Kegiatan, tidak bisa dihapus" disabled';
-                    // }
-                    // var actions = '';
-                    // actions = `<button class="btn btn-warning btn-sm ubah-kegiatan" data-id="${data['dipa_id_kegiatan']}" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-                    //     <button class="btn btn-danger btn-sm hapus-kegiatan" ${param} data-id="${data['dipa_id_kegiatan']}"> HAPUS</button>
-                    //     <a href="/dipa/dipa-output/${data['dipa_id_kegiatan']}" class="btn btn-success" role="button"> Pilih</a>`;
                     var actions = `<a href="/spp/${data['dipa_id_detail_akun']}" class="btn btn-success" role="button">SPP</a>`;
                     return actions.replace();
                 },
@@ -160,42 +152,5 @@
       return x.replace(/\D/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
-
-  // var data = [
-  //   [
-  //       "1",
-  //       "123.456.789.001",
-  //       "Penbayaran Dana - Belanja Gaji - 2 Orang",
-  //       "2 Orang",
-  //       "Rp. 1.500.000",
-  //       "Rp. 3.000.000",
-  //       "Rp. 3.000.000",
-  //       `<a href="" class="btn btn-success" role="button">SPP</a>`
-  //   ],
-  //   [
-  //       "1",
-  //       "123.456.789.002",
-  //       "Penbayaran Dana - Belanja Non Gaji - 3 Orang",
-  //       "3 Orang",
-  //       "Rp. 500.000",
-  //       "Rp. 1.500.000",
-  //       "Rp. 1.500.000",
-  //       `<a href="" class="btn btn-success" role="button">SPP</a>`
-  //   ],
-  // ];
-
-  // $('#myTable').DataTable({
-  //   "data": data,
-  //   "columns" : [
-  //     { "title": "NO", "width": "1%" },
-  //     { "title": "KODE" },
-  //     { "title": "RINCIAN" },
-  //     { "title": "VOL" },
-  //     { "title": "NILAI" },
-  //     { "title": "TOTAL" },
-  //     { "title": "DIBAYAR" },
-  //     { "title": "ACTION", "width": "1%", "orderable": false }
-  //   ]
-  // });
 </script>
 @endpush
