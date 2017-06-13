@@ -60,65 +60,100 @@
 <script>
   'use strict';
 
-  var data1 = [
-    [
-        "1",
-        "123.456.789.001",
-        "Penbayaran Dana - Belanja Gaji - 2 Orang",
-        "2 Orang",
-        "Rp. 1.500.000",
-        "Rp. 3.000.000",
-        "Rp. 3.000.000",
-        `<a href="{{ url('/spm') }}" class="btn btn-success" role="button">SPM</a>`
-    ],
-    [
-        "1",
-        "123.456.789.002",
-        "Penbayaran Dana - Belanja Non Gaji - 3 Orang",
-        "3 Orang",
-        "Rp. 500.000",
-        "Rp. 1.500.000",
-        "Rp. 1.500.000",
-        `<a href="{{ url('/spm') }}" class="btn btn-success" role="button">SPM</a>`
-    ],
-  ];
-
-  var data2 = [
-    [
-        "1",
-        "123.456.789.001",
-        "Penbayaran Dana - Belanja Gaji - 2 Orang",
-        "2 Orang",
-        "Rp. 1.500.000",
-        "Rp. 3.000.000",
-        "Rp. 3.000.000",
-        `<a href="{{ url('/sp2d') }}" class="btn btn-success" role="button">SP2D</a>`
-    ],
-    [
-        "1",
-        "123.456.789.002",
-        "Penbayaran Dana - Belanja Non Gaji - 3 Orang",
-        "3 Orang",
-        "Rp. 500.000",
-        "Rp. 1.500.000",
-        "Rp. 1.500.000",
-        `<a href="{{ url('/sp2d') }}" class="btn btn-success" role="button">SP2D</a>`
-    ],
-  ];
-
-  $('#myTable1').DataTable({
-    "data": data1,
+  var table1 = $('#myTable1').DataTable({
+    // "data": data1,
+    "processing": true,
+        "serverSide": true,
+    "ajax":{
+      type: "GET",
+      url: "{{asset('/spm/show')}}"
+    },
     "columns" : [
       { "title": "NO", "width": "1%" },
-      { "title": "KODE" },
-      { "title": "RINCIAN" },
-      { "title": "VOL" },
-      { "title": "NILAI" },
-      { "title": "TOTAL" },
-      { "title": "DIBAYAR" },
-      { "title": "ACTION", "width": "1%", "orderable": false }
+      {
+        title: "KODE",
+        data: null,
+        defaultContent: "-",
+        render: function(data){
+          var satu=data.pembayaranspp.akun_detail.akun.dipa_kode_akun;
+          var dua=data.pembayaranspp.akun_detail.akun.sub_komponen.dipa_kode_sub_komponen;
+          var tiga=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.dipa_kode_komponen;
+          var empat=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.dipa_kode_sub_output;
+          var lima=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.dipa_kode_output;
+          var enam=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.dipa_kode_kegiatan;
+          var tujuh=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.dipa_kode_program;
+          var delapan=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.satuan_kerja.dipa_satuan_kerja;
+          var kode=delapan+"."+tujuh+"."+enam+"."+lima+"."+empat+"."+tiga+"."+dua+"."+satu;
+          return kode;
+        }
+      },
+      {
+        title: "RINCIAN",
+        data: null,
+        defaultContent: "-",
+        render: function(data){
+          var satu=data.pembayaranspp.akun_detail.akun.dipa_nama_akun;
+          var dua=data.pembayaranspp.akun_detail.dipa_jenis_akun==1?"Belanja Gaji":"Belanja Non Gaji";
+          var tiga=data.pembayaranspp.akun_detail.dipa_volume;
+          var empat=data.pembayaranspp.akun_detail.dipa_satuan;
+          var rincian=satu+" | "+dua+" | "+tiga+" "+empat;
+          return rincian;
+        }
+      },
+      {
+        "title": "VOL",
+        data: "pembayaranspp.akun_detail.dipa_volume",
+        defaultContent:"-"
+      },
+      {
+        "title": "NILAI",
+        data: null,
+        defaultContent:"-",
+        render: function(data){
+          var number = data.pembayaranspp.akun_detail.dipa_harga_satuan;
+          var number_change = formatNumber(number);
+          var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+          return currency;
+        },
+        width: "10%"
+      },
+      {
+        "title": "TOTAL",
+        data: null,
+        defaultContent: '-',
+        render: function(data){
+          var nilai= data.pembayaranspp.akun_detail.dipa_harga_satuan;
+          var volume= data.pembayaranspp.akun_detail.dipa_volume;
+          var total= nilai*volume;
+          var number_change = formatNumber(total.toString());
+          var currency = '<div><div class="pull-left">Rp.</div> <div class="pull-right">'+number_change+'</div></div>';
+          return currency;
+        },
+        width: "10%"
+      },
+      {
+        title: "DIBAYAR",
+        data: null,
+        defaultContent: '-',
+        render: function(data){
+          var pmb= formatNumber(data.pembayaranspp.dipa_pembayaran_nilai);
+          var pmbb='<div><div class="pull-left">Rp.</div> <div class="pull-right">'+pmb+'</div></div>';
+          return pmbb;
+        },
+        width: "10%"
+      },
+      { 
+        title: "ACTION",
+        data: null,
+        width: "1%",
+        render: function(data){
+          var button="<a href=\"{{ url('/spm') }}\" class=\"btn btn-success\" role=\"button\">SPM</a>";
+          return button;
+        }
+      }
     ]
   });
+
 
   $('#myTable2').DataTable({
     "data": data2,
@@ -133,5 +168,14 @@
       { "title": "ACTION", "width": "1%", "orderable": false }
     ]
   });
+  function formatNumber(x) {
+      return x.replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+    table1.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
 </script>
 @endpush

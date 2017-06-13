@@ -68,7 +68,6 @@ class DetailAkunController extends Controller
                     DB::raw('tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume AS total, SUM(tbl_dipa_pembayaran.dipa_pembayaran_nilai) as total_pembayaran')
                 ]);
 
-
         return $this->makeDataTable($job);
     }
 
