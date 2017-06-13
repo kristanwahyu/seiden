@@ -375,7 +375,7 @@ $(function(){
                     }
                     var par = '';
                     var tag = 'a';
-                    if(data['total'] <= data['total_pembayaran'])
+                    if(parseFloat(data['total']) <= parseFloat(data['total_pembayaran']))
                     {
                         par = 'disabled';
                         tag = 'button';
