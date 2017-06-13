@@ -138,13 +138,13 @@ Route::post('/spp','SppController@store');
 Route::get('/dashboard-ppspm', function () {
     return view('pages.ppspm.dashboard');
 });
-Route::get('/spm', 'SpmController@index');
+Route::get('/dipa-spm', 'SpmController@index');
 Route::get('/spm/{id}', 'SpmController@show');
 Route::put('/spm/{id}', 'SpmController@store');
 
-Route::get('/sp2d', function () {
-    return view('pages.ppspm.sp2d');
-});
+Route::get('/dipa-sp2d', 'Sp2dController@index');
+Route::get('/sp2d/{id}', 'Sp2dController@show');
+Route::put('/sp2d/{id}', 'Sp2dController@store');
 //==============+++END PPSPM+++============//
 
 //==============+++START OPERATOR SIMAK+++============//

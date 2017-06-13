@@ -68,7 +68,7 @@
     "serverSide": true,
     "ajax":{
       type: "GET",
-      url: "{{asset('/spm')}}"
+      url: "{{asset('/dipa-spm')}}"
     },
     "columns" : [
       {
@@ -164,15 +164,101 @@
 
   $('#myTable2').DataTable({
     // "data": data2,
+    "processing": true,
+    "serverSide": true,
+    "ajax":{
+      type: "GET",
+      url: "{{asset('/dipa-sp2d')}}"
+    },
     "columns" : [
-      { "title": "NO", "width": "1%" },
-      { "title": "KODE" },
-      { "title": "RINCIAN" },
-      { "title": "VOL" },
-      { "title": "NILAI" },
-      { "title": "TOTAL" },
-      { "title": "DIBAYAR" },
-      { "title": "ACTION", "width": "1%", "orderable": false }
+      {
+        title: "NO",
+        width: "1%",
+        render: function(data){
+          return "KZL";
+        }
+      },
+      {
+        title: "KODE",
+        data: null,
+        defaultContent: "-",
+        render: function(data){
+          var satu=data.pembayaran.akun_detail.akun.dipa_kode_akun;
+          var dua=data.pembayaran.akun_detail.akun.sub_komponen.dipa_kode_sub_komponen;
+          var tiga=data.pembayaran.akun_detail.akun.sub_komponen.komponen.dipa_kode_komponen;
+          var empat=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.dipa_kode_sub_output;
+          var lima=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.dipa_kode_output;
+          var enam=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.dipa_kode_kegiatan;
+          var tujuh=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.dipa_kode_program;
+          var delapan=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.satuan_kerja.dipa_satuan_kerja;
+          var kode=delapan+"."+tujuh+"."+enam+"."+lima+"."+empat+"."+tiga+"."+dua+"."+satu;
+          return kode;
+        }
+      },
+      {
+        title: "RINCIAN",
+        data: null,
+        defaultContent: "-",
+        render: function(data){
+          var satu=data.pembayaran.akun_detail.akun.dipa_nama_akun;
+          var dua=data.pembayaran.akun_detail.dipa_jenis_akun==1?"Belanja Gaji":"Belanja Non Gaji";
+          var tiga=data.pembayaran.akun_detail.dipa_volume;
+          var empat=data.pembayaran.akun_detail.dipa_satuan;
+          var rincian=satu+" | "+dua+" | "+tiga+" "+empat;
+          return rincian;
+        }
+      },
+      {
+        "title": "VOL",
+        data: "pembayaran.akun_detail.dipa_volume",
+        defaultContent:"-"
+      },
+      {
+        "title": "NILAI",
+        data: null,
+        defaultContent:"-",
+        render: function(data){
+          var number = data.pembayaran.akun_detail.dipa_harga_satuan;
+          var number_change = formatNumber(number);
+          var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+          return currency;
+        },
+        width: "10%"
+      },
+      {
+        "title": "TOTAL",
+        data: null,
+        defaultContent: '-',
+        render: function(data){
+          var nilai= data.pembayaran.akun_detail.dipa_harga_satuan;
+          var volume= data.pembayaran.akun_detail.dipa_volume;
+          var total= nilai*volume;
+          var number_change = formatNumber(total.toString());
+          var currency = '<div><div class="pull-left">Rp.</div> <div class="pull-right">'+number_change+'</div></div>';
+          return currency;
+        },
+        width: "10%"
+      },
+      {
+        title: "DIBAYAR",
+        data: null,
+        defaultContent: '-',
+        render: function(data){
+          var pmb= formatNumber(data.pembayaran.dipa_pembayaran_nilai);
+          var pmbb='<div><div class="pull-left">Rp.</div> <div class="pull-right">'+pmb+'</div></div>';
+          return pmbb;
+        },
+        width: "10%"
+      },
+      { 
+        title: "ACTION",
+        data: null,
+        width: "1%",
+        render: function(data){
+          var button="<a href=\"{{ url('/sp2d') }}/"+data.dipa_pmb_check_spm_id+"\" class=\"btn btn-success\" role=\"button\">SP2D</a>";
+          return button;
+        }
+      }
     ]
   });
   function formatNumber(x) {
