@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return bcrypt('admin');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -138,7 +138,7 @@ Route::post('/spp','SppController@store');
 Route::get('/dashboard-ppspm', function () {
     return view('pages.ppspm.dashboard');
 });
-
+Route::get('/spm/show', 'SpmController@show');
 Route::get('/spm', function () {
     return view('pages.ppspm.spm');
 });
