@@ -22,7 +22,7 @@ class ProgramSeeder extends Seeder
         $limit =10;
 		for($i = 1; $i <= $limit; $i++){
 			$dp=new DP;
-			$dp->dipa_kode_program=$fake->year($max = 'now');
+			$dp->dipa_kode_program=$fake->randomNumber(3);
 			$dp->dipa_nama_program=$fake->randomElement($array=array('0','1'));
 			$dp->dipa_id_tahun_anggaran=$fake->randomElement($dta);
 			$dp->dipa_id_satuan_kerja=$fake->randomElement($dsk);

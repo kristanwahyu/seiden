@@ -17,7 +17,7 @@ class SatuanKerjaSeeder extends Seeder
         $limit =10;
 		for($i = 1; $i <= $limit; $i++){
 			$dsk=new DipaSatKer;
-			$dsk->dipa_kode_satuan_kerja=$fake->word;
+			$dsk->dipa_kode_satuan_kerja=$fake->randomNumber(3);
 			$dsk->dipa_satuan_kerja=$fake->word;
 			$dsk->dipa_satuan_kerja_status=$fake->randomElement($array=array("0",'1'));
 			$dsk->save();

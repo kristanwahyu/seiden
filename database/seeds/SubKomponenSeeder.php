@@ -20,7 +20,7 @@ class SubKomponenSeeder extends Seeder
         $limit =10;
 		for($i = 1; $i <= $limit; $i++){
 			$dk=new DSK;
-			$dk->dipa_kode_sub_komponen=$fake->word;
+			$dk->dipa_kode_sub_komponen=$fake->randomNumber(3);
 			$dk->dipa_nama_sub_komponen=$fake->word;
 			$dk->dipa_id_komponen=$fake->randomElement($dp);
 			$dk->save();
