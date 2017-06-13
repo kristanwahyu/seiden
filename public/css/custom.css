@@ -37,7 +37,7 @@
 
 #wrapper #sidebar-nav{
     padding-top: 53px;
-} 
+}
 #wrapper .main{
     padding-top: 51px;
 }
@@ -652,7 +652,7 @@ select.input-sm
     #wrapper .main{
         width: calc(100% - 230px);
     }
-    
+
     .ref-invoice-wrap{
         padding-left: 5.6em;
     }

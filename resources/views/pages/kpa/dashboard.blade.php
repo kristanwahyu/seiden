@@ -30,8 +30,10 @@
                   <div class="panel-body">
                     {{-- awal pembungkus form --}}
                     <form action="" method="POST" class="form-horizontal" role="form">
-                        <div class="row"> {{-- awal pembungkus row --}}
-                            <div class="col-sm-12"> {{-- awal pembungkus col-sm-12 --}}
+                        {{-- awal pembungkus row --}}
+                        <div class="row">
+                            {{-- awal pembungkus col-sm-12 --}}
+                            <div class="col-sm-12">
                               <div class="form-group clearfix">
                                   <label class="col-sm-2 control-label">Tahun Anggaran</label>
                                   <div class="col-sm-4">
@@ -48,8 +50,8 @@
                                   <div class="col-sm-4">
                                     <select class="form-control" id="satuan_kerja">
                                       <option value="pilih" selected>-- Pilih Satuan Kerja --</option>
-                                      <option value="1">SATKER01</option>
-                                      <option value="2">SATKER02</option>
+                                      <option value="1">SATKER01 | Satuan Kerja 01</option>
+                                      <option value="2">SATKER02 | Satuan Kerja 02</option>
                                     </select>
                                   </div>
                               </div>
@@ -58,8 +60,8 @@
                                   <div class="col-sm-4">
                                     <select class="form-control" id="program">
                                       <option value="pilih" selected>-- Pilih Program --</option>
-                                      <option value="1">PRG01</option>
-                                      <option value="2">PRG02</option>
+                                      <option value="1">PRG01 | Program 01</option>
+                                      <option value="2">PRG02 | Program 02</option>
                                     </select>
                                   </div>
                               </div>
@@ -68,8 +70,8 @@
                                   <div class="col-sm-4">
                                     <select class="form-control" id="program">
                                       <option value="pilih" selected>-- Pilih Kegiatan --</option>
-                                      <option value="1">KGT01</option>
-                                      <option value="2">KGT02</option>
+                                      <option value="1">KGT01 | Kegiatan 01</option>
+                                      <option value="2">KGT02 | Kegiatan 02</option>
                                     </select>
                                   </div>
                               </div>
@@ -78,8 +80,8 @@
                                   <div class="col-sm-4">
                                     <select class="form-control" id="program">
                                       <option value="pilih" selected>-- Pilih Output --</option>
-                                      <option value="1">OP01</option>
-                                      <option value="2">OP02</option>
+                                      <option value="1">OP01 | Output 01</option>
+                                      <option value="2">OP02 | Output 02</option>
                                     </select>
                                   </div>
                               </div>
@@ -88,8 +90,8 @@
                                   <div class="col-sm-4">
                                     <select class="form-control" id="program">
                                       <option value="pilih" selected>-- Pilih Sub Output --</option>
-                                      <option value="1">SOP01</option>
-                                      <option value="2">SOP02</option>
+                                      <option value="1">SOP01 | Sub Output 01</option>
+                                      <option value="2">SOP02 | Sub Output 02</option>
                                     </select>
                                   </div>
                               </div>
@@ -98,8 +100,8 @@
                                   <div class="col-sm-4">
                                     <select class="form-control" id="program">
                                       <option value="pilih" selected>-- Pilih Komponen --</option>
-                                      <option value="1">KP01</option>
-                                      <option value="2">KP02</option>
+                                      <option value="1">KP01 | Komponen 01</option>
+                                      <option value="2">KP02 | Komponen 02</option>
                                     </select>
                                   </div>
                               </div>
@@ -108,8 +110,8 @@
                                   <div class="col-sm-4">
                                     <select class="form-control" id="program">
                                       <option value="pilih" selected>-- Pilih Sub Komponen --</option>
-                                      <option value="1">SKP01</option>
-                                      <option value="2">SKP02</option>
+                                      <option value="1">SKP01 | Sub Komponen 01</option>
+                                      <option value="2">SKP02 | Sub Komponen 02</option>
                                     </select>
                                   </div>
                               </div>
@@ -118,17 +120,18 @@
                                   <div class="col-sm-4">
                                     <select class="form-control" id="program">
                                       <option value="pilih" selected>-- Pilih Akun --</option>
-                                      <option value="1">AK01</option>
-                                      <option value="2">AK02</option>
+                                      <option value="1">AK01 | Akun 01</option>
+                                      <option value="2">AK02 | Akun 02</option>
                                     </select>
                                   </div>
                               </div>
                             </div> {{-- akhir pembungkus col-sm-12 --}}
-                        </div> {{-- akhir pembungkus row --}}
+                        </div>
+                        {{-- akhir pembungkus row --}}
                     </form>
                     <div class="col-sm-6">
                       <div class="text-right clearfix">
-                          <button class="btn btn-primary" onclick="lihat()"><i class="fa fa-search"></i> Lihat</button>
+                          <a href="{{ url('/detail') }}" class="btn btn-primary" role="button"><i class="fa fa-search"></i> Lihat</a>
                       </div>
                     </div>
                     {{-- akhir pembungkus form --}}
