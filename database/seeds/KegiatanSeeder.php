@@ -20,7 +20,7 @@ class KegiatanSeeder extends Seeder
         $limit =10;
 		for($i = 1; $i <= $limit; $i++){
 			$dk=new DK;
-			$dk->dipa_kode_kegiatan=$fake->word;
+			$dk->dipa_kode_kegiatan=$fake->randomNumber(3);
 			$dk->dipa_nama_kegiatan=$fake->word;
 			$dk->dipa_id_program=$fake->randomElement($dp);
 			$dk->save();

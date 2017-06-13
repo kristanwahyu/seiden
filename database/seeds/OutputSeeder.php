@@ -21,7 +21,7 @@ class OutputSeeder extends Seeder
         $limit =10;
 		for($i = 1; $i <= $limit; $i++){
 			$dk=new DOP;
-			$dk->dipa_kode_output=$fake->word;
+			$dk->dipa_kode_output=$fake->randomNumber(3);
 			$dk->dipa_nama_output=$fake->word;
 			$dk->dipa_id_kegiatan=$fake->randomElement($dp);
 			$dk->save();

@@ -21,7 +21,7 @@ class SubOutputSeeder extends Seeder
         $limit =10;
 		for($i = 1; $i <= $limit; $i++){
 			$dk=new DSO;
-			$dk->dipa_kode_sub_output=$fake->word;
+			$dk->dipa_kode_sub_output=$fake->randomNumber(3);
 			$dk->dipa_nama_sub_output=$fake->word;
 			$dk->dipa_id_output=$fake->randomElement($dp);
 			$dk->save();

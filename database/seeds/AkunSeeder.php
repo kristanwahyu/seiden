@@ -20,7 +20,7 @@ class AkunSeeder extends Seeder
         $limit =10;
 		for($i = 1; $i <= $limit; $i++){
 			$dk=new DA;
-			$dk->dipa_kode_akun=$fake->word;
+			$dk->dipa_kode_akun=$fake->randomNumber(3);
 			$dk->dipa_nama_akun=$fake->word;
 			$dk->dipa_id_sub_komponen=$fake->randomElement($dp);
 			$dk->save();
