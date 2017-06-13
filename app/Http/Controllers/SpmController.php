@@ -32,7 +32,7 @@ class SpmController extends Controller
     			}));
     		}));
 	    }))->get();
-	return Datatables::of($data)->make(true);
+	return Datatables::of($data)->addIndexColumn()->make(true);
     }
     public function show($id){
         $data=SPP::where('dipa_pmb_check_spp_id',$id)->with(array('pembayaranspp'=>function($a){

@@ -73,9 +73,12 @@
     "columns" : [
       {
         title: "NO",
+        data: "DT_Row_Index",
+        orderable: false,
+        searchable: false,
         width: "1%",
         render: function(data){
-          return "KZL";
+          return "<center>"+data+".</center>";
         }
       },
       {
@@ -173,9 +176,12 @@
     "columns" : [
       {
         title: "NO",
+        data: "DT_Row_Index",
+        orderable: false,
+        searchable: false,
         width: "1%",
         render: function(data){
-          return "KZL";
+          return "<center>"+data+".</center>";
         }
       },
       {

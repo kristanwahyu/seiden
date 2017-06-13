@@ -32,7 +32,7 @@ class Sp2dController extends Controller
     			}));
     		}));
 	    }))->get();
-	return Datatables::of($data)->make(true);
+	return Datatables::of($data)->addIndexColumn()->make(true);
     }
     public function show($id){
         $data=SPM::where('dipa_pmb_check_spm_id',$id)->with(array('pembayaran'=>function($a){
