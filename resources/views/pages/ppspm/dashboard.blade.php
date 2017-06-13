@@ -90,7 +90,7 @@
           var lima=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.dipa_kode_output;
           var enam=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.dipa_kode_kegiatan;
           var tujuh=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.dipa_kode_program;
-          var delapan=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.satuan_kerja.dipa_satuan_kerja;
+          var delapan=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.satuan_kerja.dipa_kode_satuan_kerja;
           var kode=delapan+"."+tujuh+"."+enam+"."+lima+"."+empat+"."+tiga+"."+dua+"."+satu;
           return kode;
         }
@@ -190,7 +190,7 @@
           var lima=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.dipa_kode_output;
           var enam=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.dipa_kode_kegiatan;
           var tujuh=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.dipa_kode_program;
-          var delapan=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.satuan_kerja.dipa_satuan_kerja;
+          var delapan=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.satuan_kerja.dipa_kode_satuan_kerja;
           var kode=delapan+"."+tujuh+"."+enam+"."+lima+"."+empat+"."+tiga+"."+dua+"."+satu;
           return kode;
         }

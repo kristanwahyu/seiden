@@ -59,9 +59,9 @@ class Sp2dController extends Controller
     }
     public function store(Request $request, $id){
         $rules = [
-            'no_sp2d'   => 'required',
-            'nilai_sp2d'  => 'required',
-            'addDate' => 'required',
+            'no_sp2d'   => 'required|numeric',
+            'nilai_sp2d'  => 'required|numeric',
+            'addDate' => 'required|date',
             'tambah_keterangan' => 'required',
          ];
         $validator = Validator::make($request->all(), $rules);

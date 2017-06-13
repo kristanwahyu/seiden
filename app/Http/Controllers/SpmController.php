@@ -59,9 +59,9 @@ class SpmController extends Controller
     }
     public function store(Request $request, $id){
         $rules = [
-            'no_spm'   => 'required',
-            'nilai_spm'  => 'required',
-            'addDate' => 'required',
+            'no_spm'   => 'required|numeric',
+            'nilai_spm'  => 'required|numeric',
+            'addDate' => 'required|date',
             'tambah_keterangan' => 'required',
          ];
         $validator = Validator::make($request->all(), $rules);
