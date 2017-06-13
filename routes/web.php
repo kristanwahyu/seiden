@@ -138,10 +138,9 @@ Route::post('/spp','SppController@store');
 Route::get('/dashboard-ppspm', function () {
     return view('pages.ppspm.dashboard');
 });
-Route::get('/spm/show', 'SpmController@show');
-Route::get('/spm', function () {
-    return view('pages.ppspm.spm');
-});
+Route::get('/spm', 'SpmController@index');
+Route::get('/spm/{id}', 'SpmController@show');
+Route::put('/spm/{id}', 'SpmController@store');
 
 Route::get('/sp2d', function () {
     return view('pages.ppspm.sp2d');

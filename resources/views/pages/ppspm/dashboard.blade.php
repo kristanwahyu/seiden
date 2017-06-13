@@ -58,18 +58,26 @@
 <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
 
 <script>
-  'use strict';
-
+  function angka(data){
+    data=data+1;
+    return data;
+  }
   var table1 = $('#myTable1').DataTable({
     // "data": data1,
     "processing": true,
-        "serverSide": true,
+    "serverSide": true,
     "ajax":{
       type: "GET",
-      url: "{{asset('/spm/show')}}"
+      url: "{{asset('/spm')}}"
     },
     "columns" : [
-      { "title": "NO", "width": "1%" },
+      {
+        title: "NO",
+        width: "1%",
+        render: function(data){
+          return "KZL";
+        }
+      },
       {
         title: "KODE",
         data: null,
@@ -147,16 +155,15 @@
         data: null,
         width: "1%",
         render: function(data){
-          var button="<a href=\"{{ url('/spm') }}\" class=\"btn btn-success\" role=\"button\">SPM</a>";
+          var button="<a href=\"{{ url('/spm') }}/"+data.dipa_pmb_check_spp_id+"\" class=\"btn btn-success\" role=\"button\">SPM</a>";
           return button;
         }
       }
     ]
   });
 
-
   $('#myTable2').DataTable({
-    "data": data2,
+    // "data": data2,
     "columns" : [
       { "title": "NO", "width": "1%" },
       { "title": "KODE" },
@@ -172,10 +179,6 @@
       return x.replace(/\D/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
-    table1.on( 'order.dt search.dt', function () {
-        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-            cell.innerHTML = i+1;
-        } );
-    } ).draw();
-</script>
+     
+    </script>
 @endpush
