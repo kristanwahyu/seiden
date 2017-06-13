@@ -176,3 +176,14 @@ Route::get('/sinkronisasi-perlengkapan', function () {
 });
 //==============+++END OPERATOR PERLENGKAPAN+++============//
 
+//==============+++START KPA+++============//
+Route::get('/dashboard-kpa', function () {
+    return view('pages.kpa.dashboard');
+});
+Route::get('/detail', function () {
+    return view('pages.kpa.detail');
+});
+Route::get('/monitoring', function () {
+    return view('pages.kpa.monitoring');
+});
+//==============+++END KPA+++============//
