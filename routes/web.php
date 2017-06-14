@@ -191,4 +191,5 @@ Route::get('/monitoring', function () {
 Route::get('/dashboard-bendahara', function () {
     return view('pages.bendahara.dashboard');
 });
+Route::get('/dipa-bendahara/{jenis_pembayaran}', 'PembayaranController@bendahara');
 //==============+++END Bendahara+++============//

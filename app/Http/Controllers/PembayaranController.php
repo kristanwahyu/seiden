@@ -215,4 +215,38 @@ class PembayaranController extends Controller
 
         return $ammount;
     }
+    public function bendahara($jenis_pembayaran=null){
+        if($jenis_pembayaran==null){
+            $jenis_pembayaran=0;
+        }
+        $pmb=DipaPembayaran::with(array('akunDetail'=>function($b){
+                $b->with(array('akun'=>function($c){
+                    $c->with(array('subKomponen'=>function($d){
+                        $d->with(array('komponen'=>function($e){
+                            $e->with(array('subOutput'=>function($f){
+                                $f->with(array('output'=>function($g){
+                                    $g->with(array('kegiatan'=>function($h){
+                                        $h->with(array('program'=>function($i){
+                                            $i->with(array('tahun','satuanKerja'));
+                                        }));
+                                    }));
+                                }));
+                            }));
+                        }));
+                    }));
+                }));
+            }));
+        switch ($jenis_pembayaran) {
+            case 1:
+                $data=$pmb->where('dipa_jenis_pembayaran', 1)->get();
+                break;
+            case 2:
+                $data=$pmb->where('dipa_jenis_pembayaran', 2)->get();
+                break;
+            default:
+                $data=$pmb->get();
+                break;
+        }
+        return Datatables::of($data)->addIndexColumn()->make(true);
+    }
 }

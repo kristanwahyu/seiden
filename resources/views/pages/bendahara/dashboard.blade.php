@@ -76,18 +76,114 @@ var data = [
 ];
 
 $('#myTable').DataTable({
-  "data": data,
+  "processing": true,
+    "serverSide": true,
+    "ajax":{
+      type: "GET",
+      url: "{{asset('/dipa-bendahara/1')}}"
+    },
   "columns" : [
-    { "title": "NO", "width": "1%" },
-    { "title": "KODE" },
-    { "title": "RINCIAN" },
-    { "title": "VOL" },
-    { "title": "SATUAN" },
-    { "title": "NILAI" },
-    { "title": "TOTAL" },
-    { "title": "DIBAYAR" },
-    { "title": "JENIS BAYAR" }
+    {
+      title: "NO",
+        data: "DT_Row_Index",
+        orderable: false,
+        searchable: false,
+        width: "1%",
+        render: function(data){
+          return "<center>"+data+".</center>";
+        }
+    },
+    {
+      title: "KODE",
+        data: null,
+        defaultContent: "-",
+        render: function(data){
+          var satu=data.akun_detail.akun.dipa_kode_akun;
+          var dua=data.akun_detail.akun.sub_komponen.dipa_kode_sub_komponen;
+          var tiga=data.akun_detail.akun.sub_komponen.komponen.dipa_kode_komponen;
+          var empat=data.akun_detail.akun.sub_komponen.komponen.sub_output.dipa_kode_sub_output;
+          var lima=data.akun_detail.akun.sub_komponen.komponen.sub_output.output.dipa_kode_output;
+          var enam=data.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.dipa_kode_kegiatan;
+          var tujuh=data.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.dipa_kode_program;
+          var delapan=data.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.satuan_kerja.dipa_kode_satuan_kerja;
+          var kode=delapan+"."+tujuh+"."+enam+"."+lima+"."+empat+"."+tiga+"."+dua+"."+satu;
+          return kode;
+        }
+    },
+    {
+      title: "RINCIAN",
+        data: null,
+        defaultContent: "-",
+        render: function(data){
+          var satu=data.akun_detail.akun.dipa_nama_akun;
+          var dua=data.akun_detail.dipa_jenis_akun==1?"Belanja Gaji":"Belanja Non Gaji";
+          var tiga=data.akun_detail.dipa_volume;
+          var empat=data.akun_detail.dipa_satuan;
+          var rincian=satu+" | "+dua+" | "+tiga+" "+empat;
+          return rincian;
+        }
+    },
+    {
+      "title": "VOL",
+        data: "akun_detail.dipa_volume",
+        defaultContent:"-"
+    },
+    {
+      "title": "VOL",
+        data: "akun_detail.dipa_satuan",
+        defaultContent:"-"
+    },
+    {
+      "title": "NILAI",
+        data: null,
+        defaultContent:"-",
+        render: function(data){
+          var number = data.akun_detail.dipa_harga_satuan;
+          var number_change = formatNumber(number);
+          var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+          return currency;
+        },
+        width: "10%"
+    },
+    {
+      "title": "TOTAL",
+        data: null,
+        defaultContent: '-',
+        render: function(data){
+          var nilai= data.akun_detail.dipa_harga_satuan;
+          var volume= data.akun_detail.dipa_volume;
+          var total= nilai*volume;
+          var number_change = formatNumber(total.toString());
+          var currency = '<div><div class="pull-left">Rp.</div> <div class="pull-right">'+number_change+'</div></div>';
+          return currency;
+        },
+        width: "10%"
+    },
+    {
+      title: "DIBAYAR",
+        data: null,
+        defaultContent: '-',
+        render: function(data){
+          var pmb= formatNumber(data.dipa_pembayaran_nilai);
+          var pmbb='<div><div class="pull-left">Rp.</div> <div class="pull-right">'+pmb+'</div></div>';
+          return pmbb;
+        },
+        width: "10%"
+    },
+    {
+      "title": "JENIS BAYAR",
+      data: null,
+      defaultContent: '-',
+      render: function($data){
+        var html="<div class='text-center'><span class='label label-success' style='font-size:12px'>UP</span></div>";
+        return html;
+      }
+    }
   ]
 });
+function formatNumber(x) {
+      return x.replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
 </script>
 @endpush
