@@ -13,6 +13,7 @@ class SpmController extends Controller
 {
     //
     public function index(){
+        $SPM = SPM::get()->pluck('dipa_pembayaran_id')->toArray();
     	$data=SPP::with(array('pembayaranspp'=>function($a){
     		$a->with(array('akunDetail'=>function($b){
     			$b->with(array('akun'=>function($c){
@@ -31,8 +32,18 @@ class SpmController extends Controller
     				}));
     			}));
     		}));
-	    }))->get();
-	return Datatables::of($data)->addIndexColumn()->make(true);
+	    }));
+    if(!empty($SPM)){
+        $dataz=$data
+        ->whereNotIn('dipa_pembayaran_id',$SPM)
+        ->get();
+    }
+    else{
+        $dataz=$data
+        ->get();
+    }
+	return Datatables::of($dataz)->addIndexColumn()->make(true);
+        // return $SPM;
     }
     public function show($id){
         $data=SPP::where('dipa_pmb_check_spp_id',$id)->with(array('pembayaranspp'=>function($a){
