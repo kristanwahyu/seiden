@@ -129,7 +129,7 @@ $('#myTable').DataTable({
         defaultContent:"-"
     },
     {
-      "title": "VOL",
+      "title": "SATUAN",
         data: "akun_detail.dipa_satuan",
         defaultContent:"-"
     },
