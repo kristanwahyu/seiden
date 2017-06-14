@@ -169,16 +169,16 @@ $('#myTable').DataTable({
           return pmbb;
         },
         width: "10%"
-    },
-    {
-      "title": "JENIS BAYAR",
-      data: null,
-      defaultContent: '-',
-      render: function($data){
-        var html="<div class='text-center'><span class='label label-success' style='font-size:12px'>UP</span></div>";
-        return html;
-      }
     }
+    // {
+    //   "title": "JENIS BAYAR",
+    //   data: null,
+    //   defaultContent: '-',
+    //   render: function($data){
+    //     var html="<div class='text-center'><span class='label label-success' style='font-size:12px'>UP</span></div>";
+    //     return html;
+    //   }
+    // }
   ]
 });
 function formatNumber(x) {

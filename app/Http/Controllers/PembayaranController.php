@@ -15,7 +15,7 @@ class PembayaranController extends Controller
 {
     //
     public function showPage($id, $id_akun)
-    {   
+    {
         $data = DipaAkunDetail::with(array('akun' => function($q) {
                 $q->with(array('subKomponen'=>function($l){
                     $l->with(array('komponen' => function($n){
@@ -33,7 +33,7 @@ class PembayaranController extends Controller
             }))
             ->with('pembayaran')
             ->where('dipa_id_detail_akun',$id)->first();
-        
+
         $data['total'] = DB::table('tbl_dipa_akun')
                 ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
                 ->where('tbl_dipa_akun.dipa_id_akun',$id_akun)
@@ -170,7 +170,7 @@ class PembayaranController extends Controller
                 'dipa_pembayaran_keterangan'=> $request->pembayaran_keterangan,
                 'dipa_pembayaran_status'    => $request->pembayaran_status,
             ]);
-            
+
             $id_pmb = $request->id_pembayaran;
             $id_detail = $request->id_detail_akun;
             $nama_detail = DipaAkunDetail::find($id_detail)->dipa_nama_detail;
