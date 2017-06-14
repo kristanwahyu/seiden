@@ -182,6 +182,12 @@
 <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
 
 <script>
+$('.nilai').text(function(index, value) {
+        return value
+        .replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        ;
+    });
 $(function () {
     $('.datepicker').datepicker({
       autoclose: 'true',
