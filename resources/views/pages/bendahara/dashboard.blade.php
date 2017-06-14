@@ -95,33 +95,15 @@ $('#myTable').DataTable({
     },
     {
       title: "KODE",
-        data: null,
-        defaultContent: "-",
-        render: function(data){
-          var satu=data.akun_detail.akun.dipa_kode_akun;
-          var dua=data.akun_detail.akun.sub_komponen.dipa_kode_sub_komponen;
-          var tiga=data.akun_detail.akun.sub_komponen.komponen.dipa_kode_komponen;
-          var empat=data.akun_detail.akun.sub_komponen.komponen.sub_output.dipa_kode_sub_output;
-          var lima=data.akun_detail.akun.sub_komponen.komponen.sub_output.output.dipa_kode_output;
-          var enam=data.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.dipa_kode_kegiatan;
-          var tujuh=data.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.dipa_kode_program;
-          var delapan=data.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.satuan_kerja.dipa_kode_satuan_kerja;
-          var kode=delapan+"."+tujuh+"."+enam+"."+lima+"."+empat+"."+tiga+"."+dua+"."+satu;
-          return kode;
-        }
+        data: 'kode',
+        name: 'kode',
+        defaultContent: "-"
     },
     {
       title: "RINCIAN",
-        data: null,
-        defaultContent: "-",
-        render: function(data){
-          var satu=data.akun_detail.akun.dipa_nama_akun;
-          var dua=data.akun_detail.dipa_jenis_akun==1?"Belanja Gaji":"Belanja Non Gaji";
-          var tiga=data.akun_detail.dipa_volume;
-          var empat=data.akun_detail.dipa_satuan;
-          var rincian=satu+" | "+dua+" | "+tiga+" "+empat;
-          return rincian;
-        }
+        data: 'rincian',
+        name: 'rincian',
+        defaultContent: "-"
     },
     {
       "title": "VOL",
@@ -135,6 +117,7 @@ $('#myTable').DataTable({
     },
     {
       "title": "NILAI",
+      name: 'akun_detail.dipa_harga_satuan',
         data: null,
         defaultContent:"-",
         render: function(data){
@@ -148,12 +131,10 @@ $('#myTable').DataTable({
     {
       "title": "TOTAL",
         data: null,
+        name: 'total',
         defaultContent: '-',
         render: function(data){
-          var nilai= data.akun_detail.dipa_harga_satuan;
-          var volume= data.akun_detail.dipa_volume;
-          var total= nilai*volume;
-          var number_change = formatNumber(total.toString());
+          var number_change = formatNumber(data.total);
           var currency = '<div><div class="pull-left">Rp.</div> <div class="pull-right">'+number_change+'</div></div>';
           return currency;
         },
@@ -162,6 +143,7 @@ $('#myTable').DataTable({
     {
       title: "DIBAYAR",
         data: null,
+        name: 'dipa_pembayaran_nilai',
         defaultContent: '-',
         render: function(data){
           var pmb= formatNumber(data.dipa_pembayaran_nilai);
@@ -173,6 +155,8 @@ $('#myTable').DataTable({
     {
       "title": "JENIS BAYAR",
       data: null,
+        orderable: false,
+        searchable: false,
       defaultContent: '-',
       render: function($data){
         var html="<div class='text-center'><span class='label label-success' style='font-size:12px'>UP</span></div>";

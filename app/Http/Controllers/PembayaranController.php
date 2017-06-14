@@ -247,6 +247,31 @@ class PembayaranController extends Controller
                 $data=$pmb->get();
                 break;
         }
-        return Datatables::of($data)->addIndexColumn()->make(true);
+        return Datatables::of($data)
+        ->addColumn('kode', function($kode){
+            $satker=$kode->akunDetail->akun->subKomponen->komponen->subOutput->output->kegiatan->program->satuanKerja->dipa_kode_satuan_kerja;
+            $program=$kode->akunDetail->akun->subKomponen->komponen->subOutput->output->kegiatan->program->dipa_kode_program;
+            $kegiatan=$kode->akunDetail->akun->subKomponen->komponen->subOutput->output->kegiatan->dipa_kode_kegiatan;
+            $output=$kode->akunDetail->akun->subKomponen->komponen->subOutput->output->dipa_kode_output;
+            $suboutput=$kode->akunDetail->akun->subKomponen->komponen->subOutput->dipa_kode_sub_output;
+            $komponen=$kode->akunDetail->akun->subKomponen->komponen->dipa_kode_komponen;
+            $subkomponen=$kode->akunDetail->akun->subKomponen->dipa_kode_sub_komponen;
+            $akun=$kode->akunDetail->akun->dipa_kode_akun;
+
+            return $satker.".".$program.".".$kegiatan.".".$output.".".$suboutput.".".$komponen.".".$subkomponen.".".$akun;
+        })
+        ->addColumn('rincian', function($rincian){
+            $namaakun=$rincian->akunDetail->akun->dipa_nama_akun;
+            $jenisakun=$rincian->akunDetail->akun->dipa_jenis_akun==1?"Belanja Gaji":"Belanja Non Gaji";
+            $volume=$rincian->akunDetail->dipa_volume;
+            $satuan=$rincian->akunDetail->dipa_satuan;
+            return $namaakun.' | '.$jenisakun.' | '.$volume.' '.$satuan;
+        })
+        ->addColumn('total', function($total){
+            $nilai = $total->akunDetail->dipa_harga_satuan;
+            $volume = $total->akunDetail->dipa_volume;
+            return $nilai*$volume;
+        })
+        ->addIndexColumn()->make(true);
     }
 }
