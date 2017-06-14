@@ -13,6 +13,7 @@ class Sp2dController extends Controller
 {
     //
     public function index(){
+        $SP2D = SP2D::get()->pluck('dipa_pembayaran_id')->toArray();
     	$data=SPM::with(array('pembayaran'=>function($a){
     		$a->with(array('akunDetail'=>function($b){
     			$b->with(array('akun'=>function($c){
@@ -31,7 +32,16 @@ class Sp2dController extends Controller
     				}));
     			}));
     		}));
-	    }))->get();
+	    }));
+    if(!empty($SP2D)){
+        $dataz=$data
+        ->whereNotIn('dipa_pembayaran_id',$SP2D)
+        ->get();
+    }
+    else{
+        $dataz=$data
+        ->get();
+    }
 	return Datatables::of($data)->addIndexColumn()->make(true);
     }
     public function show($id){
