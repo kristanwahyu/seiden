@@ -186,3 +186,9 @@ Route::get('/monitoring', function () {
     return view('pages.kpa.monitoring');
 });
 //==============+++END KPA+++============//
+
+//==============+++START Bendahara+++============//
+Route::get('/dashboard-bendahara', function () {
+    return view('pages.bendahara.dashboard');
+});
+//==============+++END Bendahara+++============//

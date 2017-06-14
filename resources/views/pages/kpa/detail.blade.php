@@ -18,7 +18,7 @@
     <div class="breadcrumb-wrapper">
         <ul class="breadcrumb">
             <li><a href="{{ url('/dashboard-kpa') }}"><i class="fa fa-home fa-fw"></i></a></li>
-            <li class="active-bread"><a href="">Detail Data Monitoring</a></li>
+            <li class="active-bread"><a href="">Data Monitoring</a></li>
         </ul>
     </div>
     {{-- End Breadcrumb --}}
@@ -30,7 +30,7 @@
                 {{-- awal tabel detail --}}
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Detail Data Monitoring</h3>
+                        <h3 class="panel-title">Data Monitoring</h3>
                     </div>
                     {{-- awal panel body --}}
                     <div class="panel-body">
@@ -140,7 +140,7 @@ var data = [
       `<div class="progress">
         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50"
         aria-valuemin="0" aria-valuemax="100" style="width:50%">
-          50% Complete
+          50%
         </div>
       </div>`,
       `<a href="{{ url('/monitoring') }}" class="btn btn-success" role="button">Monitoring</a>`
@@ -156,7 +156,7 @@ var data = [
       `<div class="progress">
         <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="75"
         aria-valuemin="0" aria-valuemax="100" style="width:75%">
-          75% Complete
+          75%
         </div>
       </div>`,
       `<a href="{{ url('/monitoring') }}" class="btn btn-success" role="button">Monitoring</a>`

@@ -147,6 +147,23 @@ var data = [
       "Rp. 3.000.000",
       "Contoh Keterangan SP2d"
   ],
+  [
+      "2",
+      "LS",
+      "Rp. 1.500.000",
+      "002",
+      "21 Januari 2017",
+      "Rp. 3.000.000",
+      "Contoh Keterangan SPP",
+      "002",
+      "22 Januari 2017",
+      "Rp. 3.000.000",
+      "Contoh Keterangan SPM",
+      "002",
+      "22 Januari 2017",
+      "Rp. 3.000.000",
+      "Contoh Keterangan SP2d"
+  ],
 ];
 
 $('#myTable').DataTable({
