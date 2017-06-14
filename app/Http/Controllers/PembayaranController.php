@@ -183,7 +183,6 @@ class PembayaranController extends Controller
                 }
             }
             $nama_folder = $id_detail.'_'.$nama_detail.'_'.$id_pmb;
-
             $syarat = new syarat;
             $syarat->deleteDir($nama_folder); //delete direktori if exist
             $path_syarat = [];

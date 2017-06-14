@@ -42,7 +42,6 @@ class DetailAkunController extends Controller
 
     public function show($id_akun)
     {
-
         // $job = DipaAkunDetail::where('dipa_id_akun',$id_akun)
         //     ->orderBy('dipa_id_detail_akun', 'desc');
 

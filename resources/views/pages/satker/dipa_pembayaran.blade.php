@@ -188,7 +188,7 @@
                                                                 <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
                                                                 <span><input type="file" name="syarat{!! $i+1 !!}" class="file_syarat"></span>
                                                             </td>
-                                                            <td><a href="{{url('/dipa/download/'.$pembayaran_param->syaratPembayaran[0][$text2])}}" class="btn btn-success btn-xxs" @if($pembayaran_param->syaratPembayaran[0][$text2] == null) disabled @endif><i class="fa fa-download"></i></a></td>
+                                                            <td><a href="{{url('/dipa/download/'.$pembayaran_param['dipa_pembayaran_id'].'/'.$pembayaran_param->syaratPembayaran[0][$text2])}}" class="btn btn-success btn-xxs" @if($pembayaran_param->syaratPembayaran[0][$text2] == null) disabled @endif><i class="fa fa-download"></i></a></td>
                                                             <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
                                                         </tr>
                                                         @else

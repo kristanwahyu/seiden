@@ -110,7 +110,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/dipa/dipa-pembayaran/{id}/{id_akun}', 'PembayaranController@showPage');
         Route::post('/dipa/dipa-pembayaran/store', 'PembayaranController@storeOrUpdate');
-        Route::get('/dipa/download/{url}','SyaratPembayaranController@download');
+        Route::get('/dipa/download/{id_pmb}/{url}','SyaratPembayaranController@download');
         //==============+++END SATUAN KERJA+++============//
      });
 });

@@ -5,14 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use App\Model\DipaPembayaran;
 use App\Model\DipaPembayaranSyarat as syarat;
 
 class SyaratPembayaranController extends Controller
 {
     //
-    public function download($url)
+    public function download($id_pmb, $url)
     {
-        return response()->download(storage_path('app/public/5_detail2_20/'.$url));
+        $pmb = DipaPembayaran::with('akunDetail')->where('dipa_pembayaran_id',$id_pmb)->first();
+        $nama_detail = $pmb->akunDetail['dipa_nama_detail'];
+        $nama_detail_arr = explode(' ', $nama_detail);
+            if(count($nama_detail_arr) > 1) {
+                $nama_detail = "";
+                for($i=0; $i<count($nama_detail_arr); $i++)
+                {
+                    $nama_detail .= $nama_detail_arr[$i];
+                }
+            }
+        $nama_folder = $pmb['dipa_id_detail_akun'].'_'.$nama_detail.'_'.$id_pmb;
+
+        return response()->download(storage_path('app/public/'.$nama_folder.'/'.$url));
     }
 
     public function upload($file, $folder)
@@ -78,7 +91,7 @@ class SyaratPembayaranController extends Controller
 
     public function delete($id_pmb)
     {
-        $a = syarat::find($id_pmb);
+        $a = syarat::where('dipa_pembayaran_id', $id_pmb);
         if($a == null){
             return '0';
         } else {
