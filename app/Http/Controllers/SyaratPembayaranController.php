@@ -53,29 +53,28 @@ class SyaratPembayaranController extends Controller
 
     public function save($data, $data_check, $id_pmb)
     {   
-        if($data_check['check1'] == null) $data_check['check1'] = '0';
-        if($data_check['check2'] == null) $data_check['check2'] = '0';
-        if($data_check['check3'] == null) $data_check['check3'] = '0';
-        if($data_check['check4'] == null) $data_check['check4'] = '0';
-        if($data_check['check5'] == null) $data_check['check5'] = '0';
-        if($data_check['check6'] == null) $data_check['check6'] = '0';
-        if($data_check['check7'] == null) $data_check['check7'] = '0';
-
+        for($i=1; $i<8; $i++){
+            if($data_check["check$i"] == null) $data_check["check$i"] = '0';
+            if($data_check["check$i"] == '0') 
+                $dokumen_syarat[$i] = null;
+            else
+                $dokumen_syarat[$i] = $data[$i-1][0]; 
+        }
         syarat::create([
             'dipa_syarat_1'         => $data_check['check1'],
-            'dipa_dokumen_syarat_1' => $data[0][0],
+            'dipa_dokumen_syarat_1' => $dokumen_syarat[1],
             'dipa_syarat_2'         => $data_check['check2'],
-            'dipa_dokumen_syarat_2' => $data[1][0],
+            'dipa_dokumen_syarat_2' => $dokumen_syarat[2],
             'dipa_syarat_3'         => $data_check['check3'],
-            'dipa_dokumen_syarat_3' => $data[2][0],
+            'dipa_dokumen_syarat_3' => $dokumen_syarat[3],
             'dipa_syarat_4'         => $data_check['check4'],
-            'dipa_dokumen_syarat_4' => $data[3][0],
+            'dipa_dokumen_syarat_4' => $dokumen_syarat[4],
             'dipa_syarat_5'         => $data_check['check5'],
-            'dipa_dokumen_syarat_5' => $data[4][0],
+            'dipa_dokumen_syarat_5' => $dokumen_syarat[5],
             'dipa_syarat_6'         => $data_check['check6'],
-            'dipa_dokumen_syarat_6' => $data[5][0],
+            'dipa_dokumen_syarat_6' => $dokumen_syarat[6],
             'dipa_syarat_7'         => $data_check['check7'],
-            'dipa_dokumen_syarat_7' => $data[6][0],
+            'dipa_dokumen_syarat_7' => $dokumen_syarat[7],
             'dipa_pembayaran_id'    => $id_pmb,
         ]);
     }

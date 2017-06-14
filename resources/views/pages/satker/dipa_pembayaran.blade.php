@@ -515,16 +515,15 @@ $(function(){
 
     $(".file_syarat").on('change', function(){
         if($(this).val() == "") {
-            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', false).prop('disabled', false).val('');;
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', false).val('');;
         } else {
-            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true).prop('disabled', true).val('1');
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true).val('1');
         }
     });
 
     $("#myTable").on('click','.ubah-detail', function(){
         $.get("/dipa/dipa-rincian/get/"+$(this).data('id'), function(data, status){
             if(status == 'success'){
-                console.log(data);
                 $("#ubah_harga_satuan").val(data['dipa_harga_satuan']);
                 $("#ubah_nama_detail").val(data['dipa_nama_detail']);
                 $("#ubah_satuan").val(data['dipa_satuan']);
