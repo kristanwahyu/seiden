@@ -83,42 +83,26 @@
       },
       {
         title: "KODE",
-        data: null,
-        defaultContent: "-",
-        render: function(data){
-          var satu=data.pembayaranspp.akun_detail.akun.dipa_kode_akun;
-          var dua=data.pembayaranspp.akun_detail.akun.sub_komponen.dipa_kode_sub_komponen;
-          var tiga=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.dipa_kode_komponen;
-          var empat=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.dipa_kode_sub_output;
-          var lima=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.dipa_kode_output;
-          var enam=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.dipa_kode_kegiatan;
-          var tujuh=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.dipa_kode_program;
-          var delapan=data.pembayaranspp.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.satuan_kerja.dipa_kode_satuan_kerja;
-          var kode=delapan+"."+tujuh+"."+enam+"."+lima+"."+empat+"."+tiga+"."+dua+"."+satu;
-          return kode;
-        }
+        name: 'kode',
+        data: "kode",
+        defaultContent: "-"
       },
       {
         title: "RINCIAN",
-        data: null,
-        defaultContent: "-",
-        render: function(data){
-          var satu=data.pembayaranspp.akun_detail.akun.dipa_nama_akun;
-          var dua=data.pembayaranspp.akun_detail.dipa_jenis_akun==1?"Belanja Gaji":"Belanja Non Gaji";
-          var tiga=data.pembayaranspp.akun_detail.dipa_volume;
-          var empat=data.pembayaranspp.akun_detail.dipa_satuan;
-          var rincian=satu+" | "+dua+" | "+tiga+" "+empat;
-          return rincian;
-        }
+        data: 'rincian',
+        name: 'rincian',
+        defaultContent: "-"
       },
       {
         "title": "VOL",
         data: "pembayaranspp.akun_detail.dipa_volume",
+        name: "pembayaranspp.akun_detail.dipa_volume",
         defaultContent:"-"
       },
       {
         "title": "NILAI",
         data: null,
+        name: 'pembayaranspp.akun_detail.dipa_harga_satuan',
         defaultContent:"-",
         render: function(data){
           var number = data.pembayaranspp.akun_detail.dipa_harga_satuan;
@@ -131,12 +115,10 @@
       {
         "title": "TOTAL",
         data: null,
+        name: 'total',
         defaultContent: '-',
         render: function(data){
-          var nilai= data.pembayaranspp.akun_detail.dipa_harga_satuan;
-          var volume= data.pembayaranspp.akun_detail.dipa_volume;
-          var total= nilai*volume;
-          var number_change = formatNumber(total.toString());
+          var number_change = formatNumber(data.total);
           var currency = '<div><div class="pull-left">Rp.</div> <div class="pull-right">'+number_change+'</div></div>';
           return currency;
         },
@@ -145,6 +127,7 @@
       {
         title: "DIBAYAR",
         data: null,
+        name: 'pembayaranspp.dipa_pembayaran_nilai',
         defaultContent: '-',
         render: function(data){
           var pmb= formatNumber(data.pembayaranspp.dipa_pembayaran_nilai);
@@ -156,6 +139,8 @@
       { 
         title: "ACTION",
         data: null,
+        orderable: false,
+        searchable: false,
         width: "1%",
         render: function(data){
           var button="<a href=\"{{ url('/spm') }}/"+data.dipa_pmb_check_spp_id+"\" class=\"btn btn-success\" role=\"button\">SPM</a>";
@@ -186,42 +171,26 @@
       },
       {
         title: "KODE",
-        data: null,
-        defaultContent: "-",
-        render: function(data){
-          var satu=data.pembayaran.akun_detail.akun.dipa_kode_akun;
-          var dua=data.pembayaran.akun_detail.akun.sub_komponen.dipa_kode_sub_komponen;
-          var tiga=data.pembayaran.akun_detail.akun.sub_komponen.komponen.dipa_kode_komponen;
-          var empat=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.dipa_kode_sub_output;
-          var lima=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.dipa_kode_output;
-          var enam=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.dipa_kode_kegiatan;
-          var tujuh=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.dipa_kode_program;
-          var delapan=data.pembayaran.akun_detail.akun.sub_komponen.komponen.sub_output.output.kegiatan.program.satuan_kerja.dipa_kode_satuan_kerja;
-          var kode=delapan+"."+tujuh+"."+enam+"."+lima+"."+empat+"."+tiga+"."+dua+"."+satu;
-          return kode;
-        }
+        data: 'kode',
+        name: 'kode',
+        defaultContent: "-"
       },
       {
         title: "RINCIAN",
-        data: null,
-        defaultContent: "-",
-        render: function(data){
-          var satu=data.pembayaran.akun_detail.akun.dipa_nama_akun;
-          var dua=data.pembayaran.akun_detail.dipa_jenis_akun==1?"Belanja Gaji":"Belanja Non Gaji";
-          var tiga=data.pembayaran.akun_detail.dipa_volume;
-          var empat=data.pembayaran.akun_detail.dipa_satuan;
-          var rincian=satu+" | "+dua+" | "+tiga+" "+empat;
-          return rincian;
-        }
+        data: 'rincian',
+        name: 'rician',
+        defaultContent: "-"
       },
       {
         "title": "VOL",
         data: "pembayaran.akun_detail.dipa_volume",
+        name: "pembayaran.akun_detail.dipa_volume",
         defaultContent:"-"
       },
       {
         "title": "NILAI",
         data: null,
+        name: 'pembayaran.akun_detail.dipa_harga_satuan',
         defaultContent:"-",
         render: function(data){
           var number = data.pembayaran.akun_detail.dipa_harga_satuan;
@@ -234,12 +203,10 @@
       {
         "title": "TOTAL",
         data: null,
+        name: 'total',
         defaultContent: '-',
         render: function(data){
-          var nilai= data.pembayaran.akun_detail.dipa_harga_satuan;
-          var volume= data.pembayaran.akun_detail.dipa_volume;
-          var total= nilai*volume;
-          var number_change = formatNumber(total.toString());
+          var number_change = formatNumber(data.total);
           var currency = '<div><div class="pull-left">Rp.</div> <div class="pull-right">'+number_change+'</div></div>';
           return currency;
         },
@@ -248,6 +215,7 @@
       {
         title: "DIBAYAR",
         data: null,
+        name: 'pembayaranspp.dipa_pembayaran_nilai',
         defaultContent: '-',
         render: function(data){
           var pmb= formatNumber(data.pembayaran.dipa_pembayaran_nilai);
@@ -259,6 +227,8 @@
       { 
         title: "ACTION",
         data: null,
+        orderable: false,
+        searchable: false,
         width: "1%",
         render: function(data){
           var button="<a href=\"{{ url('/sp2d') }}/"+data.dipa_pmb_check_spm_id+"\" class=\"btn btn-success\" role=\"button\">SP2D</a>";

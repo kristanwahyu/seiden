@@ -42,7 +42,32 @@ class Sp2dController extends Controller
         $dataz=$data
         ->get();
     }
-	return Datatables::of($data)->addIndexColumn()->make(true);
+	return Datatables::of($dataz)
+    ->addColumn('kode', function($kode){
+            $satker=$kode->pembayaran->akunDetail->akun->subKomponen->komponen->subOutput->output->kegiatan->program->satuanKerja->dipa_kode_satuan_kerja;
+            $program=$kode->pembayaran->akunDetail->akun->subKomponen->komponen->subOutput->output->kegiatan->program->dipa_kode_program;
+            $kegiatan=$kode->pembayaran->akunDetail->akun->subKomponen->komponen->subOutput->output->kegiatan->dipa_kode_kegiatan;
+            $output=$kode->pembayaran->akunDetail->akun->subKomponen->komponen->subOutput->output->dipa_kode_output;
+            $suboutput=$kode->pembayaran->akunDetail->akun->subKomponen->komponen->subOutput->dipa_kode_sub_output;
+            $komponen=$kode->pembayaran->akunDetail->akun->subKomponen->komponen->dipa_kode_komponen;
+            $subkomponen=$kode->pembayaran->akunDetail->akun->subKomponen->dipa_kode_sub_komponen;
+            $akun=$kode->pembayaran->akunDetail->akun->dipa_kode_akun;
+
+            return $satker.".".$program.".".$kegiatan.".".$output.".".$suboutput.".".$komponen.".".$subkomponen.".".$akun;
+        })
+        ->addColumn('rincian', function($rincian){
+            $namaakun=$rincian->pembayaran->akunDetail->akun->dipa_nama_akun;
+            $jenisakun=$rincian->pembayaran->akunDetail->akun->dipa_jenis_akun==1?"Belanja Gaji":"Belanja Non Gaji";
+            $volume=$rincian->pembayaran->akunDetail->dipa_volume;
+            $satuan=$rincian->pembayaran->akunDetail->dipa_satuan;
+            return $namaakun.' | '.$jenisakun.' | '.$volume.' '.$satuan;
+        })
+        ->addColumn('total', function($total){
+            $nilai = $total->pembayaran->akunDetail->dipa_harga_satuan;
+            $volume = $total->pembayaran->akunDetail->dipa_volume;
+            return $nilai*$volume;
+        })
+    ->addIndexColumn()->make(true);
     }
     public function show($id){
         $data=SPM::where('dipa_pmb_check_spm_id',$id)->with(array('pembayaran'=>function($a){

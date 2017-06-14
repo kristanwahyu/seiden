@@ -42,7 +42,32 @@ class SpmController extends Controller
         $dataz=$data
         ->get();
     }
-	return Datatables::of($dataz)->addIndexColumn()->make(true);
+	return Datatables::of($dataz)
+        ->addColumn('kode', function($kode){
+            $satker=$kode->pembayaranspp->akunDetail->akun->subKomponen->komponen->subOutput->output->kegiatan->program->satuanKerja->dipa_kode_satuan_kerja;
+            $program=$kode->pembayaranspp->akunDetail->akun->subKomponen->komponen->subOutput->output->kegiatan->program->dipa_kode_program;
+            $kegiatan=$kode->pembayaranspp->akunDetail->akun->subKomponen->komponen->subOutput->output->kegiatan->dipa_kode_kegiatan;
+            $output=$kode->pembayaranspp->akunDetail->akun->subKomponen->komponen->subOutput->output->dipa_kode_output;
+            $suboutput=$kode->pembayaranspp->akunDetail->akun->subKomponen->komponen->subOutput->dipa_kode_sub_output;
+            $komponen=$kode->pembayaranspp->akunDetail->akun->subKomponen->komponen->dipa_kode_komponen;
+            $subkomponen=$kode->pembayaranspp->akunDetail->akun->subKomponen->dipa_kode_sub_komponen;
+            $akun=$kode->pembayaranspp->akunDetail->akun->dipa_kode_akun;
+
+            return $satker.".".$program.".".$kegiatan.".".$output.".".$suboutput.".".$komponen.".".$subkomponen.".".$akun;
+        })
+        ->addColumn('rincian', function($rincian){
+            $namaakun=$rincian->pembayaranspp->akunDetail->akun->dipa_nama_akun;
+            $jenisakun=$rincian->pembayaranspp->akunDetail->akun->dipa_jenis_akun==1?"Belanja Gaji":"Belanja Non Gaji";
+            $volume=$rincian->pembayaranspp->akunDetail->dipa_volume;
+            $satuan=$rincian->pembayaranspp->akunDetail->dipa_satuan;
+            return $namaakun.' | '.$jenisakun.' | '.$volume.' '.$satuan;
+        })
+        ->addColumn('total', function($total){
+            $nilai = $total->pembayaranspp->akunDetail->dipa_harga_satuan;
+            $volume = $total->pembayaranspp->akunDetail->dipa_volume;
+            return $nilai*$volume;
+        })
+        ->addIndexColumn()->make(true);
         // return $SPM;
     }
     public function show($id){
