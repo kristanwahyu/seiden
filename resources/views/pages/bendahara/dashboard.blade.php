@@ -48,33 +48,6 @@
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 <script>
-'use strict';
-
-var data = [
-  [
-      "1",
-      "123.456.789.001",
-      "Penbayaran Dana - Belanja Gaji - 2 Orang",
-      "2",
-      "Orang",
-      "Rp. 1.500.000",
-      "Rp. 3.000.000",
-      "Rp. 3.000.000",
-      `<div class='text-center'><span class='label label-success' style='font-size:12px'>UP</span></div>`
-  ],
-  [
-      "2",
-      "123.456.789.002",
-      "Penbayaran Dana - Belanja Non Gaji - 3 Orang",
-      "3",
-      "Orang",
-      "Rp. 500.000",
-      "Rp. 1.500.000",
-      "Rp. 1.500.000",
-      `<div class='text-center'><span class='label label-success' style='font-size:12px'>UP</span></div>`
-  ],
-];
-
 $('#myTable').DataTable({
   "processing": true,
     "serverSide": true,
