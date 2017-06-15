@@ -49,7 +49,7 @@ class LoginController extends Controller
                 return redirect()->intended('/dashboard');
                 break;
             case "2":
-                return redirect()->intended('/kpa');
+                return redirect()->intended('/dashboard-kpa');
                 break;
             case "3":
                 return redirect()->intended('/dashboard-ppk');
@@ -58,16 +58,16 @@ class LoginController extends Controller
                 return redirect()->intended('/dashboard-satker');
                 break;
             case "5":
-                return redirect()->intended('/ppsm');
+                return redirect()->intended('/dashboard-ppspm');
                 break;
             case "6":
-                return redirect()->intended('/sima');
+                return redirect()->intended('/dashboard-simak');
                 break;
             case "7":
-                return redirect()->intended('/siba');
+                return redirect()->intended('/dashboard-saiba');
                 break;
             default:
-                return redirect()->intended('/bendahara');
+                return redirect()->intended('/dashboard-bendahara');
         }
     }
 }

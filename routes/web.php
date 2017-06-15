@@ -152,9 +152,10 @@ Route::get('/dashboard-simak', function () {
     return view('pages.operator_simak.dashboard');
 });
 
-Route::get('/sinkronisasi-simak', function () {
-    return view('pages.operator_simak.sinkronisasi');
-});
+Route::get('/dashboard-simak/show', 'SimakController@show');
+Route::get('/sinkronisasi/{id}', 'SimakController@showdetail');
+Route::post('/sinkronisasi', 'SimakController@store');
+
 //==============+++END OPERATOR SIMAK+++============//
 
 //==============+++START OPERATOR SAIBA+++============//

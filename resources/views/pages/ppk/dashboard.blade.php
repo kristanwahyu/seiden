@@ -49,8 +49,6 @@
 
 <script>
   'use strict';
-
-  'use strict';
     
     var table = $('#myTable').DataTable({
         "processing": true,

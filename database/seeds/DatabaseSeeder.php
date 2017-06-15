@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AkunSeeder::class);
         $this->call(AkunDetailSeeder::class);
         $this->call(PembayaranSeeder::class);
-        // $this->call(SPPSeeder::class);
-        // $this->call(SPMSeeder::class);
-        // $this->call(SP2DSeeder::class);
+        $this->call(SPPSeeder::class);
+        $this->call(SPMSeeder::class);
+        $this->call(SP2DSeeder::class);
     }
 }
