@@ -2,7 +2,6 @@
 
 @push('style')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
 @endpush
 
 @section('title', 'Dashboard Bendahara')
@@ -12,13 +11,16 @@
 @endsection
 
 @section('content')
+  {{-- AWAL MAIN CONTENT --}}
   <div class="main-content">
+      {{-- Awal Breadcrumb --}}
       <div class="breadcrumb-wrapper">
           <ul class="breadcrumb">
               <li class="active-bread"><a href=""><i class="fa fa-home fa-fw"></i></a></li>
           </ul>
       </div>
       {{-- End Breadcrumb --}}
+
       <div class="container-fluid">
           <div class="row">
               <div class="col-md-12">
@@ -26,6 +28,7 @@
                   <div class="panel-heading">
                       <h3 class="panel-title">Bendahara</h3>
                   </div>
+
                   {{-- awal panel body --}}
                   <div class="panel-body">
 
@@ -35,13 +38,15 @@
                         </table>
                     </div>
 
-                    {{-- akhir pembungkus form --}}
                   </div> {{-- akhir panel body --}}
+
                 </div> {{-- EDN PANEL --}}
               </div> {{-- END COL-MD-12 --}}
           </div> {{-- END ROW --}}
       </div> {{-- END CONTAINER FLUID --}}
+
   </div>
+  {{-- AKHIR MAIN CONTENT --}}
 @endsection
 
 @push('script')
@@ -124,7 +129,7 @@ $('#myTable').DataTable({
           return pmbb;
         },
         width: "10%"
-        
+
     }
     // {
     //   "title": "JENIS BAYAR",

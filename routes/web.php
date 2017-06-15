@@ -199,6 +199,10 @@ Route::group(['middleware' => 'auth'], function () {
         //==============+++END KPA+++============//
      });
 });
+//OTHER
+Route::get('/tahun/get', 'TahunAnggaranController@get');
+Route::get('/satker/get', 'SatuanKerjaController@get');
+Route::get('/program/get', 'ProgramController@get');
 
 Auth::routes();
 //==OVERIDE LOGOUT==//

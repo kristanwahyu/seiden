@@ -71,4 +71,9 @@ class TahunAnggaranController extends Controller
     {
         return Datatables::eloquent($data)->addIndexColumn()->make(true);
     }
+
+    public function get()
+    {
+        return DipaTahunAnggaran::all();
+    }
 }
