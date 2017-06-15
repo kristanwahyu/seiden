@@ -322,8 +322,10 @@ $(function(){
      $(".btn-tambah").click(function(){
          var newValue = $('#pembayaran_nilai').val().replace(/\./g, '');
          var parameter = "{{$pembayaran_param}}";
+         
          var param_pmb = null;
-         if(parameter == null) {
+         if(parameter == "") {
+            
             if(parseFloat(newValue) > parseFloat("{{$dipa_harga_satuan * $dipa_volume - $total_bayar->total_bayar}}")){
                 return swal("Maaf Dana Tidak Cukup");
             }
