@@ -135,7 +135,7 @@
                     var actions = `<a href="/sinkronisasi-simak/${data['dipa_pembayaran_id']}" class="btn btn-success" role="button">Sinkronisasi</a>`;
                     return actions.replace();
                 },
-                width: "15.6%",
+                width: "8%",
                 orderable: false,
                 searchable: false
             }
