@@ -165,7 +165,7 @@
                                     <div class="form-group clearfix">
                                         <label class="col-sm-3 control-label">PEMBAYARAN</label>
                                         <div class="col-sm-9">
-                                        
+
                                             <label class="radio-inline"><input type="radio" id="tambah_up" name="jenis_pembayaran" value="1" @if($pembayaran_param != null) @if($pembayaran_param['dipa_jenis_pembayaran'] == 1) checked @endif @else checked @endif>UP</label>
                                             <label class="radio-inline"><input type="radio" id="tambah_ls" name="jenis_pembayaran" value="2" @if($pembayaran_param != null) @if($pembayaran_param['dipa_jenis_pembayaran'] == 2) checked @endif @endif>LS</label>
                                         </div>
@@ -420,12 +420,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Gagal Disimpan", "error");
                         }, 1000);
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Detail Akun Batal Simpan :)', 'error');
+            swal('Dibatalkan', 'Data Batal Disimpan :)', 'error');
                 $('#modal-tambah').modal('hide');
             }
         });
@@ -491,12 +491,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Gagal Diubah", "error");
                         }, 1000);
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Akun Batal di Ubah :)', 'error');
+            swal('Dibatalkan', 'Data Batal Diubah :)', 'error');
                 $('#modal-ubah').modal('hide');
             }
         });
@@ -539,12 +539,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Gagal Dihapus", "error");
                         }, 1000);
                     }
                 });
             } else {
-                swal('Dibatalkan', 'Data Akun Batal Hapus :)', 'error');
+                swal('Dibatalkan', 'Data Batal Dihapus :)', 'error');
             }
         });
     });
@@ -570,10 +570,10 @@ function tambah(){
   },
   function(isConfirm){
     if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Simpan", "success");
+      swal("Berhasil!", "Data Berhasil Simpan", "success");
       $('#modal-tambah').modal('hide');
     } else {
-      swal('Dibatalkan', 'Data Akun Batal Simpan :)', 'error');
+      swal('Dibatalkan', 'Data Batal Simpan :)', 'error');
       $('#modal-tambah').modal('hide');
     }
   });
@@ -593,10 +593,10 @@ function ubah(){
   },
   function(isConfirm){
     if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Diubah", "success");
+      swal("Berhasil!", "Data Berhasil Diubah", "success");
       $('#modal-ubah').modal('hide');
     } else {
-      swal('Dibatalkan', 'Data Akun Batal Diubah :)', 'error');
+      swal('Dibatalkan', 'Data Batal Diubah :)', 'error');
       $('#modal-ubah').modal('hide');
     }
   });
@@ -616,9 +616,9 @@ function hapus(){
   },
   function(isConfirm){
     if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Dihapus", "success");
+      swal("Berhasil!", "Data Berhasil Dihapus", "success");
     } else {
-      swal('Dibatalkan', 'Data Akun Batal Dihapus :)', 'error');
+      swal('Dibatalkan', 'Data Batal Dihapus :)', 'error');
     }
   });
 }

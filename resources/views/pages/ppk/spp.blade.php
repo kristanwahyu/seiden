@@ -41,7 +41,7 @@
                                       <tr>
                                           <td>KODE / SATUAN KERJA</td>
                                           <td>:</td>
-                                          <td>SATKER01 / Satuan Kerja 01</td>
+                                          <td>{{ $data[0]->dipa_kode_satuan_kerja }} / {{$data[0]->dipa_satuan_kerja}}</td>
                                       </tr>
                                       <tr>
                                           <td>PROGRAM</td>
@@ -81,7 +81,7 @@
                                       <tr>
                                           <td>RINCIAN</td>
                                           <td>:</td>
-                                          <td>Pembayaran Dana - {{$data[0]->dipa_jenis_akun}} - {{$data[0]->dipa_volume}} {{$data[0]->dipa_satuan}}</td>
+                                          <td>{{$data[0]->dipa_nama_detail}} - {{$data[0]->dipa_jenis_akun==1?"Belanja Gaji":"Belanja Non Gaji"}} - {{$data[0]->dipa_volume}} {{$data[0]->dipa_satuan}}</td>
                                       </tr>
                                       <tr>
                                           <td>HARGA SATUAN</td>
@@ -233,20 +233,20 @@ $(function () {
                                     type: "success"
                                     });
                                 }, 1000);
-                            
+
                         }
                         $('#modal-tambah').modal('hide');
                         window.location.replace("/dashboard-ppk");
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error Saving!", "Please try again", "error");
+                            swal("Gagal", "Data Gagal Disimpan", "error");
                         }, 1000);
                         $('#modal-tambah').modal('hide');
                     }
                 });
             } else {
-                swal('Dibatalkan', 'Data Output Batal Simpan :)', 'error');
+                swal('Dibatalkan', 'Data Batal Simpan :)', 'error');
                 $('#modal-tambah').modal('hide');
             }
         });

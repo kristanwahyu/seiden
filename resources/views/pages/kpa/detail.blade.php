@@ -126,6 +126,7 @@
 <script src="{{ asset('vendor/cleave.js/cleave.min.js') }}"></script>
 
 <script>
+$(function(){
 'use strict';
 var id_akun = "{{$dipa_id_akun}}";
     var table = $('#myTable').DataTable({
@@ -270,6 +271,14 @@ $('.format-number').toArray().forEach((field) => {
         var currency = new Intl.NumberFormat('de-DE');
         return currency.format(value);
     }
-      
+    
+    //btn detail box
+    $('.btn-detail').click(function(){
+        $('.detail-box').slideToggle(200);
+        $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
+        $(this).siblings('span').toggleClass('btn-detail-open-text btn-detail-close-text');
+        $(this).toggleClass('btn-active');
+    });
+});
 </script>
 @endpush

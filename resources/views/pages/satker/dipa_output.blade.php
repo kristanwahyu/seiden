@@ -18,7 +18,7 @@
     <div class="breadcrumb-wrapper">
         <ul class="breadcrumb">
             <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
-            <li><a href="">DIPA</a></li>
+            <li><a href="{{ url('/dipa/dipa-program') }}">DIPA</a></li>
             <li><a href="{{ url('/dipa/dipa-kegiatan/'.$program['dipa_id_program']) }}">{{$program['dipa_kode_program']}}</a></li>
             <li class="active-bread">{{$dipa_kode_kegiatan}}</li>
         </ul>
@@ -306,12 +306,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Output Gagal Disimpan", "error");
                         }, 1000);
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Output Batal Simpan :)', 'error');
+            swal('Dibatalkan', 'Data Output Batal Disimpan :)', 'error');
             $('#modal-tambah').modal('hide');
             }
         });
@@ -368,12 +368,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Output Gagal Diubah", "error");
                         }, 1000);
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Output Batal di Ubah :)', 'error');
+            swal('Dibatalkan', 'Data Output Batal Diubah :)', 'error');
                 $('#modal-ubah').modal('hide');
             }
         });
@@ -416,12 +416,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Output Gagal Dihapus", "error");
                         }, 1000);
                     }
                 });
             } else {
-                swal('Dibatalkan', 'Data Program Batal Hapus :)', 'error');
+                swal('Dibatalkan', 'Data Output Batal Dihapus :)', 'error');
             }
         });
     });

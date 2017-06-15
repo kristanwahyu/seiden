@@ -52,8 +52,9 @@ class SpmController extends Controller
             $komponen=$kode->pembayaranspp->akunDetail->akun->subKomponen->komponen->dipa_kode_komponen;
             $subkomponen=$kode->pembayaranspp->akunDetail->akun->subKomponen->dipa_kode_sub_komponen;
             $akun=$kode->pembayaranspp->akunDetail->akun->dipa_kode_akun;
+            $akundetail=$kode->pembayaranspp->akunDetail->dipa_id_detail_akun;
 
-            return $satker.".".$program.".".$kegiatan.".".$output.".".$suboutput.".".$komponen.".".$subkomponen.".".$akun;
+            return $satker.".".$program.".".$kegiatan.".".$output.".".$suboutput.".".$komponen.".".$subkomponen.".".$akun.".".$akundetail;
         })
         ->addColumn('rincian', function($rincian){
             $namaakun=$rincian->pembayaranspp->akunDetail->akun->dipa_nama_akun;

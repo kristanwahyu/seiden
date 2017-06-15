@@ -570,7 +570,7 @@ select.input-sm
 /* End Modal */
 
 /* Radio slider */
-.switch {
+.switch-slider {
   display: inline-block;
   vertical-align: middle;
   position: relative;

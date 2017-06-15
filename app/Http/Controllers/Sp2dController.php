@@ -52,8 +52,9 @@ class Sp2dController extends Controller
             $komponen=$kode->pembayaran->akunDetail->akun->subKomponen->komponen->dipa_kode_komponen;
             $subkomponen=$kode->pembayaran->akunDetail->akun->subKomponen->dipa_kode_sub_komponen;
             $akun=$kode->pembayaran->akunDetail->akun->dipa_kode_akun;
+            $akundetail=$kode->pembayaran->akunDetail->dipa_id_detail_akun;
 
-            return $satker.".".$program.".".$kegiatan.".".$output.".".$suboutput.".".$komponen.".".$subkomponen.".".$akun;
+            return $satker.".".$program.".".$kegiatan.".".$output.".".$suboutput.".".$komponen.".".$subkomponen.".".$akun.".".$akundetail;
         })
         ->addColumn('rincian', function($rincian){
             $namaakun=$rincian->pembayaran->akunDetail->akun->dipa_nama_akun;

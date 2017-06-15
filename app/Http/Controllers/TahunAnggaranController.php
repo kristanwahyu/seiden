@@ -24,7 +24,9 @@ class TahunAnggaranController extends Controller
 
     public function getOne($id) 
     {
-        return DipaTahunAnggaran::find($id);
+        $tahun = DipaTahunAnggaran::find($id);
+
+        return response()->json(['status'=>'success', 'data' => $tahun],200);
     }
 
     public function update(Request $request, $id)

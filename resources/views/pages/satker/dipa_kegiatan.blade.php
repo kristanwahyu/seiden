@@ -302,12 +302,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Kegiatan Gagal Disimpan", "error");
                         }, 1000);
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Program Batal Simpan :)', 'error');
+            swal('Dibatalkan', 'Data Kegiatan Batal Simpan :)', 'error');
             $('#modal-tambah').modal('hide');
             }
         });
@@ -364,12 +364,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Kegiatan Gagal Diubah", "error");
                         }, 1000);
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Kegiatan Batal Simpan :)', 'error');
+            swal('Dibatalkan', 'Data Kegiatan Batal Diubah :)', 'error');
                 $('#modal-ubah').modal('hide');
             }
         });
@@ -413,12 +413,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Kegiatan Gagal Dihapus", "error");
                         }, 1000);
                     }
                 });
             } else {
-                swal('Dibatalkan', 'Data Program Batal Hapus :)', 'error');
+                swal('Dibatalkan', 'Data Kegiatan Batal Hapus :)', 'error');
             }
         });
     });
