@@ -221,7 +221,7 @@ function simpan(id){
   function(isConfirm){
     if (isConfirm) {
         $.ajax({
-            url : "/sinkronisasi/",
+            url : "/sinkronisasi-simak/",
             type : "POST",
             data : {
               "_token": "{{ csrf_token() }}",

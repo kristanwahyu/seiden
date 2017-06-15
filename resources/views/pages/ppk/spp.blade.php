@@ -101,7 +101,7 @@
                                       <tr>
                                           <td>DANA YANG TERPAKAI</td>
                                           <td>:</td>
-                                          <td>RP. 3.000.000</td>
+                                          <td>RP. <span class="nilai">{{$data[0]->dipa_pembayaran_nilai}}</span></td>
                                       </tr>
                                   </tbody>
                               </table>

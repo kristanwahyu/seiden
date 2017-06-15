@@ -118,9 +118,9 @@
                 title: '<div class="text-center">DIBAYAR</div>',
                 data: null,
                 defaultContent: "-",
-                name: 'bayar',
+                name: 'dipa_pembayaran_nilai',
                 render: function(data) {
-                    var number = data['bayar'];
+                    var number = data['dipa_pembayaran_nilai'];
                     if (number != null) {
                         var number_change = formatNumber(number);
                         var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
@@ -134,7 +134,7 @@
                 data: null,
                 name: 'action',
                 render: function (data) {
-                    var actions = `<a href="/sinkronisasi/${data['dipa_pembayaran_id']}" class="btn btn-success" role="button">Sinkronisasi</a>`;
+                    var actions = `<a href="/sinkronisasi-simak/${data['dipa_pembayaran_id']}" class="btn btn-success" role="button">Sinkronisasi</a>`;
                     return actions.replace();
                 },
                 width: "15.6%",

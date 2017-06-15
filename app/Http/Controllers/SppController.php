@@ -53,8 +53,8 @@ class SppController extends Controller
 				'tbl_dipa_akun_detail.dipa_volume',
 				'tbl_dipa_akun_detail.dipa_harga_satuan',
         DB::raw('tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume as total'),
-        DB::raw('tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume AS bayar'),
-        'tbl_dipa_akun_detail.dipa_id_detail_akun'
+        'tbl_dipa_pembayaran.dipa_pembayaran_nilai',
+        'tbl_dipa_pembayaran.dipa_pembayaran_id'
         ]);
     return $this->makeDataTable($data);
 	}
@@ -70,7 +70,7 @@ class SppController extends Controller
                 ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
                 ->leftJoin('tbl_dipa_pembayaran','tbl_dipa_akun_detail.dipa_id_detail_akun', '=', 'tbl_dipa_pembayaran.dipa_id_detail_akun')
 								->leftJoin('tbl_tahun_anggaran', 'tbl_tahun_anggaran.dipa_id_tahun_anggaran','=','tbl_dipa_program.dipa_id_tahun_anggaran')
-                ->where('tbl_dipa_pembayaran.dipa_id_detail_akun',$id)
+                ->where('tbl_dipa_pembayaran.dipa_pembayaran_id',$id)
                 ->get();
         
   	return view('pages.ppk.spp', compact("data"));

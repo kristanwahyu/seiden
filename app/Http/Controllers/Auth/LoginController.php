@@ -66,6 +66,9 @@ class LoginController extends Controller
             case "7":
                 return redirect()->intended('/dashboard-saiba');
                 break;
+            case "8":
+                return redirect()->intended('/dashboard-perlengkapan');
+                break;
             default:
                 return redirect()->intended('/dashboard-bendahara');
         }

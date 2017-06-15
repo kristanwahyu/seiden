@@ -52,7 +52,7 @@ class SimakController extends Controller
 				'tbl_dipa_akun_detail.dipa_volume',
 				'tbl_dipa_akun_detail.dipa_harga_satuan',
         DB::raw('tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume as total'),
-        DB::raw('tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume AS bayar'),
+        'tbl_dipa_pembayaran.dipa_pembayaran_nilai',
         'tbl_dipa_pembayaran.dipa_pembayaran_id'
         ]);
     return $this->makeDataTable($data);
@@ -94,6 +94,6 @@ class SimakController extends Controller
 			->update([
             'dipa_tanggal_sink'   => date("Y:m:d h:m:s"),
             'dipa_status_sink'   => '1'
-        ])->where('dipa_pembayaran_id', $request->id);
+        ]);
 	}
 }
