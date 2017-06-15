@@ -233,20 +233,20 @@ $(function () {
                                     type: "success"
                                     });
                                 }, 1000);
-                            
+
                         }
                         $('#modal-tambah').modal('hide');
                         window.location.replace("/dashboard-ppk");
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error Saving!", "Please try again", "error");
+                            swal("Gagal", "Data Gagal Disimpan", "error");
                         }, 1000);
                         $('#modal-tambah').modal('hide');
                     }
                 });
             } else {
-                swal('Dibatalkan', 'Data Output Batal Simpan :)', 'error');
+                swal('Dibatalkan', 'Data Batal Simpan :)', 'error');
                 $('#modal-tambah').modal('hide');
             }
         });

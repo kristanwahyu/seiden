@@ -232,7 +232,7 @@ function simpan(id){
             },
             error: function (xhr, ajaxOptions, thrownError) {
               setTimeout(function(){
-                  swal("Error Saving!", "Please try again", "error");
+                  swal("Gagal", "Data Gagal Tersinkronisasi", "error");
               }, 1000);
               $('#modal-tambah').modal('hide');
             }

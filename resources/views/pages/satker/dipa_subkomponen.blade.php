@@ -324,12 +324,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Gagal Disimpan", "error");
                         }, 1000);
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Sub Komponen Batal Simpan :)', 'error');
+            swal('Dibatalkan', 'Data Sub Komponen Batal Disimpan :)', 'error');
                 $('#modal-tambah').modal('hide');
             }
         });
@@ -386,12 +386,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Gagal Diubah", "error");
                         }, 1000);
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Sub Komponen Batal di Ubah :)', 'error');
+            swal('Dibatalkan', 'Data Sub Komponen Batal Diubah :)', 'error');
                 $('#modal-ubah').modal('hide');
             }
         });
@@ -434,12 +434,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Gagal Dihapus", "error");
                         }, 1000);
                     }
                 });
             } else {
-                swal('Dibatalkan', 'Data Sub Komponen Batal Hapus :)', 'error');
+                swal('Dibatalkan', 'Data Sub Komponen Batal Dihapus :)', 'error');
             }
         });
     });
