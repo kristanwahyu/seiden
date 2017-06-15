@@ -2,7 +2,6 @@
 
 @push('style')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
 @endpush
 
 @section('title', 'Tahun Anggaran')
@@ -46,11 +45,13 @@
                         </div> {{-- akhir pembungkus tabel tahun anggaran --}}
                     </div> {{-- akhir panel body --}}
                 </div> {{-- akhir tabel tahun anggaran --}}
-            </div>
-        </div>
-    </div>
+
+            </div> {{-- End col-md-12 --}}
+        </div> {{-- End row --}}
+    </div> {{-- End Container Fluid --}}
+
 </div>
-  {{-- AKHIR MAIN CONTENT --}}
+{{-- AKHIR MAIN CONTENT --}}
 
   {{-- AWAL MODAL TAMBAH TAHUN ANGGARAN --}}
   <div class="modal fade" id="modal-tambah">
@@ -118,7 +119,6 @@
 @push('script')
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
 
 <script>
 $(function(){

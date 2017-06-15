@@ -2,7 +2,6 @@
 
 @push('style')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
 @endpush
 
 @section('title', 'Sinkronisasi')
@@ -194,18 +193,8 @@
 @push('script')
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
 
 <script>
-$(function () {
-    $('.datepicker').datepicker({
-      autoclose: 'true',
-      todayBtn: 'linked',
-      todayHighlight: 'true',
-      format: 'dd-mm-yyyy'
-    });
-});
-
 function simpan(id){
     swal({
     title: "Apakah Anda Yakin ?",
@@ -236,7 +225,7 @@ function simpan(id){
                       type: "success"
                       });
                   }, 1000);
-                  
+
               }
               $('#modal-tambah').modal('hide');
               window.location.replace("/dashboard-perlengkapan");
@@ -259,7 +248,7 @@ $("input[type='checkbox']").click(function(){
     if ($("input[type='checkbox']").is(':checked'))
         $("button").removeAttr("disabled");
     else
-        $("button").attr("disabled", "disabled");  
+        $("button").attr("disabled", "disabled");
 });
 </script>
 @endpush

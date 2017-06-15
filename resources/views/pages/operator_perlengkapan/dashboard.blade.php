@@ -2,7 +2,6 @@
 
 @push('style')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
 @endpush
 
 @section('title', 'Dashboard Operator Perlengkapan')
@@ -45,11 +44,10 @@
 @push('script')
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
 
 <script>
   'use strict';
-    
+
     var table = $('#myTable').DataTable({
         "processing": true,
         "serverSide": true,

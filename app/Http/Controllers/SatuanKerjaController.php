@@ -95,4 +95,8 @@ class SatuanKerjaController extends Controller
             ->orderBy('dipa_kode_satuan_kerja','asc')
             ->get();
     }
+    public function get()
+    {
+        return DipaSatker::all();
+    }
 }

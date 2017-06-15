@@ -58,5 +58,12 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'satker' => \App\Http\Middleware\SatkerMiddleware::class,
+        'simak' => \App\Http\Middleware\SimakMiddleware::class,
+        'saiba' => \App\Http\Middleware\SaibaMiddleware::class,
+        'ppk' => \App\Http\Middleware\PpkMiddleware::class,
+        'ppspm' => \App\Http\Middleware\PpspmMiddleware::class,
+        'bendahara' => \App\Http\Middleware\BendaharaMiddleware::class,
+        'perlengkapan' => \App\Http\Middleware\PerlengkapanMiddleware::class,
+        'kpa' => \App\Http\Middleware\KpaMiddleware::class,
     ];
 }

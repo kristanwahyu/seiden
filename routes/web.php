@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return bcrypt('admin');
+    return redirect('/login');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -113,8 +113,96 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/dipa/download/{id_pmb}/{url}','SyaratPembayaranController@download');
         //==============+++END SATUAN KERJA+++============//
      });
+
+     Route::group(['middleware' => 'simak'], function () {
+         //==============+++START OPERATOR SIMAK+++============//
+        Route::get('/dashboard-simak', function () {
+            return view('pages.operator_simak.dashboard');
+        });
+
+        Route::get('/dashboard-simak/show', 'SimakController@show');
+        Route::get('/sinkronisasi-simak/{id}', 'SimakController@showdetail');
+        Route::post('/sinkronisasi-simak', 'SimakController@store');
+
+        //==============+++END OPERATOR SIMAK+++============//
+     });
+
+     Route::group(['middleware' => 'saiba'], function () {
+         //==============+++START OPERATOR SAIBA+++============//
+        Route::get('/dashboard-saiba', function () {
+            return view('pages.operator_saiba.dashboard');
+        });
+
+        Route::get('/dashboard-saiba/show', 'SaibaController@show');
+        Route::get('/sinkronisasi-saiba/{id}', 'SaibaController@showdetail');
+        Route::post('/sinkronisasi-saiba', 'SaibaController@store');
+        //==============+++END OPERATOR SAIBA+++============//
+
+     });
+
+     Route::group(['middleware' => 'ppk'], function () {
+        //==============+++START PPK+++============//
+        Route::get('/dashboard-ppk', 'SppController@showPage');
+        Route::get('/ppk/show', 'SppController@show');
+
+        Route::get('/spp/{id}','SppController@getOne');
+        Route::post('/spp','SppController@store');
+        //==============+++END PPK+++============//
+     });
+
+     Route::group(['middleware' => 'ppspm'], function () {
+        //==============+++START PPSPM+++============//
+        Route::get('/dashboard-ppspm', function () {
+            return view('pages.ppspm.dashboard');
+        });
+        Route::get('/dipa-spm', 'SpmController@index');
+        Route::get('/spm/{id}', 'SpmController@show');
+        Route::put('/spm/{id}', 'SpmController@store');
+
+        Route::get('/dipa-sp2d', 'Sp2dController@index');
+        Route::get('/sp2d/{id}', 'Sp2dController@show');
+        Route::put('/sp2d/{id}', 'Sp2dController@store');
+        //==============+++END PPSPM+++============//
+     });
+
+     Route::group(['middleware' => 'bendahara'], function () {
+        //==============+++START Bendahara+++============//
+        Route::get('/dashboard-bendahara', function () {
+            return view('pages.bendahara.dashboard');
+        });
+        Route::get('/dipa-bendahara/{jenis_pembayaran}', 'PembayaranController@bendahara');
+        //==============+++END Bendahara+++============//
+     });
+
+     Route::group(['middleware' => 'perlengkapan'], function () {
+        //==============+++START OPERATOR PERLENGKAPAN+++============//
+        Route::get('/dashboard-perlengkapan', function () {
+            return view('pages.operator_perlengkapan.dashboard');
+        });
+        Route::get('/dashboard-perlengkapan/show', 'PerlengkapanController@show');
+        Route::get('/sinkronisasi-perlengkapan/{id}', 'PerlengkapanController@showdetail');
+        Route::post('/sinkronisasi-perlengkapan', 'PerlengkapanController@store');
+        //==============+++END OPERATOR PERLENGKAPAN+++============//
+     });
+
+     Route::group(['middleware' => 'kpa'], function () {
+        //==============+++START KPA+++============//
+        Route::get('/dashboard-kpa', function () {
+            return view('pages.kpa.dashboard');
+        });
+        Route::get('/detail', function () {
+            return view('pages.kpa.detail');
+        });
+        Route::get('/monitoring', function () {
+            return view('pages.kpa.monitoring');
+        });
+        //==============+++END KPA+++============//
+     });
 });
-//==============+++END ADMIN+++============//
+//OTHER
+Route::get('/tahun/get', 'TahunAnggaranController@get');
+Route::get('/satker/get', 'SatuanKerjaController@get');
+Route::get('/program/get', 'ProgramController@get');
 
 Auth::routes();
 //==OVERIDE LOGOUT==//
@@ -123,75 +211,17 @@ Route::get('/logout', function(){
     return redirect('/login');
 });
 
-Route::get('/tes','ProgramController@coba');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
-//==============+++START PPK+++============//
-Route::get('/dashboard-ppk', 'SppController@showPage');
-Route::get('/ppk/show', 'SppController@show');
 
-Route::get('/spp/{id}','SppController@getOne');
-Route::post('/spp','SppController@store');
-//==============+++END PPK+++============//
 
-//==============+++START PPSPM+++============//
-Route::get('/dashboard-ppspm', function () {
-    return view('pages.ppspm.dashboard');
-});
-Route::get('/dipa-spm', 'SpmController@index');
-Route::get('/spm/{id}', 'SpmController@show');
-Route::put('/spm/{id}', 'SpmController@store');
 
-Route::get('/dipa-sp2d', 'Sp2dController@index');
-Route::get('/sp2d/{id}', 'Sp2dController@show');
-Route::put('/sp2d/{id}', 'Sp2dController@store');
-//==============+++END PPSPM+++============//
 
-//==============+++START OPERATOR SIMAK+++============//
-Route::get('/dashboard-simak', function () {
-    return view('pages.operator_simak.dashboard');
-});
 
-Route::get('/dashboard-simak/show', 'SimakController@show');
-Route::get('/sinkronisasi-simak/{id}', 'SimakController@showdetail');
-Route::post('/sinkronisasi-simak', 'SimakController@store');
 
-//==============+++END OPERATOR SIMAK+++============//
 
-//==============+++START OPERATOR SAIBA+++============//
-Route::get('/dashboard-saiba', function () {
-    return view('pages.operator_saiba.dashboard');
-});
 
-Route::get('/dashboard-saiba/show', 'SaibaController@show');
-Route::get('/sinkronisasi-saiba/{id}', 'SaibaController@showdetail');
-Route::post('/sinkronisasi-saiba', 'SaibaController@store');
-//==============+++END OPERATOR SAIBA+++============//
 
-//==============+++START OPERATOR PERLENGKAPAN+++============//
-Route::get('/dashboard-perlengkapan', function () {
-    return view('pages.operator_perlengkapan.dashboard');
-});
-Route::get('/dashboard-perlengkapan/show', 'PerlengkapanController@show');
-Route::get('/sinkronisasi-perlengkapan/{id}', 'PerlengkapanController@showdetail');
-Route::post('/sinkronisasi-perlengkapan', 'PerlengkapanController@store');
-//==============+++END OPERATOR PERLENGKAPAN+++============//
 
-//==============+++START KPA+++============//
-Route::get('/dashboard-kpa', function () {
-    return view('pages.kpa.dashboard');
-});
-Route::get('/detail', function () {
-    return view('pages.kpa.detail');
-});
-Route::get('/monitoring', function () {
-    return view('pages.kpa.monitoring');
-});
-//==============+++END KPA+++============//
 
-//==============+++START Bendahara+++============//
-Route::get('/dashboard-bendahara', function () {
-    return view('pages.bendahara.dashboard');
-});
-Route::get('/dipa-bendahara/{jenis_pembayaran}', 'PembayaranController@bendahara');
-//==============+++END Bendahara+++============//
+

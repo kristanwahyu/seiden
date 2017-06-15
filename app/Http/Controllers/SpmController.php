@@ -95,24 +95,40 @@ class SpmController extends Controller
     }
     public function store(Request $request, $id){
         $rules = [
-            'no_spm'   => 'required|numeric',
-            'nilai_spm'  => 'required|numeric',
+            'no_spm'   => 'required',
+            'nilai_spm'  => 'required',
             'addDate' => 'required|date',
             'tambah_keterangan' => 'required',
-         ];
+        ];
+
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails())
         {
             return response()->json(['errors' => $validator->getMessageBag()->toArray()],400);
         }
+
+        $number = $this->clearComma($request->nilai_spm);
+
         $pmb=Pmb::find($id);
         $spm=new SPM;
         $spm->dipa_spm_no=$request->no_spm;
-        $spm->dipa_spm_nilai=$request->nilai_spm;
+        $spm->dipa_spm_nilai=$number;
         $spm->dipa_spm_tanggal=date('Y-m-d',strtotime($request->addDate))." 00:00:00";
         $spm->dipa_spm_keterangan=$request->tambah_keterangan;
         $pmb->PembayaranCheckSPM()->save($spm);
-        return response()->json(["status"=>"success"],200);
 
+        return response()->json(["status"=>"success"],200);
+    }
+
+    public function clearComma($number)
+    {
+        $arr_ammount = explode('.',$number);
+        $count = count($arr_ammount);
+        $ammount = "";
+        for ($i = 0; $i < $count; $i++){
+            $ammount .= $arr_ammount[$i];
+        }
+
+        return $ammount;
     }
 }
