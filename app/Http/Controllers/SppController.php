@@ -29,6 +29,7 @@ class SppController extends Controller
 		->join('tbl_dipa_kegiatan', 'tbl_dipa_kegiatan.dipa_id_kegiatan','=','tbl_dipa_output.dipa_id_kegiatan')
 		->join('tbl_dipa_program', 'tbl_dipa_program.dipa_id_program','=','tbl_dipa_kegiatan.dipa_id_program')
 		->leftJoin('tbl_dipa_pmb_check_spp', 'tbl_dipa_pmb_check_spp.dipa_pembayaran_id','=','tbl_dipa_pembayaran.dipa_pembayaran_id')
+		->leftJoin('tbl_satuan_kerja', 'tbl_satuan_kerja.dipa_id_satuan_kerja','=','tbl_dipa_program.dipa_id_satuan_kerja')
 		->whereNull('tbl_dipa_pmb_check_spp.dipa_pembayaran_id')
 		->where('tbl_dipa_program.dipa_id_satuan_kerja',Auth::user()->dipa_id_satuan_kerja)
     ->get([
@@ -41,6 +42,7 @@ class SppController extends Controller
     			tbl_dipa_akun_detail.dipa_satuan
     		) as rincian'),
         DB::raw('CONCAT(
+        	tbl_satuan_kerja.dipa_kode_satuan_kerja,".",
         	tbl_dipa_program.dipa_kode_program,".",
           tbl_dipa_kegiatan.dipa_kode_kegiatan,".",
           tbl_dipa_output.dipa_kode_output,".",
@@ -61,18 +63,19 @@ class SppController extends Controller
 
 	public function getOne($id){
 		$data = DB::table('tbl_dipa_program')
-                ->leftJoin('tbl_dipa_kegiatan', 'tbl_dipa_program.dipa_id_program', '=', 'tbl_dipa_kegiatan.dipa_id_program')
-                ->leftJoin('tbl_dipa_output', 'tbl_dipa_kegiatan.dipa_id_kegiatan', '=', 'tbl_dipa_output.dipa_id_kegiatan')
-                ->leftJoin('tbl_dipa_sub_output', 'tbl_dipa_output.dipa_id_output', '=', 'tbl_dipa_sub_output.dipa_id_output')
-                ->leftJoin('tbl_dipa_komponen','tbl_dipa_sub_output.dipa_id_sub_output', '=', 'tbl_dipa_komponen.dipa_id_sub_output')
-                ->leftJoin('tbl_dipa_sub_komponen','tbl_dipa_komponen.dipa_id_komponen', '=', 'tbl_dipa_sub_komponen.dipa_id_komponen')
-                ->leftJoin('tbl_dipa_akun','tbl_dipa_sub_komponen.dipa_id_sub_komponen', '=', 'tbl_dipa_akun.dipa_id_sub_komponen')
-                ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
-                ->leftJoin('tbl_dipa_pembayaran','tbl_dipa_akun_detail.dipa_id_detail_akun', '=', 'tbl_dipa_pembayaran.dipa_id_detail_akun')
-								->leftJoin('tbl_tahun_anggaran', 'tbl_tahun_anggaran.dipa_id_tahun_anggaran','=','tbl_dipa_program.dipa_id_tahun_anggaran')
+                ->join('tbl_dipa_kegiatan', 'tbl_dipa_program.dipa_id_program', '=', 'tbl_dipa_kegiatan.dipa_id_program')
+                ->join('tbl_dipa_output', 'tbl_dipa_kegiatan.dipa_id_kegiatan', '=', 'tbl_dipa_output.dipa_id_kegiatan')
+                ->join('tbl_dipa_sub_output', 'tbl_dipa_output.dipa_id_output', '=', 'tbl_dipa_sub_output.dipa_id_output')
+                ->join('tbl_dipa_komponen','tbl_dipa_sub_output.dipa_id_sub_output', '=', 'tbl_dipa_komponen.dipa_id_sub_output')
+                ->join('tbl_dipa_sub_komponen','tbl_dipa_komponen.dipa_id_komponen', '=', 'tbl_dipa_sub_komponen.dipa_id_komponen')
+                ->join('tbl_dipa_akun','tbl_dipa_sub_komponen.dipa_id_sub_komponen', '=', 'tbl_dipa_akun.dipa_id_sub_komponen')
+                ->join('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
+                ->join('tbl_satuan_kerja', 'tbl_satuan_kerja.dipa_id_satuan_kerja','=','tbl_dipa_program.dipa_id_satuan_kerja')
+                ->join('tbl_dipa_pembayaran','tbl_dipa_akun_detail.dipa_id_detail_akun', '=', 'tbl_dipa_pembayaran.dipa_id_detail_akun')
+				->join('tbl_tahun_anggaran', 'tbl_tahun_anggaran.dipa_id_tahun_anggaran','=','tbl_dipa_program.dipa_id_tahun_anggaran')
                 ->where('tbl_dipa_pembayaran.dipa_pembayaran_id',$id)
                 ->get();
-        
+
   	return view('pages.ppk.spp', compact("data"));
 	}
 
