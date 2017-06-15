@@ -94,24 +94,41 @@ class Sp2dController extends Controller
     }
     public function store(Request $request, $id){
         $rules = [
-            'no_sp2d'   => 'required|numeric',
-            'nilai_sp2d'  => 'required|numeric',
+            'no_sp2d'   => 'required',
+            'nilai_sp2d'  => 'required',
             'addDate' => 'required|date',
             'tambah_keterangan' => 'required',
          ];
+
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails())
         {
             return response()->json(['errors' => $validator->getMessageBag()->toArray()],400);
         }
+
+        $number = $this->clearComma($request->nilai_sp2d);
+
         $pmb=Pmb::find($id);
         $sp2d=new SP2D;
         $sp2d->dipa_sp2d_no=$request->no_sp2d;
-        $sp2d->dipa_sp2d_nilai=$request->nilai_sp2d;
+        $sp2d->dipa_sp2d_nilai=$number;
         $sp2d->dipa_sp2d_tanggal=date('Y-m-d',strtotime($request->addDate))." 00:00:00";
         $sp2d->dipa_sp2d_keterangan=$request->tambah_keterangan;
         $pmb->PembayaranCheckSP2D()->save($sp2d);
+
         return response()->json(["status"=>"success"],200);
 
+    }
+
+    public function clearComma($number)
+    {
+        $arr_ammount = explode('.',$number);
+        $count = count($arr_ammount);
+        $ammount = "";
+        for ($i = 0; $i < $count; $i++){
+            $ammount .= $arr_ammount[$i];
+        }
+
+        return $ammount;
     }
 }

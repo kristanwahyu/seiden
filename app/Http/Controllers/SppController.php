@@ -78,12 +78,12 @@ class SppController extends Controller
 
 	public function store(Request $request){
 		$this->validate($request, [
-      'no_spp'	    => 'required',
-      'nilai_spp'      => 'required',
-      'addDate' => 'required',
-      'tambah_keterangan'  => 'required',
-      'id'  => 'required',
-  	]);
+			'no_spp'	    => 'required',
+			'nilai_spp'      => 'required',
+			'addDate' => 'required',
+			'tambah_keterangan'  => 'required',
+			'id'  => 'required',
+		]);
 
 		if($request->check_simak=="true"){
 			$simak="1";
@@ -112,21 +112,35 @@ class SppController extends Controller
 			$perlengkapan="0";
 		}
 
-    DipaPembayaranCheckSPP::create([
-      'dipa_spp_no'      		=> $request->no_spp,
-      'dipa_spp_nilai'      => $request->nilai_spp,
-      'dipa_spp_tanggal' 		=> $request->addDate,
-      'dipa_spp_keterangan'   		=> $request->tambah_keterangan,
-      'dipa_sinkronisasi_simak'   => $simak,
-      'dipa_sinkronisasi_saiba'   => $saiba,
-      'dipa_sinkronisasi_perlengkapan'   => $perlengkapan,
-      'dipa_pembayaran_id'   			=> $request->id,
-    ]);
+		$number = $this->clearComma($request->nilai_spp);
 
-    return response()->json(["status"=>"success"],200);
+		DipaPembayaranCheckSPP::create([
+		'dipa_spp_no'      		=> $request->no_spp,
+		'dipa_spp_nilai'      => $number,
+		'dipa_spp_tanggal' 		=> $request->addDate,
+		'dipa_spp_keterangan'   		=> $request->tambah_keterangan,
+		'dipa_sinkronisasi_simak'   => $simak,
+		'dipa_sinkronisasi_saiba'   => $saiba,
+		'dipa_sinkronisasi_perlengkapan'   => $perlengkapan,
+		'dipa_pembayaran_id'   			=> $request->id,
+		]);
+
+    	return response()->json(["status"=>"success"],200);
 	}
 
 	public function makeDataTable($data){
 	    return Datatables::collection($data)->addIndexColumn()->make(true);
-	  }
+	}
+
+	public function clearComma($number)
+    {
+        $arr_ammount = explode('.',$number);
+        $count = count($arr_ammount);
+        $ammount = "";
+        for ($i = 0; $i < $count; $i++){
+            $ammount .= $arr_ammount[$i];
+        }
+
+        return $ammount;
+    }
 }

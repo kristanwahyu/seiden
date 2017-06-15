@@ -289,7 +289,7 @@ $(function(){
                     }
                     return status.replace();
                 },
-                width: "10%",
+                width: "5%",
                 orderable: false,
                 searchable: false
             },
@@ -307,7 +307,7 @@ $(function(){
                                 <button class='btn btn-danger btn-sm hapus-user' data-toggle='modal' data-id='${data['dipa_id_pengguna']}' ${param}><i class='fa fa-trash'></i> Hapus</button>`;
                     return actions.replace();
                 },
-                width: "12.3%",
+                width: "13%",
                 orderable: false,
                 searchable: false
             }

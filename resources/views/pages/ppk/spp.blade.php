@@ -168,85 +168,94 @@
 @push('script')
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('vendor/cleave.js/cleave.min.js') }}"></script>
 
 <script>
-$('.nilai').text(function(index, value) {
+$(function () {
+    //cleave.js number format
+    var pmbNilai = new Cleave('#nilai_spp', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        numeralDecimalMark: ',',
+        delimiter: '.'
+    });
+
+    $('.nilai').text(function(index, value) {
         return value
         .replace(/\D/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
         ;
     });
 
-$(function () {
     $('.datepicker').datepicker({
       autoclose: 'true',
       todayBtn: 'linked',
       todayHighlight: 'true',
       format: 'dd-mm-yyyy'
     });
-});
 
-$("#btn-simpan").click(function(){
-      swal({
-          title: "Apakah Anda Yakin ?",
-          text: "Data Output Ini Akan Disimpan",
-          type: "info",
-          showCancelButton: true,
-          confirmButtonColor: "#00a65a",
-          confirmButtonText: "Ya, Yakin !",
-          cancelButtonText: "Tidak, Batalkan !",
-          closeOnConfirm: false,
-          closeOnCancel: false,
-          showLoaderOnConfirm: true
-      },
-      function(isConfirm){
-          if (isConfirm) {
-              $.ajax({
-                  url : "/spp",
-                  type : "POST",
-                  data : {
-                      "_token": "{{ csrf_token() }}",
-                      "no_spp" : $("#no_spp").val(),
-                      "nilai_spp" : $("#nilai_spp").val(),
-                      "addDate" : $("#date").val(),
-                      "tambah_keterangan" : $("#tambah_keterangan").val(),
-                      "check_simak" : $("#check_simak").is(":checked"),
-                      "check_saiba" : $("#check_saiba").is(":checked"),
-                      "check_perlengkapan" : $("#check_perlengkapan").is(":checked"),
-                      "id" : $("#id").val()
-                  },
-                  success : function(data, status){
-                      if(status=="success"){
-                          setTimeout(function(){
-                              swal({
-                                  title: "Sukses",
-                                  text: "Data Tersimpan!",
-                                  type: "success"
-                                  });
-                              }, 1000);
-                          
-                      }
-                      $('#modal-tambah').modal('hide');
-                      window.location.replace("/dashboard-ppk");
-                  },
-                  error: function (xhr, ajaxOptions, thrownError) {
-                      setTimeout(function(){
-                          swal("Error Saving!", "Please try again", "error");
-                      }, 1000);
-                      $('#modal-tambah').modal('hide');
-                  }
-              });
-          } else {
-          swal('Dibatalkan', 'Data Output Batal Simpan :)', 'error');
-          $('#modal-tambah').modal('hide');
-          }
-      });
-  });
+    $("#btn-simpan").click(function(){
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Output Ini Akan Disimpan",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/spp",
+                    type : "POST",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "no_spp" : $("#no_spp").val(),
+                        "nilai_spp" : $("#nilai_spp").val(),
+                        "addDate" : $("#date").val(),
+                        "tambah_keterangan" : $("#tambah_keterangan").val(),
+                        "check_simak" : $("#check_simak").is(":checked"),
+                        "check_saiba" : $("#check_saiba").is(":checked"),
+                        "check_perlengkapan" : $("#check_perlengkapan").is(":checked"),
+                        "id" : $("#id").val()
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    });
+                                }, 1000);
+                            
+                        }
+                        $('#modal-tambah').modal('hide');
+                        window.location.replace("/dashboard-ppk");
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error Saving!", "Please try again", "error");
+                        }, 1000);
+                        $('#modal-tambah').modal('hide');
+                    }
+                });
+            } else {
+                swal('Dibatalkan', 'Data Output Batal Simpan :)', 'error');
+                $('#modal-tambah').modal('hide');
+            }
+        });
+    });
 
-  function formatNumber(x) {
+    function formatNumber(x) {
     return x.replace(/\D/g, "")
     .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }
+    }
+});
 </script>
 @endpush
