@@ -442,11 +442,11 @@ $(function(){
             if($('input[name="check1"]').val() == "" || $('input[name="check2"]').val() == ""  || $('input[name="check3"]').val() == ""  || $('input[name="check4"]').val() == ""  || $('input[name="check5"]').val() == ""  || $('input[name="check6"]').val() == ""  || $('input[name="check7"]').val() == "") {
                 return swal("Maaf Dokumen Belum Lengkap, Anda Tidak Bisa Menyimpan Data Ini, Silahkan Di Draft Terlebih Dahulu");
             }
-            var text_sweet = 'Data Pembayaran ini akan di simpan. dan tidak dapat di rubah lagi';
+            var text_sweet = 'Data Pembayaran ini akan di simpan. dan tidak dapat di ubah lagi';
             var tanggal = '{{date("Y-m-d")}}';
             var status = '1';
         } else {
-            var text_sweet = 'Data Pembayaran ini akan di simpan di draft, dan dapat di rubah lagi';
+            var text_sweet = 'Data Pembayaran ini akan di simpan di draft, dan dapat di ubah lagi';
             var tanggal = null;
             var status = '0';
         }
