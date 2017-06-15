@@ -126,56 +126,66 @@
 <script src="{{ asset('vendor/cleave.js/cleave.min.js') }}"></script>
 
 <script>
-'use strict';
+$(function(){
+    'use strict';
 
-var data = [
-  [
-      "1",
-      "123.456.789.001",
-      "Penbayaran Dana - Belanja Gaji - 2 Orang",
-      "2 Orang",
-      "Rp. 1.500.000",
-      "Rp. 3.000.000",
-      "Rp. 3.000.000",
-      `<div class="progress">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50"
-        aria-valuemin="0" aria-valuemax="100" style="width:50%">
-          50%
-        </div>
-      </div>`,
-      `<a href="{{ url('/monitoring') }}" class="btn btn-success" role="button">Monitoring</a>`
-  ],
-  [
-      "2",
-      "123.456.789.002",
-      "Penbayaran Dana - Belanja Non Gaji - 3 Orang",
-      "3 Orang",
-      "Rp. 500.000",
-      "Rp. 1.500.000",
-      "Rp. 1.500.000",
-      `<div class="progress">
-        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="75"
-        aria-valuemin="0" aria-valuemax="100" style="width:75%">
-          75%
-        </div>
-      </div>`,
-      `<a href="{{ url('/monitoring') }}" class="btn btn-success" role="button">Monitoring</a>`
-  ],
-];
+    var data = [
+    [
+        "1",
+        "123.456.789.001",
+        "Penbayaran Dana - Belanja Gaji - 2 Orang",
+        "2 Orang",
+        "Rp. 1.500.000",
+        "Rp. 3.000.000",
+        "Rp. 3.000.000",
+        `<div class="progress">
+            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50"
+            aria-valuemin="0" aria-valuemax="100" style="width:50%">
+            50%
+            </div>
+        </div>`,
+        `<a href="{{ url('/monitoring') }}" class="btn btn-success" role="button">Monitoring</a>`
+    ],
+    [
+        "2",
+        "123.456.789.002",
+        "Penbayaran Dana - Belanja Non Gaji - 3 Orang",
+        "3 Orang",
+        "Rp. 500.000",
+        "Rp. 1.500.000",
+        "Rp. 1.500.000",
+        `<div class="progress">
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="75"
+            aria-valuemin="0" aria-valuemax="100" style="width:75%">
+            75%
+            </div>
+        </div>`,
+        `<a href="{{ url('/monitoring') }}" class="btn btn-success" role="button">Monitoring</a>`
+    ],
+    ];
 
-$('#myTable').DataTable({
-  "data": data,
-  "columns" : [
-    { "title": "NO", "width": "1%" },
-    { "title": "KODE" },
-    { "title": "RINCIAN" },
-    { "title": "VOL" },
-    { "title": "NILAI" },
-    { "title": "TOTAL" },
-    { "title": "DIBAYAR" },
-    { "title": "PROGRES" },
-    { "title": "ACTION", "width": "1%", "orderable": false }
-  ]
+    $('#myTable').DataTable({
+    "data": data,
+    "columns" : [
+        { "title": "NO", "width": "1%" },
+        { "title": "KODE" },
+        { "title": "RINCIAN" },
+        { "title": "VOL" },
+        { "title": "NILAI" },
+        { "title": "TOTAL" },
+        { "title": "DIBAYAR" },
+        { "title": "PROGRES" },
+        { "title": "ACTION", "width": "1%", "orderable": false }
+    ]
+    });
+
+    //btn detail box
+    $('.btn-detail').click(function(){
+        $('.detail-box').slideToggle(200);
+        $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
+        $(this).siblings('span').toggleClass('btn-detail-open-text btn-detail-close-text');
+        $(this).toggleClass('btn-active');
+    });
 });
 </script>
 @endpush
