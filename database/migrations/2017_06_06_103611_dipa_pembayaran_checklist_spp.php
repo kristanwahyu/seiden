@@ -13,8 +13,8 @@ class DipaPembayaranChecklistSpp extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_dipa_pembayaran_checklist_spp', function (Blueprint $table) {
-            $table->increments('dipa_pembayaran_checklist_spp_id');
+        Schema::create('tbl_dipa_pmb_check_spp', function (Blueprint $table) {
+            $table->increments('dipa_pmb_check_spp_id');
             $table->string('dipa_spp_no',100);
             $table->double('dipa_spp_nilai');
             $table->datetime('dipa_spp_tanggal');

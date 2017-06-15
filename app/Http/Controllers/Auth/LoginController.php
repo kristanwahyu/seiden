@@ -44,22 +44,33 @@ class LoginController extends Controller
 
     protected function authenticated($request, $user)
     {
-        if($user->dipa_jenisUser == '1' || $user->dipa_jenisUser == '9' ) {
-            return redirect()->intended('/dashboard-admin');
-        } elseif ($user->dipa_jenisUser == '2') {
-            return redirect()->intended('/kpa');
-        } elseif ($user->dipa_jenisUser == '3') {
-            return redirect()->intended('/ppk');
-        } elseif ($user->dipa_jenisUser == '4') {
-            return redirect()->intended('/satker');
-        } elseif ($user->dipa_jenisUser == '5') {
-            return redirect()->intended('/ppsm');
-        } elseif ($user->dipa_jenisUser == '6') {
-            return redirect()->intended('/sima'); 
-        } elseif ($user->dipa_jenisUser == '7') {
-            return redirect()->intended('/siba');
-        } else {
-            return redirect()->intended('/bendahara');
+        switch ($user->dipa_jenis_pengguna) {
+            case "1":
+                return redirect()->intended('/dashboard');
+                break;
+            case "2":
+                return redirect()->intended('/dashboard-kpa');
+                break;
+            case "3":
+                return redirect()->intended('/dashboard-ppk');
+                break;
+            case "4":
+                return redirect()->intended('/dashboard-satker');
+                break;
+            case "5":
+                return redirect()->intended('/dashboard-ppspm');
+                break;
+            case "6":
+                return redirect()->intended('/dashboard-simak');
+                break;
+            case "7":
+                return redirect()->intended('/dashboard-saiba');
+                break;
+            case "8":
+                return redirect()->intended('/dashboard-perlengkapan');
+                break;
+            default:
+                return redirect()->intended('/dashboard-bendahara');
         }
     }
 }

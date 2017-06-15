@@ -21,7 +21,7 @@
             <li class="active-bread">User</li>
         </ul>
     </div>
-    {{-- End Breadcrumb --}} 
+    {{-- End Breadcrumb --}}
 
     <div class="container-fluid">
         <div class="row">
@@ -90,16 +90,18 @@
                                       <option value="2">KPA</option>
                                       <option value="3">PPK</option>
                                       <option value="4">Staf Pengelolah / Satuan Kerja</option>
-                                      <option value="5">PPSM</option>
-                                      <option value="6">Operator SIMA</option>
-                                      <option value="7">Operator SIBA</option>
+                                      <option value="5">PPSPM</option>
+                                      <option value="6">Operator SIMAK</option>
+                                      <option value="7">Operator SAIBA</option>
+                                      <option value="8">Operator Perlengkapan</option>
+                                      <option value="9">Bendahara</option>
                                     </select>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label class="col-sm-3 control-label" id="label_satker" style="display:none">Satuan Kerja</label>
                                   <div class="col-sm-8">
-                                    <select id="tambah_satker_user" class="form-control" data-style="btn-white" disabled style="display:none">
+                                    <select id="tambah_satker_user" class="form-control" data-style="btn-white" style="display:none">
                                       {{-- ajax satker --}}
                                     </select>
                                   </div>
@@ -117,7 +119,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="btn-simpan">Simpan</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                <button type="reset" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
       </div>
@@ -164,6 +166,14 @@
                                 </select>
                                 </div>
                             </div>
+                             <div class="form-group">
+                                  <label class="col-sm-3 control-label" id="ubah_label_satker" style="display:none">Satuan Kerja</label>
+                                  <div class="col-sm-8">
+                                    <select id="ubah_satker_user" class="form-control" data-style="btn-white" style="display:none">
+                                      {{-- ajax satker --}}
+                                    </select>
+                                  </div>
+                              </div>
                             <div class="form-group">
                               <label class="col-sm-3 control-label">Status</label>
                               <div class="col-sm-8">
@@ -201,10 +211,10 @@ $(function(){
             url : "/user/show"
         },
         "columns": [
-            { 
+            {
                 title: "NO",
-                data: "DT_Row_Index", 
-                name: "DT_Row_Index", 
+                data: "DT_Row_Index",
+                name: "DT_Row_Index",
                 orderable: false,
                 searchable: false,
                 width: "1%"
@@ -237,15 +247,27 @@ $(function(){
                     } else if (data['dipa_jenis_pengguna'] == 4) {
                         status = '<div class="text-center">STAF (SATKER)</div>';
                     } else if (data['dipa_jenis_pengguna'] == 5) {
-                        status = '<div class="text-center">PPSM</div>';
+                        status = '<div class="text-center">PPSPM</div>';
                     } else if (data['dipa_jenis_pengguna'] == 6) {
-                        status = '<div class="text-center">OP. SIMA</div>';
+                        status = '<div class="text-center">OP. SIMAK</div>';
+                    } else if (data['dipa_jenis_pengguna'] == 7) {
+                        status = '<div class="text-center">OP. SAIBA</div>';
+                    } else if (data['dipa_jenis_pengguna'] == 8) {
+                        status = '<div class="text-center">OP. Perlengkapan</div>';
                     } else {
-                        status = '<div class="text-center">OP. SIBA</div>';
+                        status = '<div class="text-center">Bendahara</div>';
                     }
                     return status.replace();
                 },
                 width: "10%",
+                orderable: false
+            },
+
+            {
+                title: 'SATUAN KERJA',
+                data: 'satuan_kerja.dipa_satuan_kerja',
+                defaultContent: "-",
+                name: 'satuanKerja.dipa_satuan_kerja',
                 orderable: false
             },
             {
@@ -263,16 +285,21 @@ $(function(){
                     return status.replace();
                 },
                 width: "10%",
-                orderable: false
+                orderable: false,
+                searchable: false
             },
-            {  
+            {
                 title: '<div class="text-center">ACTION</div>',
                 data: null,
                 name: 'action',
                 render: function (data) {
                     var actions = '';
+                    var param = '';
+                    if (data['dipa_jenis_pengguna'] == 1) {
+                        param = 'disabled';
+                    }
                     actions = `<button class='btn btn-warning btn-sm ubah-user' data-toggle='modal' data-id='${data['dipa_id_pengguna']}' href='#modal-ubah'><i class='fa fa-pencil'></i> Ubah</button>
-                                <button class='btn btn-danger btn-sm hapus-user' data-toggle='modal' data-id='${data['dipa_id_pengguna']}' href='#modal-ubah'><i class='fa fa-trash'></i> Hapus</button>`;
+                                <button class='btn btn-danger btn-sm hapus-user' data-toggle='modal' data-id='${data['dipa_id_pengguna']}' ${param}><i class='fa fa-trash'></i> Hapus</button>`;
                     return actions.replace();
                 },
                 width: "12.3%",
@@ -288,14 +315,26 @@ $(function(){
         if($(this).val() == 3 || $(this).val() == 4) {
             $('#label_satker').show(200);
             $('#tambah_satker_user').show(200);
-            $('#tambah_satker_user').removeAttr('disabled');
             if(satker == ""){
-                loadSatker($('#tambah_satker_user'));
+                loadSatker($('#tambah_satker_user', null));
             }
         } else {
             $('#label_satker').hide(200);
             $('#tambah_satker_user').hide(200);
-            $('#tambah_satker_user').attr('disabled', true);
+            $('#tambah_satker_user').val(null);
+        }
+    });
+    $("#ubah_jenis_user").change(function(){
+        if($(this).val() == 3 || $(this).val() == 4) {
+            $('#ubah_label_satker').show(200);
+            $('#ubah_satker_user').show(200);
+            if(satker == ""){
+                loadSatker($('#ubah_satker_user'), null);
+            }
+        } else {
+            $('#ubah_label_satker').hide(200);
+            $('#ubah_satker_user').hide(200);
+            $('#ubah_satker_user').val(null);
         }
     });
     //SWEET TAMBAH
@@ -323,7 +362,8 @@ $(function(){
                         "nama_user" : $("#tambah_nama_lengkap").val(),
                         "password" : $("#tambah_password").val(),
                         "status" : $('input[name=tambah_status]:checked', '#formTambah').val(),
-                        "jenis" : $("#tambah_jenis_user").val()
+                        "jenis" : $("#tambah_jenis_user").val(),
+                        "satker_user" : $('#tambah_satker_user').val()
                     },
                     success : function(data, status){
                         if(status=="success"){
@@ -332,12 +372,13 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
                                 }, 1000);
                         }
+                        $('#modal-tambah input select').val('');
                         $('#modal-tambah').modal('hide');
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
@@ -353,7 +394,7 @@ $(function(){
         });
     });
 
-    //SWEET UBAH
+    // UBAH
     $("#myTable").on('click','.ubah-user', function(){
         $.get("/user/get/"+$(this).data('id'), function(data, status){
             if(status == 'success'){
@@ -367,10 +408,25 @@ $(function(){
                     $('#ubah_aktif').prop('checked', false);
                     $("#ubah_tidak_aktif").prop('checked', true);
                 }
+                if(data['dipa_jenis_pengguna'] == 1) {
+                    $('#ubah_tidak_aktif').prop('disabled', true);
+                    $("#ubah_aktif").prop('disabled', true);
+                }
                 $("#id_binding").val(data['dipa_id_pengguna']);
+                if(data['dipa_jenis_pengguna'] == 3 || data['dipa_jenis_pengguna'] == 4) {
+                    $('#ubah_label_satker').show(200);
+                    $('#ubah_satker_user').show(200);
+                    loadSatker($('#ubah_satker_user'),data['dipa_id_satuan_kerja']);
+                    //$("#ubah_satker_user").append('<option value="'+data['dipa_id_satuan_kerja']+'" selected>'+data['satuan_kerja']['dipa_kode_satuan_kerja']+' - '+data['satuan_kerja']['dipa_satuan_kerja']+'</option>');
+                } else {
+                    $('#ubah_label_satker').hide(200);
+                    $('#ubah_satker_user').hide(200);
+                    $('#ubah_satker_user').val('');
+                }
+
             }
         });
-    }); 
+    });
 
     $("#btn-ubah-simpan").click(function(){
         swal({
@@ -395,7 +451,8 @@ $(function(){
                         "username" : $("#ubah_username").val(),
                         "nama_user" : $("#ubah_nama_lengkap").val(),
                         "status" : $('input[name=ubah_status]:checked', '#ubahForm').val(),
-                        "jenis" : $("#ubah_jenis_user").val()
+                        "jenis" : $("#ubah_jenis_user").val(),
+                        "satker_user" : $('#ubah_satker_user').val()
                     },
                     success : function(data, status){
                         if(status=="success"){
@@ -404,7 +461,7 @@ $(function(){
                                     title: "Sukses",
                                     text: "Data Tersimpan!",
                                     type: "success"
-                                    }, 
+                                    },
                                     function(){
                                         table.ajax.reload();
                                     });
@@ -425,19 +482,89 @@ $(function(){
         });
     });
 
+//HAPUS
+$("#myTable").on('click','.hapus-user', function(){
+    var data = $(this).data('id');
+    swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data user akan di hapus PERMANEN ! ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "red",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/user/delete/"+data,
+                    type : "delete",
+                    data : {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Terhapus!",
+                                    type: "success"
+                                    },
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+            swal('Dibatalkan', 'Data tidak dihapus :)', 'error');
+            }
+        });
 });
 
-function loadSatker(e){
+    $('#modal-tambah').on('hidden.bs.modal', function (e) {
+      $(this)
+        .find("input[type='text'], select")
+        .val('')
+        .end()
+    });
+
+});
+
+function loadSatker(e,f){
     $.get("/satuan-kerja/get", function(data, status){
         if(status == 'success') {
-            satker += "<option selected>- Pilih Satuan Kerja -</option>";
-            for(var i = 0; i < data.length; i++) {
-                satker += '<option value="'+data[i]['dipa_idSK']+'">'+data[i]['dipa_kodeSK']+' - '+data[i]['dipa_namaSK']+'</option>';
+            if(f == null){
+                satker += "<option selected>- Pilih Satuan Kerja -</option>";
+                for(var i = 0; i < data.length; i++) {
+                    satker += '<option value="'+data[i]['dipa_id_satuan_kerja']+'">'+data[i]['dipa_kode_satuan_kerja']+' - '+data[i]['dipa_satuan_kerja']+'</option>';
+                }
+                e.append(satker);
+            } else {
+                var satker2;
+                for(var i = 0; i < data.length; i++) {
+                    if(data[i]['dipa_id_satuan_kerja']==f){
+                        satker2 += '<option value="'+data[i]['dipa_id_satuan_kerja']+'" selected>'+data[i]['dipa_kode_satuan_kerja']+' - '+data[i]['dipa_satuan_kerja']+'</option>';
+                    } else {
+                        satker2 += '<option value="'+data[i]['dipa_id_satuan_kerja']+'">'+data[i]['dipa_kode_satuan_kerja']+' - '+data[i]['dipa_satuan_kerja']+'</option>';
+                    }
+                }
+                e.empty();
+                e.append(satker2);
             }
-            e.append(satker);
+
+
         }
     });
 }
-
 </script>
 @endpush

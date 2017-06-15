@@ -14,6 +14,6 @@ class DipaKomponen extends Model
         return $this->belongsTo('App\Model\DipaSubOutput','dipa_id_sub_output');
     }
     public function subKomponen(){
-        return $this->hasMany('App\Model\DipaKomponen','dipa_id_komponen');
+        return $this->hasMany('App\Model\DipaSubKomponen','dipa_id_komponen');
     }
 } 

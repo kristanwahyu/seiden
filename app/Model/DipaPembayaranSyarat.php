@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class DipaPembayaranSyarat extends Model
 {
-    protected $primaryKey = 'dipa_pembayaran_syarat_id';
+    protected $primaryKey = 'dipa_pmb_syarat_id';
     protected $guarded = ['updated_at'];
-    protected $table = 'tbl_dipa_pembayaran_syarat';
+    protected $table = 'tbl_dipa_pmb_syarat';
 
-    public function pembayaransyarat(){
+    public function pembayaran(){
         return $this->belongsTo('App\Model\DipaPembayaran','dipa_pembayaran_id');
     }
 }

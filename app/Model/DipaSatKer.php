@@ -13,4 +13,8 @@ class DipaSatKer extends Model
      public function program(){
         return $this->hasMany('App\Model\DipaProgram','dipa_id_satuan_kerja');
     }
+
+    public function user(){
+        return $this->hasMany('App\Model\User','dipa_id_satuan_kerja');
+    }
 }

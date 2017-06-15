@@ -19,11 +19,11 @@
         <ul class="breadcrumb">
             <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
             <li><a href="{{ url('/dipa/dipa-program') }}">DIPA</a></li>
-            <li><a href="{{ url('/dipa/dipa-kegiatan') }}">PRG0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-output') }}">KGT0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-suboutput') }}">OP0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-komponen') }}">SOP0001</a></li>
-            <li class="active-bread">KP0001</li>
+            <li><a href="{{ url('/dipa/dipa-kegiatan/'.$sub_output['output']['kegiatan']['program']['dipa_id_program']) }}">{{$sub_output['output']['kegiatan']['program']['dipa_kode_program']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-output/'.$sub_output['output']['kegiatan']['dipa_id_kegiatan']) }}">{{$sub_output['output']['kegiatan']['dipa_kode_kegiatan']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-suboutput/'.$sub_output['output']['dipa_id_output']) }}">{{$sub_output['output']['dipa_kode_output']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-komponen/'.$sub_output['dipa_id_sub_output']) }}">{{$sub_output['dipa_kode_sub_output']}}</a></li>
+            <li class="active-bread">{{$dipa_kode_komponen}}</li>
         </ul>
     </div>
     {{-- End Breadcrumb --}}
@@ -46,42 +46,42 @@
                                       <tr>
                                           <td>KODE / SATUAN KERJA</td>
                                           <td>:</td>
-                                          <td>SAT0001 / SATUAN KERJA-1</td>
+                                          <td>{{$sub_output['output']['kegiatan']['program']['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$sub_output['output']['kegiatan']['program']['satuan_kerja']['dipa_satuan_kerja']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA PROGRAM</td>
+                                          <td>PROGRAM</td>
                                           <td>:</td>
-                                          <td>PRG0001 / PROGRAM1</td>
+                                          <td>{{$sub_output['output']['kegiatan']['program']['dipa_kode_program']}} / {{$sub_output['output']['kegiatan']['program']['dipa_nama_program']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA KEGIATAN</td>
+                                          <td>KEGIATAN</td>
                                           <td>:</td>
-                                          <td>KGT0001 / KEGIATAN1</td>
+                                          <td>{{$sub_output['output']['kegiatan']['dipa_kode_kegiatan']}} / {{$sub_output['output']['kegiatan']['dipa_nama_kegiatan']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA OUTPUT</td>
+                                          <td>OUTPUT</td>
                                           <td>:</td>
-                                          <td>OP0001 / OUTPUT1.1</td>
+                                          <td>{{$sub_output['output']['dipa_kode_output']}} / {{$sub_output['output']['dipa_nama_output']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA SUB OUTPUT</td>
+                                          <td>SUB OUTPUT</td>
                                           <td>:</td>
-                                          <td>SOP0001 / SUBOUTPUT1.1</td>
+                                          <td>{{$sub_output['dipa_kode_sub_output']}} / {{$sub_output['dipa_nama_sub_output']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA KOMPONEN</td>
+                                          <td>KOMPONEN</td>
                                           <td>:</td>
-                                          <td>KP0001 / KOMPONEN1.1</td>
+                                          <td>{{$dipa_kode_komponen}} / {{$dipa_nama_komponen}}</td>
                                       </tr>
                                       <tr>
                                           <td>TAHUN ANGGARAN</td>
                                           <td>:</td>
-                                          <td>2017</td>
+                                          <td>{{$sub_output['output']['kegiatan']['program']['tahun']['dipa_tahun_anggaran']}}</td>
                                       </tr>
                                       <tr>
                                           <td>NILAI</td>
                                           <td>:</td>
-                                          <td>RP. 12.500.000</td>
+                                          <td>RP. <span id="nilai">@if($total->total != null) {{$total->total}} @else 0 @endif </span></td>
                                       </tr>
                                   </tbody>
                               </table>
@@ -106,7 +106,7 @@
                             </table>
                         </div> {{-- akhir pembungkus tabel DIPA --}}
                         <div class="text-left">
-                            <a href="{{ url('/dipa/dipa-komponen') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
+                            <a href="{{ url('/dipa/dipa-komponen/'.$sub_output['dipa_id_sub_output']) }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                         </div>
                     </div> {{-- akhir panel body --}}
                 </div> {{-- akhir tabel DIPA --}}
@@ -132,6 +132,7 @@
                                   <label class="col-sm-4 control-label">Kode Sub Komponen</label>
                                   <div class="col-sm-8">
                                       <input type="text" class="form-control" id="tambah_kode_subkomponen" name="tambah_kode_subkomponen" placeholder="Contoh : SKP00001">
+                                      <input type="hidden" name="id_komponen" value="{{$dipa_id_komponen}}" id="id_komponen"/>
                                   </div>
                               </div>
                               <div class="form-group">
@@ -145,7 +146,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="tambah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-tambah">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -168,13 +169,14 @@
                               <div class="form-group">
                                   <label class="col-sm-4 control-label">Kode Sub Komponen</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_kode_subkomponent" name="ubah_kode_subkomponen">
+                                      <input type="text" class="form-control" id="ubah_kode_subkomponen" name="ubah_kode_subkomponen">
+                                      <input type="hidden" id="param_id">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label class="col-sm-4 control-label">Nama Sub Komponen</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_nama_subkomponent" name="ubah_nama_subkomponen">
+                                      <input type="text" class="form-control" id="ubah_nama_subkomponen" name="ubah_nama_subkomponen">
                                   </div>
                               </div>
                           </div>
@@ -182,7 +184,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="ubah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-ubah">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -198,37 +200,79 @@
 
 <script>
 $(function(){
+    $('#nilai').text(function(index, value) {
+        return value
+        .replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        ;
+    });
     'use strict';
-    var data = [
-        [
-        "1",
-        "SKP00001",
-        "SubKomponen-1.1",
-        "Rp. 12.500.000",
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-        <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa/dipa-akun') }}" class="btn btn-success" role="button"> Pilih</a>`
-        ],
-        [
-        "2",
-        "SKP00002",
-        "SubKomponen-1.2",
-        "Rp. 0",
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-        <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/dipa/dipa-akun') }}" class="btn btn-success" role="button"> Pilih</a>`
-        ],
-    ];
+    var id_komponen = "{{$dipa_id_komponen}}";
+    var table = $('#myTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":{
+            type : "GET",
+            url : "/dipa/dipa-subkomponen/show/"+id_komponen
+        },
+        "columns": [
+            {
+                title: "NO",
+                data: "DT_Row_Index",
+                name: "DT_Row_Index",
+                orderable: false,
+                searchable: false,
+                width: "1%"
+            },
+            {
+                title: 'KODE SUB KOMPONEN',
+                data: 'dipa_kode_sub_komponen',
+                defaultContent: "-",
+                name: 'dipa_kode_sub_komponen'
+            },
+            {
+                title: 'NAMA KOMPONEN',
+                data: 'dipa_nama_sub_komponen',
+                defaultContent: "-",
+                name: 'dipa_nama_sub_komponen'
+            },
+            {
+                title: '<div class="text-center">NILAI</div>',
+                data: null,
+                defaultContent: "-",
+                name: 'total',
+                render: function(data) {
+                    var number = data['total'];
+                    if (number != null) {
+                        var number_change = formatNumber(number);
+                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                        return currency.replace();
+                    }
+                },
+                width: "10%"
+            },
+            {
+                title: '<div class="text-center">ACTION</div>',
+                data: null,
+                name: 'action',
+                render: function (data) {
+                    var param = '';
+                    if(data['count_akun'] > 0) {
+                        param = 'data-toggle="tooltip" data-placement="top" title="Program Sudah Memiliki Kegiatan, tidak bisa dihapus" disabled';
+                    }
+                    var actions = '';
+                    actions = `<button class="btn btn-warning btn-sm ubah-subkomponen" data-id="${data['dipa_id_sub_komponen']}" data-toggle="modal" href='#modal-ubah'> UBAH</button>
+                        <button class="btn btn-danger btn-sm hapus-subkomponen" ${param} data-id="${data['dipa_id_sub_komponen']}"> HAPUS</button>
+                        <a href="/dipa/dipa-akun/${data['dipa_id_sub_komponen']}" class="btn btn-success" role="button"> Pilih</a>`;
+                    return actions.replace();
+                },
+                width: "15.6%",
+                orderable: false,
+                searchable: false
+            }
 
-    $('#myTable').DataTable({
-        "data" : data,
-        "columns" : [
-            { "title" : "#", "width" : "2%" },
-            { "title" : "KODE SUB KOMPONEN" },
-            { "title" : "NAMA SUB KOMPONEN" },
-            { "title" : "NILAI" },
-            { "title" : "AKSI","width" : "16%", "orderable": false }
-        ]
+
+        ],
     });
 
     //btn detail box
@@ -239,73 +283,179 @@ $(function(){
         $(this).toggleClass('btn-active');
     });
 
+    $("#btn-tambah").click(function(){
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Sub Komponen Ini Akan Disimpan",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/dipa/dipa-subkomponen/store",
+                    type : "POST",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "kode_sub_komponen" : $("#tambah_kode_subkomponen").val(),
+                        "nama_sub_komponen" : $("#tambah_nama_subkomponen").val(),
+                        "id_komponen" : $("#id_komponen").val()
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    },
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-tambah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+            swal('Dibatalkan', 'Data Sub Komponen Batal Simpan :)', 'error');
+                $('#modal-tambah').modal('hide');
+            }
+        });
+    });
+
+    $("#myTable").on('click','.ubah-subkomponen', function(){
+        $.get("/dipa/dipa-subkomponen/get/"+$(this).data('id'), function(data, status){
+            if(status == 'success'){
+                $("#ubah_kode_subkomponen").val(data['dipa_kode_sub_komponen']);
+                $("#ubah_nama_subkomponen").val(data['dipa_nama_sub_komponen']);
+                $('#param_id').val(data['dipa_id_sub_komponen']);
+            }
+        });
+    });
+
+    $("#btn-ubah").click(function(){
+        var id = $('#param_id').val();
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Sub Komponen Ini Akan Diubah",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/dipa/dipa-subkomponen/update/"+id,
+                    type : "PUT",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "kode_sub_komponen" : $("#ubah_kode_subkomponen").val(),
+                        "nama_sub_komponen" : $("#ubah_nama_subkomponen").val()
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    },
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-ubah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+            swal('Dibatalkan', 'Data Sub Komponen Batal di Ubah :)', 'error');
+                $('#modal-ubah').modal('hide');
+            }
+        });
+    });
+    $("#myTable").on('click','.hapus-subkomponen', function(){
+        var id = $(this).data('id');
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Sub Komponen Ini Akan Dihapus PERMANEN !",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "red",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/dipa/dipa-subkomponen/delete/"+id,
+                    type : "delete",
+                    data : {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    },
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+                swal('Dibatalkan', 'Data Sub Komponen Batal Hapus :)', 'error');
+            }
+        });
+    });
+    $('#modal-tambah').on('hidden.bs.modal', function (e) {
+        $(this)
+            .find("input[type='text']")
+            .val('')
+            .end()
+    })
+
 });
 
-function tambah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Sub Komponen Ini Akan Disimpan ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Sub Komponen Berhasil Simpan", "success");
-      $('#modal-tambah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Sub Komponen Batal Simpan :)', 'error');
-      $('#modal-tambah').modal('hide');
-    }
-  });
+function formatNumber(x) {
+    return x.replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-function ubah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Sub Komponen Ini Akan Diubah ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Sub Komponen Berhasil Diubah", "success");
-      $('#modal-ubah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Sub Komponen Batal Diubah :)', 'error');
-      $('#modal-ubah').modal('hide');
-    }
-  });
-}
-
-function hapus(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Sub Komponen Ini Akan Dihapus",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Sub Komponen Berhasil Dihapus", "success");
-    } else {
-      swal('Dibatalkan', 'Sub Komponen Batal Dihapus :)', 'error');
-    }
-  });
-}
 </script>
 @endpush

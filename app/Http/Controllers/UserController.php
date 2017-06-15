@@ -11,8 +11,9 @@ class UserController extends Controller
     //
     public function show()
     {
-        $job = User::withTrashed()->select('dipa_id_pengguna','username','dipa_nama_pengguna','dipa_pengguna_status', 'dipa_jenis_pengguna')
-                ->where('dipa_pengguna_status','!=','9');
+        $job = User::withTrashed()->with('satuanKerja')
+                    ->select('dipa_id_pengguna','username','dipa_nama_pengguna',
+                        'dipa_id_satuan_kerja','dipa_pengguna_status', 'dipa_jenis_pengguna');
         return $this->makeDataTable($job);
     }
 
@@ -38,7 +39,8 @@ class UserController extends Controller
             'dipa_nama_pengguna'      => $request->nama_user,
             'dipa_password_pengguna'  => $password,
             'dipa_pengguna_status'    => $request->status,
-            'dipa_jenis_pengguna'     => $request->jenis
+            'dipa_jenis_pengguna'     => $request->jenis,
+            'dipa_id_satuan_kerja'    => $request->satker_user,
         ]);
 
         if($request->status == 0){
@@ -50,7 +52,7 @@ class UserController extends Controller
 
     public function getOne($id)
     {
-        return User::withTrashed()->find($id);
+        return User::withTrashed()->with('satuanKerja')->find($id);
     }
 
     public function update(Request $request, $id)
@@ -61,16 +63,20 @@ class UserController extends Controller
             'status'    => 'required',
             'jenis'     => 'required',
     	]);
-
         User::withTrashed()->find($id)->update([
             'username'                => $request->username,
             'dipa_nama_pengguna'      => $request->nama_user,
             'dipa_pengguna_status'    => $request->status,
-            'dipa_jenis_pengguna'     => $request->jenis
+            'dipa_jenis_pengguna'     => $request->jenis,
+            'dipa_id_satuan_kerja'    => $request->satker_user
         ]); 
 
         if($request->status == 0){
             $this->block($id);
+        }
+        else{
+            User::withTrashed()->where('dipa_id_pengguna', $id)->restore();
+            
         }
 
         return response()->json(["status"=>"success"],200);
@@ -82,6 +88,7 @@ class UserController extends Controller
     }
 
     public function delete($id) {
-        User::find($id)->delete();
+        User::withTrashed()->where('dipa_id_pengguna', $id)->forceDelete();
+        return response()->json(["status"=>"success"],200);
     }
 }

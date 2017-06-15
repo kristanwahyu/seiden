@@ -18,14 +18,14 @@
     <div class="breadcrumb-wrapper">
         <ul class="breadcrumb">
             <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
-            <li><a href="{{ url('/dipa/dipa-program') }}">DIPA</a></li>
-            <li><a href="{{ url('/dipa/dipa-kegiatan') }}">PRG0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-output') }}">KGT0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-suboutput') }}">OP0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-komponen') }}">SOP0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-subkomponen') }}">KP0001</a></li>
-            <li><a href="{{ url('/dipa/dipa-akun') }}">SKP0001</a></li>
-            <li class="active-bread">AK0001</li>
+           <li><a href="{{ url('/dipa/dipa-program') }}">DIPA</a></li>
+            <li><a href="{{ url('/dipa/dipa-kegiatan/'.$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_id_program']) }}">{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-output/'.$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_id_kegiatan']) }}">{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-suboutput/'.$sub_komponen['komponen']['sub_output']['output']['dipa_id_output']) }}">{{$sub_komponen['komponen']['sub_output']['output']['dipa_kode_output']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-komponen/'.$sub_komponen['komponen']['sub_output']['dipa_id_sub_output']) }}">{{$sub_komponen['komponen']['sub_output']['dipa_kode_sub_output']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-subkomponen/'.$sub_komponen['komponen']['dipa_id_komponen']) }}">{{$sub_komponen['komponen']['dipa_kode_komponen']}}</a></li>
+            <li><a href="{{ url('/dipa/dipa-akun/'.$sub_komponen['dipa_id_sub_komponen']) }}">{{$sub_komponen['dipa_kode_sub_komponen']}}</a></li>
+            <li class="active-bread">{{$dipa_kode_akun}}</li>
         </ul>
     </div>
     {{-- End Breadcrumb --}}
@@ -48,52 +48,52 @@
                                       <tr>
                                           <td>KODE / SATUAN KERJA</td>
                                           <td>:</td>
-                                          <td>SAT0001 / SATUAN KERJA-1</td>
+                                          <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_satuan_kerja']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA PROGRAM</td>
+                                          <td>PROGRAM</td>
                                           <td>:</td>
-                                          <td>PRG0001 / PROGRAM1</td>
+                                          <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_nama_program']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA KEGIATAN</td>
+                                          <td>KEGIATAN</td>
                                           <td>:</td>
-                                          <td>KGT0001 / KEGIATAN1</td>
+                                          <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_nama_kegiatan']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA OUTPUT</td>
+                                          <td>OUTPUT</td>
                                           <td>:</td>
-                                          <td>OP0001 / OUTPUT1.1</td>
+                                          <td>{{$sub_komponen['komponen']['sub_output']['output']['dipa_kode_output']}} / {{$sub_komponen['komponen']['sub_output']['output']['dipa_nama_output']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA SUB OUTPUT</td>
+                                          <td>SUB OUTPUT</td>
                                           <td>:</td>
-                                          <td>SOP0001 / SUBOUTPUT1.1</td>
+                                          <td>{{$sub_komponen['komponen']['sub_output']['dipa_kode_sub_output']}} / {{$sub_komponen['komponen']['sub_output']['dipa_nama_sub_output']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA KOMPONEN</td>
+                                          <td>KOMPONEN</td>
                                           <td>:</td>
-                                          <td>KP0001 / KOMPONEN1.1</td>
+                                          <td>{{$sub_komponen['komponen']['dipa_kode_komponen']}} / {{$sub_komponen['komponen']['dipa_nama_komponen']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA SUB KOMPONEN</td>
+                                          <td>SUB KOMPONEN</td>
                                           <td>:</td>
-                                          <td>SKP0001 / SUBKOMPONEN1.1</td>
+                                          <td>{{$sub_komponen['dipa_kode_sub_komponen']}} / {{$sub_komponen['dipa_nama_sub_komponen']}}</td>
                                       </tr>
                                       <tr>
-                                          <td>KODE / NAMA AKUN</td>
+                                          <td>AKUN</td>
                                           <td>:</td>
-                                          <td>AK0001 / AKUN 01</td>
+                                          <td>{{$dipa_kode_akun}} / {{$dipa_nama_akun}}</td>
                                       </tr>
                                       <tr>
                                           <td>TAHUN ANGGARAN</td>
                                           <td>:</td>
-                                          <td>2017</td>
+                                          <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['tahun']['dipa_tahun_anggaran']}}</td>
                                       </tr>
                                       <tr>
                                           <td>NILAI</td>
                                           <td>:</td>
-                                          <td>RP. 12.500.000</td>
+                                          <td>RP. <span id="nilai">@if($total->total != null) {{$total->total}} @else 0 @endif </span></td>
                                       </tr>
                                   </tbody>
                               </table>
@@ -118,7 +118,7 @@
                             </table>
                         </div> {{-- akhir pembungkus tabel DIPA --}}
                         <div class="text-left">
-                            <a href="{{ url('/dipa/dipa-subkomponen') }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
+                            <a href="{{ url('/dipa/dipa-akun/'.$sub_komponen['dipa_id_sub_komponen']) }}" class="btn btn-warning" role="button"><i class="fa fa-reply"></i> Kembali</a>
                         </div>
                     </div> {{-- akhir panel body --}}
                 </div> {{-- akhir tabel DIPA --}}
@@ -134,28 +134,31 @@
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Tambah Akun</h4>
+                  <h4 class="modal-title">Tambah Detail</h4>
               </div>
               <div class="modal-body">
                   <form action="" method="POST" class="form-horizontal" role="form">
                       <div class="row">
                           <div class="col-sm-12">
                               <div class="form-group">
-                                  <label class="col-sm-3 control-label">Kode Akun</label>
+                                  <label class="col-sm-3 control-label">Nama Detail</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_kode_akun" name="tambah_kode_akun" placeholder="Contoh : AK0001">
+                                      <input type="text" class="form-control" id="tambah_nama_detail" name="tambah_nama_detail" placeholder="Contoh : detail 01">
                                   </div>
                               </div>
                               <div class="form-group">
-                                  <label class="col-sm-3 control-label">Nama Akun</label>
+                                  <label class="col-sm-3 control-label">Jenis Akun</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_nama_akun" name="tambah_nama_akun" placeholder="Contoh : Akun 01">
+                                      <select name="tambah_jenis_akun" id="tambah_jenis_akun" class="form-control">
+                                            <option value="1">Belanja Gaji</option>
+                                            <option value="2">Belanja Non Gaji</option>
+                                      </select>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Vol</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_vol" name="tambah_vol" placeholder="Contoh : 3">
+                                      <input type="text" class="form-control format-number" id="tambah_vol" name="tambah_vol" placeholder="Contoh : 3" value="1">
                                   </div>
                               </div>
                               <div class="form-group">
@@ -167,7 +170,20 @@
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Harga Satuan</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_harga_satuan" name="tambah_harga_satuan" placeholder="Contoh : Rp. 2.500.000">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Rp.</span>
+                      										<input type="text" class="form-control text-right format-number" id="tambah_harga_satuan" name="tambah_harga_satuan" placeholder="Contoh : Rp. 2.500.000">
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Total</label>
+                                  <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Rp.</span>
+                                        <input type="text" class="form-control text-right format-number" id="tambah_total" name="tambah_total" placeholder="0.00" readonly>
+                                        <input type="hidden" name="id_akun" value="{{$dipa_id_akun}}" id="id_akun"/>
+                                    </div>
                                   </div>
                               </div>
                           </div>
@@ -175,62 +191,79 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="tambah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-tambah">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
       </div>
   </div>
-  {{-- AKHIR MODAL TAMBAH AKUN --}}
+  {{-- AKHIR MODAL TAMBAH detail --}}
 
-  {{-- AWAL MODAL UBAH AKUN --}}
+  {{-- AWAL MODAL UBAH detail --}}
   <div class="modal fade" id="modal-ubah">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Ubah Akun</h4>
+                  <h4 class="modal-title">Ubah Detail</h4>
               </div>
               <div class="modal-body">
                   <form action="" method="POST" class="form-horizontal" role="form">
                       <div class="row">
                           <div class="col-sm-12">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Kode Akun</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="ubah_kode_akun" name="ubah_kode_akun">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Nama Akun</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="ubah_nama_akun" name="ubah_nama_akun">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Vol</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="ubah_vol" name="ubah_vol">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Satuan</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="ubah_satuan" name="ubah_satuan">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Harga Satuan</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="ubah_harga_satuan" name="ubah_harga_satuan">
-                                </div>
-                            </div>
+                                  <label class="col-sm-3 control-label">Nama Detail</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" id="ubah_nama_detail" name="ubah_nama_detail" placeholder="Contoh : detail 01">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Jenis Akun</label>
+                                  <div class="col-sm-8">
+                                      <select name="ubah_jenis_akun" id="ubah_jenis_akun" class="form-control">
+                                            <option value="1">Belanja Gaji</option>
+                                            <option value="2">Belanja Non Gaji</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Vol</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control format-number" id="ubah_vol" name="ubah_vol" placeholder="Contoh : 3">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Satuan</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" id="ubah_satuan" name="ubah_satuan" placeholder="Contoh : Orang">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Harga Satuan</label>
+                                  <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Rp.</span>
+                                        <input type="text" class="form-control text-right format-number" id="ubah_harga_satuan" name="ubah_harga_satuan" placeholder="Contoh : Rp. 2.500.000">
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Total</label>
+                                  <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Rp.</span>
+										<input type="text" class="form-control text-right format-number" id="ubah_total" name="ubah_total" placeholder="0.00" readonly>
+                                        <input type="hidden" name="param-id" id="param-id"/>
+                                        <input type="hidden" name="id_akun" value="{{$dipa_id_akun}}"/>
+                                    </div>
+                                  </div>
+                              </div>
                           </div>
                       </div>
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="ubah()">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-ubah">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -242,47 +275,147 @@
 @push('script')
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('vendor/cleave.js/cleave.min.js') }}"></script>
 
 <script>
 $(function(){
     'use strict';
-    var data = [
-        [
-        "1",
-        "Pembayaran Gaji",
-        "1",
-        "Orang",
-        "Rp. 7.500.000",
-        "Rp. 7.500.000",
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-        <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/#') }}" class="btn btn-success" role="button"> Pilih</a>`
-        ],
-        [
-        "2",
-        "Prmbayaran Tukin",
-        "2",
-        "Kegiatan",
-        "Rp. 2.500.000",
-        "Rp. 5.000.000",
-        `<button class="btn btn-warning btn-sm" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-        <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="hapus()"> HAPUS</button>
-        <a href="{{ url('/#') }}" class="btn btn-success" role="button"> Pilih</a>`
-        ],
-    ];
 
-    $('#myTable').DataTable({
-        "data" : data,
-        "columns" : [
-            { "title" : "#", "width" : "2%" },
-            { "title" : "RINCIAN" },
-            { "title" : "VOL" },
-            { "title" : "SATUAN" },
-            { "title" : "HARGA SATUAN" },
-            { "title" : "TOTAL" },
-            { "title" : "AKSI","width" : "16%", "orderable": false }
-        ]
+    var id_akun = "{{$dipa_id_akun}}";
+    var table = $('#myTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":{
+            type : "GET",
+            url : "/dipa/dipa-rincian/show/"+id_akun
+        },
+        "columns": [
+            {
+                title: "NO",
+                data: "DT_Row_Index",
+                orderable: false,
+                searchable: false,
+                width: "1%"
+            },
+            {
+                //table buat order default
+                data: 'dipa_id_detail_akun',
+                searchable: false,
+                visible: false
+            },
+            {
+                title: 'NAMA DETAIL',
+                data: 'dipa_nama_detail',
+                defaultContent: "-",
+            },
+            {
+                title: 'VOLUME',
+                data: 'dipa_volume',
+                defaultContent: "-",
+                width: "7%",
+            },
+            {
+                title: 'SATUAN',
+                data: 'dipa_satuan',
+                defaultContent: "-",
+            },
+            {
+                title: 'HARGA SATUAN',
+                data: 'dipa_harga_satuan',
+                defaultContent: "-",
+                render: function(data) {
+                    var number = data;
+                    if (number != null) {
+                        var number_change = formatNumber(number);
+                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                        return currency.replace();
+                    }
+                }
+            },
+            /*{
+                title: 'JENIS AKUN',
+                data: 'dipa_jenis_akun',
+                defaultContent: "-",
+                render: function (data) {
+                    var jenis = data == '1' ? 'Belanja Gaji' : 'Belanja Non Gaji';
+                    return jenis.replace();
+                },
+                searchable: false
+            },*/
+            {
+                title: 'TOTAL',
+                data: 'total',
+                defaultContent: "-",
+                render: function (data) {
+                    var number_change = formatNumber(data);
+                    var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                    return currency.replace();
+                },
+                searchable: false
+            },
+            {
+                title: 'DANA TERPAKAI',
+                data: null,
+                defaultContent: "-",
+                render: function (data) {
+                    var angka = data['total_pembayaran'];
+                    var number_change = formatNumber(angka);
+                    var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                    return currency.replace();
+                },
+                searchable: false
+            },
+            {
+                title: 'PEMB. TERAKHIR',
+                data: null,
+                defaultContent: "-",
+                render: function (data) {
+                    if(data['status'] == 0){
+                        var status = `<div class="text-center"><span class='label label-warning'>DRAFT</span></div>`;
+                    } else if(data['status'] == null){
+                        var status = `<div class="text-center"><span class='label label-success'>BELUM ADA PEMB.</span></div>`;
+                    } else {
+                        var status = `<div class="text-center"><span class='label label-primary'>TERKIRIM</span></div>`;
+                    }
+                    return status.replace();
+                },
+                searchable: false
+            },
+            {
+                title: '<div class="text-center">ACTION</div>',
+                data: null,
+                render: function (data) {
+                    var par_del = '';
+                    if(data['total_pembayaran'] != null) {
+                        par_del ='disabled';
+                    }
+                    var par = '';
+                    var tag = 'a';
+                    if(parseFloat(data['total']) <= parseFloat(data['total_pembayaran']))
+                    {
+                        par = 'disabled';
+                        tag = 'button';
+                    }
+                    var actions = '';
+                    actions = `<button class="btn btn-warning btn-sm ubah-detail" data-id="${data['dipa_id_detail_akun']}" data-toggle="modal" href='#modal-ubah' ${par_del}> UBAH</button>
+                        <button class="btn btn-danger btn-sm hapus-detail" data-id="${data['dipa_id_detail_akun']}" data-akun="${data['dipa_id_akun']}" ${par_del}> HAPUS</button>
+                        <${tag} href="/dipa/dipa-pembayaran/${data['dipa_id_detail_akun']}/${data['dipa_id_akun']}" class="btn btn-success" role="button" ${par}> Bayar</${tag}>`;
+                    return actions.replace();
+                },
+                width: "16.1%",
+                orderable: false,
+                searchable: false
+            }
+        ],
+        "order": [[ 1, "desc" ]]
+    });
+
+    $('#nilai').text(function(index, value) {
+        return value
+        .replace(/\D/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        ;
     });
 
     //btn detail box
@@ -293,73 +426,241 @@ $(function(){
         $(this).toggleClass('btn-active');
     });
 
+    //tambah rincian
+     $("#btn-tambah").click(function(){
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Detail Ini Akan Disimpan",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/dipa/dipa-rincian/store",
+                    type : "POST",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "nama_detail" : $("#tambah_nama_detail").val(),
+                        "volume" : $("#tambah_vol").val(),
+                        "satuan" :$("#tambah_satuan").val(),
+                        "harga_satuan" : $("#tambah_harga_satuan").val(),
+                        "jenis_akun" : $("#tambah_jenis_akun").val(),
+                        "id_akun" : $("#id_akun").val()
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    },
+                                    function(){
+                                        $('#nilai').text(formatNumber(data.total));
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-tambah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+            swal('Dibatalkan', 'Data Detail Akun Batal Simpan :)', 'error');
+                $('#modal-tambah').modal('hide');
+            }
+        });
+    });
+
+    //edit rincian
+    $("#myTable").on('click','.ubah-detail', function(){
+        $.get("/dipa/dipa-rincian/get/"+$(this).data('id'), function(data, status){
+            if(status == 'success'){
+                //console.log(data);
+                var total = data['dipa_volume'] * data['dipa_harga_satuan'];
+                $("#ubah_harga_satuan").val(formatNumber(data['dipa_harga_satuan']));
+                $("#ubah_nama_detail").val(data['dipa_nama_detail']);
+                $("#ubah_satuan").val(data['dipa_satuan']);
+                $("#ubah_vol").val(data['dipa_volume']);
+                $("#param-id").val(data['dipa_id_detail_akun']);
+                $('select[name="ubah_jenis_akun"]').find('option').prop('selected', false);
+                if(data['dipa_jenis_akun'] == 1) {
+                    $('option[value="1"]').prop('selected', true);
+                } else {
+                    $('option[value="2"]').prop('selected', true);
+                }
+                $("#ubah_total").val(formatNumber(total));
+            }
+        });
+    });
+
+    //update rincian
+    $("#btn-ubah").click(function(){
+        var id = $('#param-id').val();
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Akun Ini Akan Diubah",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : "/dipa/dipa-rincian/update/"+id,
+                    type : "PUT",
+                    data : {
+                        "_token": "{{ csrf_token() }}",
+                        "nama_detail" : $("#ubah_nama_detail").val(),
+                        "volume" : $("#ubah_vol").val(),
+                        "satuan" :$("#ubah_satuan").val(),
+                        "harga_satuan" : $("#ubah_harga_satuan").val(),
+                        "jenis_akun" : $("#ubah_jenis_akun").val(),
+                        "id_akun" : $("#id_akun").val()
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    },
+                                    function(){
+                                        $('#nilai').text(formatNumber(data.total));
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-ubah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+            swal('Dibatalkan', 'Data Akun Batal di Ubah :)', 'error');
+                $('#modal-ubah').modal('hide');
+            }
+        });
+    });
+
+    //hapus rincian
+    $("#myTable").on('click','.hapus-detail', function(){
+        var id = $(this).data('id');
+        var idAkun = $(this).data('akun');
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Akun Ini Akan Dihapus PERMANEN !",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "red",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : `/dipa/dipa-rincian/delete/${id}/${idAkun}`,
+                    type : "DELETE",
+                    data : {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Sukses",
+                                    text: "Data Tersimpan!",
+                                    type: "success"
+                                    },
+                                    function(){
+                                        $('#nilai').text(formatNumber(data.total));
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error deleting!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+                swal('Dibatalkan', 'Data Akun Batal Hapus :)', 'error');
+            }
+        });
+    });
+
+    $('#modal-tambah').on('hidden.bs.modal', function (e) {
+        $(this)
+            .find("input[type='text']")
+            .val('')
+            .end()
+    });
+
+    //total form tambah
+    $('#tambah_vol, #tambah_harga_satuan').keyup(function(){
+        var vol = $('#tambah_vol').val();
+        var harga = $('#tambah_harga_satuan').val();
+
+        harga = (harga != '') ? parseFloat( harga.replace(/\D/g, "") ) : 0;
+
+        var total = harga * vol;
+
+        $('#tambah_total').val(formatNumber(total));
+    });
+
+    //total form edit
+    $('#ubah_vol, #ubah_harga_satuan').keyup(function(){
+        var vol = $('#ubah_vol').val();
+        var harga = $('#ubah_harga_satuan').val();
+
+        harga = (harga != '') ? parseFloat( harga.replace(/\D/g, "") ) : 0;
+
+        var total = harga * vol;
+
+        $('#ubah_total').val(formatNumber(total));
+    });
+
+    //number format for all existing text-money element
+    $('.format-number').toArray().forEach((field) => {
+        //cleave.js number format
+        return new Cleave(field, {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand',
+            numeralDecimalMark: ',',
+            delimiter: '.'
+        });
+    });
+
+    //native number format converter
+    function formatNumber(value){
+        var currency = new Intl.NumberFormat('de-DE');
+        return currency.format(value);
+    }
 });
-
-function tambah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Akun Ini Akan Disimpan ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Simpan", "success");
-      $('#modal-tambah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Akun Batal Simpan :)', 'error');
-      $('#modal-tambah').modal('hide');
-    }
-  });
-}
-
-function ubah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Akun Ini Akan Diubah ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Diubah", "success");
-      $('#modal-ubah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Akun Batal Diubah :)', 'error');
-      $('#modal-ubah').modal('hide');
-    }
-  });
-}
-
-function hapus(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Akun Ini Akan Dihapus",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Akun Berhasil Dihapus", "success");
-    } else {
-      swal('Dibatalkan', 'Data Akun Batal Dihapus :)', 'error');
-    }
-  });
-}
 </script>
 @endpush

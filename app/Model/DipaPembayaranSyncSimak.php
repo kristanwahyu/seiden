@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class DipaPembayaranSyncSimak extends Model
 {
-    protected $primaryKey = 'dipa_pembayaran_checklist_sinkronisasi_id';
+    protected $primaryKey = 'dipa_pmb_check_sink_id';
     protected $guarded = ['updated_at'];
-    protected $table = 'tbl_dipa_pembayaran_checklist_sinkronisasi_simak';
+    protected $table = 'tbl_dipa_pmb_check_sink_simak';
 
     public function pembayaransyncsimak(){
         return $this->belongsTo('App\Model\DipaPembayaran','dipa_pembayaran_id');

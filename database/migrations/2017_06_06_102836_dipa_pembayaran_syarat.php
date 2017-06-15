@@ -13,8 +13,8 @@ class DipaPembayaranSyarat extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_dipa_pembayaran_syarat', function (Blueprint $table) {
-            $table->increments('dipa_pembayaran_syarat_id');
+        Schema::create('tbl_dipa_pmb_syarat', function (Blueprint $table) {
+            $table->increments('dipa_pmb_syarat_id');
             $table->enum('dipa_syarat_1',array('0','1'))->default(0);   //0 =Belum verifikasi 1= Verifikasi
             $table->string('dipa_dokumen_syarat_1',255); //alowed file .png,.jpg, .pdf
             $table->enum('dipa_syarat_2',array('0','1'))->default(0);   //0 =Belum verifikasi 1= Verifikasi

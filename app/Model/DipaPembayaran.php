@@ -10,7 +10,7 @@ class DipaPembayaran extends Model
     protected $guarded = ['updated_at'];
     protected $table = 'tbl_dipa_pembayaran';
 
-    public function PembayaranSyarat(){
+    public function syaratPembayaran(){
         return $this->hasMany('App\Model\DipaPembayaranSyarat','dipa_pembayaran_id');
     }
     public function PembayaranCheckSPM(){
@@ -31,7 +31,7 @@ class DipaPembayaran extends Model
     public function PembayaranSyncPerlengkapan(){
         return $this->hasMany('App\Model\DipaPembayaranSyncPerlengkapan','dipa_pembayaran_id');
     }
-    public function detail(){
-        return $this->belongsTo('App\Model\DipaRincian','dipa_id_detail_akun');
+    public function akunDetail(){
+        return $this->belongsTo('App\Model\DipaAkunDetail','dipa_id_detail_akun');
     }
 }
