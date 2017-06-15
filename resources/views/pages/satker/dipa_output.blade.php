@@ -18,7 +18,7 @@
     <div class="breadcrumb-wrapper">
         <ul class="breadcrumb">
             <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
-            <li><a href="">DIPA</a></li>
+            <li><a href="{{ url('/dipa/dipa-program') }}">DIPA</a></li>
             <li><a href="{{ url('/dipa/dipa-kegiatan/'.$program['dipa_id_program']) }}">{{$program['dipa_kode_program']}}</a></li>
             <li class="active-bread">{{$dipa_kode_kegiatan}}</li>
         </ul>
