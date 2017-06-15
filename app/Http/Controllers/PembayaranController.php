@@ -255,8 +255,9 @@ class PembayaranController extends Controller
             $komponen=$kode->akunDetail->akun->subKomponen->komponen->dipa_kode_komponen;
             $subkomponen=$kode->akunDetail->akun->subKomponen->dipa_kode_sub_komponen;
             $akun=$kode->akunDetail->akun->dipa_kode_akun;
+            $akundetail=$kode->akunDetail->dipa_id_detail_akun;
 
-            return $satker.".".$program.".".$kegiatan.".".$output.".".$suboutput.".".$komponen.".".$subkomponen.".".$akun;
+            return $satker.".".$program.".".$kegiatan.".".$output.".".$suboutput.".".$komponen.".".$subkomponen.".".$akun.".".$akundetail;
         })
         ->addColumn('rincian', function($rincian){
             $namaakun=$rincian->akunDetail->akun->dipa_nama_akun;
