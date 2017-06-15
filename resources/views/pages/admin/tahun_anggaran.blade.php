@@ -100,6 +100,7 @@
                                   <label class="col-sm-3 control-label">Tahun Anggaran</label>
                                   <div class="col-sm-8">
                                       <input type="text" class="form-control" id="ubah_tahun_anggaran" name="ubah_tahun_anggaran">
+                                      <input type="hidden" id="id_binding">
                                   </div>
                               </div>
                           </div>
@@ -354,6 +355,71 @@ $(function(){
         }
     });
 
+    //ubah tahun anggaran
+    $('.table').on('click', '.ubah-tahun', function(){
+        var id = $(this).data('id');
+        $.get(`/tahun-anggaran/get/${id}`, function(result, status){
+            if(status == 'success'){
+                $('#id_binding').val(result.data.dipa_id_tahun_anggaran);
+                $('#ubah_tahun_anggaran').val(result.data.dipa_tahun_anggaran);
+            }
+        });
+    });
+
+    //update tahun anggaran
+    $('#btn-edit').click(function(){
+        var id = $('#id_binding').val();
+        var tahun = $('#ubah_tahun_anggaran').val();
+
+        swal({
+            title: "Apakah Anda Yakin ?",
+            text: "Data Tahun Anggaran Ini Akan Diubah ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#00a65a",
+            confirmButtonText: "Ya, Yakin !",
+            cancelButtonText: "Tidak, Batalkan !",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url : `/tahun-anggaran/update/${id}`,
+                    type : "PUT",
+                    data : {
+                        "_token"   : "{{ csrf_token() }}",
+                        "tahun"   : tahun
+                    },
+                    success : function(data, status){
+                        if(status=="success"){
+                            setTimeout(function(){
+                                swal({
+                                    title: "Berhasil!",
+                                    text: "Tahun Anggaran Berhasil Diubah",
+                                    type: "success"
+                                    },
+                                    function(){
+                                        table.ajax.reload();
+                                    });
+                                }, 1000);
+                        }
+                        $('#modal-ubah').modal('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        setTimeout(function(){
+                            swal("Error input data!", "Please try again", "error");
+                        }, 1000);
+                    }
+                });
+            } else {
+                swal('Dibatalkan', 'Data Tahun Anggaran Batal Diubah :)', 'error');
+                $('#modal-ubah').modal('hide');
+            }
+        });
+    });
+
     $('#modal-tambah').on('hidden.bs.modal', function (e) {
         $(this)
             .find("input[type='text']")
@@ -361,28 +427,5 @@ $(function(){
             .end()
     });
 });
-
-function ubah(){
-    swal({
-    title: "Apakah Anda Yakin ?",
-    text: "Data Tahun Anggaran Ini Akan Diubah ",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00a65a",
-    confirmButtonText: "Ya, Yakin !",
-    cancelButtonText: "Tidak, Batalkan !",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm){
-    if (isConfirm) {
-      swal("Berhasil!", "Data Tahun Anggaran Berhasil Diubah", "success");
-      $('#modal-ubah').modal('hide');
-    } else {
-      swal('Dibatalkan', 'Data Tahun Anggaran Batal Diubah :)', 'error');
-      $('#modal-ubah').modal('hide');
-    }
-  });
-}
 </script>
 @endpush
