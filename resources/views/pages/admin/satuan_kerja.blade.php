@@ -2,7 +2,6 @@
 
 @push('style')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
 @endpush
 
 @section('title', 'Satuan Kerja')
@@ -27,9 +26,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                {{-- Breadcrumb --}}
-
-                {{-- End Breadcrumb --}}
 
               	{{-- awal tabel satuan kerja --}}
                 <div class="panel">
@@ -50,11 +46,13 @@
                         </div> {{-- akhir pembungkus tabel satuan kerja --}}
                     </div> {{-- akhir panel body --}}
                 </div> {{-- akhir tabel satuan kerja --}}
-            </div>
-        </div>
-    </div>
+
+            </div> {{-- End col-md-12 --}}
+        </div> {{-- End Row --}}
+    </div> {{-- End Container Fluid --}}
+
 </div>
-  {{-- AKHIR MAIN CONTENT --}}
+{{-- AKHIR MAIN CONTENT --}}
 
   {{-- AWAL MODAL TAMBAH SATUAN KERJA --}}
   <div class="modal fade" id="modal-tambah">

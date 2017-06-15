@@ -49,7 +49,7 @@
 
 <script>
   'use strict';
-    
+
     var table = $('#myTable').DataTable({
         "processing": true,
         "serverSide": true,
@@ -134,10 +134,10 @@
                 data: null,
                 name: 'action',
                 render: function (data) {
-                    var actions = `<a href="/spp/${data['dipa_pembayaran_id']}" class="btn btn-success" role="button">SPP</a>`;
+                    var actions = `<a href="/spp/${data['dipa_pembayaran_id']}" class="btn btn-success text-center" role="button">SPP</a>`;
                     return actions.replace();
                 },
-                width: "15.6%",
+                width: "10%",
                 orderable: false,
                 searchable: false
             }

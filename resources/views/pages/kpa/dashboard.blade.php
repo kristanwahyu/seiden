@@ -2,7 +2,6 @@
 
 @push('style')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
 @endpush
 
 @section('title', 'Dashboard KPA')

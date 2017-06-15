@@ -2,7 +2,6 @@
 
 @push('style')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
 @endpush
 
 @section('title', 'User')
@@ -23,9 +22,10 @@
     </div>
     {{-- End Breadcrumb --}}
 
+    {{-- awal container fluid --}}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row"> {{-- awal row --}}
+            <div class="col-md-12"> {{-- awal col-md-12 --}}
 
                 {{-- awal tabel user --}}
                 <div class="panel">
@@ -46,11 +46,14 @@
                         </div> {{-- akhir pembungkus tabel user --}}
                     </div> {{-- akhir panel body --}}
                 </div> {{-- akhir tabel user --}}
-            </div>
-        </div>
-    </div>
+
+            </div> {{-- akhir col-md-12 --}}
+        </div> {{-- akhir row --}}
+    </div> {{-- akhir container fluid --}}
+
 </div>
 {{-- AKHIR MAIN CONTENT --}}
+
   {{-- AWAL MODAL TAMBAH USER --}}
   <div class="modal fade" id="modal-tambah">
       <div class="modal-dialog">
@@ -78,7 +81,7 @@
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Password</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_password" name="tambah_password" placeholder="Min: 8 Digit">
+                                      <input type="password" class="form-control" id="tambah_password" name="tambah_password" placeholder="Min: 8 Digit">
                                   </div>
                               </div>
                               <div class="form-group">
@@ -160,9 +163,11 @@
                                     <option value="2">KPA</option>
                                     <option value="3">PPK</option>
                                     <option value="4">Staf Pengelolah / Satuan Kerja</option>
-                                    <option value="5">PPSM</option>
-                                    <option value="6">Operator SIMA</option>
-                                    <option value="7">Operator SIBA</option>
+                                    <option value="5">PPSPM</option>
+                                    <option value="6">Operator SIMAK</option>
+                                    <option value="7">Operator SAIBA</option>
+                                    <option value="8">Operator Perlengkapan</option>
+                                    <option value="9">Bendahara</option>
                                 </select>
                                 </div>
                             </div>
@@ -561,8 +566,6 @@ function loadSatker(e,f){
                 e.empty();
                 e.append(satker2);
             }
-
-
         }
     });
 }
