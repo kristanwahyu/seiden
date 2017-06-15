@@ -313,6 +313,7 @@ $(function(){
                 title: 'VOLUME',
                 data: 'dipa_volume',
                 defaultContent: "-",
+                width: "7%",
             },
             {
                 title: 'SATUAN',
@@ -354,14 +355,28 @@ $(function(){
                 searchable: false
             },
             {
-                title: 'SISA PEMBAYARAN',
+                title: 'DANA TERPAKAI',
                 data: null,
                 defaultContent: "-",
                 render: function (data) {
-                    var angka = data['total'] - data['total_pembayaran'];
+                    var angka = data['total_pembayaran'];
                     var number_change = formatNumber(angka);
                     var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
                     return currency.replace();
+                },
+                searchable: false
+            },
+            {
+                title: 'PEMB. TERAKHIR',
+                data: null,
+                defaultContent: "-",
+                render: function (data) {
+                    if(data['status'] == 0){
+                        var status = `<div class="text-center"><span class='label label-warning'>DRAFT</span></div>`;
+                    } else {
+                        var status = `<div class="text-center"><span class='label label-primary'>TERKIRIM</span></div>`;
+                    }
+                    return status.replace();
                 },
                 searchable: false
             },
