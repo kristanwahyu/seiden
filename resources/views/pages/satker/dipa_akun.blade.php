@@ -393,7 +393,7 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Akun Gagal Diubah", "error");
                         }, 1000);
                     }
                 });
@@ -441,7 +441,7 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Akun Gagal Disimpan", "error");
                         }, 1000);
                     }
                 });

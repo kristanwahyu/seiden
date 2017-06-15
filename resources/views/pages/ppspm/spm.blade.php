@@ -240,14 +240,14 @@ function simpan(){
                                   type: "success"
                                   });
                               }, 1000);
-                          
+
                       }
                       $('#modal-tambah').modal('hide');
                       window.location.replace("/dashboard-ppspm");
                   },
                   error: function (xhr, ajaxOptions, thrownError) {
                       setTimeout(function(){
-                          swal("Error Saving!", "Please try again", "error");
+                          swal("Gagal", "Data SPM Gagal Disimpan", "error");
                       }, 1000);
                       $('#modal-tambah').modal('hide');
                   }

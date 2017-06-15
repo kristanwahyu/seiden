@@ -319,12 +319,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Komponen Gagal Disimpan", "error");
                         }, 1000);
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Sub Output Batal Simpan :)', 'error');
+            swal('Dibatalkan', 'Data Komponen Batal Simpan :)', 'error');
                 $('#modal-tambah').modal('hide');
             }
         });
@@ -344,7 +344,7 @@ $(function(){
         var id = $('#param_id').val();
         swal({
             title: "Apakah Anda Yakin ?",
-            text: "Data Sub Output Ini Akan Diubah",
+            text: "Data Komponen Ini Akan Diubah",
             type: "info",
             showCancelButton: true,
             confirmButtonColor: "#00a65a",
@@ -381,12 +381,12 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Komponen Gagal Diubah", "error");
                         }, 1000);
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Komponen Batal di Ubah :)', 'error');
+            swal('Dibatalkan', 'Data Komponen Batal Diubah :)', 'error');
                 $('#modal-ubah').modal('hide');
             }
         });
@@ -429,7 +429,7 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Error deleting!", "Please try again", "error");
+                            swal("Gagal", "Data Komponen Gagal Dihapu", "error");
                         }, 1000);
                     }
                 });

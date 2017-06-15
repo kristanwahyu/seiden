@@ -281,7 +281,7 @@ $(function(){
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
                             setTimeout(function(){
-                                swal("Error input data!", "Please try again", "error");
+                                swal("Gagal", "Data Tahun Anggaran Gagal Di Aktifkan", "error");
                             }, 1000);
                         }
                     });
@@ -340,7 +340,7 @@ $(function(){
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
                             setTimeout(function(){
-                                swal("Error input data!", "Please try again", "error");
+                                swal("Gagal", "Data Tahun Anggaran Gagal Di Nonaktifkan", "error");
                             }, 1000);
                         }
                     });
