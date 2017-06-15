@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class SimakMiddleware
 {
@@ -15,6 +16,11 @@ class SimakMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if (Auth::check()){
+            if (Auth::user()->dipa_jenis_pengguna != '6'){
+                return abort(503);
+            }
+        }
         return $next($request);
     }
 }

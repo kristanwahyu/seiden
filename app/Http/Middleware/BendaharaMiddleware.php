@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class PerlengkapanMiddleware
+class BendaharaMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class PerlengkapanMiddleware
     public function handle($request, Closure $next)
     {
         if (Auth::check()){
-            if (Auth::user()->dipa_jenis_pengguna != '8'){
+            if (Auth::user()->dipa_jenis_pengguna != '9'){
                 return abort(503);
             }
         }
