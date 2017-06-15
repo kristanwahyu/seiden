@@ -179,16 +179,25 @@
 @push('script')
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('vendor/cleave.js/cleave.min.js') }}"></script>
 
 <script>
-$('.nilai').text(function(index, value) {
+$(function () {
+    //cleave.js number format
+    var pmbNilai = new Cleave('#nilai_spm', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        numeralDecimalMark: ',',
+        delimiter: '.'
+    });
+
+    $('.nilai').text(function(index, value) {
         return value
         .replace(/\D/g, "")
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-        ;
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     });
-$(function () {
+
     $('.datepicker').datepicker({
       autoclose: 'true',
       todayBtn: 'linked',

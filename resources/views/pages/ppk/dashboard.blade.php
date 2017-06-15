@@ -15,7 +15,7 @@
   <div class="main-content">
       <div class="breadcrumb-wrapper">
           <ul class="breadcrumb">
-              <li class="active-bread"><a href=""><i class="fa fa-home fa-fw"></i></a></li>
+              <li class="active-bread"><i class="fa fa-home fa-fw"></i></li>
           </ul>
       </div>
       {{-- End Breadcrumb --}}
@@ -137,7 +137,7 @@
                     var actions = `<a href="/spp/${data['dipa_pembayaran_id']}" class="btn btn-success" role="button">SPP</a>`;
                     return actions.replace();
                 },
-                width: "15.6%",
+                width: "5%",
                 orderable: false,
                 searchable: false
             }
