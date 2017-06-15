@@ -157,7 +157,7 @@ $(function(){
                     var classNonAktif = (data['dipa_status'] == 1) ? 'radio-nonaktif' : '';
                     var classAktif = (data['dipa_status'] == 1) ? 'radio-aktif' : '';
                     var actions = '';
-                    actions = `<div class="switch">
+                    actions = `<div class="switch-slider">
                         <input type="radio" class="switch-input switch-input-off ${classNonAktif}" name="radio${nama}" value="0" data-id="${nama}" id="radio${nama}" checked>
                         <label for="radio${nama}" class="switch-label switch-label-off">NON-AKTIF</label>
                         <input type="radio" class="switch-input switch-input-on ${classAktif}" name="radio${nama}" value="1" data-id="${nama}" id="radio${nama2}" ${checked}>
