@@ -79,11 +79,11 @@ class SyaratPembayaranController extends Controller
         ]);
     }
 
-    public function deleteDir($dir)
+    public function deleteFile($dir)
     {
         $path = storage_path('/app/public/'.$dir);
-        if (!is_dir($path)){
-            Storage::deleteDirectory($path);
+        if (file_exists($path)){
+            Storage::delete($path);
         }
         return response()->json(['status'=>'success'],200);
     }
@@ -98,5 +98,57 @@ class SyaratPembayaranController extends Controller
             return '1';
         }
 
+    }
+
+    public function update($id_pmb, $arr_check, $syarat_pmb, $data_check, $folder)
+    {
+        $path_syarat = [];
+        foreach($arr_check as $ar => $value) {
+            if($value != null && $syarat_pmb[$ar] != null) {
+                $filename = $folder.$value;
+                $this->delete($filename);
+            }
+            if ($syarat_pmb[$ar] != null) {
+                $path_syarat[] = [$this->upload($syarat_pmb[$ar], $folder)];
+            } else {
+                if($value != null)
+                    $path_syarat[] = [$value];
+                else
+                    $path_syarat[] = [null];
+            }
+        }
+
+        return $this->updateData($path_syarat, $data_check, $id_pmb);
+
+
+    }
+
+    public function updateData($data, $data_check, $id_pmb)
+    {
+        for($i=1; $i<8; $i++){
+            if($data_check["check$i"] == null) $data_check["check$i"] = '0';
+            if($data_check["check$i"] == '0') 
+                $dokumen_syarat[$i] = null;
+            else
+                $dokumen_syarat[$i] = $data[$i-1][0]; 
+        }
+        syarat::where('dipa_pembayaran_id', $id_pmb)->update([
+            'dipa_syarat_1'         => $data_check['check1'],
+            'dipa_dokumen_syarat_1' => $dokumen_syarat[1],
+            'dipa_syarat_2'         => $data_check['check2'],
+            'dipa_dokumen_syarat_2' => $dokumen_syarat[2],
+            'dipa_syarat_3'         => $data_check['check3'],
+            'dipa_dokumen_syarat_3' => $dokumen_syarat[3],
+            'dipa_syarat_4'         => $data_check['check4'],
+            'dipa_dokumen_syarat_4' => $dokumen_syarat[4],
+            'dipa_syarat_5'         => $data_check['check5'],
+            'dipa_dokumen_syarat_5' => $dokumen_syarat[5],
+            'dipa_syarat_6'         => $data_check['check6'],
+            'dipa_dokumen_syarat_6' => $dokumen_syarat[6],
+            'dipa_syarat_7'         => $data_check['check7'],
+            'dipa_dokumen_syarat_7' => $dokumen_syarat[7],
+        ]);
+
+        return response()->json(['status'=>'success'],200);
     }
 }

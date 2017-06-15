@@ -182,13 +182,22 @@
                                                             $text2 = "dipa_dokumen_syarat_".($i+1);
                                                         @endphp
                                                         <tr>
-                                                            <td><input type="checkbox" name="check{!! $i+1 !!}" class="check_syarat" @if($pembayaran_param->syaratPembayaran[0][$text] == '1') checked  value="1" @else value="" @endif></td>
+                                                            <td>
+                                                                <input type="checkbox" name="check{!! $i+1 !!}" class="check_syarat" @if($pembayaran_param->syaratPembayaran[0][$text] == '1') checked  value="1" @else value="" @endif>
+                                                            </td>
                                                             <td><strong>Syarat {!! $i+1 !!}</strong></td>
                                                             <td class="td-file">
                                                                 <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
+                                                                <input type="hidden" name="hidden_syarat{!! $i+1 !!}" value="@if($pembayaran_param->syaratPembayaran[0][$text2] != null){{$pembayaran_param->syaratPembayaran[0][$text2]}} @else 0 @endif">
                                                                 <span><input type="file" name="syarat{!! $i+1 !!}" class="file_syarat"></span>
                                                             </td>
-                                                            <td><a href="{{url('/dipa/download/'.$pembayaran_param['dipa_pembayaran_id'].'/'.$pembayaran_param->syaratPembayaran[0][$text2])}}" class="btn btn-success btn-xxs" @if($pembayaran_param->syaratPembayaran[0][$text2] == null) disabled @endif><i class="fa fa-download"></i></a></td>
+                                                            <td>
+                                                                @if($pembayaran_param->syaratPembayaran[0][$text2] != null)
+                                                                <a href="{{url('/dipa/download/'.$pembayaran_param['dipa_pembayaran_id'].'/'.$pembayaran_param->syaratPembayaran[0][$text2])}}" class="btn btn-success btn-xxs"><i class="fa fa-download"></i></a>
+                                                                @else
+                                                                <button class="btn btn-success btn-xxs" disabled><i class="fa fa-download"></i></button>
+                                                                @endif
+                                                            </td>
                                                             <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
                                                         </tr>
                                                         @else
@@ -199,7 +208,7 @@
                                                                 <button href="#" class="btn btn-success btn-xxs"><i class="fa fa-upload"></i></button>
                                                                 <span><input type="file" name="syarat{!! $i+1 !!}" class="file_syarat"></span>
                                                             </td>
-                                                            <td><a href="#" class="btn btn-success btn-xxs disabled"><i class="fa fa-download"></i></a></td>
+                                                            <td><button class="btn btn-success btn-xxs disabled"><i class="fa fa-download"></i></button></td>
                                                             <td><button type="button" class="btn btn-default btn-xxs btn-syarat"><i class="fa fa-chevron-down"></i></button></td>
                                                         </tr>
                                                         @endif
@@ -457,6 +466,13 @@ $(function(){
         formData.append('syarat5', $('input[name="syarat5"]')[0].files[0]);
         formData.append('syarat6', $('input[name="syarat6"]')[0].files[0]);
         formData.append('syarat7', $('input[name="syarat7"]')[0].files[0]);
+        formData.append('hidden_syarat1', $('input[type="hidden"][name="hidden_syarat1"]').val());
+        formData.append('hidden_syarat2', $('input[type="hidden"][name="hidden_syarat2"]').val());
+        formData.append('hidden_syarat3', $('input[type="hidden"][name="hidden_syarat3"]').val());
+        formData.append('hidden_syarat4', $('input[type="hidden"][name="hidden_syarat4"]').val());
+        formData.append('hidden_syarat5', $('input[type="hidden"][name="hidden_syarat5"]').val());
+        formData.append('hidden_syarat6', $('input[type="hidden"][name="hidden_syarat6"]').val());
+        formData.append('hidden_syarat7', $('input[type="hidden"][name="hidden_syarat7"]').val());
         formData.append('check1', $('input[name="check1"]').val());
         formData.append('check2', $('input[name="check2"]').val());
         formData.append('check3', $('input[name="check3"]').val());

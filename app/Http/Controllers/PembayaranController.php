@@ -62,28 +62,28 @@ class PembayaranController extends Controller
 
     public function storeOrUpdate(Request $request)
     {
-        $syarat_pmb = [
-            "syarat1" => $request->file('syarat1'),
-            "syarat2" => $request->file('syarat2'),
-            "syarat3" => $request->file('syarat3'),
-            "syarat4" => $request->file('syarat4'),
-            "syarat5" => $request->file('syarat5'),
-            "syarat6" => $request->file('syarat6'),
-            "syarat7" => $request->file('syarat7'),
-        ];
-
-        $data_check = [
-            "check1" => $request->check1,
-            "check2" => $request->check2,
-            "check3" => $request->check3,
-            "check4" => $request->check4,
-            "check5" => $request->check5,
-            "check6" => $request->check6,
-            "check7" => $request->check7,
-        ];
-
         if ($request->id_pembayaran == null){
             //save
+            $syarat_pmb = [
+                "syarat1" => $request->file('syarat1'),
+                "syarat2" => $request->file('syarat2'),
+                "syarat3" => $request->file('syarat3'),
+                "syarat4" => $request->file('syarat4'),
+                "syarat5" => $request->file('syarat5'),
+                "syarat6" => $request->file('syarat6'),
+                "syarat7" => $request->file('syarat7'),
+            ];
+
+            $data_check = [
+                "check1" => $request->check1,
+                "check2" => $request->check2,
+                "check3" => $request->check3,
+                "check4" => $request->check4,
+                "check5" => $request->check5,
+                "check6" => $request->check6,
+                "check7" => $request->check7,
+            ];
+
             $this->validate($request, [
                 'pembayaran_tanggal'      => 'required',
                 'jenis_pembayaran' => 'required',
@@ -131,16 +131,23 @@ class PembayaranController extends Controller
 
         } else {
             //update
+            //menyusun syarat menjadi array
             $syarat_pmb = [
-                "syarat1" => $request->file('syarat1'),
-                "syarat2" => $request->file('syarat2'),
-                "syarat3" => $request->file('syarat3'),
-                "syarat4" => $request->file('syarat4'),
-                "syarat5" => $request->file('syarat5'),
-                "syarat6" => $request->file('syarat6'),
-                "syarat7" => $request->file('syarat7'),
+                $request->file('syarat1'),
+                $request->file('syarat2'),
+                $request->file('syarat3'),
+                $request->file('syarat4'),
+                $request->file('syarat5'),
+                $request->file('syarat6'),
+                $request->file('syarat7'),
             ];
-
+            //menyusun parameter file exist kedalam array
+            $array_check = [
+                $request->hidden_syarat1, $request->hidden_syarat2, $request->hidden_syarat3,
+                $request->hidden_syarat4, $request->hidden_syarat5, $request->hidden_syarat6,
+                $request->hidden_syarat7,
+            ];
+            //menyusun cheklist kedalam array
             $data_check = [
                 "check1" => $request->check1,
                 "check2" => $request->check2,
@@ -150,7 +157,7 @@ class PembayaranController extends Controller
                 "check6" => $request->check6,
                 "check7" => $request->check7,
             ];
-            //save
+            //validasi
             $this->validate($request, [
                 'pembayaran_tanggal'      => 'required',
                 'jenis_pembayaran' => 'required',
@@ -159,9 +166,9 @@ class PembayaranController extends Controller
                 'pembayaran_keterangan' => 'required',
                 'pembayaran_status' => 'required'
             ]);
-
+            //menghilangkan . untuk kemudian di save ke database
             $number = $this->clearComma($request->pembayaran_nilai);
-
+            //update data pembayaran
             $dipa_pmb = DipaPembayaran::find($request->id_pembayaran)->update([
                 'dipa_pembayaran_tanggal'   => $request->pembayaran_tanggal,
                 'dipa_jenis_pembayaran'     => $request->jenis_pembayaran,
@@ -170,8 +177,9 @@ class PembayaranController extends Controller
                 'dipa_pembayaran_keterangan'=> $request->pembayaran_keterangan,
                 'dipa_pembayaran_status'    => $request->pembayaran_status,
             ]);
-            
+            //mendapatkan id_pmb
             $id_pmb = $request->id_pembayaran;
+            //mendapatkan id detail akun nama detail (untuk proses pembuatan nama folder)
             $id_detail = $request->id_detail_akun;
             $nama_detail = DipaAkunDetail::find($id_detail)->dipa_nama_detail;
             $nama_detail_arr = explode(' ', $nama_detail);
@@ -183,21 +191,11 @@ class PembayaranController extends Controller
                 }
             }
             $nama_folder = $id_detail.'_'.$nama_detail.'_'.$id_pmb;
+            //format nama foler idakundetail_namaakundetai_idpembayaran
+            //instansiasi controller syarat
             $syarat = new syarat;
-            $syarat->deleteDir($nama_folder); //delete direktori if exist
-            $path_syarat = [];
-
-            foreach($syarat_pmb as $item){
-                if ($item != null) {
-                    $path_syarat[] = [$syarat->upload($item, $nama_folder)];
-                } else {
-                    $path_syarat[] = [null];
-                }
-            }
-            $del = $syarat->delete($request->id_pembayaran);
-            if($del == 0) return "erorr";
-
-            $syarat->save($path_syarat, $data_check, $id_pmb);
+            $syarat->update($id_pmb, $array_check, $syarat_pmb, $data_check, $nama_folder);
+                        
         }
 
             return response()->json(["status"=>"success"],200);
