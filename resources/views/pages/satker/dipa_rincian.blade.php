@@ -373,6 +373,8 @@ $(function(){
                 render: function (data) {
                     if(data['status'] == 0){
                         var status = `<div class="text-center"><span class='label label-warning'>DRAFT</span></div>`;
+                    } else if(data['status'] == null){
+                        var status = `<div class="text-center"><span class='label label-success'>BELUM ADA PEMB.</span></div>`;
                     } else {
                         var status = `<div class="text-center"><span class='label label-primary'>TERKIRIM</span></div>`;
                     }
