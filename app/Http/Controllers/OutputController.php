@@ -103,4 +103,8 @@ class OutputController extends Controller
         if($output == null) return abort(503);
         $output->delete();
     }
+    public function get($id_kegiatan)
+    {
+        return DipaOutput::where('dipa_id_kegiatan',$id_kegiatan)->get();
+    }
 }

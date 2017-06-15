@@ -103,4 +103,9 @@ class KomponenController extends Controller
         if($output == null) return abort(503);
         $output->delete();
     }
+
+    public function get($id_sub_output)
+    {
+        return DipaKomponen::where('dipa_id_sub_output', $id_sub_output)->get();
+    }
 }

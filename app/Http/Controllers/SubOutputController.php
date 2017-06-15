@@ -102,4 +102,9 @@ class SubOutputController extends Controller
         if($output == null) return abort(503);
         $output->delete();
     }
+
+    public function get($id_output)
+    {
+        return DipaSubOutput::where('dipa_id_output', $id_output)->get();
+    }
 }

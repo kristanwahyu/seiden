@@ -100,4 +100,9 @@ class KegiatanController extends Controller
         if($kegiatan == null) return abort(503);
         $kegiatan->delete();
     }
+
+    public function get($id_program)
+    {
+        return DipaKegiatan::where('dipa_id_program', $id_program)->get();
+    }
 }

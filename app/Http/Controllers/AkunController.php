@@ -104,4 +104,9 @@ class AkunController extends Controller
         if($output == null) return abort(503);
         $output->delete();
     }
+
+    public function get($id_sub_komponen)
+    {
+        return DipaAkun::where('dipa_id_sub_komponen', $id_sub_komponen)->get();
+    }
 }

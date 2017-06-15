@@ -190,19 +190,23 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/dashboard-kpa', function () {
             return view('pages.kpa.dashboard');
         });
-        Route::get('/detail', function () {
-            return view('pages.kpa.detail');
-        });
-        Route::get('/monitoring', function () {
-            return view('pages.kpa.monitoring');
-        });
+        Route::get('/detail/{id}', 'KpaController@showPage');
+        Route::get('/monitoring/{id}', 'KpaController@showPageDetail');
+        Route::get('/monitoring/show/{id}','KpaController@monitoring');
+        Route::get('/kpa/show/{id}', 'KpaController@show');
         //==============+++END KPA+++============//
      });
 });
 //OTHER
 Route::get('/tahun/get', 'TahunAnggaranController@get');
 Route::get('/satker/get', 'SatuanKerjaController@get');
-Route::get('/program/get', 'ProgramController@get');
+Route::get('/program/get/{id_tahun}/{id_satker}', 'ProgramController@get');
+Route::get('/kegiatan/get/{id_program}', 'KegiatanController@get');
+Route::get('/output/get/{id_kegiatan}', 'OutputController@get');
+Route::get('/suboutput/get/{id_output}', 'SubOutputController@get');
+Route::get('/komponen/get/{id_sub_output}', 'KomponenController@get');
+Route::get('/subkomponen/get/{id_komponen}', 'SubKomponenController@get');
+Route::get('/akun/get/{id_sub_komponen}', 'AkunController@get');
 
 Auth::routes();
 //==OVERIDE LOGOUT==//

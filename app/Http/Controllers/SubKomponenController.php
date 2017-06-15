@@ -102,4 +102,9 @@ class SubKomponenController extends Controller
         if($output == null) return abort(503);
         $output->delete();
     }
+
+    public function get($id_komponen)
+    {
+        return DipaSubKomponen::where('dipa_id_komponen', $id_komponen)->get();
+    }
 }

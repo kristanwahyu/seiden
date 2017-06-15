@@ -25,6 +25,8 @@ class ProgramController extends Controller
     public function show()
     {
         $id_satker = Auth::user()->dipa_id_satuan_kerja;
+        $tahunaktif = DipaTahunAnggaran::where('dipa_status','1')->first();
+        $id_tahun = $tahunaktif->dipa_id_tahun_anggaran;
         $job = DB::table('tbl_dipa_program')
                 ->leftJoin('tbl_dipa_kegiatan', 'tbl_dipa_program.dipa_id_program', '=', 'tbl_dipa_kegiatan.dipa_id_program')
                 ->leftJoin('tbl_dipa_output', 'tbl_dipa_kegiatan.dipa_id_kegiatan', '=', 'tbl_dipa_output.dipa_id_kegiatan')
@@ -33,6 +35,7 @@ class ProgramController extends Controller
                 ->leftJoin('tbl_dipa_sub_komponen','tbl_dipa_komponen.dipa_id_komponen', '=', 'tbl_dipa_sub_komponen.dipa_id_komponen')
                 ->leftJoin('tbl_dipa_akun','tbl_dipa_sub_komponen.dipa_id_sub_komponen', '=', 'tbl_dipa_akun.dipa_id_sub_komponen')
                 ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
+                ->where('tbl_dipa_program.dipa_id_tahun_anggaran', $id_tahun)
                 ->groupBy('tbl_dipa_program.dipa_id_program', 'tbl_dipa_program.dipa_kode_program', 'tbl_dipa_program.dipa_nama_program')
                 ->get([
                     'tbl_dipa_program.dipa_id_program',
@@ -91,5 +94,9 @@ class ProgramController extends Controller
     public function delete($id)
     {
         DipaProgram::find($id)->delete();
+    }
+    public function get($id_tahun, $satker)
+    {
+        return DipaProgram::where([['dipa_id_tahun_anggaran', $id_tahun],['dipa_id_satuan_kerja', $satker]])->get();
     }
 }

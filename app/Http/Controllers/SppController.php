@@ -31,7 +31,7 @@ class SppController extends Controller
 		->leftJoin('tbl_dipa_pmb_check_spp', 'tbl_dipa_pmb_check_spp.dipa_pembayaran_id','=','tbl_dipa_pembayaran.dipa_pembayaran_id')
 		->whereNull('tbl_dipa_pmb_check_spp.dipa_pembayaran_id')
 		->where('tbl_dipa_program.dipa_id_satuan_kerja',Auth::user()->dipa_id_satuan_kerja)
-    ->get([
+    	->get([
     		DB::raw('CONCAT(
     			tbl_dipa_akun_detail.dipa_nama_detail," | ",
     			CASE tbl_dipa_akun_detail.dipa_jenis_akun WHEN 1 THEN "Belanja Gaji"
@@ -56,7 +56,7 @@ class SppController extends Controller
         'tbl_dipa_pembayaran.dipa_pembayaran_nilai',
         'tbl_dipa_pembayaran.dipa_pembayaran_id'
         ]);
-    return $this->makeDataTable($data);
+    	return $this->makeDataTable($data);
 	}
 
 	public function getOne($id){
@@ -113,11 +113,11 @@ class SppController extends Controller
 		}
 
 		$number = $this->clearComma($request->nilai_spp);
-
+		$date = date('Y-m-d', strtotime($request->addDate));
 		DipaPembayaranCheckSPP::create([
 		'dipa_spp_no'      		=> $request->no_spp,
 		'dipa_spp_nilai'      => $number,
-		'dipa_spp_tanggal' 		=> $request->addDate,
+		'dipa_spp_tanggal' 		=> $date,
 		'dipa_spp_keterangan'   		=> $request->tambah_keterangan,
 		'dipa_sinkronisasi_simak'   => $simak,
 		'dipa_sinkronisasi_saiba'   => $saiba,

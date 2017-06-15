@@ -42,47 +42,47 @@
                                     <tr>
                                         <td>TAHUN ANGGARAN</td>
                                         <td>:</td>
-                                        <td>2017</td>
+                                        <td>{{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['tahun']['dipa_tahun_anggaran']}}</td>
                                     </tr>
                                     <tr>
                                         <td>SATUAN KERJA</td>
                                         <td>:</td>
-                                        <td>SATKER01 / Satuan Kerja 01</td>
+                                        <td>{{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_satuan_kerja']}}</td>
                                     </tr>
                                     <tr>
                                         <td>PROGRAM</td>
                                         <td>:</td>
-                                        <td>PRG001 / Program 001</td>
+                                        <td>{{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}} / {{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['program']['dipa_nama_program']}}</td>
                                     </tr>
                                     <tr>
                                         <td>KEGIATAN</td>
                                         <td>:</td>
-                                        <td>KGT001 / Kegiatan 001</td>
+                                        <td>{{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}} / {{$akun['sub_komponen']['komponen']['sub_output']['output']['kegiatan']['dipa_nama_kegiatan']}}</td>
                                     </tr>
                                     <tr>
                                         <td>OUTPUT</td>
                                         <td>:</td>
-                                        <td>OP001 / Output 001</td>
+                                        <td>{{$akun['sub_komponen']['komponen']['sub_output']['output']['dipa_kode_output']}} / {{$akun['sub_komponen']['komponen']['sub_output']['output']['dipa_nama_output']}}</td>
                                     </tr>
                                     <tr>
                                         <td>SUB OUTPUT</td>
                                         <td>:</td>
-                                        <td>SOP001.1 / Sub Output 001.1</td>
+                                        <td>{{$akun['sub_komponen']['komponen']['sub_output']['dipa_kode_sub_output']}} / {{$akun['sub_komponen']['komponen']['sub_output']['dipa_nama_sub_output']}}</td>
                                     </tr>
                                     <tr>
                                         <td>KOMPONEN</td>
                                         <td>:</td>
-                                        <td>KP001 / Komponen 001</td>
+                                        <td>{{$akun['sub_komponen']['komponen']['dipa_kode_komponen']}} / {{$akun['sub_komponen']['komponen']['dipa_nama_komponen']}}</td>
                                     </tr>
                                     <tr>
                                         <td>SUB KOMPONEN</td>
                                         <td>:</td>
-                                        <td>KP001.1 / Sub Komponen 001.1</td>
+                                        <td>{{$akun['sub_komponen']['dipa_kode_sub_komponen']}} / {{$akun['sub_komponen']['dipa_nama_sub_komponen']}}</td>
                                     </tr>
                                     <tr>
                                         <td>AKUN</td>
                                         <td>:</td>
-                                        <td>AK001 / Akun 001</td>
+                                        <td>{{$akun['dipa_kode_akun']}} / {{$akun['dipa_nama_akun']}}</td>
                                     </tr>
                                   </tbody>
                               </table>
@@ -129,53 +129,167 @@
 <script>
 'use strict';
 
-var data = [
-  [
-      "1",
-      "UP",
-      "Rp. 1.500.000",
-      `<div class='text-center'><span class='label label-success' style='font-size:12px'><i class="fa fa-check" aria-hidden="true"></i></span></div>`,
-      "001",
-      "20 Januari 2017",
-      `<div class='text-center'><span class='label label-success' style='font-size:12px'><i class="fa fa-check" aria-hidden="true"></i></span></div>`,
-      "001",
-      "20 Januari 2017",
-      `<div class='text-center'><span class='label label-success' style='font-size:12px'><i class="fa fa-check" aria-hidden="true"></i></span></div>`,
-      "001",
-      "21 Januari 2017"
-  ],
-  [
-      "2",
-      "LS",
-      "Rp. 1.500.000",
-      `<div class='text-center'><span class='label label-danger' style='font-size:12px'><i class="fa fa-times" aria-hidden="true"></i></span></div>`,
-      "-",
-      "-",
-      `<div class='text-center'><span class='label label-danger' style='font-size:12px'><i class="fa fa-times" aria-hidden="true"></i></span></div>`,
-      "-",
-      "-",
-      `<div class='text-center'><span class='label label-danger' style='font-size:12px'><i class="fa fa-times" aria-hidden="true"></i></span></div>`,
-      "-",
-      "-"
-  ],
-];
+var id_akun = "{{$dipa_id_detail_akun}}";
+    var table = $('#myTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":{
+            type : "GET",
+            url : "/monitoring/show/"+id_akun
+        },
+        "columns": [
+            {
+                title: "NO",
+                data: "DT_Row_Index",
+                orderable: false,
+                searchable: false,
+                width: "1%"
+            },
+            {
+                //table buat order default
+                data: 'dipa_pembayaran_id',
+                searchable: false,
+                visible: false
+            },
+            {
+                title: 'JENIS BAYAR',
+                data: null,
+                defaultContent: "-",
+                name: 'dipa_jenis_pembayaran',
+                render: function(data) {
+                    if(data['dipa_jenis_pembayaran'] == 1)
+                        return "UP";
+                    else
+                        return "LS";
+                }
+            },
+            {
+                title: 'JUMLAH',
+                data: null,
+                defaultContent: "-",
+                name: 'dipa_pembayaran_nilai',
+                render: function(data) {
+                    return "Rp. "+formatNumber(data['dipa_pembayaran_nilai']);
+                }
+            },
+            {
+                title: 'SPP',
+                data: null,
+                defaultContent: "-",
+                name: "PembayaranCheckSPP",
+                render: function(data) {
+                    if(data['pembayaran_check_s_p_p']==null)
+                        return `<div class='text-center'><span class='label label-danger' style='font-size:12px'><i class="fa fa-times" aria-hidden="true"></i></span></div>`
+                    else
+                       return `<div class='text-center'><span class='label label-success' style='font-size:12px'><i class="fa fa-check" aria-hidden="true"></i></span></div>`
+                }
+            },
+            {
+                title: 'NO. SPP',
+                data: 'pembayaran_check_s_p_p.dipa_spp_no',
+                defaultContent: "-",
+                name: 'dipa_volume'
+                
+            },
+            {
+                title: 'TGL. SPP',
+                data: null,
+                defaultContent: "-",
+                name: 'PembayaranCheckSPP.dipa_spp_tanggal',
+                render: function(data){
+                    if(data['pembayaran_check_s_p_p'] != null) {
+                        var str = data['pembayaran_check_s_p_p']['dipa_spp_tanggal'];
+                        var rs = str.substr(0,10);
+                        return rs;
+                    } else {
+                        return '-';
+                    }
+                }
+            },
+            {
+                title: 'SPM',
+                data: null,
+                defaultContent: "-",
+                name: "PembayaranCheckSPP",
+                render: function(data) {
+                    if(data['pembayaran_check_s_p_m']==null)
+                        return `<div class='text-center'><span class='label label-danger' style='font-size:12px'><i class="fa fa-times" aria-hidden="true"></i></span></div>`
+                    else
+                       return `<div class='text-center'><span class='label label-success' style='font-size:12px'><i class="fa fa-check" aria-hidden="true"></i></span></div>`
+                }
+            },
+            {
+                title: 'NO. SPM',
+                data: 'pembayaran_check_s_p_m.dipa_spm_no',
+                defaultContent: "-",
+                name: 'dipa_volume'
+                
+            },
+            {
+                title: 'TGL. SPM',
+                data: null,
+                defaultContent: "-",
+                name: 'dipa_volume',
+                render: function(data){
+                    if(data['pembayaran_check_s_p_m'] != null) {
+                        var str = data['pembayaran_check_s_p_m']['dipa_spm_tanggal'];
+                        var rs = str.substr(0,10);
+                        return rs;
+                    } else {
+                        return '-';
+                    }
+                }
+            },
+            {
+                title: 'SP2D',
+                data: null,
+                defaultContent: "-",
+                name: "PembayaranCheckSPP",
+                render: function(data) {
+                    if(data['pembayaran_check_s_p2_d']==null)
+                        return `<div class='text-center'><span class='label label-danger' style='font-size:12px'><i class="fa fa-times" aria-hidden="true"></i></span></div>`
+                    else
+                       return `<div class='text-center'><span class='label label-success' style='font-size:12px'><i class="fa fa-check" aria-hidden="true"></i></span></div>`
+                }
+            },
+            {
+                title: 'NO. SP2D',
+                data: 'pembayaran_check_s_p2_d.dipa_sp2d_no',
+                defaultContent: "-",
+                name: 'dipa_volume'
+                
+            },
+            {
+                title: 'TGL. SP2D',
+                data: null,
+                defaultContent: "-",
+                name: 'dipa_volume',
+                render: function(data){
+                    if(data['pembayaran_check_s_p2_d'] != null) {
+                        var str = data['pembayaran_check_s_p2_d']['dipa_sp2d_tanggal'];
+                        var rs = str.substr(0,10);
+                        return rs;
+                    } else {
+                        return '-';
+                    }
+                }
+            },
+        ]
+    });
+    $('.format-number').toArray().forEach((field) => {
+            //cleave.js number format
+        return new Cleave(field, {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand',
+            numeralDecimalMark: ',',
+            delimiter: '.'
+        });
+    });
 
-$('#myTable').DataTable({
-  "data": data,
-  "columns" : [
-    { "title": "NO", "width": "1%" },
-    { "title": "JENIS BAYAR" },
-    { "title": "JUMLAH" },
-    { "title": "SPP" },
-    { "title": "NO SPP" },
-    { "title": "TANGGAL SPP" },
-    { "title": "SPM" },
-    { "title": "NO SPM" },
-    { "title": "TANGGAL SPM" },
-    { "title": "SP2D" },
-    { "title": "NO SP2D" },
-    { "title": "TANGGAL SP2D" }
-  ]
-});
+    //native number format converter
+    function formatNumber(value){
+        var currency = new Intl.NumberFormat('de-DE');
+        return currency.format(value);
+    }
 </script>
 @endpush

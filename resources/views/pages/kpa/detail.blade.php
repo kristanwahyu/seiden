@@ -41,47 +41,47 @@
                                     <tr>
                                         <td>TAHUN ANGGARAN</td>
                                         <td>:</td>
-                                        <td>2017</td>
+                                        <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['tahun']['dipa_tahun_anggaran']}}</td>
                                     </tr>
                                     <tr>
                                         <td>SATUAN KERJA</td>
                                         <td>:</td>
-                                        <td>SATKER01 / Satuan Kerja 01</td>
+                                        <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_kode_satuan_kerja']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['satuan_kerja']['dipa_satuan_kerja']}}</td>
                                     </tr>
                                     <tr>
                                         <td>PROGRAM</td>
                                         <td>:</td>
-                                        <td>PRG001 / Program 001</td>
+                                        <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_kode_program']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['program']['dipa_nama_program']}}</td>
                                     </tr>
                                     <tr>
                                         <td>KEGIATAN</td>
                                         <td>:</td>
-                                        <td>KGT001 / Kegiatan 001</td>
+                                        <td>{{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_kode_kegiatan']}} / {{$sub_komponen['komponen']['sub_output']['output']['kegiatan']['dipa_nama_kegiatan']}}</td>
                                     </tr>
                                     <tr>
                                         <td>OUTPUT</td>
                                         <td>:</td>
-                                        <td>OP001 / Output 001</td>
+                                        <td>{{$sub_komponen['komponen']['sub_output']['output']['dipa_kode_output']}} / {{$sub_komponen['komponen']['sub_output']['output']['dipa_nama_output']}}</td>
                                     </tr>
                                     <tr>
                                         <td>SUB OUTPUT</td>
                                         <td>:</td>
-                                        <td>SOP001.1 / Sub Output 001.1</td>
+                                        <td>{{$sub_komponen['komponen']['sub_output']['dipa_kode_sub_output']}} / {{$sub_komponen['komponen']['sub_output']['dipa_nama_sub_output']}}</td>
                                     </tr>
                                     <tr>
                                         <td>KOMPONEN</td>
                                         <td>:</td>
-                                        <td>KP001 / Komponen 001</td>
+                                        <td>{{$sub_komponen['komponen']['dipa_kode_komponen']}} / {{$sub_komponen['komponen']['dipa_nama_komponen']}}</td>
                                     </tr>
                                     <tr>
                                         <td>SUB KOMPONEN</td>
                                         <td>:</td>
-                                        <td>KP001.1 / Sub Komponen 001.1</td>
+                                        <td>{{$sub_komponen['dipa_kode_sub_komponen']}} / {{$sub_komponen['dipa_nama_sub_komponen']}}</td>
                                     </tr>
                                     <tr>
                                         <td>AKUN</td>
                                         <td>:</td>
-                                        <td>AK001 / Akun 001</td>
+                                        <td>{{$dipa_kode_akun}} / {{$dipa_nama_akun}}</td>
                                     </tr>
                                   </tbody>
                               </table>
@@ -127,55 +127,149 @@
 
 <script>
 'use strict';
+var id_akun = "{{$dipa_id_akun}}";
+    var table = $('#myTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":{
+            type : "GET",
+            url : "/kpa/show/"+id_akun
+        },
+        "columns": [
+            {
+                title: "NO",
+                data: "DT_Row_Index",
+                orderable: false,
+                searchable: false,
+                width: "1%"
+            },
+            {
+                //table buat order default
+                data: 'dipa_id_detail_akun',
+                searchable: false,
+                visible: false
+            },
+            {
+                title: 'KODE',
+                data: 'kode',
+                defaultContent: "-",
+                name: 'subKomponen.dipa_kode_sub_komponen'
+            },
+            {
+                title: 'RINCIAN',
+                data: 'rincian',
+                defaultContent: "-",
+                name: 'rincian'
+            },
+            {
+                title: 'VOL',
+                data: 'dipa_volume',
+                defaultContent: "-",
+                name: 'dipa_volume'
+            },
+            {
+                title: '<div class="text-center">NILAI</div>',
+                data: null,
+                defaultContent: "-",
+                name: 'dipa_harga_satuan',
+                render: function(data) {
+                    var number = data['dipa_harga_satuan'];
+                    if (number != null) {
+                        var number_change = formatNumber(number);
+                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                        return currency.replace();
+                    }
+                },
+                width: "10%"
+            },
+            {
+                title: '<div class="text-center">TOTAL</div>',
+                data: null,
+                defaultContent: "-",
+                name: 'total',
+                render: function(data) {
+                    var number = data['total'];
+                    if (number != null) {
+                        var number_change = formatNumber(number);
+                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                        return currency.replace();
+                    }
+                },
+                width: "10%"
+            },
+            {
+                title: '<div class="text-center">DIBAYAR</div>',
+                data: null,
+                defaultContent: "-",
+                name: 'dipa_pembayaran_nilai',
+                render: function(data) {
+                    var number = data['total_pembayaran'];
+                    if (number != null) {
+                        var number_change = formatNumber(number);
+                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
+                        return currency.replace();
+                    }
+                },
+                width: "10%"
+            },
+            /*{
+                title: 'JENIS AKUN',
+                data: 'dipa_jenis_akun',
+                defaultContent: "-",
+                render: function (data) {
+                    var jenis = data == '1' ? 'Belanja Gaji' : 'Belanja Non Gaji';
+                    return jenis.replace();
+                },
+                searchable: false
+            },*/
+            {
+                title: 'PROGRES',
+                data: null,
+                defaultContent: "-",
+                render: function (data) {
+                    var total = data['total'];
+                    var total_bayar = data['total_pembayaran'];
+                    var progres = (total_bayar/total)*100;
+                    var a = Math.floor(progres);
 
-var data = [
-  [
-      "1",
-      "123.456.789.001",
-      "Penbayaran Dana - Belanja Gaji - 2 Orang",
-      "2 Orang",
-      "Rp. 1.500.000",
-      "Rp. 3.000.000",
-      "Rp. 3.000.000",
-      `<div class="progress">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50"
-        aria-valuemin="0" aria-valuemax="100" style="width:50%">
-          50%
-        </div>
-      </div>`,
-      `<a href="{{ url('/monitoring') }}" class="btn btn-success" role="button">Monitoring</a>`
-  ],
-  [
-      "2",
-      "123.456.789.002",
-      "Penbayaran Dana - Belanja Non Gaji - 3 Orang",
-      "3 Orang",
-      "Rp. 500.000",
-      "Rp. 1.500.000",
-      "Rp. 1.500.000",
-      `<div class="progress">
-        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="75"
-        aria-valuemin="0" aria-valuemax="100" style="width:75%">
-          75%
-        </div>
-      </div>`,
-      `<a href="{{ url('/monitoring') }}" class="btn btn-success" role="button">Monitoring</a>`
-  ],
-];
+                    var progress = `<div class="progress">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="75"
+                                        aria-valuemin="0" aria-valuemax="100" style="width:${a}%">
+                                        ${a}%
+                                        </div>
+                                    </div>`;
+                    return progress;
+                },
+                searchable: false
+            },
+            {
+                title: '<div class="text-center">ACTION</div>',
+                data: null,
+                render: function (data) {
+                   return `<a href="/monitoring/${data['dipa_id_detail_akun']}" class="btn btn-success" role="button">Monitoring</a>`
+                },
+                width: "8%",
+                orderable: false,
+                searchable: false
+            }
+        ],
+        "order": [[ 1, "desc" ]]
+    });
+$('.format-number').toArray().forEach((field) => {
+        //cleave.js number format
+        return new Cleave(field, {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand',
+            numeralDecimalMark: ',',
+            delimiter: '.'
+        });
+    });
 
-$('#myTable').DataTable({
-  "data": data,
-  "columns" : [
-    { "title": "NO", "width": "1%" },
-    { "title": "KODE" },
-    { "title": "RINCIAN" },
-    { "title": "VOL" },
-    { "title": "NILAI" },
-    { "title": "TOTAL" },
-    { "title": "DIBAYAR" },
-    { "title": "PROGRES" },
-    { "title": "ACTION", "width": "1%", "orderable": false }
-  ]
-});
+    //native number format converter
+    function formatNumber(value){
+        var currency = new Intl.NumberFormat('de-DE');
+        return currency.format(value);
+    }
+      
 </script>
 @endpush
