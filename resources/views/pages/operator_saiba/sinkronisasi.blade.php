@@ -41,127 +41,127 @@
                                     <tr>
                                         <td>KODE / SATUAN KERJA</td>
                                         <td>:</td>
-                                        <td>SATKER01 / Satuan Kerja 01</td>
+                                        <td>{{$data[0]->dipa_kode_satuan_kerja}} / {{$data[0]->dipa_satuan_kerja}}</td>
                                     </tr>
                                     <tr>
                                         <td>PROGRAM</td>
                                         <td>:</td>
-                                        <td>PRG001 / Program 001</td>
+                                        <td>{{$data[0]->dipa_kode_program}} / {{$data[0]->dipa_nama_program}}</td>
                                     </tr>
                                     <tr>
                                         <td>KEGIATAN</td>
                                         <td>:</td>
-                                        <td>KGT001 / Kegiatan 001</td>
+                                        <td>{{$data[0]->dipa_kode_kegiatan}} / {{$data[0]->dipa_nama_kegiatan}}</td>
                                     </tr>
                                     <tr>
                                         <td>OUTPUT</td>
                                         <td>:</td>
-                                        <td>OP001 / Output 001</td>
+                                        <td>{{$data[0]->dipa_kode_output}} / {{$data[0]->dipa_nama_output}}</td>
                                     </tr>
                                     <tr>
                                         <td>SUB OUTPUT</td>
                                         <td>:</td>
-                                        <td>SOP001.1 / Sub Output 001.1</td>
+                                        <td>{{$data[0]->dipa_kode_sub_output}} / {{$data[0]->dipa_nama_sub_output}}</td>
                                     </tr>
                                     <tr>
                                         <td>KOMPONEN</td>
                                         <td>:</td>
-                                        <td>KP001 / Komponen 001</td>
+                                        <td>{{$data[0]->dipa_kode_program}} / {{$data[0]->dipa_kode_program}}</td>
                                     </tr>
                                     <tr>
                                         <td>SUB KOMPONEN</td>
                                         <td>:</td>
-                                        <td>KP001.1 / Sub Komponen 001.1</td>
+                                        <td>{{$data[0]->dipa_kode_komponen}} / {{$data[0]->dipa_nama_komponen}}</td>
                                     </tr>
                                     <tr>
                                         <td>AKUN</td>
                                         <td>:</td>
-                                        <td>AK001 / Akun 001</td>
+                                        <td>{{$data[0]->dipa_kode_sub_komponen}} / {{$data[0]->dipa_nama_sub_komponen}}</td>
                                     </tr>
                                     <tr>
                                         <td>RINCIAN</td>
                                         <td>:</td>
-                                        <td>Penbayaran Dana - Belanja Gaji - 2 Orang</td>
+                                        <td>{{$data[0]->dipa_nama_akun}} - {{$data[0]->dipa_volume}} - {{$data[0]->dipa_satuan}}</td>
                                     </tr>
                                     <tr>
                                         <td>HARGA SATUAN</td>
                                         <td>:</td>
-                                        <td>RP. 1.500.000</td>
+                                        <td>{{$data[0]->dipa_harga_satuan}}</td>
                                     </tr>
                                     <tr>
                                         <td>TOTAL HARGA</td>
                                         <td>:</td>
-                                        <td>RP. 3.000.000</td>
+                                        <td>{{$data[0]->dipa_harga_satuan * $data[0]->dipa_volume}}</td>
                                     </tr>
                                     <tr>
                                         <td>TAHUN ANGGARAN</td>
                                         <td>:</td>
-                                        <td>2017</td>
+                                        <td>{{$data[0]->dipa_tahun_anggaran}}</td>
                                     </tr>
                                     <tr>
                                         <td>DANA YANG TERPAKAI</td>
                                         <td>:</td>
-                                        <td>RP. 3.000.000</td>
+                                        <td>{{$data[0]->dipa_pembayaran_nilai}}</td>
                                     </tr>
                                     <tr>
                                         <td>NO SPP</td>
                                         <td>:</td>
-                                        <td>123</td>
+                                        <td>{{$data[0]->dipa_spp_no}}</td>
                                     </tr>
                                     <tr>
                                         <td>NILAI SPP</td>
                                         <td>:</td>
-                                        <td>Rp. 5000</td>
+                                        <td>{{$data[0]->dipa_spp_nilai}}</td>
                                     </tr>
                                     <tr>
                                         <td>TANGGAL SPP</td>
                                         <td>:</td>
-                                        <td>08 Juni 2017</td>
+                                        <td>{{$data[0]->dipa_spp_tanggal}}</td>
                                     </tr>
                                     <tr>
                                         <td>KETERANGAN</td>
                                         <td>:</td>
-                                        <td>Pembayaran Dana - Belanja Gaji - 2 Orang</td>
+                                        <td>{{$data[0]->dipa_spp_keterangan}}</td>
                                     </tr>
                                     <tr>
                                         <td>NO SPM</td>
                                         <td>:</td>
-                                        <td>123</td>
+                                        <td>{{$data[0]->dipa_spm_no}}</td>
                                     </tr>
                                     <tr>
                                         <td>NILAI SPM</td>
                                         <td>:</td>
-                                        <td>Rp. 5000</td>
+                                        <td>{{$data[0]->dipa_spm_nilai}}</td>
                                     </tr>
                                     <tr>
                                         <td>TANGGAL SPM</td>
                                         <td>:</td>
-                                        <td>08 Juni 2017</td>
+                                        <td>{{$data[0]->dipa_spm_tanggal}}</td>
                                     </tr>
                                     <tr>
                                         <td>KETERANGAN</td>
                                         <td>:</td>
-                                        <td>Pembayaran Dana - Belanja Gaji - 2 Orang</td>
+                                        <td>{{$data[0]->dipa_spm_keterangan}}</td>
                                     </tr>
                                     <tr>
                                         <td>NO SP2D</td>
                                         <td>:</td>
-                                        <td>123</td>
+                                        <td>{{$data[0]->dipa_sp2d_no}}</td>
                                     </tr>
                                     <tr>
                                         <td>NILAI SP2D</td>
                                         <td>:</td>
-                                        <td>Rp. 5000</td>
+                                        <td>{{$data[0]->dipa_sp2d_nilai}}</td>
                                     </tr>
                                     <tr>
                                         <td>TANGGAL SP2D</td>
                                         <td>:</td>
-                                        <td>08 Juni 2017</td>
+                                        <td>{{$data[0]->dipa_sp2d_tanggal}}</td>
                                     </tr>
                                     <tr>
                                         <td>KETERANGAN</td>
                                         <td>:</td>
-                                        <td>Penbayaran Dana - Belanja Gaji - 2 Orang</td>
+                                        <td>{{$data[0]->dipa_sp2d_keterangan}}</td>
                                     </tr>
                                     <tr>
                                       <td>SINKRONISASI SEKARANG ?</td>
@@ -172,30 +172,18 @@
                               </table>
                               <br>
                               <div class="row">
-                                    <div class="col-sm-12">
-                                      <div class="text-left clearfix">
-                                          <button class="btn btn-primary" onclick="simpan()"><i class="fa fa-save"></i> Simpan</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                              </div>
-                          </div>
-                        </div>
-                        {{-- <form action="" method="POST" class="form-horizontal" role="form">
-                            <div class="row">
                                 <div class="col-sm-12">
-                                  <div class="form-group clearfix">
-                                    <label class="col-sm-2 control-label">Sinkronisasi Sekarang ?</label>
-                                    <div class="col-sm-5">
-                                      <label class="checkbox-inline"><input type="checkbox" value="1">Ya</label>
-                                    </div>
+                                  <div class="text-left clearfix">
+                                      <a href="/dashboard-saiba/" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                      <button class="btn btn-success" onclick="simpan({{$data[0]->dipa_pembayaran_id}})"><i class="fa fa-save"></i> Simpan</button>
                                   </div>
                                 </div>
-                            </div>
-                        </form> --}}
-                    </div> {{-- akhir panel body --}}
-                </div> {{-- akhir tabel DIPA --}}
-            </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div> {{-- akhir panel body --}}
+            </div> {{-- akhir tabel DIPA --}}
         </div>
     </div>
 </div>
@@ -218,7 +206,7 @@ $(function () {
     });
 });
 
-function simpan(){
+function simpan(id){
     swal({
     title: "Apakah Anda Yakin ?",
     text: "Data SPP Ini Akan Disimpan ",
@@ -232,11 +220,46 @@ function simpan(){
   },
   function(isConfirm){
     if (isConfirm) {
-      swal("Berhasil!", "Data SPP Berhasil Simpan", "success");
+        $.ajax({
+            url : "/sinkronisasi-saiba/",
+            type : "POST",
+            data : {
+              "_token": "{{ csrf_token() }}",
+              "id" : id
+            },
+            success : function(data, status){
+              if(status=="success"){
+                  setTimeout(function(){
+                  swal({
+                      title: "Sukses",
+                      text: "Data Telah Tersinkronisasi!",
+                      type: "success"
+                      });
+                  }, 1000);
+                  
+              }
+              $('#modal-tambah').modal('hide');
+              window.location.replace("/dashboard-saiba");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+              setTimeout(function(){
+                  swal("Error Saving!", "Please try again", "error");
+              }, 1000);
+              $('#modal-tambah').modal('hide');
+            }
+            });
     } else {
-      swal('Dibatalkan', 'Data SPP Batal Simpan :)', 'error');
+        swal('Dibatalkan', 'Data Batal Disinkronisasi', 'error');
     }
   });
 }
+
+$("button").attr("disabled", "disabled");
+$("input[type='checkbox']").click(function(){
+    if ($("input[type='checkbox']").is(':checked'))
+        $("button").removeAttr("disabled");
+    else
+        $("button").attr("disabled", "disabled");  
+});
 </script>
 @endpush

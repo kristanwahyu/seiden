@@ -152,27 +152,29 @@ Route::get('/dashboard-simak', function () {
     return view('pages.operator_simak.dashboard');
 });
 
-Route::get('/sinkronisasi-simak', function () {
-    return view('pages.operator_simak.sinkronisasi');
-});
+Route::get('/dashboard-simak/show', 'SimakController@show');
+Route::get('/sinkronisasi-simak/{id}', 'SimakController@showdetail');
+Route::post('/sinkronisasi-simak', 'SimakController@store');
+
 //==============+++END OPERATOR SIMAK+++============//
 
 //==============+++START OPERATOR SAIBA+++============//
 Route::get('/dashboard-saiba', function () {
     return view('pages.operator_saiba.dashboard');
 });
-Route::get('/sinkronisasi-saiba', function () {
-    return view('pages.operator_saiba.sinkronisasi');
-});
+
+Route::get('/dashboard-saiba/show', 'SaibaController@show');
+Route::get('/sinkronisasi-saiba/{id}', 'SaibaController@showdetail');
+Route::post('/sinkronisasi-saiba', 'SaibaController@store');
 //==============+++END OPERATOR SAIBA+++============//
 
 //==============+++START OPERATOR PERLENGKAPAN+++============//
 Route::get('/dashboard-perlengkapan', function () {
     return view('pages.operator_perlengkapan.dashboard');
 });
-Route::get('/sinkronisasi-perlengkapan', function () {
-    return view('pages.operator_perlengkapan.sinkronisasi');
-});
+Route::get('/dashboard-perlengkapan/show', 'PerlengkapanController@show');
+Route::get('/sinkronisasi-perlengkapan/{id}', 'PerlengkapanController@showdetail');
+Route::post('/sinkronisasi-perlengkapan', 'PerlengkapanController@store');
 //==============+++END OPERATOR PERLENGKAPAN+++============//
 
 //==============+++START KPA+++============//

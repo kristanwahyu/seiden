@@ -14,20 +14,11 @@ use App\Model\DipaPembayaranCheckSPP;
 class SppController extends Controller
 {
 	public function showPage(){
-		// $data = DB::table('tbl_dipa_pembayaran')->get();
 		return view('pages.ppk.dashboard');
 	}
 
 	public function show()
 	{ 
-    // $data = DB::table('tbl_dipa_pembayaran')
-    //         ->whereNotExists(function ($query) {
-    //             $query->select(DB::raw(1))
-    //                   ->from('tbl_dipa_pmb_check_spp')
-    //                   ->whereRaw('tbl_dipa_pembayaran.dipa_pembayaran_id = tbl_dipa_pmb_check_spp.dipa_pembayaran_id');
-    //         })
-    //         ->get();
-		
 		$data = DB::table('tbl_dipa_pembayaran')
 		->join('tbl_dipa_akun_detail', 'tbl_dipa_akun_detail.dipa_id_detail_akun','=','tbl_dipa_pembayaran.dipa_id_detail_akun')
 		->join('tbl_dipa_akun', 'tbl_dipa_akun.dipa_id_akun','=','tbl_dipa_akun_detail.dipa_id_akun')
@@ -39,6 +30,7 @@ class SppController extends Controller
 		->join('tbl_dipa_program', 'tbl_dipa_program.dipa_id_program','=','tbl_dipa_kegiatan.dipa_id_program')
 		->leftJoin('tbl_dipa_pmb_check_spp', 'tbl_dipa_pmb_check_spp.dipa_pembayaran_id','=','tbl_dipa_pembayaran.dipa_pembayaran_id')
 		->whereNull('tbl_dipa_pmb_check_spp.dipa_pembayaran_id')
+		->where('tbl_dipa_program.dipa_id_satuan_kerja',Auth::user()->dipa_id_satuan_kerja)
     ->get([
     		DB::raw('CONCAT(
     			tbl_dipa_akun_detail.dipa_nama_detail," | ",
@@ -61,8 +53,8 @@ class SppController extends Controller
 				'tbl_dipa_akun_detail.dipa_volume',
 				'tbl_dipa_akun_detail.dipa_harga_satuan',
         DB::raw('tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume as total'),
-        DB::raw('tbl_dipa_akun_detail.dipa_harga_satuan * tbl_dipa_akun_detail.dipa_volume AS bayar'),
-        'tbl_dipa_akun_detail.dipa_id_detail_akun'
+        'tbl_dipa_pembayaran.dipa_pembayaran_nilai',
+        'tbl_dipa_pembayaran.dipa_pembayaran_id'
         ]);
     return $this->makeDataTable($data);
 	}
@@ -78,7 +70,7 @@ class SppController extends Controller
                 ->leftJoin('tbl_dipa_akun_detail','tbl_dipa_akun.dipa_id_akun', '=', 'tbl_dipa_akun_detail.dipa_id_akun')
                 ->leftJoin('tbl_dipa_pembayaran','tbl_dipa_akun_detail.dipa_id_detail_akun', '=', 'tbl_dipa_pembayaran.dipa_id_detail_akun')
 								->leftJoin('tbl_tahun_anggaran', 'tbl_tahun_anggaran.dipa_id_tahun_anggaran','=','tbl_dipa_program.dipa_id_tahun_anggaran')
-                ->where('tbl_dipa_pembayaran.dipa_id_detail_akun',$id)
+                ->where('tbl_dipa_pembayaran.dipa_pembayaran_id',$id)
                 ->get();
         
   	return view('pages.ppk.spp', compact("data"));
@@ -135,6 +127,6 @@ class SppController extends Controller
 	}
 
 	public function makeDataTable($data){
-    return Datatables::collection($data)->addIndexColumn()->make(true);
-  }
+	    return Datatables::collection($data)->addIndexColumn()->make(true);
+	  }
 }

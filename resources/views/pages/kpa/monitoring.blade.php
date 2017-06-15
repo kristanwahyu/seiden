@@ -134,35 +134,29 @@ var data = [
       "1",
       "UP",
       "Rp. 1.500.000",
+      `<div class='text-center'><span class='label label-success' style='font-size:12px'><i class="fa fa-check" aria-hidden="true"></i></span></div>`,
       "001",
       "20 Januari 2017",
-      "Rp. 3.000.000",
-      "Contoh Keterangan SPP",
+      `<div class='text-center'><span class='label label-success' style='font-size:12px'><i class="fa fa-check" aria-hidden="true"></i></span></div>`,
       "001",
       "20 Januari 2017",
-      "Rp. 3.000.000",
-      "Contoh Keterangan SPM",
+      `<div class='text-center'><span class='label label-success' style='font-size:12px'><i class="fa fa-check" aria-hidden="true"></i></span></div>`,
       "001",
-      "20 Januari 2017",
-      "Rp. 3.000.000",
-      "Contoh Keterangan SP2d"
+      "21 Januari 2017"
   ],
   [
       "2",
       "LS",
       "Rp. 1.500.000",
-      "002",
-      "21 Januari 2017",
-      "Rp. 3.000.000",
-      "Contoh Keterangan SPP",
-      "002",
-      "22 Januari 2017",
-      "Rp. 3.000.000",
-      "Contoh Keterangan SPM",
-      "002",
-      "22 Januari 2017",
-      "Rp. 3.000.000",
-      "Contoh Keterangan SP2d"
+      `<div class='text-center'><span class='label label-danger' style='font-size:12px'><i class="fa fa-times" aria-hidden="true"></i></span></div>`,
+      "-",
+      "-",
+      `<div class='text-center'><span class='label label-danger' style='font-size:12px'><i class="fa fa-times" aria-hidden="true"></i></span></div>`,
+      "-",
+      "-",
+      `<div class='text-center'><span class='label label-danger' style='font-size:12px'><i class="fa fa-times" aria-hidden="true"></i></span></div>`,
+      "-",
+      "-"
   ],
 ];
 
@@ -172,18 +166,15 @@ $('#myTable').DataTable({
     { "title": "NO", "width": "1%" },
     { "title": "JENIS BAYAR" },
     { "title": "JUMLAH" },
+    { "title": "SPP" },
     { "title": "NO SPP" },
     { "title": "TANGGAL SPP" },
-    { "title": "NILAI SPP" },
-    { "title": "KETERANGAN SPP" },
+    { "title": "SPM" },
     { "title": "NO SPM" },
     { "title": "TANGGAL SPM" },
-    { "title": "NILAI SPM" },
-    { "title": "KETERANGAN SPM" },
+    { "title": "SP2D" },
     { "title": "NO SP2D" },
-    { "title": "TANGGAL SP2D" },
-    { "title": "NILAI SP2D" },
-    { "title": "KETERANGAN SP2D" }
+    { "title": "TANGGAL SP2D" }
   ]
 });
 </script>
