@@ -19,6 +19,9 @@ class DipaPembayaranChecklistSp2d extends Migration
             $table->double('dipa_sp2d_nilai');
             $table->datetime('dipa_sp2d_tanggal');
             $table->string('dipa_sp2d_keterangan',255);
+            $table->enum('dipa_sink_simak',array('0','1'))->default(0); //0 =Tidak 1=Ya
+            $table->enum('dipa_sink_saiba',array('0','1'))->default(0); //0 =Tidak 1=Ya
+            $table->enum('dipa_sink_perlengkapan',array('0','1'))->default(0); //0 =Tidak 1=Ya
             // foreign key
             $table->integer('dipa_pembayaran_id')->unsigned();
             $table->foreign('dipa_pembayaran_id')->references('dipa_pembayaran_id')->on('tbl_dipa_pembayaran');
