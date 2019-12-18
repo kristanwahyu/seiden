@@ -161,7 +161,10 @@ $(function(){
         "serverSide": true,
         "ajax":{
             type : "GET",
-            url : "/satuan-kerja/show"
+            url : "/satuan-kerja/show",
+            data: function (d) {
+                d.search = $('input[type="search"]').val()
+            }
         },
         "columns": [
             {

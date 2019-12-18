@@ -14,10 +14,10 @@ class UserController extends Controller
         $job = User::withTrashed()->with('satuanKerja')
                     ->select('dipa_id_pengguna','username','dipa_nama_pengguna',
                         'dipa_id_satuan_kerja','dipa_pengguna_status', 'dipa_jenis_pengguna');
-        return $this->makeDataTable($job);
+        return Datatables::eloquent($job)->addIndexColumn()->make(true);
     }
 
-    public function makeDataTable($data)
+    public function makeDataTable()
     {
         return Datatables::eloquent($data)->addIndexColumn()->make(true);
     }

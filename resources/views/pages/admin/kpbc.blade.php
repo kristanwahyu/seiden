@@ -2,23 +2,23 @@
 
 @push('style')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
 @endpush
 
-@section('title', 'DIPA Program')
+@section('title', 'Master KPPBC')
 
 @section('sidebar')
-    @include('sidebar.satker')
+    @include('sidebar.admin')
 @endsection
 
 @section('content')
-{{-- AWAL MAIN CONTENT --}}
+  {{-- AWAL MAIN CONTENT --}}
 <div class="main-content">
     {{-- Breadcrumb --}}
     <div class="breadcrumb-wrapper">
         <ul class="breadcrumb">
-            <li><a href=""><i class="fa fa-home fa-fw"></i></a></li>
-            <li class="active-bread"><a href="">DIPA</a></li>
+            <li><a href=""><i class="fa fa-home fa-fw"></i></a>
+            </li>
+            <li class="active-bread">MASTER KPPBC</li>
         </ul>
     </div>
     {{-- End Breadcrumb --}}
@@ -27,81 +27,68 @@
         <div class="row">
             <div class="col-md-12">
 
-                {{-- awal tabel DIPA --}}
+              	{{-- awal tabel kpbc --}}
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">DIPA Program</h3>
+                        <h3 class="panel-title">Master KPBC</h3>
                     </div>
                     {{-- awal panel body --}}
                     <div class="panel-body">
-                        <div class="row detail-box">
-                            <div class="col-md-6">
-                                <table class="table table-borderless detail-table no-margin">
-                                    <tbody>
-                                        <tr>
-                                            <td>KODE / SATUAN KERJA</td>
-                                            <td>:</td>
-                                            <td>{{$satker['dipa_kode_satuan_kerja']}} / {{$satker['dipa_satuan_kerja']}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>TAHUN ANGGARAN</td>
-                                            <td>:</td>
-                                            <td>{{$tahun['dipa_tahun_anggaran']}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary" @if($satker['dipa_satuan_kerja_status'] == 0) data-toggle="tooltip" data-placement="top" title="Satuan Kerja Tidak Aktif" disabled @else data-toggle="modal" href='#modal-tambah' @endif><i class="fa fa-plus"></i> Tambah</button>
-                            </div>
-                            <div class="col-sm-6 text-right">
-                                <span class="btn-detail-open-text"></span> &nbsp;
-                                <div class="btn-detail btn-active"><i class="fa fa-chevron-up"></i></div>
-                            </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" data-toggle="modal" href='#modal-tambah'  id="new-kpbc"><i class="fa fa-plus"></i> Tambah</button>
                         </div>
                         <br>
-                        {{-- awal pembungkus tabel DIPA --}}
+                        {{-- awal pembungkus tabel satuan kerja --}}
                         <div class="table-responsive">
-                            {{-- <div class="btn--search"><i class="fa fa-chevron-down"></i></div> --}}
                             <table class="table table-bordered table-condensed table-striped" id="myTable">
 
                             </table>
-                        </div> {{-- akhir pembungkus tabel DIPA --}}
+                        </div> {{-- akhir pembungkus tabel satuan kerja --}}
                     </div> {{-- akhir panel body --}}
-                </div> {{-- akhir tabel DIPA --}}
-            </div>
-        </div>
-    </div>
-</div>
-  {{-- AKHIR MAIN CONTENT --}}
+                </div> {{-- akhir tabel satuan kerja --}}
 
-  {{-- AWAL MODAL TAMBAH PROGRRAM --}}
+            </div> {{-- End col-md-12 --}}
+        </div> {{-- End Row --}}
+    </div> {{-- End Container Fluid --}}
+
+</div>
+{{-- AKHIR MAIN CONTENT --}}
+
+  {{-- AWAL MODAL TAMBAH kpbc --}}
   <div class="modal fade" id="modal-tambah">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Tambah Program</h4>
+                  <h4 class="modal-title">Tambah KPPBC</h4>
               </div>
               <div class="modal-body">
-                  <form action="" method="POST" class="form-horizontal" role="form">
+                  <form action="{{url('/kpbc/store')}}" method="POST" class="form-horizontal" role="form" id="formTambah">
+                    {{ csrf_field() }}
                       <div class="row">
                           <div class="col-sm-12">
                               <div class="form-group">
-                                  <label class="col-sm-3 control-label">Kode Program</label>
+                                  <label class="col-sm-3 control-label">Kode KPPBC</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_kode_program" name="tambah_kode_program" placeholder="Contoh : PRG0001">
-                                      <input type="hidden" name="id_tahun" id="id_tahun" value="{{$tahun['dipa_id_tahun_anggaran']}}">
-                                      <input type="hidden" name="id_satker" id="id_satker" value="{{$satker['dipa_id_satuan_kerja']}}">
+                                      <input type="text" class="form-control" id="tambah_kode_kpbc" placeholer="Contoh : 00001" name="kode_kpbc">
                                   </div>
                               </div>
                               <div class="form-group">
-                                  <label class="col-sm-3 control-label">Nama Program</label>
+                                  <label class="col-sm-3 control-label">Nama KPPBC</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_nama_program" name="tambah_nama_program" placeholder="Contoh : Program-1">
+                                      <input type="text" class="form-control" id="tambah_nama_kpbc" name="nama_kpbc" placeholder="Contoh : KPPBC xxxx/Kantor Kanwil xxxx">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Eselon KPPBC</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" id="tambah_eselon_kpbc" name="eselon_kpbc" placeholder="Contoh : 10000">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Kota KPPBC</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" id="tambah_kota_kpbc" name="kota_kpbc" placeholder="Contoh : Kota Semarang">
                                   </div>
                               </div>
                           </div>
@@ -109,37 +96,49 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btn-tambah">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-simpan">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
       </div>
   </div>
-  {{-- AKHIR MODAL TAMBAH PROGRRAM --}}
+  {{-- AKHIR MODAL TAMBAH SATUAN KERJA --}}
 
-  {{-- AWAL MODAL UBAH PROGRRAM --}}
+  {{-- AWAL MODAL UBAH SATUAN KERJA --}}
   <div class="modal fade" id="modal-ubah">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Ubah Program</h4>
+                  <h4 class="modal-title">Ubah KPBC</h4>
               </div>
               <div class="modal-body">
-                  <form action="" method="POST" class="form-horizontal" role="form">
+                  <form action="" method="POST" class="form-horizontal" role="form" id="formUbah">
                       <div class="row">
                           <div class="col-sm-12">
                               <div class="form-group">
-                                  <label class="col-sm-3 control-label">Kode Program</label>
+                                  <label class="col-sm-3 control-label">Kode KPBC</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_kode_program" name="ubah_kode_program">
-                                      <input type="hidden" id="param_id">
+                                      <input type="text" class="form-control" id="ubah_kite_kode_kpbc" name="kode_kpbc">
+                                      <input type="hidden" id="id_binding">
                                   </div>
                               </div>
                               <div class="form-group">
-                                  <label class="col-sm-3 control-label">Nama Program</label>
+                                  <label class="col-sm-3 control-label">Nama KPBC</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="ubah_nama_program" name="ubah_nama_program">
+                                      <input type="text" class="form-control" id="ubah_kite_nama_kpbc" name="nama_kpbc">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Eselon KPBC</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" id="ubah_kite_eselon_kpbc" name="nama_kpbc">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">Kota KPBC</label>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control" id="ubah_kite_kota_kpbc" name="nama_kpbc">
                                   </div>
                               </div>
                           </div>
@@ -147,22 +146,20 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btn-ubah">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-ubah-simpan">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
       </div>
   </div>
-  {{-- AKHIR MODAL UBAH PROGRRAM --}}
+  {{-- AKHIR MODAL UBAH SATUAN KERJA --}}
 @endsection
 
 @push('script')
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap-datepicker.js') }}" charset="UTF-8"></script>
 
 <script>
-
 $(function(){
     'use strict';
     var table = $('#myTable').DataTable({
@@ -170,7 +167,7 @@ $(function(){
         "serverSide": true,
         "ajax":{
             type : "GET",
-            url : "/dipa/dipa-program/show"
+            url : "/kpbc/show"
         },
         "columns": [
             {
@@ -182,70 +179,63 @@ $(function(){
                 width: "1%"
             },
             {
-                title: 'KODE',
-                data: 'dipa_kode_program',
+                title: 'KODE KPBC',
+                data: 'kite_kode_kpbc',
                 defaultContent: "-",
-                name: 'dipa_kode_program'
+                name: 'kite_kode_kpbc'
             },
             {
-                title: 'NAMA PROGRAM',
-                data: 'dipa_nama_program',
+                title: 'NAMA KPBC',
+                data: 'kite_nama_kpbc',
                 defaultContent: "-",
-                name: 'dipa_nama_program'
+                name: 'kite_nama_kpbc'
             },
             {
-                title: '<div class="text-center">NILAI</div>',
-                data: null,
+                title: 'ESELON KPBC',
+                data: 'kite_eselon_kpbc',
                 defaultContent: "-",
-
-                name: 'total',
-                render: function(data) {
-                    var number = data['total'];
-                    if (number != null) {
-                        var number_change = formatNumber(number);
-                        var currency = `<div><div class="pull-left">Rp.</div> <div class="pull-right">${number_change}</div></div>`;
-                        return currency.replace();
-                    }
-                },
-                width: "10%"
+                name: 'kite_eselon_kpbc'
+            },
+            {
+                title: 'KOTA KPBC',
+                data: 'kite_kota_kpbc',
+                defaultContent: "-",
+                name: 'kite_kota_kpbc'
             },
             {
                 title: '<div class="text-center">ACTION</div>',
                 data: null,
                 name: 'action',
                 render: function (data) {
-                    var param = '';
-                    if(data['count_kegiatan'] > 0) {
-                        param = 'data-toggle="tooltip" data-placement="top" title="Program Sudah Memiliki Kegiatan, tidak bisa dihapus" disabled';
-                    }
                     var actions = '';
-                    actions = `<button class="btn btn-warning btn-sm ubah-program" data-id="${data['dipa_id_program']}" data-toggle="modal" href='#modal-ubah'> UBAH</button>
-                        <button class="btn btn-danger btn-sm hapus-program" ${param} data-id="${data['dipa_id_program']}"> HAPUS</button>
-                        <a href="/dipa/dipa-kegiatan/${data['dipa_id_program']}" class="btn btn-success" role="button"> Pilih</a>`;
+                    actions = `<button class='btn btn-warning btn-sm ubah-kpbc' data-toggle='modal' data-id='${data["kite_id_kpbc"]}' href='#modal-ubah'><i class='fa fa-pencil'></i> Ubah</button>
+                                <button class='btn btn-danger btn-sm hapus-kpbc' data-toggle='modal' data-id='${data['kite_id_kpbc']}'><i class='fa fa-trash'></i> Hapus</button>`;                    
                     return actions.replace();
                 },
-                width: "15.6%",
+                width: "13%",
                 orderable: false,
-                searchable: false
+                searchable: false,
             }
 
 
         ],
     });
 
-    //btn detail box
-    $('.btn-detail').click(function(){
-        $('.detail-box').slideToggle(200);
-        $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
-        $(this).siblings('span').toggleClass('btn-detail-open-text btn-detail-close-text')
-        $(this).toggleClass('btn-active');
-    });
+    //generate code
+   // $("#new-satker").on('click', function(){
+     //   $.get("/satuan-kerja/code-generate", function(data, status){
+       //     if(status == 'success'){
+         //       $('#tambah_kode_kpbc').val(data);
+           // }
+       // });
+   // });
+    //sweet
 
-    $("#btn-tambah").click(function(){
+    $("#btn-simpan").click(function(){
             swal({
             title: "Apakah Anda Yakin ?",
-            text: "Data Program Ini Akan Disimpan",
-            type: "info",
+            text: "Data Master KPPBC Ini Akan Disimpan ",
+            type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#00a65a",
             confirmButtonText: "Ya, Yakin !",
@@ -257,14 +247,14 @@ $(function(){
         function(isConfirm){
             if (isConfirm) {
                 $.ajax({
-                    url : "/dipa/dipa-program/store",
-                    type : "POST",
+                    url : "/kpbc/store", 
+                    type : "post",
                     data : {
                         "_token": "{{ csrf_token() }}",
-                        "id_tahun" : $("#id_tahun").val(),
-                        "id_satker" : $("#id_satker").val(),
-                        "kode_program" : $("#tambah_kode_program").val(),
-                        "nama_program" : $("#tambah_nama_program").val()
+                        "kode_kpbc" : $("#tambah_kode_kpbc").val(),
+                        "nama_kpbc" : $("#tambah_nama_kpbc").val(),
+                        "eselon_kpbc" : $("#tambah_eselon_kpbc").val(),
+                        "kota_kpbc" : $("#tambah_kota_kpbc").val()
                     },
                     success : function(data, status){
                         if(status=="success"){
@@ -288,28 +278,31 @@ $(function(){
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Program Batal Disimpan :)', 'error');
+            swal('Dibatalkan', 'Data Master KPPBC Batal Simpan :)', 'error');
             $('#modal-tambah').modal('hide');
             }
         });
     });
 
-    $("#myTable").on('click','.ubah-program', function(){
-        $.get("/dipa/dipa-program/get/"+$(this).data('id'), function(data, status){
+    //UBAH
+    $("#myTable").on('click','.ubah-kpbc', function(){
+        $.get("/kpbc/get/"+$(this).data('id'), function(data, status){
             if(status == 'success'){
-                $("#ubah_kode_program").val(data['dipa_kode_program']);
-                $("#ubah_nama_program").val(data['dipa_nama_program']);
-                $('#param_id').val(data['dipa_id_program']);
+                console.log(data);
+                $("#ubah_kite_kode_kpbc").val(data['kite_kode_kpbc']);
+                $("#ubah_kite_nama_kpbc").val(data['kite_nama_kpbc']);
+                $("#ubah_kite_eselon_kpbc").val(data['kite_eselon_kpbc']);
+                $("#ubah_kite_kota_kpbc").val(data['kite_kota_kpbc']);
+                $("#id_binding").val(data['kite_id_kpbc']);
             }
         });
     });
 
-    $("#btn-ubah").click(function(){
-        var id = $('#param_id').val();
+    $("#btn-ubah-simpan").click(function(){
         swal({
             title: "Apakah Anda Yakin ?",
-            text: "Data Program Ini Akan Diubah",
-            type: "info",
+            text: "Data Satuan Kerja Ini Akan Diubah ",
+            type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#00a65a",
             confirmButtonText: "Ya, Yakin !",
@@ -321,12 +314,14 @@ $(function(){
         function(isConfirm){
             if (isConfirm) {
                 $.ajax({
-                    url : "/dipa/dipa-program/update/"+id,
+                    url : "/kpbc/update/"+$("#id_binding").val(),
                     type : "PUT",
                     data : {
                         "_token": "{{ csrf_token() }}",
-                        "kode_program" : $("#ubah_kode_program").val(),
-                        "nama_program" : $("#ubah_nama_program").val()
+                        "kode_kpbc" : $("#ubah_kite_kode_kpbc").val(),
+                        "nama_kpbc" : $("#ubah_kite_nama_kpbc").val(),
+                        "eselon_kpbc" : $("#ubah_kite_eselon_kpbc").val(),
+                        "kota_kpbc" : $("#ubah_kite_kota_kpbc").val(),
                     },
                     success : function(data, status){
                         if(status=="success"){
@@ -350,18 +345,19 @@ $(function(){
                     }
                 });
             } else {
-            swal('Dibatalkan', 'Data Program Batal Diubah :)', 'error');
-                $('#modal-ubah').modal('hide');
+            swal('Dibatalkan', 'Data Satuan Kerja Batal Simpan :)', 'error');
+                $('#modal-tambah').modal('hide');
             }
         });
     });
 
-    $("#myTable").on('click','.hapus-program', function(){
-        var id = $(this).data('id');
-        swal({
+    //hapus
+    $("#myTable").on('click','.hapus-kpbc', function(){
+    var data = $(this).data('id');
+    swal({
             title: "Apakah Anda Yakin ?",
-            text: "Data Program Ini Akan Dihapus PERMANEN !",
-            type: "info",
+            text: "Data Master KPBC akan di hapus PERMANEN ! ",
+            type: "warning",
             showCancelButton: true,
             confirmButtonColor: "red",
             confirmButtonText: "Ya, Yakin !",
@@ -373,8 +369,8 @@ $(function(){
         function(isConfirm){
             if (isConfirm) {
                 $.ajax({
-                    url : "/dipa/dipa-program/delete/"+id,
-                    type : "delete",
+                    url : "/kpbc/delete/"+data,
+                    type : "DELETE",
                     data : {
                         "_token": "{{ csrf_token() }}"
                     },
@@ -383,7 +379,7 @@ $(function(){
                             setTimeout(function(){
                                 swal({
                                     title: "Sukses",
-                                    text: "Data Tersimpan!",
+                                    text: "Data Terhapus!",
                                     type: "success"
                                     },
                                     function(){
@@ -394,15 +390,15 @@ $(function(){
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         setTimeout(function(){
-                            swal("Gagal", "Data Gagal Dihapus", "error");
+                            swal("Error deleting!", "Please try again", "error");
                         }, 1000);
                     }
                 });
             } else {
-                swal('Dibatalkan', 'Data Program Batal Dihapus :)', 'error');
+            swal('Dibatalkan', 'Data tidak dihapus :)', 'error');
             }
         });
-    });
+});
 
     $('#modal-tambah').on('hidden.bs.modal', function (e) {
         $(this)
@@ -410,13 +406,8 @@ $(function(){
             .val('')
             .end()
     });
-
 });
 
-function formatNumber(x) {
-    return x.replace(/\D/g, "")
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
 
 </script>
 @endpush
