@@ -5,6 +5,7 @@
 
 {{-- SWEETALERT JS --}}
 <script src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}"></script>
+
  
 <script>
 $(function(){

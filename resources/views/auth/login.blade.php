@@ -15,8 +15,7 @@
 					<div class="left">
 						<div class="content">
 							<div class="header">
-								<div class="logo text-center"><img src="{{ asset('img/logo.png') }}" alt="Klorofil Logo" style="opacity:0.7"></div>
-								<p class="lead">Login to your account</p>
+								<div class="logo text-center"><img src="{{ asset('img/seiden2.png') }}" alt="Klorofil Logo" style="opacity:0.7"></div>
 							</div>
 							<form class="form-auth-small" action="{{ route('login') }}" method="POST">
 								{{ csrf_field() }}
@@ -37,8 +36,8 @@
 					<div class="right">
 						<div class="overlay"></div>
 						<div class="content text">
-							<h1 class="heading">DAFTAR ISIAN PELAKSANAAN ANGGARAN</h1>
-							<p>Papua</p>
+							<h1 class="heading">IT INVENTORY</h1>
+							<p>PT. SEIDENSTICKER INDONESIA</p>
 						</div>
 					</div>
 					<div class="clearfix"></div>

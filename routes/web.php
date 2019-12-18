@@ -30,11 +30,34 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/tahun-anggaran/get/{id}','TahunAnggaranController@getOne');
         Route::put('/tahun-anggaran/aktif-toggle', 'TahunAnggaranController@aktifToggle');
 
-        //Satuan KErja
+        //negara
+        Route::get('/negara', function () {
+            return view('pages.admin.negara');
+        });
+        Route::get('/negara/show', 'kite_negara@show');
+        Route::post('/negara/store', 'kite_negara@store');
+        Route::put('/negara/update/{id}', 'kite_negara@update');
+        Route::get('/negara/get/{id}','kite_negara@getOne');
+        Route::delete('/negara/delete/{id}', 'kite_negara@delete');
+        //endofnegara
+
+
+        //kpbc
+        Route::get('/kpbc', function () {
+            return view('pages.admin.kpbc');
+        });
+        Route::get('/kpbc/show', 'KiteKpbcController@show');
+        Route::post('/kpbc/store', 'KiteKpbcController@store');
+        Route::put('/kpbc/update/{id}', 'KiteKpbcController@update');
+        Route::get('/kpbc/get/{id}','KiteKpbcController@getOne');
+        Route::delete('/kpbc/delete/{id}', 'KiteKpbcController@delete');
+        //endofkppbc
+
+        //Satuan KErjaz
         Route::get('/satuan-kerja', function () {
             return view('pages.admin.satuan_kerja');
         });
-        Route::get('/satuan-kerja/show','SatuanKerjaController@show');
+        Route::get('/satuan-kerja/show','SatuanKerjaController@show')->name('dashboarduser');
         Route::post('/satuan-kerja/store', 'SatuanKerjaController@store');
         Route::put('/satuan-kerja/update/{id}', 'SatuanKerjaController@update');
         Route::get('/satuan-kerja/code-generate', 'SatuanKerjaController@codeGenerate');

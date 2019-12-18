@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Http\Request;
 use App\Model\DipaSatKer;
+use Illuminate\Support\Str; 
+
 
 class SatuanKerjaController extends Controller
 {
@@ -50,8 +52,8 @@ class SatuanKerjaController extends Controller
     
     public function show()
     {
-        $job = DipaSatker::select('dipa_id_satuan_kerja','dipa_kode_satuan_kerja','dipa_satuan_kerja','dipa_satuan_kerja_status');
-        return $this->makeDataTable($job);
+        $job = DipaSatker::select('dipa_id_satuan_kerja','dipa_kode_satuan_kerja','dipa_satuan_kerja','dipa_satuan_kerja_status', 'created_at', 'updated_at');
+        return Datatables::of($job)->addIndexColumn()->make(true);
     }
 
     public function makeDataTable($data)
@@ -98,5 +100,6 @@ class SatuanKerjaController extends Controller
     public function get()
     {
         return DipaSatker::all();
+        
     }
 }
