@@ -14,11 +14,15 @@
   {{-- AWAL MAIN CONTENT --}}
 <div class="main-content">
     {{-- Breadcrumb --}}
-    <div class="breadcrumb-wrapper">
+    <div class="content-heading clearfix">
+        <div class="heading-left">
+            <h1 class="page-title">Negara</h1>
+            <p class="page-subtitle">Fasilitas untuk create, read, dan update master data negara</p>
+        </div>
         <ul class="breadcrumb">
-            <li><a href=""><i class="fa fa-home fa-fw"></i></a>
-            </li>
-            <li class="active-bread">Master Negara</li>
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#">Master Data</a></li>
+            <li class="active">Negara</li>
         </ul>
     </div>
     {{-- End Breadcrumb --}}
@@ -26,6 +30,18 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+
+                {{-- validate --}}
+                {{-- menampilkan error validasi --}}
+                @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
 
               	{{-- awal tabel negara --}}
                 <div class="panel">
@@ -65,21 +81,27 @@
                   <h4 class="modal-title">Tambah Negara</h4>
               </div>
               <div class="modal-body">
-                  <form action="{{url('/negara/store')}}" method="POST" class="form-horizontal" role="form" id="formTambah">
+                  <form action="{{url('/negara/store')}}" name="tambahNegara" method="POST" class="form-horizontal" role="form" id="formTambah" novalidate>
                     {{ csrf_field() }}
                       <div class="row">
                           <div class="col-sm-12">
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Kode Negara</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_kode_negara" placeholer="Contoh : HK" name="kode_negara">
+                                      <input type="text" class="form-control" id="tambah_kode_negara" placeholer="Contoh : HK" name="kode_negara" required>
+                                      <span class="text-danger">
+                                        <strong id="kode-error"></strong>
+                                    </span>
                                   </div>
                               </div>
 
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Nama Negara</label>
                                   <div class="col-sm-8">
-                                      <input type="text" class="form-control" id="tambah_nama_negara" name="nama_negara" placeholder="Contoh : Hongkong">
+                                      <input type="text" class="form-control" id="tambah_nama_negara" name="nama_negara" placeholder="Contoh : Hongkong" required>
+                                      <span class="text-danger">
+                                        <strong id="nama-error"></strong>
+                                    </span>
                                   </div>
                               </div>
                           </div>
@@ -87,7 +109,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btn-simpan">Simpan</button>
+                <button type="button" class="btn btn-primary" id="btn-simpan" data-toggle="modal" data-target="#tambah">Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               </div>
           </div>
@@ -140,6 +162,7 @@
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 
 
+
 <script>
 $(function(){
     'use strict';
@@ -184,7 +207,8 @@ $(function(){
             }
         ],
     });
-  
+    
+
 
     //generate code
    // $("#new-satker").on('click', function(){
@@ -211,6 +235,11 @@ $(function(){
         },
         function(isConfirm){
             if (isConfirm) {
+                var registerForm = $("#formTambah");
+                var formData = registerForm.serialize();
+                $('#kode-error').html("");
+                $('#nama-error').html("");
+
                 $.ajax({
                     url : "/negara/store",
                     type : "POST",
@@ -219,8 +248,23 @@ $(function(){
                         "kode_negara" : $("#tambah_kode_negara").val(),
                         "nama_negara" : $("#tambah_nama_negara").val()
                     },
-                    success : function(data, status){
-                        if(status=="success"){
+                    success : function(data){
+                        console.log(data);
+                        if(data.errors){
+                            setTimeout(function(){
+                            swal("Gagal", "Data Gagal Disimpan", "error");
+                            }, 1000);
+
+                            if(data.errors.kode_negara){
+                                $('#kode-error').html(data.errors.kode_negara[0]);
+                            }
+                            if(data.errors.nama_negara){
+                                $('#nama-error').html(data.errors.nama_negara[0]);
+                            }
+
+                            $('#modal-tambah').modal('show');
+                        }
+                        if(data.success){
                             setTimeout(function(){
                                 swal({
                                     title: "Sukses",
@@ -231,14 +275,9 @@ $(function(){
                                         table.ajax.reload();
                                     });
                                 }, 1000);
+                                $('#modal-tambah').modal('hide');
                         }
-                        $('#modal-tambah').modal('hide');
                     },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        setTimeout(function(){
-                            swal("Gagal", "Data Gagal Disimpan", "error");
-                        }, 1000);
-                    }
                 });
             } else {
             swal('Dibatalkan', 'Data Master Negara Batal Simpan :)', 'error');
@@ -246,6 +285,8 @@ $(function(){
             }
         });
     });
+
+    
 
     //UBAH
     $("#myTable").on('click','.ubah-negara', function(){

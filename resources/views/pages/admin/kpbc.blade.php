@@ -14,11 +14,15 @@
   {{-- AWAL MAIN CONTENT --}}
 <div class="main-content">
     {{-- Breadcrumb --}}
-    <div class="breadcrumb-wrapper">
+    <div class="content-heading clearfix">
+        <div class="heading-left">
+            <h1 class="page-title">Kantor Pengawasan dan Pelayanan pada Direktorat Jenderal Bea dan Cukai</h1>
+            <p class="page-subtitle">Fasilitas untuk create, read, dan update master data KPPBC</p>
+        </div>
         <ul class="breadcrumb">
-            <li><a href=""><i class="fa fa-home fa-fw"></i></a>
-            </li>
-            <li class="active-bread">MASTER KPPBC</li>
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#">Master Data</a></li>
+            <li class="active">KPPBC</li>
         </ul>
     </div>
     {{-- End Breadcrumb --}}
@@ -50,7 +54,7 @@
             </div> {{-- End col-md-12 --}}
         </div> {{-- End Row --}}
     </div> {{-- End Container Fluid --}}
-
+ 
 </div>
 {{-- AKHIR MAIN CONTENT --}}
 
@@ -72,23 +76,35 @@
                                   <div class="col-sm-8">
                                       <input type="text" class="form-control" id="tambah_kode_kpbc" placeholer="Contoh : 00001" name="kode_kpbc">
                                   </div>
+                                  <span class="text-danger">
+                                    <strong id="kode-error"></strong>
+                                </span>
                               </div>
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Nama KPPBC</label>
                                   <div class="col-sm-8">
                                       <input type="text" class="form-control" id="tambah_nama_kpbc" name="nama_kpbc" placeholder="Contoh : KPPBC xxxx/Kantor Kanwil xxxx">
+                                      <span class="text-danger">
+                                        <strong id="nama-error"></strong>
+                                    </span>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Eselon KPPBC</label>
                                   <div class="col-sm-8">
                                       <input type="text" class="form-control" id="tambah_eselon_kpbc" name="eselon_kpbc" placeholder="Contoh : 10000">
+                                      <span class="text-danger">
+                                        <strong id="eselon-error"></strong>
+                                    </span>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label class="col-sm-3 control-label">Kota KPPBC</label>
                                   <div class="col-sm-8">
                                       <input type="text" class="form-control" id="tambah_kota_kpbc" name="kota_kpbc" placeholder="Contoh : Kota Semarang">
+                                      <span class="text-danger">
+                                        <strong id="kota-error"></strong>
+                                    </span>
                                   </div>
                               </div>
                           </div>

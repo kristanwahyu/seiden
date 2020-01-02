@@ -11,4 +11,8 @@ class negara extends Model
     protected $fillable = ['kite_nama_negara','kite_kode_negara','deleted_at'];
     protected $guarded = ['updated_at'];
     protected $table = 'kite_tabel_negara';
+
+    public function vendor(){
+        return $this->hasMany('App\Model\vendor','kite_negara_vendor');
+    }
 }

@@ -1,10 +1,17 @@
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('vendor/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-<script src="{{ asset('js/klorofil-common.js') }}"></script>
+<script src="{{ asset('js/klorofilpro-common.js') }}"></script>
 
 {{-- SWEETALERT JS --}}
 <script src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}"></script>
+
+{{-- SELECT --}}
+<script src="{{ asset('vendor/select2/dist/js/select2.min.js') }}"></script>
+
+{{-- VALIDATE --}}
+<script src="{{ asset('vendor/parsleyjs/js/parsley.min.js') }}"></script>
+<script src="{{ asset('vendor/validate/dist/jquery.validate.min.js')}}"></script>
 
  
 <script>
