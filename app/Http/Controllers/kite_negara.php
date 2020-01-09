@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Yajra\Datatables\Facades\Datatables;
+use Validator;
+use Datatables;
+use Response;
 use Illuminate\Http\Request;
 use App\Model\negara;
 
@@ -11,20 +13,26 @@ class kite_negara extends Controller
     //menyimpan data
     public function store(Request $request)
     {
-        $this->validate($request, [
-	        'kode_negara'	    => 'required',
-	        'nama_negara'		=> 'required',
-    	]);
-
-        $kode   = $request->kode_negara;
-        $nama   = $request->nama_negara;
-
-        negara::create([
-            'kite_kode_negara'   => $kode,
-            'kite_nama_negara'        => $nama,
+        $validator = Validator::make($request->all(), [
+            'kode_negara'	    => 'required|min:2|max:2|alpha',
+	        'nama_negara'		=> 'required|min:3|alpha',
         ]);
 
-        return response()->json(["status"=>"success"],200);
+        $input = $request->all();
+        if ($validator->passes())
+        {
+            $kode   = $request->kode_negara;
+            $nama   = $request->nama_negara;
+    
+            negara::create([
+                'kite_kode_negara'   => $kode,
+                'kite_nama_negara'        => $nama,
+            ]);
+    
+            return response()->json(['success'=>'1'],200);
+        }
+
+        return response()->json(['errors'=>$validator->errors()]);
     }
 
     //menampilkan data

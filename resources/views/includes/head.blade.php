@@ -18,6 +18,8 @@
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+<link rel="stylesheet" href="{{ asset('css/skins/sidebar-nav-darkgray.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/skins/navbar3.css') }}" type="text/css">
 
 <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 <link rel="stylesheet" href="{{ asset('css/demo.css') }}">
@@ -28,3 +30,10 @@
 <!-- ICONS -->
 <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/favicon.png') }}">
 <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/favicon.png') }}">
+
+<!-- SELECT -->
+<link href="{{ asset('vendor/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
+
+<!-- Validate -->
+<link href="{{ asset('vendor/parsleyjs/css/parsley.css') }}" rel="stylesheet" />
+

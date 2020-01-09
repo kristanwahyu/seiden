@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; 
 
-use Yajra\Datatables\Facades\Datatables;
+use Validator;
+use Datatables;
+use Response;
 use Illuminate\Http\Request;
 use App\Model\kite_kpbc;
 
@@ -12,24 +14,30 @@ class KiteKpbcController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-	        'kode_kpbc'	    => 'required',
-            'nama_kpbc'		=> 'required',
-            'eselon_kpbc'	=> 'required',
+	        'kode_kpbc'	    => 'required|min:5|max:5|numeric',
+            'nama_kpbc'		=> 'required|alpha',
+            'eselon_kpbc'	=> 'required|min:5|numeric',
             'kota_kpbc'		=> 'required',
     	]);
 
-        $kode   = $request->kode_kpbc;
-        $nama   = $request->nama_kpbc;
-        $eselon = $request->eselon_kpbc;
-        $kota = $request->kota_kpbc;
+        $input = $request->all();
+        if ($validator->passes())
+        {
+            $kode   = $request->kode_kpbc;
+            $nama   = $request->nama_kpbc;
+            $eselon = $request->eselon_kpbc;
+            $kota = $request->kota_kpbc;
+    
+            kite_kpbc::create([
+                'kite_kode_kpbc'   => $kode,
+                'kite_nama_kpbc'   => $nama,
+                'kite_eselon_kpbc' => $eselon,
+                'kite_kota_kpbc' => $kota,
+                ]);
+            return response()->json(['success'=>'1'],200);
 
-        kite_kpbc::create([
-            'kite_kode_kpbc'   => $kode,
-            'kite_nama_kpbc'   => $nama,
-            'kite_eselon_kpbc' => $eselon,
-            'kite_kota_kpbc' => $kota,
-        ]);
-        return response()->json(["status"=>"success"],200);
+        }
+        return response()->json(['errors'=>$validator->errors()]);
     }
 
     //edit

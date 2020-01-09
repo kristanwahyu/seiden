@@ -41,6 +41,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/negara/delete/{id}', 'kite_negara@delete');
         //endofnegara
 
+        //vendor
+        Route::get('/vendors', function () {
+            return view('pages.admin.vendor');
+        });
+        Route::get('/vendors/show', 'kite_vendor@show');
+        Route::get('/vendors/negara', 'kite_vendor@negara');
+
+        //endofnegara
 
         //kpbc
         Route::get('/kpbc', function () {
